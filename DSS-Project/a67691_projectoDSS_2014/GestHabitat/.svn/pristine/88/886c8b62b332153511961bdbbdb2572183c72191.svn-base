@@ -1,0 +1,74 @@
+package data_acess;
+
+import business.doacoes.IDoador;
+import data_acess.exceptions.DoadorNaoExisteException;
+import java.util.Set;
+import java.util.HashSet;
+
+
+/**
+ * Não é preciso preencher
+ * @author Cortez
+ */
+
+public class FACADEDoacoes {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    private DoadorDAO doadores;
+    private DonativoDAO donativos;
+    private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    // private CandidaturaDAO candidaturas;
+    // private MembroDAO membros;
+    // private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    // private MaterialDAO materiais;
+    // private ProjetoDAO projetos;
+    // private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    // private EquipaDAO equipas;
+    // private FuncionarioDAO funcionarios;
+    // private VoluntarioDAO voluntarios;
+    
+    
+    
+    
+    /**************************************************************************************/
+    /********************************** DOACOES *******************************************/
+    /**************************************************************************************/
+    
+    /*Métodos de DoadorDAO*/
+    /**
+     * Calcula o número total de doadores no sistema.
+     * @return Número total de doadores.
+     */
+    public int do_totalDoadores () { return this.doadores.size();}
+    
+    /**
+     * Retorna um doador, dado um NIF.
+     * @param nif, NIF do doador
+     * @return Doador correspondente ao NIF passado como parâmetro.
+     * @throws data_acess.exceptions.DoadorNaoExisteException 
+     */
+    public IDoador do_getDoador (String nif) throws DoadorNaoExisteException
+    {
+        if(this.doadores.containsKey(nif)){
+            return this.doadores.get(nif);
+        } else throw new DoadorNaoExisteException(nif);        
+    }
+    
+    /**
+     *  Averigua se exista um doador
+     * @param nif, NIF do doador
+     * @return Verdadeiro se existir, caso contrário falso.
+     */
+    public boolean do_DoadorExiste(String nif){return this.doadores.containsKey(nif);}
+    
+    
+    
+    /*(...)*/
+}

@@ -1,0 +1,128 @@
+*****Questão 2*****
+
+Nesta questão vamos definir uma função idKey que adiciona um caso excepcional à função idsOK.
+Tal como a função idsOK esta função idsKey vai verificar o id de cada auction e para que essa auction seja válida, todos os id's tem de ser diferentes,
+mas caso existam auctions exatamente iguais em todos os parametros Id,Owner,Description e Value a função idsKey deve devolver True, ao contrário do que
+se passaria na função idsOK que bastava que o id fosse diferente para que a função devolvesse True, pois a mesma foi definida de modo a só analisar
+os ids.
+
+
+
+idKey :: House -> Bool
+
+
+
+
+--auxiliar existe_auc (existe auction) ve se dada uma acution e uma lista de auctions verifica se existe numa lista de auctions auctions exatamente iguais
+
+existe_auc :: Auction -> [Auction] -> Bool
+existe_auc _[] = False
+existe_auc (a,b,c,d,e) ((aa,bb,cc,dd,ee):auc) = if a==aa && b==bb && c==cc && d==dd && e==ee then True else existe_auc (a,b,c,d,e) auc
+
+
+
+repetidas_auc verifica se numa lista de auctions existem auctions repetidas...
+
+repetidos_auc :: [Auction] -> Bool
+repetidos_auc [] = False
+repetidos_auc (x:xs) = if existe_auc x xs then True else repetidos_auc xs
+
+
+*****Estratégia para idKey: função que compara o número de elementos de uma lista que resulta da função repetidos_auc com o numero de elementos de uma lista
+com os id's repetidos presentes numa lista de auctions , caso sejam iguais a função devolve True caso Sejam Diferentes a função devolve False
+
+para conciliar o funcionamento de idsOK com o objectivo da nossa questão que nos pede para idKey devolver True caso existam
+auctions exatamente iguais!!!!!!
+
+auctions repetidas na house = lista1
+id's repetidas de uma house que vamos verificar se é ou não válida = lista2
+
+length lista1 == length lista2 --- idKey devolve True
+
+--auxiliar repetidos' que dada uma lista de id's vai criar uma lista com aqueles id's que se repetem
+repetidos' :: [Int] -> [Int]
+repetidos' [] = []
+repetidos' (x:xs) = if existe x xs then x:repetidos' xs else repetidos' xs
+
+
+
+--de seguida vamos relembrar duas funções auxiliares da questão anterior hrf_val e junta_auc, que vamos utilizar para construir a seguinte função auxiliar...
+
+hrf_val :: [Auction] -> Bool
+hrf_val [] = True
+hrf_val [x] = True
+hrf_val lia = if (repetidos (pegaCab lia)) then False else True
+
+junta_auc :: House -> [Auction]
+junta_auc ([],[]) = []
+junta_auc (a,b) = a++b
+
+
+
+por mim podemos definir a função idKey:
+
+idKey :: House -> Bool
+idKey ([],[]) = False
+idKey h | (idsOK h) == True = True
+        | length (repetidos' (pegaCab (junta_auc h))) == length (repetidos_auc (junta_auc h)) = True
+        | length (repetidos' (pegaCab (junta_auc h))) /= length (repetidos_auc (junta_auc h)) = False				
+        | otherwise = idKey h
+
+
+
+vamos então testar o funcionamento da idKey que definimos com breves exemplos para melhor clarificarmos todo o processo:
+
+> idKey ([(1,"Peter","TV",60,""),(3,"Mary","laptop",120,""),(3,"Anne","car",8500,"Peter")],[(3,"John","phone",85,"Peter"),(2,"Anne","car",8500,"Peter")]) --> house1
+vamos então verificar o que idKey faz com House1...
+
+1-Primeiro verifica se a lista de auctions running e auctions finished estão vazias, neste caso não estão, logo avançamos para o passo seguinte;
+
+2-De seguida nas linhas de código com guardas primariamente idKey, neste caso a lista de id's é [1,3,3,3,2] como podemos ver, existe um elemento
+que se repete logo este processo não é compatível com House1 pois idOK devolve 'False';
+
+3-Na seguinte linha idsOK toma valor Falso, o que é compatível com o nosso caso, então observemos o passo seguinte. Na segunda parte do código desta linha
+estabelece-se a seguinte relação (passo a explicar por escrito) "Se o comprimento da lista formada pelas id's repetidas da nossa House1 for igual ao
+comprimento da lista formada pelas auctions que se repetem na nossa house então o programa deve devolver 'True'"...
+
+vejamos:
+comprimento da lista formada pelas id's repetidas da nossa House1 = length [3] =  1
+comprimento da lista formada pelas auctions que se repetem na nossa house = lenth [] = 0 (não existem em House1 auctions exatamente iguais)
+
+0 /= 1 logo não é Verdadeiro
+
+Neste ponto podemos já concluir que idKey House1 = False, mas vamos igualmente averiguar a falsidade de House1 através do útimo caso que definimos para idsOK;
+
+
+4- No último caso = anterior para idsOK mas diferente para o que definimos posteriormente: "Se o comprimento da lista formada pelas id's repetidas da nossa House1 for
+*DIFERENTE* do comprimento da lista formada pelas auctions que se repetem na nossa house então o programa deve devolver 'False'"
+
+---o mesmo que no vejamos de cima---
+
+Como 0 /= 1 logo é Verdadeiro então o programa devolve 'FALSE' como podemos ver na imagem em baixo (COLOCAR IMAGEM)
+.
+****
+
+
+ 
+
+
+
+
+TESTES
+
+myhouse = ([(1,"Peter","TV",60,""),(2,"Mary","laptop",120,"")],[(3,"John","phone",85,"Peter")]) -----------------------------------VERDADEIRO
+
+badhouse = ([(1,"Peter","TV",60,""),(4,"Mary","laptop",120,""),(3,"Anne","car",8500,"Peter")],[(3,"John","phone",85,"Peter")]) -----FALSO
+
+badhouse 1 = ([(1,"Peter","TV",60,""),(4,"Mary","laptop",120,""),(1,"Peter","TV",60,"")],[(3,"John","phone",85,"Peter")]) ----------VERDADEIRO
+
+(Testes OK POR IMAGEM!!!) 
+
+
+
+
+
+
+
+
+

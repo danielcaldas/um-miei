@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<imagem>
+		<grupo prof="1">
+			<modelos>
+				<modelo ficheiro="plano.3d" colorX="0" colorY="0" colorZ="1" />
+			</modelos>
+			<grupo prof="2">
+				<translacao X="10" Y="0" Z="0" />
+				<modelos>
+					<modelo ficheiro="cone.3d" colorX="1" colorY="0" colorZ="1" />
+				</modelos>
+				<grupo prof="-1">
+				</grupo>
+			</grupo>	
+		</grupo>
+</imagem>
+
+
+
+
+
+
+
+
+
+

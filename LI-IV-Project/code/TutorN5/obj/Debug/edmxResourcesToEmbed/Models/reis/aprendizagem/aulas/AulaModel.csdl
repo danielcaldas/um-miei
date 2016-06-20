@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AulaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Aula">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URL" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Conteudo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Rei" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="AulaDAO" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aula" EntityType="Self.Aula" />
+  </EntityContainer>
+</Schema>

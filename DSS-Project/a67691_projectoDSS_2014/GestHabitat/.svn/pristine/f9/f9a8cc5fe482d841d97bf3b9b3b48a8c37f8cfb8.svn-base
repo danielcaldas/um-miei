@@ -1,0 +1,75 @@
+package business.doacoes;
+
+import java.util.Arrays;
+import java.util.GregorianCalendar;
+import java.util.Set;
+
+/** Classe que agrega a informação sobre os donativos de serviços
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 30.12.2014
+ */
+
+public class DonativoServicos extends Donativo implements IDonativoServicos {
+    //Variáveis de instância
+    private String tipo;
+    
+    
+    /**
+     * Construtor Vazio
+     */
+    public DonativoServicos ()
+    {
+        super();
+        this.tipo = "";
+    }
+    
+    /**Construtor parametrizado
+     * 
+     * @param data Data de emissão
+     * @param nRecibo Número de recibo
+     * @param obs Observações adicionais
+     * @param proj Lista de projetos para os quais este donativo foi aplicado
+     * @param tipo  Tipo de serviço
+     */
+    public DonativoServicos (GregorianCalendar data, int nRecibo, String obs, Set<Integer> proj, String tipo)
+    {
+        super (data,nRecibo,obs,proj);
+        this.tipo = tipo;
+    }
+    
+    /**Construtor de cópia
+     * 
+     * @param d Um donativo de serviços
+     */
+    public DonativoServicos (DonativoServicos d)
+    {
+        super (d.getData(), d.getNRecibo(), d.getObs(), d.getProjetos());
+        this.tipo = d.getTipo();
+    }
+    
+    /*gets*/
+    public String getTipo () {return this.tipo;}
+    /*sets*/
+    public void setTipo (String tipo) {this.tipo = tipo;}
+    
+    /*Equals, clone e hashcode*/
+    @Override
+    public boolean equals (Object o)
+    {
+        if (this==o) return true;
+        if (o==null || this.getClass()!=o.getClass()) return false;
+        DonativoServicos d = (DonativoServicos) o;
+        return (super.equals(d) && this.tipo.equals(d.getTipo()));
+    }
+    @Override
+    public DonativoServicos clone ()
+    {
+        return new DonativoServicos (this);
+    }
+    @Override
+    public int hashCode ()
+    {
+        return Arrays.hashCode(new Object[] {this.getData(), this.getNRecibo(), this.getObs(),this.getProjetos(), this.tipo});
+    }
+}

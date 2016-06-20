@@ -1,0 +1,284 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.chart {
+	float: left;
+}
+
+.video_container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+/**---------------------------------------------------------------------
+    Pop Up de uma pergunta numa aula de vídeo
+-----------------------------------------------------------------------*/
+#abc {
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+
+div#popupQuestion {
+    position:absolute;
+    left:50%;
+    top:17%;
+    margin-left:-202px;
+    font-family:'Raleway',sans-serif
+}
+
+popupform {
+    max-width:300px;
+    min-width:250px;
+    padding:10px 50px;
+    border:2px solid gray;
+    border-radius:10px;
+    font-family:raleway;
+    background-color:#fff
+}
+
+#questionText {
+    background-color:#fff;
+    padding:20px 35px;
+    margin:-10px -50px;
+    text-align:center;
+    border-radius:10px 10px 0 0
+}
+
+.responderPopUp {
+    text-decoration:none;
+    width:100%;
+    text-align:center;
+    display:block;
+    background-color:#0094ff;
+    color:#ffffff;
+    padding:10px 0;
+    font-size:20px;
+    cursor:pointer;
+    border-radius:5px
+}
+
+.areaResposta {
+    width:100%;
+    padding:10px;
+    margin-top:30px;
+    border:1px solid #ccc;
+    padding-left:40px;
+    font-size:16px;
+    font-family:raleway
+}
+
+
+
+
+
+/**---------------------------------------------------------------------
+    Design para aula de texto
+-----------------------------------------------------------------------*/
+
+.textoAulaTexto {
+    width: 38%;
+    float: left;
+    margin: 2% 2%;
+    text-align: center;
+}
+
+.textoAulaCuriosidades {
+	width: 20%;
+	float: right;
+	margin: 2% 2%;
+	text-align: right;
+}
+
+
+
+/**-----------------------------------------------------------------------------
+    Perfil e Outros
+    ----------------------------------------------------------------------------*/
+
+/* BARRA DE PROGRESSO */
+
+.progress {
+    background: rgba(245, 245, 245, 1); 
+    border: 0px solid rgba(245, 245, 245, 1); 
+    border-radius: 5px; 
+    height: 20px;
+    width : 350px;  
+    
+    margin-top: 15px;   
+}
+
+.progress-bar-custom {
+    background: rgba(66, 139, 202, 1);
+
+}
+
+
+/* TIMELINE */
+ol {
+	position: relative;
+	display: block;
+    margin : 200px;
+    width: 800px;
+	height: 4px;
+	background: rgba(0,0,0,.1);
+}
+ol::before,
+ol::after {
+	content: "";
+	position: absolute;
+	top: -8px;
+	display: block;
+	width: 0;
+	height: 0;
+    border-radius: 10px;
+	border: 10px solid #808080;
+}
+ol::before {
+	left: -5px;
+}
+ol::after {
+	right: -10px;
+	border: 10px solid transparent;
+	border-right: 0;
+	border-left: 20px solid #808080;
+  border-radius: 3px;
+}
+
+/* ---- Timeline elements ---- */
+
+timelE {
+	position: relative;
+	top: -77px;
+	display: inline-block;
+	float: left;
+	width: 150px;
+	transform: rotate(-45deg);
+	font: bold 14px arial;
+}
+timelE::before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: -29px;
+	display: block;
+	width: 6px;
+	height: 6px;
+	border: 4px solid #000000;
+	border-radius: 10px;
+	background: rgba(0,0,0,.1);
+}
+
+/* ---- Details ---- */
+
+.details {
+	display: none;
+
+	position: absolute;
+	left: -85px;
+	top: 60px;
+	padding: 15px;
+	border-radius: 3px;
+	border-right: 2px solid rgba(0,0,0,.1);
+	border-bottom: 2px solid rgba(0,0,0,.1);
+	transform: rotate(45deg);
+	font: 12px arial;
+	background: #fff;
+}
+.details::before {
+	content: "";
+	position: absolute;
+	left: 10px;
+	top: -9px;
+	display: block;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-bottom-color: #fff;
+	border-top: 0;
+}
+
+/* ---- Hover effects ---- */
+
+timelE:hover {
+	cursor: pointer;
+  color: #28e;
+}
+timelE:hover::before {
+	top: 1px;
+	left: -31px;
+	width: 8px;
+	height: 8px;
+	border-width: 5px;
+	border-color: #28e;
+}
+timelE:hover .details {
+	display: block;
+  color: #444;
+}
+
+.greybox {
+    position:relative;
+    display: block;
+    max-width: 500px;
+     margin: 0 auto 4em;
+	font-size: 12;
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: #F0F0F0;
+	color: black;
+	border-radius: 10px;
+    padding-left:2em;
+    min-height: 25px;
+    img, p {
+    padding: 1em;
+  }
+	}
+
+	
+/* Caixinha cinzenta*/
+.block-of-text p {
+  position: relative;
+  top: 50%;
+  left: 2%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+
+/**Drop Down Lists, para página das definições*/
+.drop-down-personal {
+    height: 35px;
+    width: 370px;
+    margin-left: 6px;
+    padding-left: 16px;
+}

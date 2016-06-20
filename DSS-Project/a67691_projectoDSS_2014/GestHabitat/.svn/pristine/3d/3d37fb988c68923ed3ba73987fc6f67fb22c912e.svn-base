@@ -1,0 +1,300 @@
+package data_acess;
+import business.familias.ICandidatura;
+import business.familias.CandidaturaFactory;
+import business.familias.IRepresentante;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ */
+public class CandidaturaDAO implements Map<Integer,ICandidatura> {
+
+    public Connection conn;
+    public MySQLParseTools parseTools;    
+
+    public CandidaturaDAO() throws ConnectionErrorException{
+        try {
+            this.conn = (new MySQLManager()).getConnection();
+            } 
+        catch (SQLException ex) {System.out.println("error_ICandidatura_bd");
+            }
+     
+    
+    }
+
+    @Override
+    @SuppressWarnings("empty-statement")
+    public int size() {
+        try {
+            int i = 0;
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Nr FROM ICandidatura");
+            for (;rs.next();i++);
+            return i;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean isEmpty() {
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Nr FROM ICandidatura");
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}    
+    }
+
+    @Override
+    public boolean containsKey(Object o) {
+         try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT Nome FROM ICandidatura WHERE Nr='"+(int)o+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+
+    @Override
+    public boolean containsValue(Object o) {
+        try {
+            if(o instanceof ICandidatura) {
+            
+                ICandidatura v = (ICandidatura)o;
+                Statement stm = conn.createStatement();
+                
+                // Percorrer tabela de membros e verificar se existe voluntario
+                // exatamente igual
+                int N=this.size();
+                for(int key=1; key<N; key++){
+                    ICandidatura isv = this.get(key);
+                    if(v.equals(isv)) return true;
+                }
+                return false;
+            } else return false;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+ 
+    @Override
+    public ICandidatura get(Object o) {
+        ICandidatura cand = new CandidaturaFactory().createCandidatura();
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM ICandidatura WHERE nr='"+(String)o+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()){
+                cand.setNr(rs.getInt(1));
+                cand.setEstado(rs.getString(2));
+                cand.setDataDecisao(parseTools.parseSQLDate(rs.getString(3)));
+                cand.setFuncionarioRegistou(rs.getString(4));
+                cand.setFuncionarioAprovou(rs.getString(5));
+                
+                List<Integer> membros = new ArrayList<>();
+                sql = "SELECT Candidatura FROM Voluntarios WHERE Nr='"+cand.getNr()+"'";
+                rs = stm.executeQuery(sql);
+                for(int i=1; rs.next(); i++)
+                    membros.add(rs.getInt(i));
+                cand.setMembros(membros);
+                
+                RepresentanteDAO rdao = new RepresentanteDAO();
+                sql = "SELECT Nr FROM Representante WHERE Candidatura='"+cand.getNr()+"'";
+                rs = stm.executeQuery(sql);
+                IRepresentante r = rdao.get(rs.getInt(1));
+                cand.setRepresentante(r);//como se faz para Representante
+                
+                cand.setDescricao(rs.getString(8));
+            
+                return cand;
+        }
+        } catch (Exception e) {throw new NullPointerException(e.getMessage());}
+        return cand;
+    }
+    
+
+    @Override
+    public ICandidatura put(Integer k, ICandidatura v) {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM ICandidatura WHERE numero='"+k+"'");
+            String sql = "INSERT INTO ICandidatura VALUES ('"+v.getNr()+"','"+k+"',";
+            int i  = stm.executeUpdate(sql);
+            ICandidatura c = new CandidaturaFactory().createCandidatura();
+            c.setNr(v.getNr());
+            c.setEstado(v.getEstado());
+            c.setDataDecisao(v.getDataDecisao());
+            c.setFuncionarioRegistou(v.getFuncionarioRegistou());
+            c.setFuncionarioAprovou(v.getFuncionarioAprovou());
+            c.setMembros(v.getMembros());
+            c.setRepresentante(v.getRepresentante());
+            c.setDescricao(v.getDescricao());
+            return c;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+
+    @Override
+    public ICandidatura remove(Object o) {
+       try {
+            ICandidatura al = this.get(o);
+            Statement stm = conn.createStatement();
+            String sql = "DELETE '"+o+"' FROM ICandidatura";
+            int i  = stm.executeUpdate(sql);
+            return al;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+
+    @Override
+    public void putAll(Map<? extends Integer, ? extends ICandidatura> map) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+     public void clear () {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Candidatura WHERE Candidatura.Nr>=0;");
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public int hashCode() { return this.conn.hashCode(); }
+
+    @Override
+    public Set<Integer> keySet() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /*@Override
+    public Collection<ICandidatura> values() {
+       try {
+            Collection<ICandidatura> c = new HashSet<>();
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM ICandidatura");
+            for (;rs.next();) {
+                ICandidatura cand = new CandidaturaFactory().createCandidatura();
+                cand.setNr(rs.getInt(1));
+                cand.setEstado(rs.getString(2));
+                cand.setDataDecisao(parseTools.parseSQLDate(rs.getString(3)));
+                cand.setFuncionarioRegistou(rs.getString(4));
+                cand.setFuncionarioAprovou(rs.getString(5));
+                cand.setCandidaturas(rs.getString(6)); //como se faz para list
+                cand.setRepresentante(rs.getString(7)); //como se faz para representate
+                cand.setDescricao(rs.getString(8));
+                c.add(cand);
+            }
+            return c;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    } */
+    
+     @Override
+    public Set<Entry<Integer, ICandidatura>> entrySet() {
+        try {
+            Set<Entry<Integer,ICandidatura>> set;
+            HashMap<Integer,ICandidatura> map = new HashMap<>();
+            int n = this.size();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    map.put(i,this.get(i));
+                }
+            }
+            return map.entrySet();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;
+        
+        else if(this.getClass() != o.getClass()) return false;
+        
+        else{
+            Map<Integer,ICandidatura> edao = (CandidaturaDAO) o;
+            
+            for(ICandidatura e : this.values()){
+                if(!edao.containsKey(e.getNr())) return false;
+                else{
+                    if(!e.equals(edao.get(e.getNr()))) return false;
+                }
+            }
+            return true;
+        }
+    } 
+
+    @Override
+    public Collection<ICandidatura> values() {
+        try {
+            Set<ICandidatura> set = new TreeSet<>();
+            int n = this.size();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    set.add(this.get(i));
+                }
+            }
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    /* MAIN*/
+    
+        public static void main(String[] args) throws ConnectionErrorException, Exception {
+        CandidaturaDAO prDAO = new CandidaturaDAO();
+        prDAO.clear();
+        
+        List<ICandidatura> p = new ArrayList<>();
+        
+        for(int i=0; i<6; i++){
+            ICandidatura mt = new CandidaturaFactory().createCandidatura();
+            mt.setNr(i);
+            mt.setEstado("Construção");
+            mt.setDataDecisao(new GregorianCalendar(2012,05,i+2));
+            mt.setFuncionarioRegistou("José");
+            mt.setFuncionarioAprovou("Hugo");
+            mt.setDescricao("lalalalala");
+            p.add(mt);
+        }
+        
+        System.out.println(prDAO.isEmpty());
+
+        for(ICandidatura v : p){
+            prDAO.put(v.getNr(), (ICandidatura)v);
+            System.out.println("INSERT succeed.");
+        }
+        
+        System.out.println(prDAO.containsKey(4));
+        prDAO.remove(p.get(4).getNr());
+        System.out.println(prDAO.containsKey(4));
+        System.out.println(prDAO.size());
+
+        for(int i=0; i<prDAO.size(); i++){
+            if(i!=4) System.out.println("- "+ i +": "+ prDAO.get(i).getNr());
+        }   
+        prDAO.clear();
+        System.out.println(prDAO.size());
+    }
+    
+    
+    
+}

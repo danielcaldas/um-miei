@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Tutor nº 5</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script>
+
+        function logOut() {
+            '@Const.isAutenticated' = false;
+            sessionStorage.clear(); // Limpar a sessão, o tutor volta a falar em todas as páginas
+        }
+
+    </script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                @* Logo *@
+                <img src="~/App_Themes/logo.PNG" height="42" width="42" style="float: left; margin-right: 50px;">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               @Html.ActionLink("Tutor Nº5", "Index", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+            <!-- Links que não queremos na home page -->
+            <div class="navbar-collapse collapse">
+                @if (@Const.isAutenticated == true)
+                {
+                    <ul class="nav navbar-nav">                   
+                        <li>@Html.ActionLink(@Const.UserName, "Perfil", "Home")</li>
+                        <li>@Html.ActionLink("Histórico", "Historico", "Home")</li>
+                        <li>@Html.ActionLink("Estatísticas", "Estatisticas", "Home")</li>
+                        <li>@Html.ActionLink("Definições", "Definicoes", "Home")</li>
+                        @*DEFINIÇÕES*@
+                        @* Barra de progresso. width=<valor>% corresponde ao atributo à percentagem da barra preenchida (graficamente) *@
+                    </ul>
+                    
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="50"
+                             aria-valuemin="0" aria-valuemax="100" style="width:@Const.ProgressoDoUtilizador%">
+                            @* Label da barra de progresso*@
+                            <span id="user_progress">@Const.ProgressoDoUtilizador %</span>
+                        </div>
+                    </div>
+                    
+                }
+                @if (@Const.isAutenticated == false)
+                {
+                    @Html.Partial("_LoginPartial")
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Tutor Nº 5</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

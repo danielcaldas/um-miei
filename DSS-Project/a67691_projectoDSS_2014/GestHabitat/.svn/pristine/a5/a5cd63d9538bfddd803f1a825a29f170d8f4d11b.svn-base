@@ -1,0 +1,56 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package business.familias;
+
+import java.util.GregorianCalendar;
+import java.util.List;
+/**
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 30.12.2014
+ */
+public interface IMembro {
+
+    
+       //Get`s e Set`s
+    public int getId();
+    
+     public void setId(int id);
+    
+    public String getNome();
+
+    public void setNome(String nome);
+            
+    public String getParentesco();
+
+    public void setParentesco(String parentesco);
+
+    public GregorianCalendar getDataNasc();
+    
+    public void setDataNasc(GregorianCalendar dataNasc) ;
+
+    public String getEstadoCivil();
+
+    public void setEstadoCivil(String estadoCivil) ;
+
+    public String getEscolaridade();
+
+    public void setEscolaridade(String escolaridade); 
+
+    public String getOcupacao() ;
+
+    public void setOcupacao(String ocupacao) ;
+    
+    
+    public IMembro clone();
+    @Override
+    public String toString();
+    @Override
+    public boolean equals(Object o);
+    @Override
+    public int hashCode();
+    
+}

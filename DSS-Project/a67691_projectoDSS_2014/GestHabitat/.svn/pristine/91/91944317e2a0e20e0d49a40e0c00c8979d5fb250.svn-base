@@ -1,0 +1,262 @@
+package business.familias;
+
+import java.util.GregorianCalendar;
+import java.util.Arrays;
+
+/**
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 30.12.2014
+ */
+// Falta representante na BD
+class Representante implements IRepresentante {
+
+    private int nr;
+    private String nome;
+    private GregorianCalendar dataNasc;
+    private String estadoCivil;
+    private String profissao;
+    private String rua;
+    private String localidade;
+    private String codPostal; 
+    private String naturalidade;
+    private String nacionalidade;
+    private String escolaridade;
+    private String telefone;
+    private String telemovel;
+    private float rendimentoAgregado;
+
+//construtor vazio
+    public Representante(){
+        this.nr=0; 
+        this.nome="";
+        this.dataNasc=new GregorianCalendar();
+        this.estadoCivil="";
+        this.profissao="";
+        this.rua="";
+        this.localidade="";
+        this.codPostal="";
+        this.naturalidade="";
+        this.nacionalidade="";
+        this.escolaridade="";
+        this.telefone="";
+        this.telemovel="";
+        this.rendimentoAgregado=0;
+    }     
+//construtor parametizado
+ /**
+  * 
+  * @param nr
+  * @param nome
+  * @param dataNasc
+  * @param estadoCivil
+  * @param profissao
+  * @param rua
+  * @param localidade
+  * @param codPostal
+  * @param naturalidade
+  * @param nacionalidade
+  * @param escolaridade
+  * @param telefone
+  * @param telemovel
+  * @param rendimentoAgregado 
+  */
+     public Representante(int nr, String nome, GregorianCalendar dataNasc, String estadoCivil,
+             String profissao, String rua, String localidade, String codPostal,
+             String naturalidade, String nacionalidade, String escolaridade, String telefone,
+             String telemovel, float rendimentoAgregado) {
+        this.nr = nr;
+        this.nome = nome;
+        this.dataNasc = dataNasc;
+        this.estadoCivil = estadoCivil;
+        this.profissao = profissao;
+        this.rua = rua;
+        this.localidade = localidade;
+        this.codPostal = codPostal;
+        this.naturalidade = naturalidade;
+        this.nacionalidade = nacionalidade;
+        this.escolaridade = escolaridade;
+        this.telefone = telefone;
+        this.telemovel = telemovel;
+        this.rendimentoAgregado = rendimentoAgregado;
+    }
+        
+//Construtor cópia
+    public Representante (Representante r){
+        this.nr = r.getNr();
+        this.nome = r.getNome();
+        this.dataNasc = r.getDataNasc();
+        this.estadoCivil = r.getEstadoCivil();
+        this.profissao = r.getProfissao();
+        this.rua = r.getRua();
+        this.localidade = r.getLocalidade();
+        this.codPostal = r.getCodPostal();
+        this.naturalidade = r.getNaturalidade();
+        this.nacionalidade = r.getNacionalidade();
+        this.escolaridade = r.getEscolaridade();
+        this.telefone = r.getTelefone();
+        this.telemovel = r.getTelemovel();
+        this.rendimentoAgregado = r.getRendimentoAgregado();
+    }
+
+
+//GETER´S e SETER´S
+     public int getNr() {
+        return nr;
+    }
+
+    public void setNr(int nr) {
+        this.nr = nr;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public GregorianCalendar getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(GregorianCalendar dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getCodPostal() {
+        return codPostal;
+    }
+
+    public void setCodPostal(String codPostal) {
+        this.codPostal = codPostal;
+    }
+
+    public String getNaturalidade() {
+        return naturalidade;
+    }
+
+    public void setNaturalidade(String naturalidade) {
+        this.naturalidade = naturalidade;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public String getEscolaridade() {
+        return escolaridade;
+    }
+
+    public void setEscolaridade(String escolaridade) {
+        this.escolaridade = escolaridade;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getTelemovel() {
+        return telemovel;
+    }
+
+    public void setTelemovel(String telemovel) {
+        this.telemovel = telemovel;
+    }
+
+    public float getRendimentoAgregado() {
+        return rendimentoAgregado;
+    }
+
+    public void setRendimentoAgregado(float rendimentoAgregado) {
+        this.rendimentoAgregado = rendimentoAgregado;
+    }
+    
+    //Clone..
+    @Override
+     public Representante clone(){
+        return new Representante(this);
+    }
+     
+     @Override
+    public int hashCode() {
+        return Arrays.hashCode(new Object[] {this.nr,this.nome,this.dataNasc,
+        this.estadoCivil,this.profissao,this.rua, this.localidade, this.codPostal,this.naturalidade,
+        this.nacionalidade,this.escolaridade,this.telefone,this.telemovel,this.rendimentoAgregado});
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return false;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        else{
+            Representante r = (Representante) obj; 
+        
+        
+        return( this.nr==r.getNr() && this.nome.equals(r.getNome()) && 
+                this.dataNasc.equals(r.getDataNasc()) && this.estadoCivil.equals(r.getEstadoCivil()) &&
+                this.profissao.equals(r.getProfissao()) && this.rua.equals(r.getRua()) && 
+                this.codPostal.equals(r.getCodPostal()) && 
+                this.localidade.equals(r.getLocalidade()) && 
+                this.naturalidade.equals(r.getNaturalidade()) && this.nacionalidade.equals(r.getNacionalidade()) &&  
+                this.escolaridade.equals(r.getEscolaridade()) && this.telefone.equals(r.getTelefone()) && 
+                this.telemovel.equals(r.getTelemovel()) && this.rendimentoAgregado == r.getRendimentoAgregado());
+        }
+    }
+    /**Representante
+     * Método que permite obter primeiro e último nome de um Representante, de forma a sintetizar nome para visualização
+     * @return String, com primeiro e último nome do Representante 
+     */
+        public String getFirstAndLastName(){
+        String[] names = this.nome.split(" ");
+        if(names.length==1) return this.nome; // Apenas tem um nome (nunca deveria ocorrer mas fica salvaguardado)
+        StringBuilder sb = new StringBuilder();
+        sb.append(names[0]).append(" ").append(names[names.length-1]);
+        return sb.toString();
+    }
+} 

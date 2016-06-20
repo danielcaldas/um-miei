@@ -1,0 +1,16 @@
+package data_acess.exceptions;
+
+/**Excepção para tratar casos em que um material não existe.
+ * 
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2015.01.06
+ */
+public class MaterialNaoExisteException extends Exception {
+    public MaterialNaoExisteException(int id){
+        super("Equipa com id: "+id+" não existe");
+    }
+    
+    public MaterialNaoExisteException(String n){
+        super("Material com nome: "+n+" não existe");
+    }
+}

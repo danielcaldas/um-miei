@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<imagem>
+		<grupo>
+			<escala X=0 Y=0 Z=0 />
+			<translacao X=1 Y=0 Z=0 />
+			<rotacao angulo=45 eixoX=0 eixoY=0 eixoZ=0 />
+			<modelos>
+				<modelo ficheiro="sol.3d" />
+				<modelo ficheiro="mercurio.3d" />
+				<modelo ficheiro="venus.3d" />
+				<modelo ficheiro="terra.3d" />
+			</modelos>
+			<grupo>
+				<escala X=0 Y=0 Z=0 />
+				<translacao X=1 Y=1 Z=0 />
+				<modelos>
+					<modelo ficheiro="marte.3d" />
+					<modelo ficheiro="jupiter.3d" />
+				</modelos>
+				<grupo>
+					<escala X=0 Y=0 Z=0 />
+					<translacao X=1 Y=1 Z=0 />
+					<modelos>
+						<modelo ficheiro="parte.3d" />
+						<modelo ficheiro="kart.3d" />
+					</modelos>
+					<grupo>
+						<escala X=0 Y=0 Z=0 />
+						<translacao X=1 Y=1 Z=100 />
+						<modelos>
+						<modelo ficheiro="larte.3d" />
+						<modelo ficheiro="porte.3d" />
+						</modelos>
+					</grupo>
+				</grupo>
+			</grupo>
+		</grupo>
+</imagem>

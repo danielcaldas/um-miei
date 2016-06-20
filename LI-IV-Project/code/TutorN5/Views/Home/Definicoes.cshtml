@@ -1,0 +1,77 @@
+﻿@model TutorN5.Models.utilizador.Utilizador
+
+@{
+    ViewBag.Title = "Definicoes";
+}
+
+<h1>Definições</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="definForm">
+            @using (Html.BeginForm("GuardarDefinicoes", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nome, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Idade, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Idade, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Idade, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @Html.LabelFor(m => m.ModoInt, new { @class = "col-md-2 control-label" })
+                @Html.DropDownList("Interatividades")
+                <br />
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Guardar" class="btn btn-default"/>
+                    </div>
+                </div>
+                
+            }
+        </section>
+    </div>
+</div>
+
+<br />
+<br />
+<div class="clearfix"></div>
+<img id="avatar" src="~/App_Themes/static.png" width="195" height="188" style="float: left" onclick="onClickAvatar()" />
+<div class="clearfix"></div>
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script>
+
+    var talk = true;
+
+    window.onload = function () {
+        if (sessionStorage.getItem("DEFINICOES") != null) talk = false;
+
+        if (talk) {
+            sessionStorage.setItem("DEFINICOES", "_visited");
+            falar();
+            mudarAvatar(2, 20000);
+        }
+    };
+
+    function onClickAvatar() {
+        mudarAvatar(2, 20000);
+        falar();
+    }
+
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

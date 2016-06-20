@@ -1,0 +1,11 @@
+
+#############################RELATORIO#############################
+Nome do ficheiro lido: publicx.txt
+Numero de publicacoes listadas no ficheiro: 136127
+Anos=[1968,2013]
+
+Número de autores no ficheiro (com repetições): 368014
+Número de autores no ficheiro (sem repetições): 164250
+Nome mais pequeno no ficheiro: Lee (Tamanho: 3)
+Nome maior no ficheiro: Anandasetti Gamaethiralalaya Buddhika Prabhath Jayasekara (Tamanho: 57)
+Valor médio do comprimento dos nomes dos diferentes autores:  14

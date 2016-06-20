@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<imagem>
+    <modelo ficheiro="cone.3d" />
+    <modelo ficheiro="paralelo1.3d" />
+    <modelo ficheiro="paralelo2.3d" />
+    <modelo ficheiro="quadrado.3d" />
+</imagem>

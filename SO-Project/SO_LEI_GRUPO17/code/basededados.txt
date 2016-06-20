@@ -1,0 +1,9 @@
+incrementar Braga:Barcelos:Airo:1
+incrementar Braga:Barcelos:Alvelos:1
+incrementar Aveiro:Aveiro:Requeixo, Nossa Senhora de Fatima e Nariz:1
+incrementar Aveiro:Aveiro:Santa Joana:1
+incrementar Aveiro:Aveiro:Aradas:1
+incrementar Braga:Barcelos:Barcelinhos:1
+incrementar Braga:Braga:S.Victor:10
+incrementar Braga:Braga:S.Lazaro:150
+incrementar Braga:Braga:Gualtar:10

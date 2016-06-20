@@ -1,0 +1,69 @@
+*****Questão*****
+Na questão 5 vamos apresentar no relatório a função pre-definida pelo enunciado do projecto e a função modificada por nós de maneira a corrigir os erros
+indicados no enunciado da questão. Porém o código da questão vai ser introduzido fazendo as alterações necessárias na função do script auctions.
+
+
+                       id nome da pessoa que faz oferta e por fim o valor que essa pessoa oferece
+auctionBid :: House -> Int -> String -> Int -> House
+auctionBid h id bidder bid = 
+  let r = filter ((/=id).actid) (hrunning h)
+      curr = head (filter ((==id).actid) (hrunning h))
+      newa = Auction (actid curr) (actowner curr) (actdesc curr) bid bidder
+  in House (newa:r) (hfinished h)
+
+
+Vamos agora elaborar uma nova função auctionBid que corrija os erros da auctionBid pré-definida...
+
+
+Primeiro criamos uma função auxiliar
+--pega actvalue de uma auction
+pa :: Auction -> Int
+pa (a,b,c,d,e) = d
+
+
+seguidamente criar uma função que busca uma auction numa House a partir de um id introduzido
+--função que pega uma auction pelo seu id
+pega_auc :: [Auction] -> Int -> Auction
+pega_auc ((a,b,c,d,e):liar) id = if a==id then (a,b,c,d,e) else pega_auc liar id
+
+
+mais uma função auxiliar que verifica se existe numa lista de auctions uma determinada auction a partir de um id também
+--verifica se existe auction a partir de um id
+existe_aucId :: [Auction] -> Int -> Bool
+existe_aucId []_ = False
+existe_aucId ((aa,bb,cc,dd,ee):auc) a = if aa==a then True else existe_aucId auc a
+
+
+
+
+
+função que pega num bid e um bidder e o coloca na auction nos locais da auction a que cada um corresponde, esta função vai ser posteriormente utilizada
+em auctionBid
+--auxiliar que coloca bid e bidder numa auction
+coloca :: Auction -> Int -> String -> Auction
+coloca (a,b,c,d,e) bid bidder = (a,b,c,bid,bidder)
+
+por fim podemos efectuar as alterações necessárias em auctionBid para que a função não devolva os mesmos erros...
+
+auctionBid :: House -> Int -> String -> Int -> House
+auctionBid h id bidder bid = 
+  let r = filter ((/=id).actid) (hrunning h)
+      curr = head (filter ((==id).actid) (hrunning h))
+      newa = Auction (actid curr) (actowner curr) (actdesc curr) bid bidder
+  in if ((existe_aucId (hrunning h) id)==False) then h
+                                                else if (bid > (pega_actvalue (pega_auc (hrunning h) id))) then House (newa:r) (hfinished h)
+                                                                                                           else h
+
+
+
+
+
+
+
+
+
+
+
+TESTES
+
+IMAGENS DOS TESTES REALIZADOS NA APLICAÇÃO

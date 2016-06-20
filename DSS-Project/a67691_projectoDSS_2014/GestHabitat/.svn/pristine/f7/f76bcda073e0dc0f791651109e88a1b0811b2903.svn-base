@@ -1,0 +1,225 @@
+package business.recursoshumanos;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**A presente classe representa um funcionário da instituição, a entidade que interage com o sistema.
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2015.01.05
+ */
+
+class Funcionario implements IFuncionario {
+    
+    // Variáveis de instância
+    private int id;
+    private String nome;
+    private String comissao;
+    private String username;
+    private char[] password;
+    private List<String> permissions;
+    
+    /**
+     * Construtor vazio.
+     */
+    public Funcionario(){
+        this.id=0;
+        this.nome="";
+        this.comissao="";
+        this.username="";
+        this.password = new char[75];
+        this.permissions = new ArrayList<>();
+    }
+    
+    /**
+     * Construtor parameterizado.
+     * @param id, identificador do funcionário.
+     * @param n, nome do funcionário.
+     * @param com, comiisão a que pertence um dado funcionário.
+     * @param un, username para um dado funcionário.
+     * @param pass, password de autenticação no sistema de um dado funcionário.
+     * @param permissions , permissões que este funcionário tem quando autenticado no sistema.
+     */
+    public Funcionario(int id, String n, String com, String un, char[] pass, List<String> permissions){
+        this.id=id;
+        this.nome=n; this.comissao=com;
+        this.username=un; this.password=pass;
+        this.permissions= new ArrayList<>(permissions);
+    }
+    
+    /**
+     * Construtor com passagem de referência.
+     * @param f , um funcionário.
+     */
+    public Funcionario(Funcionario f){
+        this.id=f.getId();
+        this.nome=f.getNome(); this.comissao=f.getComissao();
+        this.username=f.getUsername(); this.password=f.getPassword();
+        this.permissions = new ArrayList<>(f.getPermissions());
+    }
+    
+    /*gets & sets*/
+    @Override
+    public int getId(){return this.id;}
+    @Override
+    public void setId(int id){this.id=id;}
+    @Override
+    public String getNome(){return nome;}
+    @Override
+    public void setNome(String nome){this.nome = nome;}
+    @Override
+    public String getComissao(){return comissao;}
+    @Override
+    public void setComissao(String comissao){this.comissao = comissao;}
+    @Override
+    public String getUsername(){return username;}
+    @Override
+    public void setUsername(String username){this.username = username;}
+    @Override
+    public char[] getPassword(){return password;}
+    @Override
+    public void setPassword(char[] password){this.password = password;}
+    @Override
+    public List<String> getPermissions(){return permissions;}
+    @Override
+    public void setPermissions(List<String> permissions){this.permissions = permissions;}
+    
+    /*equals e clone*/
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;
+        
+        else if(o==null || this.getClass()!=o.getClass()) return false;
+        
+        else{
+            Funcionario f = (Funcionario) o;
+            
+            for(String p : this.permissions){
+                if(!f.getPermissions().contains(p)) return false;
+            }
+            
+            return (this.nome.equals(f.getNome()) && this.comissao.equals(f.getComissao()) &&
+                    this.username.equals(f.getUsername())
+                    && Arrays.equals(this.password,f.getPassword()) );
+        }
+    }
+    
+    @Override
+    public IFuncionario clone() {
+        return new Funcionario(this);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(new Object[]{this.comissao,this.nome,this.password,this.permissions,this.username});
+    }
+    
+    /**
+     * Método que permite obter primeiro e último nome de um volunário, de forma a sintetizar nome para visualização
+     * @return String, com primeiro e último nome do funcionário
+     */
+    @Override
+    public String getFirstAndLastName(){
+        String[] names = this.nome.split(" ");
+        if(names.length==1) return this.nome; // Apenas tem um nome (nunca deveria ocorrer mas fica salvaguardado)
+        StringBuilder sb = new StringBuilder();
+        sb.append(names[0]).append(" ").append(names[names.length-1]);
+        return sb.toString();
+    }
+    
+    /**
+     * Método que verifica se um funcionário possuí determinadas permissões.
+     * @param permissionsToAsk, conjunto de permissões que queremos verificar para um dado funconário.
+     * @return true caso funcionário tenha permissões, false em caso contrário.
+     */
+    @Override
+
+    public boolean hasPermissions(List<String> permissionsToAsk){
+        for(String p : permissionsToAsk){
+            if(!this.permissions.contains(p)) return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Método para confirmar username de um determinado funcionário.
+     * @param user, username que um utilizador inseriu.
+     * @return true caso user name esteja correto, false caso contrário.
+     */
+    @Override
+    public boolean isUsernameCorrect(String user){return this.username.equals(user);}
+    
+    /**
+     * Método para confirmar password de um determinado funcionário.
+     * @param pass, array de carateres que representam a password.
+     * @return true se password está correta, false caso contrário.
+     */
+    @Override
+    public boolean isPasswordCorrect(char[] pass){
+        if(this.password.length!= pass.length) return false;
+        else{
+            return Arrays.equals(this.password,pass);
+        }        
+    }
+    
+    /*Adicionar permissões específicas ao funcionário*/
+    @Override
+    public void addVCreatePermissions(){this.permissions.add(new Permissions().getVcreate());}
+    @Override
+    public void addVEditPermissions(){this.permissions.add(new Permissions().getVedit());}
+    @Override
+
+    public void addVConsultPermissions(){this.permissions.add(new Permissions().getVconsult());}
+    @Override
+    public void addVDeletePermissions(){this.permissions.add(new Permissions().getVdelete());}
+    
+    @Override
+    public void addFCreatePermissions(){this.permissions.add(new Permissions().getFcreate());}
+    @Override
+    public void addFEditPermissions(){this.permissions.add(new Permissions().getFedit());}
+    @Override
+    public void addFConsultPermissions(){this.permissions.add(new Permissions().getFconsult());}
+    @Override
+    public void addFDeletePermissions(){this.permissions.add(new Permissions().getFdelete());}
+    
+    @Override
+
+    public void addDCreatePermissions(){this.permissions.add(new Permissions().getDcreate());}
+    @Override
+    public void addDEditPermissions(){this.permissions.add(new Permissions().getDedit());}
+    @Override
+    public void addDConsultPermissions(){this.permissions.add(new Permissions().getDconsult());}
+    @Override
+
+    public void addDDeletePermissions(){this.permissions.add(new Permissions().getDdelete());}
+    
+    @Override
+    public void addOCreatePermissions(){this.permissions.add(new Permissions().getOcreate());}
+    @Override
+    public void addOEditPermissions(){this.permissions.add(new Permissions().getOedit());}
+    @Override
+    public void addOConsultPermissions(){this.permissions.add(new Permissions().getOconsult());}
+    @Override
+    public void addODeletePermissions(){this.permissions.add(new Permissions().getOdelete());}
+    
+    @Override
+    public void addSCreatePermissions(){this.permissions.add(new Permissions().getScreate());}
+    @Override
+    public void addSEditPermissions(){this.permissions.add(new Permissions().getSedit());}
+    @Override
+    public void addSConsultPermissions(){this.permissions.add(new Permissions().getSconsult());}
+    @Override
+    public void addSDeletePermissions(){this.permissions.add(new Permissions().getSdelete());}
+    
+    @Override
+    public void addECreatePermissions(){this.permissions.add(new Permissions().getEcreate());}
+    @Override
+    public void addEEditPermissions(){this.permissions.add(new Permissions().getEedit());}
+    @Override
+    public void addEConsultPermissions(){this.permissions.add(new Permissions().getEconsult());}
+    @Override
+    public void addEDeletePermissions(){this.permissions.add(new Permissions().getEdelete());}
+}
+
+         

@@ -1,0 +1,9 @@
+FJBEGIN
+FRUIT
+x=1;
+y=0;
+w;
+JUICE
+w=x+y;
+w=x/y;
+FJEND

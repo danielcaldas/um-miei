@@ -1,0 +1,8 @@
+FJBEGIN
+FRUIT
+x=10;
+y=0;
+i;
+JUICE
+for(i=0;i<x;i=i+1) {y=y+1;}
+FJEND

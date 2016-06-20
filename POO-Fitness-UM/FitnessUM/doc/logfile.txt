@@ -1,0 +1,46 @@
+Class documentation
+<---- javadoc command: ---->
+C:\Program Files\Java\jdk1.7.0_51\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-package
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.7
+-classpath
+C:\Program Files (x86)\BlueJ\lib\bluejcore.jar;C:\Program Files (x86)\BlueJ\lib\junit-4.8.2.jar;C:\Users\daniel\Desktop\FitnessUM
+-d
+C:\Users\daniel\Desktop\FitnessUM\doc
+-encoding
+windows-1252
+-charset
+windows-1252
+-docletpath
+C:\Program Files (x86)\BlueJ\lib\bjdoclet.jar
+-doclet
+bluej.doclet.doclets.formats.html.HtmlDoclet
+C:\Users\daniel\Desktop\FitnessUM\Users.java
+<---- end of javadoc command ---->
+Loading source file C:\Users\daniel\Desktop\FitnessUM\Users.java...
+Constructing Javadoc information...
+C:\Users\daniel\Desktop\FitnessUM\atividades\Atividades.java:391: error: unmappable character for encoding windows-1252
+            return "MÃŠS INVÃ?LIDO!";
+                             ^
+Standard Doclet version 1.7.0_51
+Building tree for all the packages and classes...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\Users.html...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\package-frame.html...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\package-summary.html...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\constant-values.html...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\serialized-form.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\allclasses-frame.html...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\allclasses-noframe.html...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\index.html...
+Generating C:\Users\daniel\Desktop\FitnessUM\doc\stylesheet.css...
+1 warning

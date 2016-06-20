@@ -1,0 +1,326 @@
+package data_acess;
+
+
+import data_access.exceptions.MaterialNaoExisteException;
+import data_access.exceptions.ProjetoNaoExisteException;
+import data_access.exceptions.TarefaNaoExisteException;
+import business.projetos.IMaterial;
+import business.projetos.IProjeto;
+import business.projetos.ITarefa;
+import java.util.*;
+
+/**
+ * Não é preciso preencher
+ * @author Marcelo
+ */
+
+public class FACADEProjetos {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    // private DoadorDAO doadores;
+    // private DonativoDAO donativos;
+    // private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    // private CandidaturaDAO candidaturas;
+    // private MembroDAO membros;
+    // private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    private ProjetoDAO projetos;
+    private MaterialDAO materiais;
+    private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    // private EquipaDAO equipas;
+    // private FuncionarioDAO funcionarios;
+    // private VoluntarioDAO voluntarios;
+    
+    
+    
+    
+    /**************************************************************************************/
+    /********************************* PROJETOS *******************************************/
+    /**************************************************************************************/
+    
+    /* Método de ProjetoDAO */    
+    /**
+     * Calcula nº total de projetos registados no sistema.
+     * @return nº total de projetos registados
+     */
+    public int pr_totalProjetos(){return this.projetos.size();}
+    
+    /**
+     * Retorna um projeto pelo seu nº.
+     * @param nr, nº de projeto.
+     * @return Projeto correspondente ao nº passado como argumento, caso não exista lança excepção.
+     * @throws data_access.exceptions.ProjetoNaoExisteException
+     */
+    public IProjeto pr_getProjeto(int nr) throws ProjetoNaoExisteException {
+        if(this.projetos.containsKey(nr)){
+            return this.projetos.get(nr);
+        } else throw new ProjetoNaoExisteException(nr);
+    }
+    
+    /**
+     * Verifica se um projeto com uma dada chave existe.
+     * @param nr, chave de projeto que queremos verificar se tem projeto associado.
+     * @return true caso projeto com a chave exista, false caso contrário.
+     */
+    public boolean pr_projetoExiste(int nr){return this.projetos.containsKey(nr);}
+    
+    /**
+     * Elimina um dado projeto.
+     * @param nr, nº do projeto que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean pr_remProjeto(int nr) {
+        if(this.projetos.containsKey(nr)){
+            this.projetos.remove(nr);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guardar um projeto na base de dados.
+     * @param p, um projeto que se pretende registar na base de dados do sistema.
+     * @return true caso seja guardado com sucesso false em caso contrário.
+     */
+    public boolean saveProjeto(IProjeto p){
+         if(!this.projetos.containsKey(p.getNr())){
+            this.projetos.put(p.getNr(), p);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza um projeto já registado no sistema.
+     * @param p, projeto alterado que queremos atualizar na base de dados.
+     * @return true caso projeto seja atualizado, false caso contrário. 
+     */
+    public boolean pr_editProjeto(IProjeto p) {
+        if(this.projetos.containsKey(p.getNr())){
+            this.projetos.put(p.getNr(), p);
+            return true;
+        } return false;
+    }
+    
+    /**
+     * Edita/Atualiza o registo de um projeto.
+     * @param nr, nº do projeto que queremos atualizar/editar.
+     * @param p, instância desse projeto.
+     * @return true caso se verifiquem alterações no registo do projeto, false caso contrário.
+     */
+    public boolean updateProjeto(int nr, IProjeto p) {
+        if(this.projetos.containsKey(nr)){
+            this.projetos.put(p.getNr(), p);
+            return true;
+        } return false;
+    }
+    
+    /**
+     * Calcula percentagem que representa o que já foi feito num dado projeto.
+     * @param nr, nº do projeto que queremos consultar.
+     * @return percentagem que representa o estado de progresso do projeto, i.e das tarefas
+     * pré-definidas/tempo (100%) quanto já se progrediu num dado projeto.
+     */
+    public float getStatusPercentilsProject(int nr) {
+        return 0;
+    }
+    
+    /**
+     * Calcula nº de tarefas já concluídas do projeto.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return nº de tarefas concluídas desse projeto.
+     */
+    public int nrTarefasConcluidas(int nr){
+        return 0;
+    }
+    
+    /**
+     * Calcula nº de tarefas não concluídas do projeto.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return nº de tarefas concluídas desse projeto.
+     */
+    public int nrTarefasNaoConcluidas(int nr) {
+        return 0;
+    }
+    
+    /**
+     * Devolve primeiro e último nome de um representante da candidatura que originou o projeto.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return primeiro e último nome do representate de um dado projeto.
+     */
+    public String getNameRepProjeto(int nr) {
+        return "";
+    }
+    
+    /**
+     * Calcula a duração do projeto em dias.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return duração do projeto em dias.
+     */
+    public int calcDuracaoProjetoDias(int nr) {
+        return 0;
+    }
+    
+    /* Método de MaterialDAO */    
+    /**
+     * Calcula nº total de materiais registados no sistema.
+     * @return nº total de materiais registados
+     */
+    public int pr_totalMateriais(){return this.materiais.size();}
+    
+    /**
+     * Retorna um material pelo seu nº.
+     * @param nr, nº de meterial.
+     * @return Material correspondente ao nº passado como argumento, caso não exista lança excepção.
+     * @throws data_access.exceptions.MaterialNaoExisteException
+     */
+    public IMaterial pr_getMaterial(int nr) throws MaterialNaoExisteException {
+        if(this.materiais.containsKey(nr)){
+            return this.materiais.get(nr);
+        } else throw new MaterialNaoExisteException(nr);
+    }
+    
+    /**
+     * Verifica se um material com uma dada chave existe.
+     * @param nr, chave de material que queremos verificar se tem material associado.
+     * @return true caso material com a chave exista, false caso contrário.
+     */
+    public boolean pr_materialExiste(int nr){return this.materiais.containsKey(nr);}
+    
+    /**
+     * Elimina um dado material.
+     * @param nr, nº do material que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean pr_remMaterial(int nr) {
+        if(this.materiais.containsKey(nr)){
+            this.materiais.remove(nr);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guardar um material na base de dados.
+     * @param m, um material que se pretende registar na base de dados do sistema.
+     * @return true caso seja guardado com sucesso false em caso contrário.
+     */
+    public boolean saveProjeto(IMaterial m){
+         if(!this.materiais.containsKey(m.getId())){
+            this.materiais.put(m.getId(), m);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza um material já registado no sistema.
+     * @param m, material alterado que queremos atualizar na base de dados.
+     * @return true caso material seja atualizado, false caso contrário. 
+     */
+    public boolean pr_editMaterial(IMaterial m) {
+        if(this.materiais.containsKey(m.getId())){
+            this.materiais.put(m.getId(), m);
+            return true;
+        } return false;
+    }
+    
+    /**
+     * Retorna um set de materiais criados com base num campo de pesquisa.
+     * @param searchinput, nome do material
+     * @return set de materiais que preenchem os requisitos de pesquisa (vazio, não encontramos equipa(s)).
+     * @throws data_access.exceptions.MaterialNaoExisteException
+     */
+    public Set<IMaterial> pr_searchEquipa(String searchinput) throws MaterialNaoExisteException {
+        Set<IMaterial> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(IMaterial e : this.materiais.values()){
+            if(e.getNome().toLowerCase().contains(lowersearch)){
+                 set.add(e);
+            }
+        }
+        return set;
+    }
+    
+    /* Método de TarefaDAO */    
+    /**
+     * Calcula nº total de tarefas registadas no sistema.
+     * @return nº total de tarefas registadas
+     */
+    public int pr_totalTarefas(){return this.tarefas.size();}
+    
+    /**
+     * Retorna uma tarefa pelo seu nº.
+     * @param nr, nº de tarefa.
+     * @return Tarefa correspondente ao nº passado como argumento, caso não exista lança excepção.
+     * @throws data_access.exceptions.TarefaNaoExisteException
+     */
+    public ITarefa pr_getTarefa(int nr) throws TarefaNaoExisteException {
+        if(this.tarefas.containsKey(nr)){
+            return this.tarefas.get(nr);
+        } else throw new TarefaNaoExisteException(nr);
+    }
+    
+    /**
+     * Verifica se uma tarefa com uma dada chave existe.
+     * @param nr, chave de tarefa que queremos verificar se tem tarefa associado.
+     * @return true caso tarefa com a chave exista, false caso contrário.
+     */
+    public boolean pr_tarefaExiste(int nr){return this.tarefas.containsKey(nr);}
+    
+    /**
+     * Elimina uma dada tarefa.
+     * @param nr, nº da tarefa que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean pr_remTarefa(int nr) {
+        if(this.tarefas.containsKey(nr)){
+            this.tarefas.remove(nr);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guardar uma tarefa na base de dados.
+     * @param t, uma tarefa que se pretende registar na base de dados do sistema.
+     * @return true caso seja guardado com sucesso false em caso contrário.
+     */
+    public boolean saveTarefa(ITarefa t){
+         if(!this.tarefas.containsKey(t.getId())){
+            this.tarefas.put(t.getId(), t);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza uma tarefa já registada no sistema.
+     * @param t, tarefa alterada que queremos atualizar na base de dados.
+     * @return true caso tarefa seja atualizada, false caso contrário. 
+     */
+    public boolean pr_editTarefa(ITarefa t) {
+        if(this.tarefas.containsKey(t.getId())){
+            this.tarefas.put(t.getId(), t);
+            return true;
+        } return false;
+    }
+    
+    /**
+     * Retorna um set de tarefas criadas com base num campo de pesquisa.
+     * @param searchinput, designacao da tarefa
+     * @return set de tarefas que preenchem os requisitos de pesquisa (vazio, não encontramos tarefa(s)).
+     * @throws data_access.exceptions.TarefaNaoExisteException
+     */
+    public Set<ITarefa> pr_searchTarefa(String searchinput) throws TarefaNaoExisteException {
+        Set<ITarefa> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(ITarefa t : this.tarefas.values()){
+            if(t.getDesig().toLowerCase().contains(lowersearch)){
+                 set.add(t);
+            }
+        }
+        return set;
+    }
+}
+

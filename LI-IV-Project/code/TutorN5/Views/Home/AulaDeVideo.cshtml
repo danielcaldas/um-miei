@@ -1,0 +1,175 @@
+﻿@model TutorN5.Models.reis.aprendizagem.aulas.AulaVideoViewModel
+
+@{
+    ViewBag.Title = "AulaDeVideo";
+}
+
+<center><h2>@Model.aula.Titulo</h2></center>
+<br>
+<br>
+<!-- Container para o vídeo -->
+<div id="noyoutube" style="pointer-events: none;"> <!-- ATENÇÃO ISTO É ILEGAL XD-->
+    <div id="player" class="video_container"></div>
+</div>
+
+<br>
+
+<!-- GIF/PNG do muralhas -->
+<div class="clearfix"></div>
+    <img id="avatar" src="~/App_Themes/static.png" width="195" height="188" style="float: left" />
+<div class="clearfix"></div>
+
+<!-- Popup para pergunta -->
+<div id="abc">
+    <div id="popupQuestion">
+        <form action="#" id="popupform" method="post" name="form">
+            <h2 id="questionText" style="font-size: 16px;"></h2>
+            <hr>
+            <input class="areaResposta"  id="answ" name="Resposta" placeholder="..." type="text">
+            <br>
+            <br>
+            <a class="responderPopUp" id="submit" onclick="responderPergunta()">Responder</a>
+            <br>
+            <a class="responderPopUp" id="ignore" onclick="ignorarPergunta()">Ignorar</a>
+            <br>
+            <a class="responderPopUp" id="again" onclick="reverVideo()">Rever último pedaço do vídeo</a>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script type="text/javascript">
+
+    // Vars Globais para controlo do vídeo ------------------------------------------------
+    var contaTimeOuts;
+    var timeStamp; // Baseado em Cristiano Ronaldo: "Q:Qual o golo mais importante?" "CR7: O próximo"
+    var questionIndex;
+    var aulaComecou = false;
+    // ------------------------------------------------------------------------------------------------
+
+    /*----------------------------------------------------------------------------------------------------
+            API Youtube
+    ------------------------------------------------------------------------------------------------------*/
+    // This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    //    This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+
+        player = new YT.Player('player', {
+            height: '380',
+            width: '680',
+            videoId: 'LgSgL9ObAs0',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            },
+            playerVars: {
+                controls: 0,
+                disablekb: 1
+            }
+        });
+    }
+
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+
+        // Inicialização de variáveis auxiliares
+        questionIndex = 0;
+        contaTimeOuts = 0;
+        timeStamp = '@Model.getFirstTimeStamp()';
+        
+        event.target.playVideo();
+    }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for x seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(pauseVideo, timeStamp * 1000);
+            done = true;
+        }
+    }
+
+
+    /*----------------------------------------------------------------------------------------------------
+            Handlers para botões e controlo do fluxo de vídeo
+    ------------------------------------------------------------------------------------------------------*/
+
+    function pauseVideo() {
+        player.pauseVideo();
+        aulaComecou = true;
+
+        if (done == true) {            
+            /*Lançar pergunta ao utilizador*/
+            showPergunta();
+        }
+    }
+
+    //Function To Display Popup
+    function showPergunta() {
+        if (aulaComecou == true) {
+        
+            document.getElementById('abc').style.display = "block";
+
+            var question = '@Model.getProximaPergunta()';
+            document.getElementById('questionText').innerHTML = question;
+        }
+    }
+
+    /*Handler para clique no botão de responder a pergunta*/
+    function responderPergunta() {
+        if (aulaComecou == true) {
+            if (document.getElementById('answ').value == "") {
+                '@Model.naoMeEnganas()';
+                mudarAvatar(2, 5000);
+                falar();
+            } else { // Utilizador escreveu alguma coisa
+                done = false;
+                timeStamp = '@Model.getTimeStampProximaPergunta()';
+                hidePergunta();
+
+                document.getElementById('answ').value = "..."; // Remover texto da resposta anterior
+
+                /*Falta lógica aqui!*/
+
+                done = false;
+                player.playVideo(); // remotar vídeo normalmente
+            }
+        }
+    }
+
+    /*Handler para clique no botão de ignorar pergunta*/
+    function ignorarPergunta() {
+        if (aulaComecou == true) {
+            hidePergunta();
+            timeStamp = '@Model.getTimeStampProximaPergunta()';
+            done = false;
+            player.playVideo(); // remotar vídeo normalmente
+        }
+    }
+
+    /*Handler para clique no botão de rever último pedaço do vídeo*/
+    function reverVideo() {
+        if (aulaComecou == true) {
+            hidePergunta();
+            done = false;
+            player.seekTo('@Model.getPreviousTimeStamp()');
+            player.playVideo(); // remotar vídeo normalmente
+        }
+    }
+
+    //Function to Hide Popup
+    function hidePergunta() {
+        document.getElementById('abc').style.display = "none";
+    }
+
+</script>

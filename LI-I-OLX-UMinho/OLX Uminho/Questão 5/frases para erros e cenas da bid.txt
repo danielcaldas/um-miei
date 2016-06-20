@@ -1,0 +1,3 @@
+1- Bid Placed
+2- O valor introduzido e menor que a base de licitaçao atual;
+3- A Auction com o Id introduzido nao existe

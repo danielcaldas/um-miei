@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ReiDBModelStoreContainer" CdmEntityContainer="ReiDAO">
+    <EntitySetMapping Name="Rei">
+      <EntityTypeMapping TypeName="ReiDBModel.Rei">
+        <MappingFragment StoreEntitySet="Rei">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Biografia" ColumnName="Biografia" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="DataMorte" ColumnName="DataMorte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

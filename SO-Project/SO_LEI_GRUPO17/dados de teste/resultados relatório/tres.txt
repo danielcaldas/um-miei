@@ -1,0 +1,4 @@
+Braga:Braga:Braga:4
+Braga:Barcelos:Airo:1
+Braga:Barcelos:Alvelos:2
+Braga:Barcelos:Barcelinhos:1

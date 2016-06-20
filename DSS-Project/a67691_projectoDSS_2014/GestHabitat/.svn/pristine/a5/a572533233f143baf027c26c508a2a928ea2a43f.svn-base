@@ -1,0 +1,148 @@
+package data_acess;
+
+import business.projetos.IProjeto;
+
+/**Curta descrição:
+ * Facade do sistema de gestão da Habitat através do qual se acedem a todas as funcionalidades oferecidas pela camada de negócio
+ * do projeto, assim como a toda a base de dados que suporta a aplicação pelo que esta classe é também
+ * o DataAcessFacade do Sistema.
+ * 
+ * Detalhe do facade:
+ * Neste facade fazemos a gestão das 4 principais componentes da camada de negócio:
+ *  - Gestão de donativos e doadores e outros relacionados com doacoes;
+ *  - Gestão de famílias que se candidatam;
+ *  - Gestão de projetos, das obras e respetivas etapas;
+ *  - Gestão dos recusos humanos da Habitat;
+ * 
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.31
+ */
+
+public class SGHabitat {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    // private DoadorDAO doadores;
+    // private DonativoDAO donativos;
+    // private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    // private CandidaturaDAO candidaturas;
+    // private MembroDAO membros;
+    // private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    private MaterialDAO materiais;
+    private ProjetoDAO projetos;
+    private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    // private EquipaDAO equipas;
+    // private FuncionarioDAO funcionarios;
+    // private VoluntarioDAO voluntarios;
+    
+    /*public TreeSet<String> getNomesEquipasDoProjeto(int nrprojeto) {
+        TreeSet<String> aux = new TreeSet<>();
+        ArrayList<Integer> projetos = ProjetoDAO.get(nrprojeto).getIds();
+        
+        for(Equipa p : EquipaDAO.getEquipas()){
+            if(projetos.contains(p.getId()))
+                aux.add(Equipa.getNome());
+        }
+        return aux;
+    }*/
+    
+    /*
+    public TreeSet<String> getNomesVoluntariosDoProjeto(int nrprojeto) {
+        TreeSet<String> aux = new TreeSet<>();
+    
+        IProjeto ip = ProjetoDAO.get(nrprojeto);
+    
+        for(int i : ip.getVoluntarios()){
+            aux.add(VoluntarioDAO.get(i).getNome());
+        }
+        return aux;
+    }
+    */
+    
+    
+    /**************************************************************************************/
+    /********************************* PROJETOS *******************************************/
+    /**************************************************************************************/
+    
+    /**
+     * Guardar um projeto na base de dados.
+     * @param p, um projeto que se pretende registar na base de dados do sistema.
+     * @return true caso seja guardado com sucesso false em caso contrário.
+     */
+    public boolean saveProjeto(IProjeto p){
+        return true;
+    }
+    
+    /**
+     * Edita/Atualiza o registo de um projeto.
+     * @param nr, nº do projeto que queremos atualizar/editar.
+     * @param p, instância desse projeto.
+     * @return true caso se verifiquem alterações no registo do projeto, false caso contrário.
+     */
+    public boolean updateProjeto(int nr, IProjeto p) {
+        return true;
+    }
+    
+    /**
+     * Remove um registo de um projeto da base de dados.
+     * @param nr, nº do projeto que pretendemos eliminar.
+     * @return true caso projeto seja removido, false caso contrário.
+     */
+    public boolean remProjeto(int nr){
+        return true;
+    }
+    
+    /**
+     * Calcula percentagem que representa o que já foi feito num dado projeto.
+     * @param nr, nº do projeto que queremos consultar.
+     * @return percentagem que representa o estado de progresso do projeto, i.e das tarefas
+     * pré-definidas/tempo (100%) quanto já se progrediu num dado projeto.
+     */
+    public float getStatusPercentilsProject(int nr) {
+        return 0;
+    }
+    
+    /**
+     * Calcula nº de tarefas já concluídas do projeto.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return nº de tarefas concluídas desse projeto.
+     */
+    public int nrTarefasConcluidas(int nr){
+        return 0;
+    }
+    
+    /**
+     * Calcula nº de tarefas não concluídas do projeto.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return nº de tarefas concluídas desse projeto.
+     */
+    public int nrTarefasNaoConcluidas(int nr) {
+        return 0;
+    }
+    
+    /**
+     * Devolve primeiro e último nome de um representante da candidatura que originou o projeto.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return primeiro e último nome do representate de um dado projeto.
+     */
+    public String getNameRepProjeto(int nr) {
+        return "";
+    }
+    
+    /**
+     * Calcula a duração do projeto em dias.
+     * @param nr, o número do projeto que queremos consultar.
+     * @return duração do projeto em dias.
+     */
+    public int calcDuracaoProjetoDias(int nr) {
+        return 0;
+    }
+    
+    // ( . . .)    
+}

@@ -1,0 +1,6 @@
+Braga:Braga:Gualtar:10
+Braga:Braga:S.Lazaro:150
+Braga:Braga:S.Victor:10
+Braga:Barcelos:Airo:1
+Braga:Barcelos:Alvelos:1
+Braga:Barcelos:Barcelinhos:1

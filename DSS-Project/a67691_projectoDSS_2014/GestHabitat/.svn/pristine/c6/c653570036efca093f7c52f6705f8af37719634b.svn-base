@@ -1,0 +1,57 @@
+package view;
+
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
+
+/**
+ * Classe que permite fazer pop-up de diálogo "Não tem permissões para.." dado um específico acontecimento.
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.28
+ */
+public class JINoAcessFrameListener implements InternalFrameListener {
+    
+    private final JInternalFrame frame;
+    
+    public JINoAcessFrameListener(JInternalFrame frame) {
+        this.frame=frame;
+    }
+    
+    @Override
+    public void internalFrameOpened(InternalFrameEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void internalFrameClosing(InternalFrameEvent e) {
+        // Colocar ícone proíbido!
+        JOptionPane.showMessageDialog(frame, "Não possuí permissões para efetuar tais operações!");
+    }
+
+    @Override
+    public void internalFrameClosed(InternalFrameEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void internalFrameIconified(InternalFrameEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void internalFrameDeiconified(InternalFrameEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void internalFrameActivated(InternalFrameEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void internalFrameDeactivated(InternalFrameEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}

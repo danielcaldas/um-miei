@@ -1,0 +1,27 @@
+﻿Build started 10/04/2015 21:16:30.
+     1>Project "C:\Users\daniel\Documents\Visual Studio 2013\Projects\Etapa-02\Etapa-02\Etapa-02.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>main.cpp(272): warning C4018: '<' : signed/unsigned mismatch
+     1>main.cpp(369): warning C4018: '<' : signed/unsigned mismatch
+     1>main.cpp(380): warning C4018: '<' : signed/unsigned mismatch
+     1>main.cpp(420): warning C4101: 'aux' : unreferenced local variable
+     1>main.cpp(430): warning C4129: '.' : unrecognized character escape sequence
+     1>main.cpp(593): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\daniel\Documents\Visual Studio 2013\Projects\Etapa-02\Release\Etapa-02.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\daniel\Documents\Visual Studio 2013\Projects\Etapa-02\Release\Etapa-02.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\daniel\Documents\Visual Studio 2013\Projects\Etapa-02\Release\Etapa-02.lib" /MACHINE:X86 /SAFESEH Release\formas.obj
+         Release\main.obj
+         Release\tinystr.obj
+         Release\tinyxml.obj
+         Release\tinyxmlerror.obj
+         Release\tinyxmlparser.obj
+         Generating code
+     1>c:\users\daniel\documents\visual studio 2013\projects\etapa-02\etapa-02\main.cpp(608): warning C4715: 'interpretar' : not all control paths return a value
+         Finished generating code
+         Etapa-02.vcxproj -> C:\Users\daniel\Documents\Visual Studio 2013\Projects\Etapa-02\Release\Etapa-02.exe
+     1>Done Building Project "C:\Users\daniel\Documents\Visual Studio 2013\Projects\Etapa-02\Etapa-02\Etapa-02.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.44

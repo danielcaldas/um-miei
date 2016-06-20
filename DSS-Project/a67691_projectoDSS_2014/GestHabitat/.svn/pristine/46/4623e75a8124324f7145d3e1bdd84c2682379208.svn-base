@@ -1,0 +1,55 @@
+package data_acess;
+
+import business.familias.ICandidatura;
+
+/**
+ * Não é preciso preencher
+ * @author Richas
+ */
+
+public class FACADEFamilias {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    // private DoadorDAO doadores;
+    // private DonativoDAO donativos;
+    // private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    private CandidaturaDAO candidaturas;
+    private MembroDAO membros;
+    private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    // private MaterialDAO materiais;
+    // private ProjetoDAO projetos;
+    // private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    // private EquipaDAO equipas;
+    // private FuncionarioDAO funcionarios;
+    // private VoluntarioDAO voluntarios;
+    
+    
+    
+    
+    /**************************************************************************************/
+    /********************************* FAMÍLIAS *******************************************/
+    /**************************************************************************************/
+    /*(...)*/
+    
+    /**
+     * Total de candidaturas.
+     * @return total de candidaturas registadas no sistema de inf. da Habitat. 
+     */
+    public int f_nrCandidaturas(){return candidaturas.size();}
+    
+    /**
+     *  Regista uma candidatura
+     * @param c, uma candidatura que queremos registar na base de dados 
+     */
+    public void f_saveCandidatura(ICandidatura c){
+        candidaturas.put(c.getNr(), c);
+        return;
+    }
+}

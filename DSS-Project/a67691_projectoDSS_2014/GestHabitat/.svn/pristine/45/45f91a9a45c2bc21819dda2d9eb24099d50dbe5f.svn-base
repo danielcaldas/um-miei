@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package data_acess;
+
+/**
+ *
+ * @author User
+ */
+public class FACADECandidatura {
+         
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    // private DoadorDAO doadores;
+    // private DonativoDAO donativos;
+    // private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    private CandidaturaDAO candidaturas;
+    private MembroDAO membros;
+    private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    // private MaterialDAO materiais;
+    // private ProjetoDAO projetos;
+    // private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos
+    private EquipaDAO equipas;
+    private FuncionarioDAO funcionarios;
+    private VoluntarioDAO voluntarios;/*
+    
+    
+    
+    
+    /**************************************************************************************/
+    /****************************** FAMILIAS **************************************/
+    /**************************************************************************************/
+    
+    
+}

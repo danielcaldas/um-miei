@@ -1,0 +1,216 @@
+package data_acess;
+
+
+import business.doacoes.IDoador;
+import business.doacoes.DoadorFactory;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Map;
+import java.util.Collection;
+import java.util.Set;
+import java.util.ArrayList;
+
+/**
+ * Implementação de um Data Acess Object para gerir instancias da classe Doador.
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.29
+ */
+public class DoadorDAO implements Map<Integer,IDoador>{
+    
+    public Connection conn;
+    public MySQLParseTools parseTools;
+    
+    /**
+     * Construtor que fornece conexão à tabela Doadores na base de dados da Habitat
+     * @throws ConnectionErrorException 
+     */
+    public DoadorDAO () throws ConnectionErrorException {
+        try {
+            parseTools = new MySQLParseTools();
+            this.conn = (new MySQLManager()).getConnection();
+        } catch (SQLException e) {System.out.println ("error_doador_bd");}
+    }
+    
+    @Override
+    public void clear() {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Doadores WHERE Id>=0;");
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean containsKey(Object key) {
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT Nome FROM Doadores WHERE Id='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean containsValue(Object value) {
+        try {
+            if(value instanceof IDoador) {
+            
+                IDoador d = (IDoador)value;
+                Statement stm = conn.createStatement();
+                
+                // Percorrer tabela de doadores e verificar se existe doador
+                // exatamente igual
+                int N=this.size();
+                for(int key=1; key<N; key++){
+                    IDoador ido = this.get(key);
+                    if(ido!=null){
+                        if(d.equals(ido)) return true;
+                    }
+                }
+                return false;
+            } else return false;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public Set<Entry<Integer, IDoador>> entrySet() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    
+    public IDoador get(Object key) {
+        IDoador d = new DoadorFactory().createDoador();
+        
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM Doadores WHERE Id='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()){
+                d = new DoadorFactory().createDoador();
+                d.setNIF(Integer.toString(rs.getInt("NIF")));
+                d.setTelefone(rs.getString("Telefone"));
+                d.setTelemovel(rs.getString("Telemovel"));
+                d.setLocalidade(rs.getString("Localidade"));
+                d.setRua(rs.getString("Rua"));
+                d.setCodPostal(rs.getString("CodigoPostal"));
+                d.setNotas(rs.getString("Obs"));
+                d.setPessoaContato(rs.getString("PessoaContato"));
+                d.setEmail(rs.getString("Email"));
+                d.setSite(rs.getString("Website"));
+                d.setTipo(rs.getString("Tipo"));
+                return d;
+            }
+        } catch (Exception e) {throw new NullPointerException(e.getMessage());}
+        
+        return d;
+    }
+    
+    @Override
+    public boolean isEmpty() {
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Nome FROM Doadores");
+            return !rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public Set<Integer> keySet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public IDoador put(Integer key, IDoador value) {
+        try {            
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Doadores WHERE Id='"+key+"'");
+            int i  = stm.executeUpdate(insert(key,value));
+            IDoador d = new DoadorFactory().createDoador();
+            d.setNIF(value.getNIF());
+            d.setNome(value.getNome());
+            d.setTelefone(value.getTelefone());
+            d.setTelemovel(value.getTelemovel());
+            d.setLocalidade(value.getLocalidade());
+            d.setRua(value.getRua());
+            d.setCodPostal(value.getCodPostal());
+            d.setNotas(value.getNotas());
+            d.setPessoaContato(value.getPessoaContato());
+            d.setEmail(value.getEmail());
+            d.setSite(value.getSite());
+            d.setTipo(value.getTipo());
+            return d;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    /*Método auxiliar de inserção na base de dados*/
+    private String insert(Integer key, IDoador value){       
+        
+        
+        ArrayList<Object> valores = new ArrayList<>();
+        valores.add(key);
+        valores.add(value.getNIF());
+        valores.add(value.getNome());
+        valores.add(value.getTelefone());
+        valores.add(value.getTelemovel());
+        valores.add(value.getLocalidade());
+        valores.add(value.getRua());
+        valores.add(value.getCodPostal());
+        valores.add(value.getNotas());
+        valores.add(value.getPessoaContato());
+        valores.add(value.getEmail());
+        valores.add(value.getSite());
+        valores.add(value.getTipo());
+        valores.add("NULL");
+        
+        String sql = parseTools.createInsert("Doadores", valores);
+        System.out.println(sql);
+        return sql;
+    }
+    
+
+    
+    @Override
+    public void putAll(Map<? extends Integer, ? extends IDoador> m) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
+    @Override 
+    public IDoador remove(Object key) {
+        try {
+            IDoador d = this.get(key);
+            Statement stm = conn.createStatement();
+            String sql = "DELETE '"+key+"' FROM Doadores";
+            int i  = stm.executeUpdate(sql);
+            return d;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    @SuppressWarnings("empty-statement")
+    public int size() {
+        try {
+            int i = 0;
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Id FROM Doadores");
+            for (;rs.next();i++);
+            return i;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    
+    @Override
+    public Collection<IDoador> values() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    
+    
+}

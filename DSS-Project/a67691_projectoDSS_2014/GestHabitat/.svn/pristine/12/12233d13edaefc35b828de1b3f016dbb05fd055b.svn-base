@@ -1,0 +1,330 @@
+package data_acess;
+
+import business.recursoshumanos.IFuncionario;
+import business.recursoshumanos.FuncionarioFactory;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**Implementação de um Data Acess Object para gerir instancias da classe Funcionario.
+ * 
+ * 
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2015.01.05
+ */
+
+public class FuncionarioDAO implements Map<Integer,IFuncionario> {
+
+    public Connection conn;
+    private MySQLParseTools parseTools;
+    
+    /**
+     * Construtor que fornece conexão à tabela Funcionario na base de dados da Habitat.
+     * @throws ConnectionErrorException 
+     */
+    public FuncionarioDAO() throws ConnectionErrorException{
+        try {
+            parseTools = new MySQLParseTools();
+            this.conn = (new MySQLManager()).getConnection();
+        } catch (SQLException ex) {System.out.println("error_funcionarios_bd");}
+    }    
+    
+    @Override
+    public int size() {
+        try {
+            int i = 0;
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Id FROM Funcionarios");
+            for (;rs.next();i++);
+            return i;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean isEmpty() {
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Id FROM Funcionarios");
+            return !rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean containsKey(Object key) {
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT Id FROM Funcionarios WHERE Id='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean containsValue(Object value) {
+        try {
+            if(value instanceof IFuncionario) {
+            
+                IFuncionario f = (IFuncionario)value;
+                Statement stm = conn.createStatement();
+                
+                // Percorrer tabela de equipa e verificar se existe equipa
+                // exatamente igual
+                int N=this.size();
+                for(int key=1; key<N; key++){
+                    IFuncionario isf = this.get(key);
+                    if(isf!=null){
+                        if(f.equals(isf)) return true;
+                    }
+                }
+                return false;
+            } else return false;
+        }
+        catch (Exception ex) {throw new NullPointerException(ex.getMessage());}
+    }
+
+    @Override
+    public IFuncionario get(Object key) {
+        IFuncionario f = new FuncionarioFactory().createFuncionario();
+        
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM Funcionarios WHERE Id='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()){
+                f.setId(rs.getInt(1));
+                f.setNome(rs.getString(2));
+                f.setComissao(rs.getString(3));
+                f.setUsername(rs.getString(4));
+                f.setPassword(rs.getString(5));
+                
+                // Permissões do funcionário no sistema
+                int fkey = f.getId();
+                List<String> permissions = new ArrayList<>();
+                sql = "SELECT Nome FROM Permissoes WHERE Funcionario='"+fkey+"'";
+                rs = stm.executeQuery(sql);
+                for(int i=1; rs.next(); i++){
+                    permissions.add(rs.getString(i));
+                }
+                f.setPermissions(permissions);                
+                
+                return f;
+            }
+        } catch (Exception ex) {throw new NullPointerException("Funcionario não existe");}
+        
+        return f;
+    }
+
+    /**
+     * Procurar um funcionário a partir do seu username.
+     * @param user, String correspondente a um username de um funcionário.
+     * @return funcionário correspondente ao username caso exista.
+     */
+    public IFuncionario getByUsername(String user) {
+        IFuncionario f = new FuncionarioFactory().createFuncionario();
+        
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM Funcionarios WHERE Username='"+user+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()){
+                f.setId(rs.getInt(1));
+                f.setNome(rs.getString(2));
+                f.setComissao(rs.getString(3));
+                f.setUsername(rs.getString(4));
+                f.setPassword(rs.getString(5));
+                
+                // Permissões do funcionário no sistema
+                int fkey = f.getId();
+                List<String> permissions = new ArrayList<>();
+                sql = "SELECT Nome FROM Permissoes WHERE Funcionario='"+fkey+"'";
+                rs = stm.executeQuery(sql);
+                for(int i=1; rs.next(); i++){
+                    permissions.add(rs.getString(i));
+                }
+                f.setPermissions(permissions);                
+                
+                return f;
+            }
+        } catch (Exception ex) {throw new NullPointerException();}
+        
+        return f;
+    }
+    
+    @Override
+    public IFuncionario put(Integer key, IFuncionario value) {
+        IFuncionario f = new FuncionarioFactory().createFuncionario();
+        
+        try {            
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Funcionarios WHERE Id='"+key+"'");
+            int i  = stm.executeUpdate(insert(key,value));
+            f.setId(value.getId());
+            f.setNome(value.getNome());
+            f.setComissao(value.getComissao());
+            f.setUsername(value.getUsername());
+            f.setPassword(value.getPassword());
+            return f;
+        }
+        catch (Exception ex) {throw new NullPointerException(ex.getMessage());}
+    }
+    
+    /*Método auxiliar de inserção na base de dados*/
+    private String insert(Integer key, IFuncionario value){              
+        ArrayList<Object> valores = new ArrayList<>();
+        valores.add(value.getId());
+        valores.add(value.getNome());
+        valores.add(value.getComissao());
+        valores.add(value.getUsername());
+        valores.add(value.getPassword());
+        
+        String sql = parseTools.createInsert("Funcionarios", valores);
+        System.out.println(sql);
+        return sql;
+    }
+
+    @Override
+    public IFuncionario remove(Object key) {
+        try {            
+            Statement stm = conn.createStatement();
+            IFuncionario e = this.get(key);
+            if(e!=null){
+                stm.executeUpdate("DELETE FROM Funcionarios WHERE Id='"+key+"'");
+            }
+            return e;
+        }
+        catch (Exception ex) {throw new NullPointerException("Funcionario não existe");}
+    }
+
+    @Override
+    public void putAll(Map<? extends Integer, ? extends IFuncionario> m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void clear() {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Funcionarios WHERE Funcionario.Id>=0;");
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Set<Integer> keySet() {
+        try {
+            Set<Integer> set = new HashSet<>();
+            int n = this.generateFuncionarioKey();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    set.add(i);
+                }
+            }
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Collection<IFuncionario> values() {
+        try {
+            Set<IFuncionario> set = new HashSet<>();
+            Set<Integer> keys = new HashSet<>(this.keySet());
+            for(Integer key : keys)
+                set.add(this.get(key));
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Set<Entry<Integer,IFuncionario>> entrySet() {
+        try {
+            Set<Entry<Integer,IFuncionario>> set;
+            Set<Integer> keys = new HashSet<>(this.keySet());            
+            
+            HashMap<Integer,IFuncionario> map = new HashMap<>();
+            for(Integer key : keys){
+                if(this.containsKey(key)){
+                    map.put(key,this.get(key));
+                }
+            }
+            return map.entrySet();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;
+        
+        else if(this.getClass() != o.getClass()) return false;
+        
+        else{
+            FuncionarioDAO edao = (FuncionarioDAO) o;
+            
+            for(IFuncionario e : this.values()){
+                if(!edao.containsKey(e.getId())) return false;
+                else{
+                    if(!e.equals(edao.get(e.getId()))) return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = Arrays.hashCode(new Object[]{conn, parseTools});
+        for(IFuncionario f : this.values())
+            hash+=f.hashCode();
+        return hash;
+    }
+    
+    /**
+     * Procura a maior chave de funcionário existente na base de dados e retorna
+     * esse valor incrementado em 1 unidade
+     * @return Chave que identificará univocamente no sistema um funcionário. 
+     */
+    public int generateFuncionarioKey(){
+       try {
+            if(!this.isEmpty()){
+                Statement stm = conn.createStatement();
+                ResultSet rs = stm.executeQuery("SELECT MAX(Nr) FROM Funcionarios;");
+                if(rs.next()){
+                    return(rs.getInt(1) + 1);
+                }
+            } else return 1;
+        } catch (Exception e) {return 1;}
+        
+        return -1;
+    }
+    
+    /**
+     * FUNÇÃO MAIN PARA TESTES
+     * @param args 
+     * @throws data_acess.ConnectionErrorException 
+     * @throws java.lang.Exception 
+     */
+    public static void main(String[] args) throws ConnectionErrorException, Exception {
+        FuncionarioDAO dao = new FuncionarioDAO();
+        IFuncionario f = dao.get(1);
+        System.out.println(f.getFirstAndLastName());
+        
+        IFuncionario f2 = dao.getByUsername("jdc");
+        System.out.println(f2.getFirstAndLastName());
+        System.out.println(f2.getPassword());
+    }
+    
+}

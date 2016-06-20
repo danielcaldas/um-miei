@@ -1,0 +1,96 @@
+package data_acess;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+/**
+ * Uma série de ferramentas de parse para criação de queries em MySQL.
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.29
+ */
+
+public class MySQLParseTools {
+    
+    public MySQLParseTools(){
+    }
+    
+    /**
+     * 
+     * @param table, nome da tabela onde queremos fazer o insert.
+     * @param values, parâmetros do insert, i.e atributos/colunas da tabela.
+     * @return uma String, querie MySQL pronto a executar.
+     */
+    public String createInsert(String table, List<Object> values) {
+        StringBuilder sb = new StringBuilder();
+        
+        // Append do nome da tabela onde queremos fazer o insert
+        sb.append("INSERT INTO ").append(table).append(" VALUES (");
+        
+        // Append dos diferentes parâmetros do insert
+        int i=1; // inteiro para detetar última iteração do for each
+        int N=values.size();
+        for(Object o : values){
+            if(o instanceof Integer){
+                // Caso seja um número inteiro ou decimal
+                sb.append(String.valueOf((int)o));
+            }
+            else if(o instanceof Float){
+                // Caso seja um número inteiro ou decimal
+                sb.append(String.valueOf((float)o));
+            }
+            else if(o instanceof Double){
+                // Caso seja um número inteiro ou decimal
+                sb.append(String.valueOf((double)o));
+            }
+            else if(o instanceof String){
+                // Caso seja uma String
+                String s = (String) o;
+                if(s.toLowerCase().contains("null")){ // Verificar se string é campo NULL
+                    sb.append("NULL");
+                }
+                else{
+                    sb.append("'");
+                    sb.append((String) o);
+                    sb.append("'");
+                }
+            }
+            // Caso seja o último parâmetro queremos colocar ");"
+            // Caso contrário queremos fazer append de "', '"
+            if(i==N){
+                sb.append(");");
+            } else{
+                sb.append(", ");
+                i++;
+            }
+        }
+        return sb.toString();
+    }
+    
+    /**
+     * Gera uma String Date MySQL a partir de um objeto GregorianCalendar.
+     * @param date, a data que queremos converter para MySQL.
+     * @return String a data no formato MySQL.
+     */
+    public String parseCalendar(GregorianCalendar date) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(date.get(Calendar.YEAR)).append("-");
+        sb.append(date.get(Calendar.MONTH)).append("-");
+        sb.append(date.get(Calendar.DAY_OF_MONTH));
+        return sb.toString();
+    }
+    
+    /**
+     * 
+     * @param date, String que representa data no format MySQL
+     * @return GregorianCalendar criada a partir
+     */
+    public GregorianCalendar parseSQLDate(String date) {
+        int year, month, day;
+        String toks[] = date.split("-");
+        year = Integer.parseInt(toks[0].trim());
+        month = Integer.parseInt(toks[1].trim());
+        day = Integer.parseInt(toks[2].trim());
+        return new GregorianCalendar(year,month,day);      
+    }
+}

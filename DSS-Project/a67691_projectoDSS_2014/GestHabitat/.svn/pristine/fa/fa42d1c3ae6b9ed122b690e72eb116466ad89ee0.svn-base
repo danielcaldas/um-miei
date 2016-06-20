@@ -1,0 +1,46 @@
+package view;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+
+/**Gera um diálogo para infomar utilizador que não possuí permissões para efetuar determinada operação.
+ * 
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.28
+ */
+
+public class NoPermissionsDialog {
+    
+    // Variável de instância
+    private final JFrame jframe;
+    private final JInternalFrame jiframe;
+    
+    /**
+     * Construtor que torna método de display do diálogo acessível.
+     * @param f, uma frame. 
+     */
+    public NoPermissionsDialog(Object f){
+        if(f instanceof JFrame){
+            this.jframe=(JFrame) f; jiframe=null;
+        } else{
+            this.jframe=null; jiframe=(JInternalFrame) f;
+        }
+    }
+    
+    /**
+     * Método que faz display do diálogo.
+     */
+    public void show(){        
+        if(this.jframe!=null){
+            JOptionPane.showMessageDialog(this.jframe, "Não possuí permissões para efetuar tais operações!",
+            "Sem permissões", JOptionPane.INFORMATION_MESSAGE,
+            new ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\proibido_icon.png"));
+        } else{
+            JOptionPane.showMessageDialog(this.jiframe, "Não possuí permissões para efetuar tais operações!",
+            "Sem permissões", JOptionPane.INFORMATION_MESSAGE,
+            new ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\proibido_icon.png"));
+        }
+    }
+}

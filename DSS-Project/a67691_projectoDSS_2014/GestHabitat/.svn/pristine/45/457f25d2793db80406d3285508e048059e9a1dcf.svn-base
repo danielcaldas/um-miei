@@ -1,0 +1,13 @@
+
+package business.familias;
+
+/**
+ *
+ * @author USER * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+
+ */
+public class RepresentanteFactory {
+    public RepresentanteFactory(){}
+    public IRepresentante createRepresentante() {return new Representante(); }
+}
+

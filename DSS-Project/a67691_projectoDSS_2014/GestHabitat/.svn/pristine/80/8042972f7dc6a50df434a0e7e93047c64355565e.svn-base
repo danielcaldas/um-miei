@@ -1,0 +1,283 @@
+package data_acess;
+
+import business.recursoshumanos.IEquipa;
+import business.recursoshumanos.EquipaFactory;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ * 
+ * Implementação de um Data Acess Object para gerir instancias da classe Equipa.
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2015.01.05
+ */
+public class EquipaDAO implements Map<Integer,IEquipa> {
+
+    public Connection conn;
+    private MySQLParseTools parseTools;
+    
+    /**
+     * Construtor que fornece conexão à tabela Equipa na base de dados da Habitat.
+     * @throws ConnectionErrorException 
+     */
+    public EquipaDAO() throws ConnectionErrorException{
+        try {
+            parseTools = new MySQLParseTools();
+            this.conn = (new MySQLManager()).getConnection();
+        } catch (SQLException ex) {System.out.println("error_equipa_bd");}
+    }    
+    
+    @Override
+    public int size() {
+        try {
+            int i = 0;
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Id FROM Equipa");
+            for (;rs.next();i++);
+            return i;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean isEmpty() {
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Id FROM Equipa");
+            return !rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean containsKey(Object key) {
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT Id FROM Equipa WHERE Id='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean containsValue(Object value) {
+        try {
+            if(value instanceof IEquipa) {
+            
+                IEquipa e = (IEquipa)value;
+                Statement stm = conn.createStatement();
+                
+                // Percorrer tabela de equipa e verificar se existe equipa
+                // exatamente igual
+                int N=this.size();
+                for(int key=1; key<N; key++){
+                    IEquipa ise = this.get(key);
+                    if(ise!=null){
+                        if(e.equals(ise)) return true;
+                    }
+                }
+                return false;
+            } else return false;
+        }
+        catch (Exception ex) {throw new NullPointerException(ex.getMessage());}
+    }
+
+    @Override
+    public IEquipa get(Object key) {
+        IEquipa e = new EquipaFactory().createEquipa();
+        
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM Equipa WHERE Id='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            EquipaFactory efactory = new EquipaFactory();
+            if (rs.next()){
+                e = efactory.createEquipa();
+                e.setId(rs.getInt(1));
+                e.setDesignacao(rs.getString(1)); // passa a e.setNome(rs.getString(1));
+                e.setpOrigem(rs.getString(3));
+                e.setObs(rs.getString(4));
+                e.setChefe(rs.getInt(5));
+                
+                // Carregar da tabela Voluntarios os voluntários desta equipa
+                Set<Integer> voluntarios = new TreeSet<>();
+                sql = "SELECT Equipa FROM Voluntarios WHERE Id='"+e.getId()+"'";
+                rs = stm.executeQuery(sql);
+                for(int i=1; rs.next(); i++)
+                    voluntarios.add(rs.getInt(i));
+                e.setVoluntarios(voluntarios);
+                    
+                
+                return e;
+            }
+        } catch (Exception ex) {throw new NullPointerException("Equipa não existe");}
+        
+        return e;
+    }
+
+    @Override
+    public IEquipa put(Integer key, IEquipa value) {
+        IEquipa e = new EquipaFactory().createEquipa();
+        
+        try {            
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Equipa WHERE Nr='"+key+"'");
+            int i  = stm.executeUpdate(insert(key,value));
+            e.setId(value.getId());
+            e.setDesignacao(value.getDesignacao()); // passa a e.setNome(rs.getString(1));
+            e.setpOrigem(value.getpOrigem());
+            e.setObs(value.getObs());
+            e.setChefe(value.getChefe());
+            e.setVoluntarios(value.getVoluntarios());
+            return e;
+        }
+        catch (Exception ex) {throw new NullPointerException(ex.getMessage());}
+    }
+    
+    /*Método auxiliar de inserção na base de dados*/
+    private String insert(Integer key, IEquipa value){              
+        ArrayList<Object> valores = new ArrayList<>();
+        valores.add(value.getId());
+        valores.add(value.getDesignacao());
+        valores.add(value.getpOrigem());
+        valores.add(value.getObs());
+        valores.add(value.getChefe());
+        
+        String sql = parseTools.createInsert("Equipa", valores);
+        System.out.println(sql);
+        return sql;
+    }
+
+    @Override
+    public IEquipa remove(Object key) {
+        try {            
+            Statement stm = conn.createStatement();
+            IEquipa e = this.get(key);
+            if(e!=null){
+                stm.executeUpdate("DELETE FROM Equipa WHERE Id='"+key+"'");
+            }
+            return e;
+        }
+        catch (Exception ex) {throw new NullPointerException("Equipa não existe");}
+    }
+
+    @Override
+    public void putAll(Map<? extends Integer, ? extends IEquipa> m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void clear() {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Equipa WHERE Equipa.Id>=0;");
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Set<Integer> keySet() {
+        try {
+            Set<Integer> set = new TreeSet<>();
+            int n = this.size();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    set.add(i);
+                }
+            }
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Collection<IEquipa> values() {
+        try {
+            Set<IEquipa> set = new TreeSet<>();
+            int n = this.size();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    set.add(this.get(i));
+                }
+            }
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Set<Entry<Integer, IEquipa>> entrySet() {
+        try {
+            Set<Entry<Integer,IEquipa>> set;
+            HashMap<Integer,IEquipa> map = new HashMap<>();
+            int n = this.size();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    map.put(i,this.get(i));
+                }
+            }
+            return map.entrySet();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;
+        
+        else if(this.getClass() != o.getClass()) return false;
+        
+        else{
+            Map<Integer,IEquipa> edao = (EquipaDAO) o;
+            
+            for(IEquipa e : this.values()){
+                if(!edao.containsKey(e.getId())) return false;
+                else{
+                    if(!e.equals(edao.get(e.getId()))) return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(new Object[]{conn, parseTools});
+    }
+    
+    /**
+     * Procura a maior chave de equipa existente na base de dados e retorna
+     * esse valor incrementado em 1 unidade
+     * @return Chave que identificará univocamente no sistema uma equipa. 
+     */
+    public int generateEquipaKey(){
+       try {
+            if(!this.isEmpty()){
+                Statement stm = conn.createStatement();
+                ResultSet rs = stm.executeQuery("SELECT MAX(Nr) FROM Equipa;");
+                return (rs.getInt(1) + 1);
+            } else return 1;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());} 
+    }
+    
+    /**
+     * FUNÇÃO MAIN PARA TESTES
+     * @param args 
+     * @throws data_acess.ConnectionErrorException 
+     * @throws java.lang.Exception 
+     */
+    public static void main(String[] args) throws ConnectionErrorException, Exception {
+    }
+    
+}

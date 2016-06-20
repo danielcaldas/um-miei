@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AulaDBModelStoreContainer" CdmEntityContainer="AulaDAO">
+    <EntitySetMapping Name="Aula">
+      <EntityTypeMapping TypeName="AulaDBModel.Aula">
+        <MappingFragment StoreEntitySet="Aula">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Conteudo" ColumnName="Conteudo" />
+          <ScalarProperty Name="Rei" ColumnName="Rei" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

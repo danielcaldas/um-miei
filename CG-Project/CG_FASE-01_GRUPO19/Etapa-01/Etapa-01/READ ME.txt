@@ -1,0 +1,1 @@
+Para testar o motor3D passar os ficheiros teste que se encontram na diretoria "Ficheiros Teste" para a raíz do projeto.

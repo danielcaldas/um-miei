@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UtilizadorReiDBModelStoreContainer" CdmEntityContainer="UtilizadorReiDAO">
+    <EntitySetMapping Name="UtilizadorRei">
+      <EntityTypeMapping TypeName="UtilizadorReiDBModel.UtilizadorRei">
+        <MappingFragment StoreEntitySet="UtilizadorRei">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Utilizador" ColumnName="Utilizador" />
+          <ScalarProperty Name="Rei" ColumnName="Rei" />
+          <ScalarProperty Name="Dificuldade" ColumnName="Dificuldade" />
+          <ScalarProperty Name="Progresso" ColumnName="Progresso" />
+          <ScalarProperty Name="BioEstado" ColumnName="BioEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

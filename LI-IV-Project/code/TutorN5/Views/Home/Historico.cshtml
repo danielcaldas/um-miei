@@ -1,0 +1,45 @@
+﻿@model TutorN5.Models.utilizador.HistoricoViewModel
+
+@{
+    ViewBag.Title = "Historico";
+}
+
+<h2>Histórico</h2>
+
+
+<br />
+
+<div class="clearfix"></div>
+<img id="avatar" src="~/App_Themes/static.png" width="195" height="188" style="float: left" onclick="onClickAvatar()" />
+<div class="clearfix"></div>
+
+<br />
+
+<ul style="text-align:center;width:950px;">
+        @foreach (var evento in @Model.EventosOrdenadosPorData){
+           <li style="list-style-type: none; padding:12px; text-align: left;">@Html.Raw(@evento)</li>
+        }
+</ul>
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script>
+
+    var talk = true;
+
+    window.onload = function () {
+
+        if (sessionStorage.getItem("HISTORICO") != null) talk = false;
+
+        if (talk) {
+          sessionStorage.setItem("HISTORICO", "_visited");
+          falar();
+          mudarAvatar(2, 5000);
+        }
+    };
+
+    function onClickAvatar() {
+        mudarAvatar(2, 10000);
+        falar();
+    }
+
+</script>

@@ -1,0 +1,57 @@
+package business.recursoshumanos;
+
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Map;
+
+/**Interface que torna classe de voluntários acessível fora do package resursoshumanos
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.29
+ */
+
+public interface IVoluntario {
+    /*gets & sets*/
+    public int getNr();
+    public void setNr(int nr);
+    public String getNome();
+    public void setNome(String nome);
+    public GregorianCalendar getDatanasc();
+    public void setDatanasc(GregorianCalendar datanasc);
+    public String getHabilitacoes();
+    public void setHabilitacoes(String habilitacoes);
+    public String getTelef();
+    public void setTelef(String telef);
+    public String getTelem();
+    public void setTelem(String telem);
+    public String getProfissao();
+    public void setProfissao(String profissao);
+    public String getEmail();
+    public void setEmail(String email);
+    public GregorianCalendar getDataInicioVol();
+    public void setDataInicioVol(GregorianCalendar dataInicioVol);
+    public String getLocalidade();
+    public void setLocalidade(String localidade);
+    public String getRua();
+    public void setRua(String rua);
+    public String getCodPostal();
+    public void setCodPostal(String codPostal);
+    public List<String> getLinguas();
+    public void setLinguas(List<String> linguas);
+    public int getHorasVoluntariado();
+    public String getObs();
+    public void setObs(String obs);
+    public Map<Integer,Integer> getHorasProjetos();
+    public void setHorasProjetos (Map<Integer,Integer> hp);
+    
+    /*equals e clone*/
+    @Override
+    public boolean equals (Object o);    
+    public IVoluntario clone();
+
+    @Override
+    public int hashCode();
+    public int getIdadeVol();
+    public String getFirstAndLastName();
+    public void addHorasProjeto(int proj,int horas);
+}

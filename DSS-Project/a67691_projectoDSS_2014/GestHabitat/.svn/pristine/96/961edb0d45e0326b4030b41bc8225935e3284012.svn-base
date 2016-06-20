@@ -1,0 +1,10 @@
+package business.familias;
+
+/**
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ */
+public class CandidaturaFactory {
+    public CandidaturaFactory(){}
+    public ICandidatura createCandidatura() {return new Candidatura(); }
+}

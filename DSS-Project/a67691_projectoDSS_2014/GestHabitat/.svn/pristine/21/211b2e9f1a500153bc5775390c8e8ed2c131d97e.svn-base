@@ -1,0 +1,302 @@
+package data_acess;
+
+import data_access.exceptions.CandidaturaNaoExisteException;
+import data_access.exceptions.MembroNaoExisteException;
+import data_access.exceptions.RepresentanteNaoExisteException;
+import business.familias.ICandidatura;
+import business.familias.IMembro;
+import business.familias.IRepresentante;
+import java.util.*;
+
+
+/**
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 30.12.2014
+ *
+ */
+
+public class FACADEFamilias {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    // private DoadorDAO doadores;
+    // private DonativoDAO donativos;
+    // private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    private CandidaturaDAO candidaturas;
+    private MembroDAO membros;
+    private RepresentanteDAO representantes;
+    
+    /*Relativo a projetos*/
+    // private MaterialDAO materiais;
+    // private ProjetoDAO projetos;
+    // private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    // private EquipaDAO equipas;
+    // private FuncionarioDAO funcionarios;
+    // private VoluntarioDAO voluntarios;
+    
+    
+    
+    
+    /**************************************************************************************/
+    /********************************* FAMÍLIAS *******************************************/
+    /**************************************************************************************/
+    /*(...)*/
+    
+    /**
+     * Total de candidaturas.
+     * @return total de candidaturas registadas no sistema de inf. da Habitat. 
+     */
+    public int fm_nrCandidaturas(){return candidaturas.size();}
+    
+    /**
+     *  Regista uma candidatura
+     * @param c, uma candidatura que queremos registar na base de dados 
+     */
+  /**
+     * Retorna uma Candidatura pelo seu nº.
+     * @param nr, nº da Candidatura.
+     * @return 
+     * @throws data_access.exceptions.CandidaturaNaoExisteException
+     */
+    public ICandidatura fm_getCandidatura(int nr) throws CandidaturaNaoExisteException {
+        if(this.candidaturas.containsKey(nr)){
+            return this.candidaturas.get(nr);
+        } else throw new CandidaturaNaoExisteException(nr);
+    }
+    
+    /**
+     * Verifica se uma Candidatura com uma dada chave existe.
+     * @param nr, queremos verificar se candidatura existe.
+     * @return true caso candidatura com a chave exista, false caso contrário.
+     */
+    public boolean fm_CandidaturaExiste(int nr){return this.candidaturas.containsKey(nr);}
+    
+    /**
+     * Elimina uma dada Candidatura.
+     * @param nr, nº da Candidatura que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean fm_remCandidatura(int nr) {
+        if(this.candidaturas.containsKey(nr)){
+            this.candidaturas.remove(nr);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guarda uma Candidatura na base de dados.
+     * @param c, instância da Candidatura que queremos guardar na base de dados.
+     * @return true caso o registo seja guardado, false caso contrário.
+     */
+    public boolean fm_saveCandidatura(ICandidatura c){
+        if(!this.candidaturas.containsKey(c.getNr())){
+            this.candidaturas.put(c.getNr(), c);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza uma Candidatura já registado no sistema.
+     * @param c, voluntário alterado que queremos atualizar na base de dados.
+     * @return true caso voluntário seja atualizado, false caso contrário. 
+     */
+    public boolean fm_editCandidatura(ICandidatura c) {
+        if(this.candidaturas.containsKey(c.getNr())){
+            this.candidaturas.put(c.getNr(), c);
+            return true;
+        } return false;
+    }
+    /**
+    * 
+    * @param searchinput
+    * @return
+    * @throws CandidaturaNaoExisteException 
+    */
+    public Set<ICandidatura> fm_searchCandidatura(String searchinput) throws CandidaturaNaoExisteException {
+        Set<ICandidatura> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(ICandidatura e : this.candidaturas.values()){
+            if(e.getDescricao().toLowerCase().contains(lowersearch)){
+                 set.add(e);
+            }
+        }
+        return set;
+    }
+    
+    /*Método de MembroDAO*/    
+    /**
+     * Calcula nº total de membros registadas no sistema.
+     * @return nº total de membros registadas
+     */
+    public int fm_totalMembros(){return this.membros.size();}
+    
+    /**
+     * Retorna um Membro pelo seu id.
+     * @param id, id do membro.
+     * @return Equipa correspondente ao id passado como argumento, caso não exista lança excepção.
+     * @throws data_access.exceptions.MembroNaoExisteException
+     */
+    public IMembro rh_getMembro(int id) throws MembroNaoExisteException {
+        if(this.membros.containsKey(id)){
+            return this.membros.get(id);
+        } else throw new MembroNaoExisteException(id);
+    }
+    
+    /**
+     * Verifica se um Membro com um dada chave existe.
+     * @param id, verifica se Membro existe.
+     * @return true caso Membro com a chave exista, false caso contrário.
+     */
+    public boolean fm_MembroExiste(int id){return this.membros.containsKey(id);}
+
+    /**
+     * Retorna um set de equipas criados com base num campo de pesquisa.
+     * @param searchinput, país de origem da equipa.
+     * @return set de equipas que preenchem os requisitos de pesquisa (vazio, não encontramos equipa(s)).
+     * @throws data_access.exceptions.MembroNaoExisteException
+     */
+    public Set<IMembro> fm_searchMembro(String searchinput) throws MembroNaoExisteException {
+        Set<IMembro> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(IMembro e : this.membros.values()){
+            if(e.getNome().toLowerCase().contains(lowersearch)){
+                 set.add(e);
+            }
+        }
+        return set;
+    }
+    
+    /**
+     * Elimina um dado Membro.
+     * @param id, nº do Membro que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean fm_remMembro(int id) {
+        if(this.membros.containsKey(id)){
+            this.membros.remove(id);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guarda um Membro na base de dados.
+     * @param m, instância de Membro que queremos guardar na base de dados.
+     * @return true caso o registo seja guardado, false caso contrário.
+     */
+    public boolean fm_saveMembro(IMembro m){
+        if(!this.membros.containsKey(m.getId())){
+            this.membros.put(m.getId(), m);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza um Membro já registado no sistema.
+     * @param m, Membro alterado que queremos atualizar na base de dados.
+     * @return true caso equipa seja atualizada, false caso contrário. 
+     */
+    public boolean fm_editMembro(IMembro m ) {
+        if(this.membros.containsKey(m.getId())){
+            this.membros.put(m.getId(), m);
+            return true;
+        } return false;
+    }
+  
+    /**
+     * Conjunto de Membro de uma dada Candidatura.
+     * @param id, 
+     * @return Set de Membros que pertencem à Candidatura associada ao id.
+     */
+    public Set<IMembro> rh_getMembrosDaCandidatura(int id) {
+        return new HashSet<>(this.membros.getMembrosCandidatura(id));
+    }
+    
+    
+    // RepresentanteDAO
+    
+    
+     /**
+     * Total de representantes.
+     * @return total de representantes registadas no sistema de inf. da Habitat. 
+     */
+    public int fm_nrRepresentantes(){return representantes.size();}
+    
+    /**
+     * Retorna um Representante pelo seu nº.
+     * @param nr, nº da Representante.
+     * @return 
+     * @throws data_access.exceptions.RepresentanteNaoExisteException
+     */
+    public IRepresentante fm_getRepresentante(int nr) throws RepresentanteNaoExisteException {
+        if(this.representantes.containsKey(nr)){
+            return this.representantes.get(nr);
+        } else throw new RepresentanteNaoExisteException(nr);
+    }
+    
+    /**
+     * Verifica se um Representante com uma dada chave existe.
+     * @param nr, queremos verificar se Representante existe.
+     * @return true caso Representante com a chave exista, false caso contrário.
+     */
+    public boolean fm_RepresentanteExiste(int nr){return this.representantes.containsKey(nr);}
+    
+    /**
+     * Elimina um dado Representante.
+     * @param nr, nº de Representante que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean fm_remRepresentante(int nr) {
+        if(this.representantes.containsKey(nr)){
+            this.representantes.remove(nr);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guarda um Representante na base de dados.
+     * @param c.
+     * @return true caso o registo seja guardado, false caso contrário.
+     */
+    public boolean fm_saveRepresentante(IRepresentante c){
+        if(!this.representantes.containsKey(c.getNr())){
+            this.representantes.put(c.getNr(), c);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza uma Candidatura já registado no sistema.
+     * @param c, voluntário alterado que queremos atualizar na base de dados.
+     * @return true caso voluntário seja atualizado, false caso contrário. 
+     */
+    public boolean fm_editRepresentante(IRepresentante c) {
+        if(this.representantes.containsKey(c.getNr())){
+            this.representantes.put(c.getNr(), c);
+            return true;
+        } return false;
+    }
+    
+    /**
+     * 
+     * @param searchinput
+     * @return
+     * @throws RepresentanteNaoExisteException 
+     */
+    public Set<IRepresentante> fm_searchRepresentante(String searchinput) throws RepresentanteNaoExisteException {
+        Set<IRepresentante> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(IRepresentante e : this.representantes.values()){
+            if(e.getNome().toLowerCase().contains(lowersearch)){
+                 set.add(e);
+            }
+        }
+        return set;
+    }
+    
+}
+

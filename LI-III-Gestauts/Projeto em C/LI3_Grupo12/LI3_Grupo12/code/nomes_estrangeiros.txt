@@ -1,0 +1,227 @@
+##################TABELA DE NOMES ESTRANGEIROS##################
+
+
+ - Éric Piel
+ - �?ngeles S. Places
+ - �?lvaro Rabelo
+ - �?kos Lédeczi
+ - �?ine Mitchell
+ - �?dám Horváth
+ - sarah-marie belcastro
+ - eva Kühn
+ - �?bel Hegedüs
+ - �?. Pintér
+ - �?bel Sinkovics
+ - �?gnes Havasi
+ - �?dám Sipos
+ - �?dám M. Halász
+ - �?gnes Hajgató
+ - �?gúst S. Egilsson
+ - �?kos Kovács
+ - �?kos Horváth
+ - �?kos Hajnal
+ - �?kos Kiss
+ - �?kos Ladányi
+ - �?lvaro Barbero Jiménez
+ - �?kos Utasi
+ - �?kos Pernek
+ - �?kos Nemcsics
+ - �?lvar Ibeas
+ - �?lvar Ibeas Martín
+ - �?lvaro Fialho
+ - �?lvaro D. Latorre Rey
+ - �?lvaro Castro González
+ - �?lvaro F. Moreira
+ - �?lvaro Herrero
+ - �?lvaro Gutiérrez
+ - �?lvaro Marco
+ - �?ngel García-Crespo
+ - �?ngel Dacal-Nieto
+ - �?ngel Cuenca
+ - �?ngel Alberto Magreñán
+ - �?lvaro Vázquez
+ - �?ngel Carmona Poyato
+ - �?ngel Cuevas
+ - �?ngel Fernández-Leal
+ - �?ngel Diéguez
+ - �?ngel Dieguez
+ - �?ngel F. Tenorio
+ - �?ngel G. Andrade
+ - �?ngel Rodríguez-Rozas
+ - �?ngel Ortiz Bas
+ - �?ngel M. Pérez-Bellido
+ - �?ngel Lucas González
+ - �?ngel Martín del Rey
+ - �?ngel Rodas Jordá
+ - �?ngel Plaza
+ - �?ngel Sánchez
+ - �?ngel Serrano
+ - �?ngel Viña
+ - �?ngel de la Torre
+ - Åsmund Ødegård
+ - Ângela M. A. Pinheiro
+ - �?sgeir Th. Eiríksson
+ - �?rpád Baricz
+ - �?ron Szentesi
+ - �?rpád Huszák
+ - Àngel Olivé
+ - Àgata Lapedriza
+ - Àngela Grau
+ - Ângelo Márcio Oliveira Sant'Anna
+ - Ângelo Costa
+ - Ângelo Cardoso
+ - Åke Wernersson
+ - Åke Arvidsson
+ - Åge J. Eide
+ - Åke Wallin
+ - Åsa Fasth
+ - Åshild Grønstad Solheim
+ - Élisa Fromont
+ - Çetin Elmas
+ - Çagdas Hakan Aladag
+ - Çagatay Dikici
+ - Ç. Mekik
+ - Çagri Tekinay
+ - Çaglayan Erdem
+ - Çagri Yüzbasioglu
+ - Çigdem Eroglu Erdem
+ - Çigdem Atakut
+ - Çetin Kaya Koç
+ - Çigdem Berkol
+ - Élie Mousseaux
+ - Çigdem Gökçek Saraç
+ - Éric Anquetil
+ - Élodie-Jane Sims
+ - Élise Prieur
+ - Éloi Bossé
+ - Éric Laugerotte
+ - Éric Garcia
+ - Éric Chassande-Mottin
+ - Éric Gaussier
+ - Éric Marchand
+ - Éric Lespérance
+ - Özgür Alan
+ - Óscar Trullols-Cruces
+ - Éva Takács
+ - Étienne Duris
+ - Éric Tanter
+ - Éric Schost
+ - Éric Rutten
+ - Éric Slezak
+ - Érick Bizouarn
+ - Éric Trupin
+ - Érika F. Cota
+ - Étienne Payot
+ - Étienne Mémin
+ - Étienne Lozes
+ - Étienne Payet
+ - Éva Gombás
+ - Éva Bodnár
+ - Étienne Vincent
+ - Éva Czabarka
+ - Éva Székely
+ - Éva Simonin
+ - Óscar Corcho
+ - Òscar Divorra Escoda
+ - Ì. Emre Telatar
+ - Éva Tardos
+ - Ólafur Ragnar Helgason
+ - Óscar González
+ - Óscar Ferrández
+ - Óscar Fresnedo
+ - Óscar Jesús Rubio Martí
+ - Óscar Ibáñez
+ - Óscar Martínez Mozos
+ - Óscar Reinoso
+ - Ömer Oruç
+ - Ömer Akin
+ - Ö. Ugur
+ - Ö. Köse
+ - Ósscar González de Dios
+ - Ö. Snorrason
+ - Öjvind Johansson
+ - Ö. Yigit
+ - Ömer Faruk Baykoç
+ - Ömer Eskidere
+ - Ömer Egecioglu
+ - Ömer Civalek
+ - Ömer F. Açikel
+ - Ömer Kaan Baykan
+ - Ömer Ileri
+ - Ömer Faruk Gözükizil
+ - Ömer Korçak
+ - Ömer Kavaklioglu
+ - Ömer Nezih Gerek
+ - Özalp Babaoglu
+ - Önder Halis Bettemir
+ - Ömer Özgün Isikman
+ - Ömer Sinan Sahin
+ - Ömer Tarakci
+ - Ömür Bozma
+ - Ömür Arslan
+ - Örjan Smedby
+ - Önsen Toygar
+ - Önder Kizilkan
+ - Örjan Ekeberg
+ - Övünç Polat
+ - Örsan Aytekin
+ - Özge Can Özcanli
+ - Özer Talo
+ - Özcan Özyurt
+ - Özcan Öksüz
+ - Özden Gür Ali
+ - Özge Alaçam
+ - Özer Uygun
+ - Özgü Alay
+ - Özge Uncu
+ - Özgur Erkent
+ - Özgün Yilmaz
+ - Özlem Ergun
+ - Özgür Ulusoy
+ - Özgür Kaya
+ - Özgür Deniz Önür
+ - Özgür B. Akan
+ - Özgür Erçetin
+ - Özgür Dural
+ - Özgür Gürbüz
+ - Özgür Kisi
+ - Özgür Oyman
+ - Özgür Özlük
+ - Özgür Ömer Ersin
+ - Özgür Yilmaz
+ - Özgür Özdemir
+ - Özkan Öcalan
+ - Özgürol Öztürk
+ - Özlem Durmaz Incel
+ - Özlem Ak Gümüs
+ - Øyvind Stavdahl
+ - Øivind Due Trier
+ - Öznur Yasar
+ - Özlem G. Atlihan
+ - Öznur Özkasap
+ - Öznur Özkan
+ - Øystein Veland
+ - Øystein Haugen
+ - Øivind Kure
+ - Øystein Skotheim
+ - Øyvind Ryan
+ - Ülo Lepik
+ - Úrsula González-Nicolás
+ - Úlfar Erlingsson
+ - Øyvind Ytrehus
+ - Úrsula Costa
+ - Ülkü (Dinlemez) Ates
+ - Ülker Erdönmez
+ - Ülkü Baysal
+ - Ümit V. Çatalyürek
+ - Ümit Sami Sakalli
+ - Ümit Aygölü
+ - Ümit Incekara
+ - Ümit Totur
+ - Ümit Yüceer
+ - Ümit Y. Ogras
+ - Ün Usar
+ - Ünal Ufuktepe
+
+
+TOTAL: 221 nomes

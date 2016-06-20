@@ -1,0 +1,16 @@
+﻿Build started 11/03/2015 18:09:22.
+     1>Project "c:\Users\daniel\documents\visual studio 2013\Projects\Etapa-01\Etapa-01\Etapa-01.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\daniel\documents\visual studio 2013\projects\etapa-01\etapa-01\main.cpp(59): error C2065: 'tris' : undeclared identifier
+     1>c:\users\daniel\documents\visual studio 2013\projects\etapa-01\etapa-01\main.cpp(59): error C2228: left of '.size' must have class/struct/union
+                 type is 'unknown-type'
+     1>c:\users\daniel\documents\visual studio 2013\projects\etapa-01\etapa-01\main.cpp(61): error C2065: 'tris' : undeclared identifier
+     1>c:\users\daniel\documents\visual studio 2013\projects\etapa-01\etapa-01\main.cpp(61): error C2228: left of '.print' must have class/struct/union
+     1>c:\users\daniel\documents\visual studio 2013\projects\etapa-01\etapa-01\main.cpp(128): warning C4018: '<' : signed/unsigned mismatch
+     1>Done Building Project "c:\Users\daniel\documents\visual studio 2013\Projects\Etapa-01\Etapa-01\Etapa-01.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.68

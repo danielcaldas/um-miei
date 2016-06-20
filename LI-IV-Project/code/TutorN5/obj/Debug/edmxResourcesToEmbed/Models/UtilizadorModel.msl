@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UtilizadorDBModelStoreContainer" CdmEntityContainer="UtilizadorDAO">
+    <EntitySetMapping Name="Utilizador">
+      <EntityTypeMapping TypeName="UtilizadorDBModel.Utilizador">
+        <MappingFragment StoreEntitySet="Utilizador">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Idade" ColumnName="Idade" />
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="ReiPreferido" ColumnName="ReiPreferido" />
+          <ScalarProperty Name="ProgressoGeral" ColumnName="ProgressoGeral" />
+          <ScalarProperty Name="ModoInt" ColumnName="ModoInt" />
+          <ScalarProperty Name="TotalExercicios" ColumnName="TotalExercicios" />
+          <ScalarProperty Name="ExerciciosPositivos" ColumnName="ExerciciosPositivos" />
+          <ScalarProperty Name="TotalAlineas" ColumnName="TotalAlineas" />
+          <ScalarProperty Name="TotalAlineasCorretas" ColumnName="TotalAlineasCorretas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

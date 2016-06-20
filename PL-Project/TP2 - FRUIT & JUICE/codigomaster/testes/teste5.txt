@@ -1,0 +1,23 @@
+FJBEGIN
+FRUIT
+  asa[5]={1,2,4,5}, b, c=4, d[122];
+  w;
+  a=20;
+
+  x[10]={1,2,3,4,5};
+  e=10;
+JUICE
+  IF(x[5]>2) 
+    {WHILE(1+1==2) {a=a+20;} a=a+1;} 
+    ELSE {IF(e>=2) 
+          {a=3;}  
+          ELSE {WOUT(asa);}
+         }
+    RINP(b);
+    e=5;
+    d[12]=5;
+    WOUT(asa);
+    asa[2] = 1+1 ;
+    c= c * 4;
+    e= 44 + 2;
+FJEND

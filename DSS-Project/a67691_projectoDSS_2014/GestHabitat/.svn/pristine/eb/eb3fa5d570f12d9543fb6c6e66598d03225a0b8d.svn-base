@@ -1,0 +1,127 @@
+package data_acess;
+
+import business.recursoshumanos.IVoluntario;
+import data_acess.exceptions.VoluntarioNaoExisteException;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JInternalFrame;
+import javax.swing.table.DefaultTableModel;
+import view.OkDialog;
+import view.recursoshumanos.RegistoVoluntario;
+
+/**
+ * Não é preciso preencher
+ * @author Daniel
+ */
+
+public class FACADERecursosHumanos {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    // private DoadorDAO doadores;
+    // private DonativoDAO donativos;
+    // private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    // private CandidaturaDAO candidaturas;
+    // private MembroDAO membros;
+    // private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    // private MaterialDAO materiais;
+    // private ProjetoDAO projetos;
+    // private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    private EquipaDAO equipas;
+    private FuncionarioDAO funcionarios;
+    private VoluntarioDAO voluntarios;
+    
+    
+    
+    
+    /**************************************************************************************/
+    /****************************** RECURSOS HUMANOS **************************************/
+    /**************************************************************************************/
+    
+    /*Seguintes métodos do DAO da classe voluntário: size(), put(), get(), remove(); (..., para já)*/
+    
+    /*Método de VoluntarioDAO*/    
+    /**
+     * Calcula nº total de voluntários registados no sistema.
+     * @return nº total de voluntários registados
+     */
+    public int rh_totalVoluntarios(){return this.voluntarios.size();}
+    
+    /**
+     * Retorna um voluntário pelo seu nº.
+     * @param nr, nº de voluntário.
+     * @return Voluntário correspondente ao nº passado como argumento, caso não exista lança excepção.
+     * @throws data_acess.exceptions.VoluntarioNaoExisteException
+     */
+    public IVoluntario rh_getVoluntario(int nr) throws VoluntarioNaoExisteException {
+        if(this.voluntarios.containsKey(nr)){
+            return this.voluntarios.get(nr);
+        } else throw new VoluntarioNaoExisteException(nr);
+    }
+    
+    /**
+     * Retorna um set de voluntários criados com base num campo de pesquisa.
+     * @param searchinput, String um nome (próprio ou apelido) de um ou mais voluntário.
+     * @return set de voluntários que preenchem os requisitos de pesquisa (vazio, não encontramos voluntário(s)).
+     * @throws data_acess.exceptions.VoluntarioNaoExisteException
+     */
+    public Set<IVoluntario> rh_SearchVoluntario(String searchinput) throws VoluntarioNaoExisteException {
+        Set<IVoluntario> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(IVoluntario v : this.voluntarios.values()){
+            if(v.getNome().toLowerCase().contains(lowersearch)){
+                 set.add(v);
+            }
+        }
+        return set;
+    }
+    
+    /**
+     * Elimina um dado voluntário.
+     * @param nr, nº do voluntário que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean rh_remVoluntario(int nr) {
+        if(this.voluntarios.containsKey(nr)){
+            this.voluntarios.remove(nr);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guarda um voluntário na base de dados.
+     * @param v, instância de voluntário que queremos guardar na base de dados.
+     * @return true caso o registo seja guardado, false caso contrário.
+     */
+    public boolean rh_saveVoluntario(IVoluntario v){
+        if(!this.voluntarios.containsKey(v.getNr())){
+            this.voluntarios.put(v.getNr(), v);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza um voluntário já registado no sistema.
+     * @param v, voluntário alterado que queremos atualizar na base de dados.
+     * @return true caso voluntário seja atualizado, false caso contrário. 
+     */
+    public boolean rh_editVoluntario(IVoluntario v) {
+        if(this.voluntarios.containsKey(v.getNr())){
+            this.voluntarios.put(v.getNr(), v);
+            return true;
+        } return false;
+    }
+
+    /*Buscar todos os voluntários que não pertencem a nenhuma equipa*/
+    /*Buscar todos os voluntários de uma dada equipa*/
+    /*Buscar nome de chefe de equipa...*/
+    
+    /*(...)*/
+}
+

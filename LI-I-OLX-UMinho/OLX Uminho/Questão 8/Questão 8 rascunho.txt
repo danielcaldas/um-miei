@@ -1,0 +1,8 @@
+*****Questão 8*****
+
+1- Fazer uma função que pegue no valor inicial de cada item introduzido na auction e o coloque numa lista de modo a ser posteriormente utilizado, uma
+sugestão para solucionar o problema é a criação de um novo elemento numa Auction chamado actfirstvalue que corresponderá ao preço inicial de cada
+produto a leilão;
+2-criar a função que calcula a média das valorizações, isto é a média da diferenção entre o preço leiloado e inicial de cada produto da house.
+
+a questão será onde introduzir esse valor médio ?????

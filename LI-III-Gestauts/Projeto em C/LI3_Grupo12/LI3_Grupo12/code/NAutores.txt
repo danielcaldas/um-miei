@@ -1,0 +1,304 @@
+####################### 100 AUTORES QUE MAIS PUBLICARAM EM 2012 ########################
+
+Stevo Stevic
+Publicacoes:24
+
+Xinbing Wang
+Publicacoes:15
+
+Ju H. Park
+Publicacoes:13
+
+Hermann Ney
+Publicacoes:12
+
+Xuemin (Sherman) Shen
+Publicacoes:12
+
+Yang Yang
+Publicacoes:12
+
+ShaoJie Tang
+Publicacoes:12
+
+Yunhao Liu
+Publicacoes:12
+
+Wei Wang
+Publicacoes:12
+
+Shrikanth S. Narayanan
+Publicacoes:11
+
+Wen Gao
+Publicacoes:11
+
+Bo Li
+Publicacoes:11
+
+K. J. Ray Liu
+Publicacoes:11
+
+Yang Liu
+Publicacoes:11
+
+Haizhou Li
+Publicacoes:11
+
+Wei Zhang
+Publicacoes:11
+
+Toshio Fukuda
+Publicacoes:11
+
+Xiang-Yang Li
+Publicacoes:11
+
+Yonina C. Eldar
+Publicacoes:10
+
+F. Richard Yu
+Publicacoes:10
+
+Ming Li
+Publicacoes:10
+
+Dirk Van den Poel
+Publicacoes:9
+
+Shinji Watanabe
+Publicacoes:9
+
+Baochun Li
+Publicacoes:9
+
+H. Vincent Poor
+Publicacoes:9
+
+Qian Zhang
+Publicacoes:9
+
+Wei Yu
+Publicacoes:9
+
+Mérouane Debbah
+Publicacoes:9
+
+Yan Chen
+Publicacoes:9
+
+Mohamed-Slim Alouini
+Publicacoes:9
+
+Christos V. Verikoukis
+Publicacoes:9
+
+Alexandros G. Dimakis
+Publicacoes:9
+
+Darwin G. Caldwell
+Publicacoes:9
+
+Xu Li
+Publicacoes:9
+
+Shyi-Ming Chen
+Publicacoes:8
+
+Martin Vetterli
+Publicacoes:8
+
+Jacob Benesty
+Publicacoes:8
+
+Tomohiro Nakatani
+Publicacoes:8
+
+Björn Schuller
+Publicacoes:8
+
+Li Deng
+Publicacoes:8
+
+Thomas S. Huang
+Publicacoes:8
+
+Lei Zhang
+Publicacoes:8
+
+Aria Nosratinia
+Publicacoes:8
+
+Nelson L. S. da Fonseca
+Publicacoes:8
+
+Feng Wang
+Publicacoes:8
+
+Jun Li
+Publicacoes:8
+
+Xiaodong Wang
+Publicacoes:8
+
+Inkyu Lee
+Publicacoes:8
+
+Nei Kato
+Publicacoes:8
+
+Rui Zhang
+Publicacoes:8
+
+Dharma P. Agrawal
+Publicacoes:8
+
+Sriram Vishwanath
+Publicacoes:8
+
+Dacheng Tao
+Publicacoes:8
+
+Raffaello D'Andrea
+Publicacoes:8
+
+Peng Li
+Publicacoes:8
+
+Ling Wang
+Publicacoes:8
+
+Azzedine Boukerche
+Publicacoes:8
+
+Alois Knoll
+Publicacoes:8
+
+Sennur Ulukus
+Publicacoes:7
+
+Aaron B. Wagner
+Publicacoes:7
+
+Yao-Wen Chang
+Publicacoes:7
+
+Jiangchuan Liu
+Publicacoes:7
+
+Eitan Altman
+Publicacoes:7
+
+Huadong Ma
+Publicacoes:7
+
+John H. L. Hansen
+Publicacoes:7
+
+Atsushi Nakamura
+Publicacoes:7
+
+Babak Hassibi
+Publicacoes:7
+
+Jason J. Jung
+Publicacoes:7
+
+Ralf Schlüter
+Publicacoes:7
+
+Pascal Fua
+Publicacoes:7
+
+Jie Wu
+Publicacoes:7
+
+Dan Wang
+Publicacoes:7
+
+Don Towsley
+Publicacoes:7
+
+Moe Z. Win
+Publicacoes:7
+
+Hiroki Nishiyama
+Publicacoes:7
+
+Weihua Zhuang
+Publicacoes:7
+
+Sampath Rangarajan
+Publicacoes:7
+
+Xi Zhang
+Publicacoes:7
+
+Xiaodong Lin
+Publicacoes:7
+
+Tarik Taleb
+Publicacoes:7
+
+Mary Ann Ingram
+Publicacoes:7
+
+Victor C. M. Leung
+Publicacoes:7
+
+Gamini Dissanayake
+Publicacoes:7
+
+Atsuo Takanishi
+Publicacoes:7
+
+Hong Liu
+Publicacoes:7
+
+Guang-Zhong Yang
+Publicacoes:7
+
+Yu Wang
+Publicacoes:7
+
+H. M. Srivastava
+Publicacoes:7
+
+Sang-Moon Lee
+Publicacoes:7
+
+Bo Jiang
+Publicacoes:7
+
+Bin Li
+Publicacoes:7
+
+Guoliang Xue
+Publicacoes:7
+
+Sung-Bae Cho
+Publicacoes:6
+
+Kwangsoo Kim
+Publicacoes:6
+
+Leandro dos Santos Coelho
+Publicacoes:6
+
+Jaewook Lee
+Publicacoes:6
+
+Antonio Fernández-Caballero
+Publicacoes:6
+
+Sotirios P. Chatzis
+Publicacoes:6
+
+Amir K. Khandani
+Publicacoes:6
+
+Sancho Salcedo-Sanz
+Publicacoes:6
+
+
+TOTAL: 100

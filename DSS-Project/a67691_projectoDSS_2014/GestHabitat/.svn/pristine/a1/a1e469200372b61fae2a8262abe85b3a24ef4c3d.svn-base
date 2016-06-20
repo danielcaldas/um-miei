@@ -1,0 +1,206 @@
+package business.doacoes;
+
+import java.util.Arrays;
+import java.util.Set;
+import java.util.HashSet;
+
+/** Classe que agrega toda a informação sobre um doador
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 29.12.2014
+ */
+
+public class Doador implements IDoador {
+    //Variáveis de instância
+    private String nif;
+    private String nome;
+    private String telefone;
+    private String telemovel;
+    private String localidade;
+    private String rua;
+    private String codPostal;
+    private String notas;
+    private String pessoaContato;
+    private String email;
+    private String site;
+    private String tipo;
+    private Set<Integer> donativos;
+    //public DonativoDAO donativos;
+    //Para já, substituído por TreeMap <Integer, Donativo>;
+    
+    
+    /**
+     * Construtor Vazio
+     */
+    public Doador ()
+    {
+        this.pessoaContato = "";
+        this.nif="";
+        this.tipo="";
+        this.notas="";
+        this.localidade = "";
+        this.rua="";
+        this.codPostal = "";
+        this.telemovel="";
+        this.nome="";
+        this.telefone="";
+        this.site="";
+        this.email="";
+        this.donativos = new HashSet();
+        
+        
+    }
+           
+    
+    /** Construtor parametrizado
+     * 
+     * @param pessC Pessoa de contato d
+     * @param nif
+     * @param tipo Tipo de doador (parceria ou pontual)
+     * @param notas Informação adicional que se queira acrescentar
+     * @param local Localidade
+     * @param rua
+     * @param codPostal Código Postal
+     * @param tlm Telemóvel
+     * @param nome
+     * @param tlf Telefone
+     * @param site Website 
+     * @param em E-mail
+     * @param donativos Lista de donativos feitos por este doador
+     */
+    public Doador (String pessC, String nif, String tipo, String notas, String local, String rua, 
+            String codPostal, String tlm, String nome, String tlf, String site, String em, HashSet<Integer> donativos)
+    {
+        this.pessoaContato = pessC; 
+        this.nif = nif;
+        this.tipo = tipo;
+        this.notas = notas;
+        this.localidade = local;
+        this.rua = rua;
+        this.codPostal = codPostal;
+        this.telemovel = tlm;
+        this.nome = nome;
+        this.telefone = tlf;
+        this.site = site;
+        this.email = em;
+        this.donativos = donativos;
+    }
+    /**Construtor de cópia
+     * 
+     * @param d Um doador
+     */
+    public Doador (Doador d)
+    {
+        this.pessoaContato = d.getPessoaContato();
+        this.nif = d.getNIF();
+        this.tipo = d.getTipo();
+        this.notas = d.getNotas();
+        this.localidade = d.getLocalidade();
+        this.rua = d.getRua();
+        this.codPostal = d.getCodPostal();
+        this.telemovel = d.getTelemovel();
+        this.nome = d.getNome();
+        this.telefone = d.getTelefone();
+        this.site = d.getSite();
+        this.email = d.getEmail();
+        this.donativos = d.getDonativos();
+    }
+    /*Métodos Get*/
+    @Override
+    public String getPessoaContato() {return this.pessoaContato;}
+    @Override
+    public String getNIF() {return this.pessoaContato;}
+    @Override
+    public String getTipo() {return this.pessoaContato;}
+    @Override
+    public String getNotas() {return this.pessoaContato;}
+    @Override
+    public String getLocalidade() { return this.localidade;}
+    @Override
+    public String getRua () { return this.rua;}
+    @Override
+    public String getCodPostal () { return this.codPostal;}
+    @Override
+    public String getTelemovel() {return this.pessoaContato;}
+    @Override
+    public String getNome() {return this.pessoaContato;}
+    @Override
+    public String getTelefone() {return this.pessoaContato;}
+    @Override
+    public String getSite() {return this.pessoaContato;}
+    @Override
+    public String getEmail() {return this.pessoaContato;}
+    @Override
+    public Set getDonativos () {return this.donativos;}
+    /*Métodos Set*/
+    @Override
+    public void setPessoaContato (String pc) { this.pessoaContato = pc;}
+    @Override
+    public void setNIF (String nif) { this.nif = nif;}
+    @Override
+    public void setTipo (String tipo) { this.tipo = tipo;}
+    @Override
+    public void setNotas (String n) { this.notas = n;}
+    @Override
+    public void setLocalidade (String local) {this.localidade = local;}
+    @Override
+    public void setRua (String rua) { this.rua = rua;}
+    @Override
+    public void setCodPostal (String codPostal) { this.codPostal = codPostal;}
+    @Override
+    public void setTelemovel (String tlm) { this.telemovel = tlm;}
+    @Override
+    public void setNome (String nome) { this.nome = nome;}
+    @Override
+    public void setTelefone (String tlf) { this.telefone = tlf;}
+    @Override
+    public void setSite (String site) { this.site = site;}
+    @Override
+    public void setEmail (String em) { this.email = em;}
+    @Override
+    public void setDonativos (Set<Integer> d) {this.donativos = d;}
+    
+    /*Método equals(), clone(), hashCode()*/
+    @Override
+    public boolean equals (Object o)
+    {
+        if (this==o) return true;
+        if (o==null || this.getClass()!=o.getClass()) return false;
+        Doador d = (Doador) o;
+     
+        for (Integer i: donativos)
+            if (!d.getDonativos().contains(i)) return false;
+        
+        return (this.pessoaContato.equals(d.getPessoaContato()) && this.nif.equals(d.getNIF()) && this.tipo.equals(d.getTipo())
+                && this.notas.equals(d.getNotas()) && this.localidade.equals(d.getLocalidade()) && this.rua.equals(d.getRua())
+                && this.codPostal.equals(d.getCodPostal()) && this.telemovel.equals(d.getTelemovel()) 
+                && this.nome.equals(d.getNome()) && this.telefone.equals(d.getTelefone()) 
+                && this.site.equals(d.getSite()) && this.email.equals(d.getEmail()));
+    }
+    
+    @Override
+    public Doador clone ()
+    {
+        return new Doador(this);
+    }
+    
+    @Override
+    public int hashCode()
+    {
+        return Arrays.hashCode(new Object[] {this.pessoaContato, this.nif, this.tipo, this.notas, this.localidade, this.rua,
+            this.codPostal, this.telemovel, this.nome, this.telefone, this.site, this.email, this.donativos});
+        
+    }
+    
+    /**
+     * Calcula o número de doações feitas por um doador
+     * @return Número de doações totais efectuadas.
+     */
+    @Override
+    public int totalDoacoes() { return this.donativos.size();}
+    
+            
+    
+    
+    
+}

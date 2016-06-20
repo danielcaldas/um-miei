@@ -1,0 +1,67 @@
+*****Questão 1*****
+
+Nota: Uma House é um par de listas de Auctions ( House = ([Auction],[Auction]) ) em que o primeiro elemento do par representa Auctions que ainda estão a 
+decorrer, e o segundo Auctions já terminadas.
+
+Para definirmos a função idsOK foi necessário construir primeiro duas funções auxiliares, hrf_val ("House running finished válida") e junta_auc
+("junta auctions")...
+
+*Auxiliar 1*
+hrf_val é uma função que verifica se os actid's de cada auction são diferentes, o que é o requesito necessário para a função idsOK dar como válida
+uma lista de leilões...
+
+auxiliar 1.1 : repetidos verifica se numa lista de inteiros (que no contexto do projecto vão representar os actids) são todos diferentes.
+
+(aux 1.1.1 - existe, verifica se uma dado inteiro pertence a uma lista)
+existe :: Int -> [Int] -> Bool
+existe a [] = False
+existe a (x:xs) = if a == x then True else existe a xs
+
+repetidos :: [Int] -> Bool
+repetidos [] = False
+repetidos (x:xs) = if existe x xs then True else repetidos xs
+
+auxiliar 1.2 : pegaCab ("pega Cabeças"), esta função auxiliar vai pegar em actids e vai colocalos numa lista, para que posteriormente se aplique
+a função que definimos anteriormente repetidos que verifica se existem numeros repetidos numa lista de inteiros.
+
+pegaCab :: [Auction] -> [Int]
+pegaCab [] = []
+pegaCab ((a,b,c,d,e):l) = a:pegaCab l
+
+Por fim podemos definir a nossa primeira auxiliar hrf_val:
+
+hrf_val :: [Auction] -> Bool
+hrf_val [] = True
+hrf_val [x] = True
+hrf_val lia = if (repetidos (pegaCab lia)) then False else True
+
+*Auxiliar 2*
+
+Agora vamos definir a nossa segunda auxiliar que dada uma house (um par de listas de auctions), concatena as duas listas de auctions numa só para
+posteriormente podermos aplicar hrf_val :: [Auction] -> Bool  
+
+junta_auc :: House -> [Auction]
+junta_auc ([],[]) = []
+junta_auc (a,b) = a++b
+
+--idsOK--
+
+idsOK :: House -> Bool
+
+idsOK ([],[]) = True
+
+idsOK h = if (hrf_val (junta_auc h)) then True else False
+
+Após definida a função vamos então verificar se:
+test01 = idsOk myhouse  True
+test02 = idsOk badhouse  False
+test03 = idsOk badhouse1 False
+
+
+myhouse = ([(1,"Peter","TV",60,""),(2,"Mary","laptop",120,"")],[(3,"John","phone",85,"Peter")]) -----------------------------------VERDADEIRO
+
+badhouse = ([(1,"Peter","TV",60,""),(4,"Mary","laptop",120,""),(3,"Anne","car",8500,"Peter")],[(3,"John","phone",85,"Peter")]) -----FALSO
+
+badhouse 1 = ([(1,"Peter","TV",60,""),(4,"Mary","laptop",120,""),(1,"Peter","TV",60,"")],[(3,"John","phone",85,"Peter")]) ----------FALSO
+
+(APRESENTAR AQUI AS IMAGENS)

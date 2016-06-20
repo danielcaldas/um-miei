@@ -1,0 +1,614 @@
+package view.recursoshumanos;
+
+import business.recursoshumanos.IEquipa;
+import business.recursoshumanos.IVoluntario;
+import business.recursoshumanos.ParseVoluntarioDocx;
+import data_acess.SGHabitat;
+import data_access.exceptions.VoluntarioNaoExisteException;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JInternalFrame;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import view.JCloseMainIFrameListener;
+import view.MainMenu;
+import view.OkDialog;
+
+/** Classe para vista geral e de gestão de voluntários e equipas de voluntários.
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.22
+ */
+
+public class Voluntarios extends javax.swing.JInternalFrame {
+
+    // Variáveis de instancia
+    private MainMenu parent;
+    private final SGHabitat hfacade;
+    
+    
+    public Voluntarios(MainMenu parent, SGHabitat facade) {
+        initComponents();
+        initVoluntariosComponents(parent);
+        initEquipasComponents(parent);
+        this.hfacade=facade;
+    }
+    
+    /**
+     * Método que devolve tempo atual do sistema.
+     * @return string com date e hora corrente do sistema. 
+     */
+    public String getCurrentDateTime(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+    
+    /**
+     * Método que imprime relatórios de operações no painel do menu principal.
+     * @param text, texto com informação acerca de alguma operação efetuada na operação. 
+     */
+    public void report (String text){
+        this.parent.report(text);
+    }
+    
+    /*--------------------------------------------------------------------------------------------*/
+    /*------------------------------------ VOLUNTÁRIOS -------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
+    
+    /**
+    * Iniciar componentes que estão dentro da tab "Voluntários"
+    * @param parent, parent frame, referência do menu principal. 
+    */
+    private void initVoluntariosComponents(MainMenu parent) {
+       this.addInternalFrameListener(new JCloseMainIFrameListener(this,parent));
+        this.voluntariosTable.setAutoCreateRowSorter(true);
+        
+        this.parent=parent;
+        /*if(!this.hfacade.rh_isVoluntariosEmpty()){
+            fillTableCells();
+        }*/
+        
+        final Voluntarios aux=this;
+        /*Para operações de consulta em tabelas*/
+        voluntariosTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                JTable table =(JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = table.rowAtPoint(p);
+                if (me.getClickCount() == 2) {
+                    int nr = (Integer)table.getValueAt(row,0); // Buscar o nº do vol da linha em que se fez doubleClick
+                    // Exibir dados num registo individual
+                    JInternalFrame rv=null;
+                    try {
+                        rv = new RegistoVoluntario(aux.hfacade, aux.hfacade.rh_getVoluntario(nr), aux, true);
+                    } catch (VoluntarioNaoExisteException ex) {
+                        Logger.getLogger(Voluntarios.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    aux.getDesktopPane().add(rv);
+                    rv.show();
+                    rv.setClosable(true);
+                }
+            }
+        }); 
+    }
+    
+    /**
+     * Permite frames filhas desta a aceder à parent frame da mesma.
+     * @return frame parent MainMenu
+     */
+    public MainMenu getVoluntariosParent(){return this.parent;}
+    
+    /**
+     * Método que percorre conjunto de voluntários e preenche a tabela em conformidade com os dados a mostar.
+     */
+    public void fillTableCells(){
+        DefaultTableModel model = (DefaultTableModel) voluntariosTable.getModel();
+        int i=0;
+        for(IVoluntario v : hfacade.rh_voluntariosValues()){ // Preencher tabela com dados de voluntários
+            model.addRow(new Object[]{v.getNr(), v.getFirstAndLastName(), v.getHorasVoluntariado(), "desc"});
+        }        
+    }
+    
+    /**
+     * Método que imprime um dado voluntário numa dada linha da tabela
+     * @param v, um voluntário a imprimir
+     */
+    public void printVoluntarioInTableRow(IVoluntario v){
+        DefaultTableModel model = (DefaultTableModel) voluntariosTable.getModel();
+        model.addRow(new Object[]{v.getNr(), v.getFirstAndLastName(), v.getHorasVoluntariado(), "desc", "desc"});
+    }
+    
+    /**
+     * Marcar como eliminado um voluntário removido do sistema.
+     * @param volnr, número do voluntário a eliminar da tabela. 
+     */
+    public void deleteRow(int volnr){
+       for(int i=0; i<this.voluntariosTable.getRowCount(); i++){
+            if((int)this.voluntariosTable.getValueAt(i,0)==volnr){
+                for(int j=0; j<4; j++){
+                    this.voluntariosTable.setValueAt("Removido", i, j);
+                }
+            }
+       }
+    }
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        searchbarTextField = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
+        panels = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        voluntariosTable = new javax.swing.JTable();
+        addVoluntarioButton = new javax.swing.JButton();
+        loadButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        addTeamButton = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        teamsTable = new javax.swing.JTable();
+
+        setBorder(null);
+        setTitle("Voluntários");
+
+        searchButton.setIcon(new javax.swing.ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\lupa_icon.png")); // NOI18N
+        searchButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchButton.setContentAreaFilled(false);
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onClickSearchButton(evt);
+            }
+        });
+
+        voluntariosTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nr", "Nome", "Horas", "Equipa"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        voluntariosTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        voluntariosTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(voluntariosTable);
+        if (voluntariosTable.getColumnModel().getColumnCount() > 0) {
+            voluntariosTable.getColumnModel().getColumn(0).setMaxWidth(700);
+            voluntariosTable.getColumnModel().getColumn(2).setMaxWidth(700);
+        }
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        addVoluntarioButton.setIcon(new javax.swing.ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\add_icon.png")); // NOI18N
+        addVoluntarioButton.setText("       Adicionar");
+        addVoluntarioButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addVoluntarioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onClickAddButton(evt);
+            }
+        });
+
+        loadButton.setIcon(new javax.swing.ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\upload_icon.png")); // NOI18N
+        loadButton.setText("     Carregar Ficha");
+        loadButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        loadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onClickLoadButton(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addVoluntarioButton, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(loadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(addVoluntarioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 332, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        panels.addTab("Voluntários", jPanel1);
+
+        addTeamButton.setIcon(new javax.swing.ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\add_icon.png")); // NOI18N
+        addTeamButton.setText("     Criar Equipa");
+        addTeamButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addTeamButton.setPreferredSize(new java.awt.Dimension(123, 41));
+        addTeamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onClickAddTeamButton(evt);
+            }
+        });
+
+        teamsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nr", "Nome", "Pais Origem", "Chefe", "Nº Vol."
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        teamsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(teamsTable);
+        if (teamsTable.getColumnModel().getColumnCount() > 0) {
+            teamsTable.getColumnModel().getColumn(0).setMaxWidth(700);
+            teamsTable.getColumnModel().getColumn(4).setMaxWidth(700);
+        }
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(addTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        panels.addTab("Equipas", jPanel3);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(searchbarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panels, javax.swing.GroupLayout.Alignment.TRAILING)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(searchbarTextField)
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(panels)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    /*--------------------------------------------------------------------------------------------*/
+    /*------------------------------- FIM - VOLUNTÁRIOS ------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
+    
+    
+    /*--------------------------------------------------------------------------------------------*/
+    /*-------------------------------------- EQUIPAS ---------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
+    
+    /**
+     * Iniciar componentes que estão dentro da tab "Equipas"
+     * @param parent, parent frame, referência do menu principal. 
+     */
+    private void initEquipasComponents(MainMenu parent) {
+        this.addInternalFrameListener(new JCloseMainIFrameListener(this,parent));
+        this.teamsTable.setAutoCreateRowSorter(true);
+
+        this.parent=parent;                
+        //this.equipas = new CriarEquipa().createEquipa();
+
+        final Voluntarios aux=this;
+        /*Para operações de consulta em tabelas*/
+        teamsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                JTable table =(JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = table.rowAtPoint(p);
+                if (me.getClickCount() == 2) {
+                    int nr = (Integer)table.getValueAt(row,0); // Buscar o nº da equipa da linha em que se fez doubleClick
+                    // Exibir dados num registo individual
+                    /*JInternalFrame re = new RegistoEquipa(equipas.get(nr), aux, true);
+                    aux.getDesktopPane().add(re);
+                    re.show();
+                    re.setClosable(true);*/
+                }
+            }
+        }); 
+    }
+    
+    /**
+     * Método que percorre Mapa de equipas e preenche a tabela em conformidade com os dados a mostar.
+     */
+    public void efillTableCells(){
+        DefaultTableModel model = (DefaultTableModel) teamsTable.getModel();
+        int i=0;
+        /*for(IEquipa e : this.equipas.values()){ // Preencher tabela com dados de voluntários
+            model.addRow(new Object[]{e.getId(), e.getDesignacao(), e.getpOrigem(),
+                         this.vols.get(e.getChefe()).getFirstAndLastName(), e.getChefe()});
+        }*/        
+    }
+    
+    /**
+     * Método invocado pela classe RegistoVoluntário com indicação para guardar o voluntário registado na base de dados.
+     * @param e, Equipa que eventualmente ficará registado no sistema
+     * @return true se voluntário foi editado ou reistado na base de dados, false caso contrário.
+     */
+    /*public boolean saveEquipaRegist(IEquipa e){
+        boolean r=false;
+        System.out.println("Id: "+e.getId());
+        
+        if(this.equipas.containsKey(e.getId()) && !this.equipas.containsValue(e)){
+            // Voluntário editado, verificar se houveram de facto alterações antes de guardar
+            equipas.put(e.getId(),e);
+            StringBuilder sb = new StringBuilder();
+            sb.append("Equipa editada: ").append(e.getDesignacao()).append(" Id: ").append(e.getId()).append("\n");
+            sb.append("Registo editado por: ").append(this.parent.getNomeFuncionario()).append("\n");
+            sb.append("Data: ").append(this.parent.getCurrentDateTime()).append("\n");
+            this.parent.report(sb.toString());
+            r=true;
+            // Editar linha da tabela que corresponde à equipa editada
+            for(int i=0; i<this.teamsTable.getRowCount(); i++){
+                if((int)this.teamsTable.getValueAt(i,0)==e.getId()){
+                    this.teamsTable.setValueAt(e.getDesignacao(), i, 1);
+                    this.teamsTable.setValueAt(e.getpOrigem(), i, 2);   
+                    this.teamsTable.setValueAt(vols.get(e.getChefe()).getFirstAndLastName(), i, 3);
+                    this.teamsTable.setValueAt(this.equipas.get(i).size(), i, 4);
+                }
+            }
+        } else{
+            // Equipa editado, verificar se houveram de facto alterações antes de guardar
+            if(!this.equipas.containsKey(e.getId()) && !this.equipas.containsValue(e)){
+                // Nova equipa
+                this.equipas.put(e.getId(),e);
+                StringBuilder sb = new StringBuilder();
+                sb.append("Nova equipa: ").append(e.getDesignacao()).append(" Idº: ").append(e.getId()).append("\n");
+                sb.append("Registo efetuado por: ").append(this.parent.getNomeFuncionario()).append("\n");
+                sb.append("Data: ").append(this.parent.getCurrentDateTime()).append("\n");
+                this.parent.report(sb.toString());
+                r=true;
+                // Temos uma nova instância de voluntário, preenchemos nova linha da tabela
+                printEquipaInTableRow(e);
+            }
+        }        
+        return r;
+    }*/
+    
+    /**
+     * Método que imprime uma dada equipa numa dada linha da tabela
+     * @param e, uma equipa a imprimir
+     */
+    private void printEquipaInTableRow(IEquipa e){
+        DefaultTableModel model = (DefaultTableModel) teamsTable.getModel();
+        model.addRow(new Object[]{e.getId(), e.getpOrigem(), e.getChefe(), e.size()});
+    }
+    
+    /**
+     * Marcar como eliminado uma equipa removido do sistema.
+     * @param eid, id da equipa a eliminar da tabela. 
+     */
+    public void eDeleteRow(int eid){
+       for(int i=0; i<this.teamsTable.getRowCount(); i++){
+            if((int)this.teamsTable.getValueAt(i,0)==eid){
+                for(int j=0; j<4; j++){
+                    this.teamsTable.setValueAt("Removido", i, j);
+                }
+            }
+       }
+    }
+    /*--------------------------------------------------------------------------------------------*/
+    /*----------------------------------- FIM - EQUIPAS ------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
+    
+    
+    /**
+     * O clique no botão seatch desencadeia um mecanismos de pesquisa caso input seja validado.
+     * @param evt 
+     */
+    private void onClickSearchButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClickSearchButton
+        // Pesquisar voluntário por nome ou por número
+        String searchinput = this.searchbarTextField.getText().trim();
+        if(this.voluntariosTable.getRowCount()==0 && (searchinput==null || searchinput.equals(""))){
+            this.fillTableCells();
+            return;
+        }
+        
+        if(this.panels.getSelectedIndex()==0){ // Voluntários
+            try{
+                int nr = Integer.parseInt(searchinput); // Pesquisar voluntário por nº caso string seja um número inteiro
+                if(hfacade.rh_voluntarioExiste(nr)){
+                    // Exibir dados num registo individual
+                    JInternalFrame rv=null; //= new RegistoVoluntario(vols.get(nr), this, true);
+                    this.getDesktopPane().add(rv);
+                    rv.show();
+                    rv.setClosable(true);
+                }
+            } catch(NumberFormatException e){ // Supomos que input seja um nome próprio ou apelido
+                    DefaultTableModel model = (DefaultTableModel) voluntariosTable.getModel();
+                    
+                    // Apagar linhas da tabela
+                    int n = model.getRowCount();
+                    for (int i=n-1; i>=0; i--) {
+                        model.removeRow(i);
+                    }
+                    
+                    Set<IVoluntario> set;
+                    try {
+                        set = this.hfacade.rh_searchVoluntario(searchinput);
+                    } catch (VoluntarioNaoExisteException ex) {
+                        set=new HashSet<>();
+                    }
+                    int resultsfound=set.size();
+                    
+                    // Preencher tabela
+                    for(IVoluntario v : set){
+                        model.addRow(new Object[]{v.getNr(), v.getFirstAndLastName(), v.getHorasVoluntariado(), "desc", "desc"});
+                    }
+                    
+                    if(resultsfound!=0 && !searchinput.equals("")){
+                        new OkDialog(this).show("Número de resultados encontrados para "+searchinput+": "+resultsfound);
+                    }
+            }
+        }
+        else{
+            //EQUIPAS... SEARCH BAR IMPLEMENTAR!
+            return;
+        }
+    }//GEN-LAST:event_onClickSearchButton
+
+    /**
+     * O clique no botão loadButton permite ao utilizador carregar uma ficha voluntário (.docx) para o sistema.
+     * @param evt
+     */
+    private void onClickLoadButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClickLoadButton
+        ArrayList<IVoluntario> voluntarios = new ArrayList<>();
+        try {
+            voluntarios = (ArrayList<IVoluntario>) ParseVoluntarioDocx.parse(this.hfacade);
+        } catch (Exception ex) {
+            Logger.getLogger(Voluntarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Parse não teve efeito por ser cancelado, ou porque ocorreu um erro
+        if (voluntarios.isEmpty()) return;
+        else if(voluntarios.get(0).getNome().equals("null")) return;
+
+        for(IVoluntario v : voluntarios){
+            // Exibir dados num registo individual
+            RegistoVoluntario rv=null; //= new RegistoVoluntario(v, this, false);
+            this.getDesktopPane().add(rv);
+            rv.show();
+            rv.setClosable(true);
+        }
+    }//GEN-LAST:event_onClickLoadButton
+
+    /**
+     * O clique no botão addVoluntario abre frame para registo manual.
+     * @param evt
+     */
+    private void onClickAddButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClickAddButton
+        // Exibir dados num registo individual
+        RegistoVoluntario rv = new RegistoVoluntario(hfacade,this);
+        this.getDesktopPane().add(rv);
+        rv.show();
+        rv.setClosable(true);
+    }//GEN-LAST:event_onClickAddButton
+
+    /**
+     * O clique no botão addTeam abre frame para registo manual e gestão de equipa.
+     * @param evt 
+     */
+    private void onClickAddTeamButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClickAddTeamButton
+        efillTableCells();
+        /*RegistoEquipa re = new RegistoEquipa(this);
+        this.getDesktopPane().add(re);
+        re.show();
+        re.setClosable(true);*/
+    }//GEN-LAST:event_onClickAddTeamButton
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addTeamButton;
+    private javax.swing.JButton addVoluntarioButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton loadButton;
+    private javax.swing.JTabbedPane panels;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField searchbarTextField;
+    private javax.swing.JTable teamsTable;
+    private javax.swing.JTable voluntariosTable;
+    // End of variables declaration//GEN-END:variables
+}

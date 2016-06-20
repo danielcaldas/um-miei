@@ -1,0 +1,35 @@
+package business.recursoshumanos;
+
+import java.util.Set;
+
+/**
+ * Interface da classe equipa.
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2015.01.05
+ */
+
+public interface IEquipa {
+    /*gets & sets*/
+    public int getId();
+    public void setId(int id);
+    public String getDesignacao();
+    public void setDesignacao(String nome);
+    public String getpOrigem();
+    public void setpOrigem(String pOrigem);
+    public String getObs();
+    public void setObs(String obs);
+    public int getChefe();
+    public void setChefe(int chefe);
+    public Set<Integer> getVoluntarios();
+    public void setVoluntarios(Set<Integer> voluntarios);
+    
+    /*equals, clone, hashCode*/
+    @Override
+    public boolean equals(Object o);    
+    public IEquipa clone();     
+    @Override
+    public int hashCode();
+    
+    /*Tamanho de uma equipa*/
+    public int size();
+}

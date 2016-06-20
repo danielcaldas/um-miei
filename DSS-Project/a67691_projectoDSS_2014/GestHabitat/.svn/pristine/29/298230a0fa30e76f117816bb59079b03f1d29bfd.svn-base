@@ -1,0 +1,631 @@
+package view.recursoshumanos;
+
+import business.recursoshumanos.IPermissions;
+import business.recursoshumanos.IVoluntario;
+import business.recursoshumanos.PermissionsFactory;
+import business.recursoshumanos.VoluntarioFactory;
+import data_access.exceptions.VoluntarioNaoExisteException;
+import data_acess.SGHabitat;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import view.AreYouSureDeleteDialog;
+import view.JCloseIFrameListener;
+import view.NoPermissionsDialog;
+import view.OkDialog;
+
+/**Janela para vista de registo ou consulta de dados individuais de um voluntário.
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.23
+ */
+
+public class RegistoVoluntario extends javax.swing.JInternalFrame {
+
+    // Variáveis de instância
+    private IVoluntario volAtual;
+    private Voluntarios parent; // Referência da frame parent
+    private boolean editFlag; // true quando queremos consultar/editar
+    private SGHabitat hfacade;
+    private boolean parseFlag;
+    
+    public RegistoVoluntario() {
+        initComponents();
+        this.addInternalFrameListener(new JCloseIFrameListener(this));
+    }  
+    
+    /**
+     * Construtor que permite passar instância de um voluntário, preveem-se os seguintes cenários:
+        - Consultar Voluntário (editFlag=true);
+        - Editar Voluntário (editFlag=true);
+        - Acabou de ser carregada a ficha de um voluntário ou registado manualmente (editFlag=false).
+     * @param hfacade, facade da camada de negócio.
+     * @param vol, Voluntário sobre o qual se consultam ou editam dados.
+     * @param vols, referência da instância Voluntarios para aceder a métodos.
+     * @param editFlag, será true se é pretendido consultar/editar um voluntário, false caso contrário.
+     * @param parseFlag, se foi carregada ficha ou não.
+     */
+    public RegistoVoluntario(SGHabitat hfacade, IVoluntario vol, Voluntarios vols, boolean editFlag, boolean parseFlag){
+        initComponents();
+        this.addInternalFrameListener(new JCloseIFrameListener(this));
+        this.setLocation(0,0);
+        
+        this.volAtual=vol;
+        this.parent=vols;
+        this.editFlag=editFlag;
+        this.parseFlag=parseFlag;
+        this.hfacade=hfacade;
+
+        if(editFlag==true){
+            this.setTitle("Voluntário: "+volAtual.getFirstAndLastName());
+            this.addHorasButton.setEnabled(true);
+        } else{
+            this.addHorasButton.setEnabled(false);
+            this.setTitle("Novo voluntário");
+        }
+        this.bornDateChooser.setCalendar(volAtual.getDatanasc());
+        this.beginDateChooser.setCalendar(volAtual.getDataInicioVol());
+        this.nameTextField.setText(volAtual.getNome());
+        this.localTextField.setText(volAtual.getLocalidade()); this.ruaTextField.setText(volAtual.getRua());
+        this.codPostTextField.setText(volAtual.getCodPostal()); this.telfTextField.setText(volAtual.getTelef());
+        this.tlmTextField.setText(volAtual.getTelem()); this.mailTextField.setText(volAtual.getEmail());
+        this.jobTextField.setText(volAtual.getProfissao()); this.academicTextField.setText(volAtual.getHabilitacoes());
+        StringBuilder sb = new StringBuilder();
+        for(String l : volAtual.getLinguas()) sb.append(l).append(" ");
+        this.langTextField.setText(sb.toString()); this.obsTextArea.setText(volAtual.getObs());
+        this.hoursTextField.setText(volAtual.getHorasVoluntariado()+" h");
+        this.numberTextField.setText(String.valueOf(volAtual.getNr()));
+        
+        DefaultTableModel model = (DefaultTableModel) horasTable.getModel();        
+        TreeMap<Integer,Integer> horas = new TreeMap<>(vol.getHorasProjetos());
+        for(Map.Entry<Integer,Integer> entry : horas.entrySet()){
+            model.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        }
+    }
+
+    /**
+     * Método invocado pela classe RegistoVoluntário com indicação para guardar o voluntário registado na base de dados.
+     * @param v, Voluntário que eventualmente ficará registado no sistema
+     * @return true se voluntário foi editado ou reistado na base de dados, false caso contrário.
+     */
+    private boolean saveVolRegist(IVoluntario v){
+        boolean r=false;
+        
+        if(this.editFlag){
+            // Voluntário editado, verificar se houveram de facto alterações antes de guardar
+            if(!this.volAtual.equals(v)){
+                this.hfacade.rh_editVoluntario(v);
+                StringBuilder sb = new StringBuilder();
+                sb.append("Voluntário editado: ").append(v.getFirstAndLastName()).append(" Nº: ").append(v.getNr()).append("\n");
+                sb.append("Registo editado por: ").append(hfacade.rh_getFuShortName()).append("\n");
+                sb.append("Data: ").append(this.parent.getCurrentDateTime()).append("\n");
+                this.parent.report(sb.toString());
+                this.parent.printVoluntarioInTableRow(v);
+                this.volAtual=v;
+                r=true;
+            }
+            else {
+                new OkDialog(this).show("Nenhuma alteração efetuada");
+                r=false;
+            }
+        } else{
+            boolean e = !this.hfacade.rh_voluntarioExiste(v.getNr());            
+            boolean ig = !this.hfacade.rh_containsVoluntario(v);
+            
+            // Testar possibilidade de novo voluntário
+            if(e && ig){
+                // Novo voluntário
+                this.hfacade.rh_saveVoluntario(v);
+                StringBuilder sb = new StringBuilder();
+                sb.append("Novo voluntário: ").append(v.getFirstAndLastName()).append(" Nº: ").append(v.getNr()).append("\n");
+                sb.append("Registo efetuado por: ").append(hfacade.rh_getFuShortName()).append("\n");
+                sb.append("Data: ").append(this.parent.getCurrentDateTime()).append("\n");
+                this.parent.report(sb.toString());
+                // Temos uma nova instância de voluntário, preenchemos nova linha da tabela
+                this.parent.printVoluntarioInTableRow(v);
+                this.volAtual=v;
+                r=true;
+            } else{
+                new OkDialog(this).show("Este voluntário já se encontra registado");
+                r=false;
+            }
+        }        
+        return r;
+    }
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel2 = new javax.swing.JPanel();
+        nameTextField = new javax.swing.JTextField();
+        ruaTextField = new javax.swing.JTextField();
+        localTextField = new javax.swing.JTextField();
+        telfTextField = new javax.swing.JTextField();
+        mailTextField = new javax.swing.JTextField();
+        academicTextField = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        tlmTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        codPostTextField = new javax.swing.JTextField();
+        jobTextField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        hoursTextField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        langTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        obsTextArea = new javax.swing.JTextArea();
+        saveButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        numberTextField = new javax.swing.JTextField();
+        bornDateChooser = new com.toedter.calendar.JDateChooser();
+        beginDateChooser = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        horasTable = new javax.swing.JTable();
+        addHorasButton = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        jLabel10.setText("Telemóvel:");
+
+        jLabel5.setText("Codigo postal:");
+
+        jLabel13.setText("Horas de voluntariado:");
+
+        hoursTextField.setEnabled(false);
+
+        jLabel17.setText("Data de início de voluntariado: ");
+
+        jLabel14.setText("Línguas:  ");
+
+        jLabel1.setText("Nome: ");
+
+        jLabel2.setText("Localidade: ");
+
+        jLabel3.setText("Rua:");
+
+        jLabel4.setText("Telefone: ");
+
+        jLabel6.setText("Email: ");
+
+        jLabel7.setText("Profissão: ");
+
+        jLabel8.setText("Habilitações: ");
+
+        jLabel9.setText("Observações: ");
+
+        jLabel11.setText("Data de Nascimento:");
+
+        obsTextArea.setColumns(20);
+        obsTextArea.setRows(5);
+        jScrollPane1.setViewportView(obsTextArea);
+
+        saveButton.setIcon(new javax.swing.ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\save_icon.png")); // NOI18N
+        saveButton.setText("     Guardar");
+        saveButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onClickSaveButton(evt);
+            }
+        });
+
+        deleteButton.setIcon(new javax.swing.ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\garbage_icon.png")); // NOI18N
+        deleteButton.setText("     Eliminar");
+        deleteButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onClickDeleteButton(evt);
+            }
+        });
+
+        jLabel12.setText("Nrº de Voluntário:  ");
+
+        numberTextField.setEnabled(false);
+
+        horasTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nr Projeto", "Horas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        horasTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(horasTable);
+        if (horasTable.getColumnModel().getColumnCount() > 0) {
+            horasTable.getColumnModel().getColumn(0).setMaxWidth(600);
+            horasTable.getColumnModel().getColumn(1).setMaxWidth(600);
+        }
+
+        addHorasButton.setIcon(new javax.swing.ImageIcon("D:\\Dropbox\\Dropbox\\BD e DSS\\GUI\\icons\\add_icon.png")); // NOI18N
+        addHorasButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addHorasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addHorasButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel14))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(ruaTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(bornDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(beginDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(codPostTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(saveButton)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                                    .addComponent(langTextField))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jLabel12))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(numberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                            .addComponent(hoursTextField))
+                                        .addGap(94, 94, 94)
+                                        .addComponent(addHorasButton))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(academicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jobTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tlmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bornDateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(beginDateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codPostTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(ruaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(telfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 13, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel10)
+                                .addComponent(tlmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jobTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(mailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
+                                .addGap(5, 5, 5)))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(academicTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(saveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel14)
+                                .addComponent(langTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(hoursTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(addHorasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+    
+    /**
+     * Procedimentos a quando do clique no butão guardar.
+     * @param evt, um evento.
+     */
+    private void onClickSaveButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClickSaveButton
+        ArrayList<String> perms = new ArrayList<>();
+        
+        // Verificar se utilizador tem permissões para editar e criar
+        if(this.hfacade.rh_funHasPermissions(perms)){
+        
+            if(this.volAtual!=null && this.parseFlag==true){
+                // Foi feito parse à ficha ou registado manualmente voluntário
+                if(this.saveVolRegist(this.volAtual)){
+                    this.setTitle("Voluntário: "+this.volAtual.getFirstAndLastName());
+                }
+            } else{
+                ArrayList<String> linguas = new ArrayList<>();
+
+                // Parse das línguas inseridas
+                // Adicionar línguas à List<String>
+                String tokens[] = this.langTextField.getText().split(" ");
+                for (String token : tokens) {
+                    linguas.add(token.trim());
+                }
+
+                int h;
+                try{
+                    // Separ o valor em horas o possível h ou horas à frente
+                    String[] toks;
+                    toks = this.hoursTextField.getText().trim().split(" ");
+                    h = Integer.parseInt(toks[0]);
+                } catch(Exception e){
+                    h=0; 
+                }
+                
+                IVoluntario v = new VoluntarioFactory().createVoluntario();
+                v.setNr(this.hfacade.rh_generateVoluntarioKey());
+                
+                String s;
+                
+                s=this.nameTextField.getText().trim();
+                if(!s.equals("")) v.setNome(s);
+                else v.setNome(null);
+                
+                v.setDatanasc((GregorianCalendar)this.bornDateChooser.getCalendar());
+                
+                s=this.academicTextField.getText().trim();
+                if(!s.equals("")) v.setHabilitacoes(s);
+                else v.setHabilitacoes(null);
+                
+                s=this.telfTextField.getText().trim();
+                if(!s.equals("")) v.setTelef(s);
+                else v.setTelef(null);
+                
+                s=this.tlmTextField.getText().trim();
+                if(!s.equals("")) v.setTelem(s);
+                else v.setTelem(null);
+                
+                s=this.jobTextField.getText().trim();
+                if(!s.equals("")) v.setProfissao(s);
+                else v.setProfissao(null);
+                
+                s=this.mailTextField.getText().trim();
+                if(!s.equals("")) v.setEmail(s);
+                else v.setEmail(null);
+                
+                v.setDataInicioVol((GregorianCalendar)this.beginDateChooser.getCalendar());
+                
+                s=this.localTextField.getText().trim();
+                if(!s.equals("")) v.setLocalidade(s);
+                else v.setLocalidade(null);
+                
+                s=this.ruaTextField.getText().trim();
+                if(!s.equals("")) v.setRua(s);
+                else v.setRua(null);
+                
+                s=this.codPostTextField.getText().trim();
+                if(!s.equals("")) v.setCodPostal(s);
+                else v.setCodPostal(null);
+                
+                s=this.localTextField.getText().trim();
+                if(!s.equals("")) v.setLocalidade(s);
+                else v.setLocalidade(null);
+                
+                if(!linguas.isEmpty()) v.setLinguas(linguas);
+                else v.setLinguas(null);
+                
+                s=this.obsTextArea.getText().trim();
+                if(!s.equals("")) v.setObs(s);
+                else v.setObs(null);          
+                
+                if(saveVolRegist(v)){
+                    this.setTitle("Voluntário: "+v.getFirstAndLastName());
+                }
+            }
+        } else{ new NoPermissionsDialog(this).show(); }
+    }//GEN-LAST:event_onClickSaveButton
+
+    /**
+     * Procedimentos a quando do clique no butão delete.
+     * @param evt , um evento.
+     */
+    private void onClickDeleteButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onClickDeleteButton
+        List<String> perms = new ArrayList<>();
+        IPermissions p = new PermissionsFactory().createPermissions();
+        perms.add(p.getVdelete());
+        
+        if(hfacade.rh_funHasPermissions(perms)){           
+            if (this.volAtual!=null){
+                    // Lançar diálogo
+                    int option = new AreYouSureDeleteDialog(" o voluntário "+this.volAtual.getFirstAndLastName()).show();
+                    if(option == JOptionPane.YES_OPTION){ // Verificar se voluntário está na base de dados
+                        hfacade.rh_remVoluntario(this.volAtual.getNr());
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("Voluntário eliminado: ").append(this.volAtual.getFirstAndLastName()).append(" Nº:")
+                          .append(this.volAtual.getNr()).append("\n");
+                        sb.append("Funcionário: ").append(this.parent.getVoluntariosParent().getNomeFuncionario()).append("\n");
+                        sb.append("Data: ").append(this.parent.getVoluntariosParent().getCurrentDateTime()).append("\n");
+                        this.parent.report(sb.toString());
+                        // Editar linha da tabela que corresponde ao voluntário editado
+                        this.parent.deleteRow(this.volAtual.getNr());
+                        this.dispose(); // Fechar janela se operação é concluída com sucesso
+                    }                   
+            }
+        } else{ new NoPermissionsDialog(this).show(); }
+    }//GEN-LAST:event_onClickDeleteButton
+
+    private void addHorasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHorasButtonActionPerformed
+        AddHorasVoluntariado add = new AddHorasVoluntariado(this,hfacade,volAtual.getNr());
+        this.getDesktopPane().add(add);
+        add.show();
+        add.setClosable(false);
+    }//GEN-LAST:event_addHorasButtonActionPerformed
+
+    public void printRowHorasTable() throws VoluntarioNaoExisteException{
+        this.volAtual = this.hfacade.rh_getVoluntario(volAtual.getNr());
+        this.hoursTextField.setText(String.valueOf(this.volAtual.getHorasVoluntariado())+" h");
+        
+        DefaultTableModel model = (DefaultTableModel) horasTable.getModel();
+        
+        // Apagar linhas da tabela
+        int n = model.getRowCount();
+        for (int i=n-1; i>=0; i--) {
+            model.removeRow(i);
+        }        
+                
+        TreeMap<Integer,Integer> horas = new TreeMap<>(volAtual.getHorasProjetos());
+        for(Map.Entry<Integer,Integer> entry : horas.entrySet()){
+            model.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        }
+        
+        this.parent.deleteRow(volAtual.getNr());
+        this.parent.printVoluntarioInTableRow(volAtual); // Atualiza tabela geral
+    }
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField academicTextField;
+    private javax.swing.JButton addHorasButton;
+    private com.toedter.calendar.JDateChooser beginDateChooser;
+    private com.toedter.calendar.JDateChooser bornDateChooser;
+    private javax.swing.JTextField codPostTextField;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JTable horasTable;
+    private javax.swing.JTextField hoursTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jobTextField;
+    private javax.swing.JTextField langTextField;
+    private javax.swing.JTextField localTextField;
+    private javax.swing.JTextField mailTextField;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JTextField numberTextField;
+    private javax.swing.JTextArea obsTextArea;
+    private javax.swing.JTextField ruaTextField;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JTextField telfTextField;
+    private javax.swing.JTextField tlmTextField;
+    // End of variables declaration//GEN-END:variables
+}

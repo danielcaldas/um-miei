@@ -1,0 +1,453 @@
+package data_acess;
+
+import business.doacoes.DonativoFactory;
+import business.doacoes.IDonativo;
+import business.doacoes.IDonativoMonetario;
+import business.doacoes.IDonativoMaterial;
+import business.doacoes.IDonativoServicos;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * Implementação de um Data Acess Object para gerir instancias da classe Donativo.
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2015.01.04
+ */
+public class DonativoDAO implements Map<Integer, IDonativo> {
+
+    public Connection conn;
+    public MySQLParseTools parseTools;
+
+    /**
+     * Construtor que fornece conexão à tabela Donativos na base de dados da Habitat
+     * @throws ConnectionErrorException 
+     */
+    public DonativoDAO () throws ConnectionErrorException {
+        try {
+            parseTools = new MySQLParseTools();
+            this.conn = (new MySQLManager()).getConnection();
+        } catch (SQLException e) {System.out.println ("error_donativos_bd");}
+    }
+
+    @Override
+    public void clear() {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Donativo WHERE NrRecibo >=0;");
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean containsKey(Object key) {
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT Nome FROM Donativo WHERE NrRecibo='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean containsValue(Object value) {
+        try {
+            if(value instanceof IDonativo) {
+
+                IDonativo d = (IDonativo)value;
+                Statement stm = conn.createStatement();
+
+                // Percorrer tabela de doadores e verificar se existe doador
+                // exatamente igual
+                Set<Integer> chaves = this.keySet();
+                for(int i: chaves){
+                    IDonativo idd = this.get(i);
+                    
+                    if (idd instanceof IDonativoMaterial && d instanceof IDonativoMaterial)
+                    {
+                        IDonativoMaterial idm = (IDonativoMaterial) idd;
+                        IDonativoMaterial valueMaterial = (IDonativoMaterial) d;
+                        if(idm!=null)
+                            if(valueMaterial.equals(idm)) return true;
+                    }
+                    if (idd instanceof IDonativoMonetario && d instanceof IDonativoMonetario)
+                    {
+                        IDonativoMonetario idmo = (IDonativoMonetario) idd;
+                        IDonativoMonetario valueMonetario = (IDonativoMonetario) d;
+                        if(idmo!=null)
+                            if(valueMonetario.equals(idmo)) return true;
+                    }
+                    if (idd instanceof IDonativoServicos && d instanceof IDonativoServicos)
+                    {
+                        IDonativoServicos ids = (IDonativoServicos) idd;
+                        IDonativoServicos valueServicos = (IDonativoServicos) d;
+                        if(ids!=null)
+                            if(valueServicos.equals(ids)) return true;
+                    }
+                    
+                }
+                return false;
+            } else return false;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Set<Entry<Integer,IDonativo>> entrySet() {
+        try {
+            Set<Entry<Integer,IDonativo>> set;
+            Set<Integer> keys = new HashSet<>(this.keySet());            
+            
+            HashMap<Integer,IDonativo> map = new HashMap<>();
+            for(Integer key : keys){
+                if(this.containsKey(key)){
+                    map.put(key,this.get(key));
+                }
+            }
+            return map.entrySet();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public IDonativo get(Object key) {
+        IDonativo d = new DonativoFactory().createDonativo("");
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM Donativo WHERE NrRecibo="+(int)key;
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()){
+                //Donativo Monetário
+                if (rs.getFloat("Valor")>0)
+                {  
+                    IDonativoMonetario dm = (IDonativoMonetario) new DonativoFactory().createDonativo("DonativoMonetario");
+                    dm.setNRecibo (rs.getInt("NrRecibo"));
+                    dm.setObs(rs.getString("Obs"));
+                    dm.setData(parseTools.parseSQLDate(rs.getString("DataEmissao")));
+                    dm.setValor(rs.getFloat("Valor"));
+                    
+                    Set<Integer> projetos = new HashSet<>();
+                    sql = "Select Projeto from ProjetoDoadoresDonativos WHERE Donativo='"+dm.getNRecibo()+"'";
+                    rs = stm.executeQuery(sql);
+                    while (rs.next())
+                        projetos.add(rs.getInt("Projeto"));
+                    dm.setProjetos(projetos);
+                    
+                    return dm;
+                }
+                //Donativo Material
+                if (rs.getInt("Quantidade")>0)
+                {
+                    IDonativoMaterial dma = (IDonativoMaterial) new DonativoFactory().createDonativo("DonativoMaterial");
+                    dma.setNRecibo (rs.getInt("NrRecibo"));
+                    dma.setObs(rs.getString("Obs"));
+                    dma.setData(parseTools.parseSQLDate(rs.getString("DataEmissao")));
+                    dma.setNomeMaterial(rs.getString("NomeMaterial"));
+                    dma.setQuantidade(rs.getInt("Quantidade"));
+                    
+                    Set<Integer> projetos = new HashSet<>();
+                    sql = "Select Projeto from ProjetoDoadoresDonativos WHERE Donativo='"+dma.getNRecibo()+"'";
+                    rs = stm.executeQuery(sql);
+                    while (rs.next())
+                        projetos.add(rs.getInt("Projeto"));
+                    dma.setProjetos(projetos);
+                    
+                    return dma;
+                }
+                //Donativo de Serviços
+                if (rs.getString("NomeServico")!=null)
+                {
+                    IDonativoServicos ds = (IDonativoServicos) new DonativoFactory().createDonativo("DonativoServicos");
+                    ds.setNRecibo (rs.getInt("NrRecibo"));
+                    ds.setObs(rs.getString("Obs"));
+                    ds.setData(parseTools.parseSQLDate(rs.getString("DataEmissao")));
+                    ds.setTipo(rs.getString("NomeServico"));
+                    
+                    Set<Integer> projetos = new HashSet<>();
+                    sql = "Select Projeto from ProjetoDoadoresDonativos WHERE Donativo='"+ds.getNRecibo()+"'";
+                    rs = stm.executeQuery(sql);
+                    while (rs.next())
+                        projetos.add(rs.getInt("Projeto"));
+                    ds.setProjetos(projetos);
+                    
+                    return ds;
+                }
+            }
+
+
+        } catch (Exception e) {throw new NullPointerException(e.getMessage());}
+        return d;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT NrRecibo FROM Donativo");
+            return !rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Set<Integer> keySet() {
+        try {
+            Set<Integer> set = new HashSet<>();
+            int n = this.generateDonativoKey();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    set.add(i);
+                }
+            }
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public IDonativo put(Integer key, IDonativo value) 
+    {
+        IDonativo d = new DonativoFactory().createDonativo("");
+        try {            
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Donativo WHERE NrRecibo='"+key+"'");
+            int i;
+            //Donativo Matrial
+            if (value instanceof IDonativoMaterial)
+            {
+                IDonativoMaterial dm = (IDonativoMaterial) new DonativoFactory().createDonativo("DonativoMaterial");
+                IDonativoMaterial valueMaterial = (IDonativoMaterial) value;
+                stm.executeUpdate(insert(key,valueMaterial));
+                dm.setNRecibo(valueMaterial.getNRecibo());
+                dm.setObs(valueMaterial.getObs());
+                dm.setData(valueMaterial.getData());
+                dm.setNomeMaterial(valueMaterial.getNomeMaterial());
+                dm.setQuantidade(valueMaterial.getQuantidade());
+                return dm;
+            }
+            if (value instanceof IDonativoMonetario)
+            {
+                IDonativoMonetario dmo = (IDonativoMonetario) new DonativoFactory().createDonativo("DonativoMonetario");
+                IDonativoMonetario valueMonetario = (IDonativoMonetario) value;
+                stm.executeUpdate(insert(key,valueMonetario));
+                dmo.setNRecibo(valueMonetario.getNRecibo());
+                dmo.setObs(valueMonetario.getObs());
+                dmo.setData(valueMonetario.getData());
+                dmo.setValor(valueMonetario.getValor());
+                return dmo;
+            }
+            if (value instanceof IDonativoServicos)
+            {
+                IDonativoServicos dms = (IDonativoServicos) new DonativoFactory().createDonativo("DonativoServicos");
+                IDonativoServicos valueServicos = (IDonativoServicos) value;
+                dms.setNRecibo(valueServicos.getNRecibo());
+                stm.executeUpdate(insert(key,valueServicos));
+                dms.setObs(valueServicos.getObs());
+                dms.setData(valueServicos.getData());
+                dms.setTipo(valueServicos.getTipo());
+                return dms;
+            }
+
+        }
+        catch (Exception ex) {throw new NullPointerException(ex.getMessage());}
+        return d;
+    }
+
+    /*Método auxiliar de inserção na base de dados*/
+    private String insert(Integer key, IDonativo value)
+    {       
+    //Usando o parse tools
+        String dataEmissao = parseTools.parseCalendar(value.getData());
+
+
+        ArrayList<Object> valores = new ArrayList<>();
+        valores.add(key);
+        valores.add(value.getObs());
+        valores.add(dataEmissao);
+        valores.add("NULL");
+
+        //Donativo Monetario
+        if (value instanceof IDonativoMonetario)
+        {
+         
+            IDonativoMonetario valueMonetario = (IDonativoMonetario) value;
+            valores.add(valueMonetario.getValor());
+            /*Valores por defeito*/
+            valores.add(""); 
+            valores.add(0);  
+            valores.add("");
+        }
+        //Donativo Material
+        if (value instanceof IDonativoMaterial)
+        {
+            IDonativoMaterial valueMaterial = (IDonativoMaterial) value;
+            valores.add(0); //Defeito
+            valores.add(valueMaterial.getNomeMaterial());
+            valores.add(valueMaterial.getQuantidade());
+            valores.add(""); //Defeito
+        }
+        //Donativo Servicos
+        if (value instanceof IDonativoServicos)
+        {
+            IDonativoServicos valueServicos = (IDonativoServicos) value;
+            valores.add(0);
+            valores.add("");
+            valores.add(0);
+            valores.add(valueServicos.getTipo());
+        }
+
+
+        String sql = parseTools.createInsert("Donativo", valores);
+        return sql;
+    }
+
+
+    @Override
+    public void putAll(Map<? extends Integer, ? extends IDonativo> m) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override 
+    public IDonativo remove(Object key) {
+        try {
+            IDonativo d = this.get(key);
+            Statement stm = conn.createStatement();
+            String sql = "DELETE FROM Donativo WHERE NrRecibo = "+(int)key;
+            int i  = stm.executeUpdate(sql);
+            return d;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    @SuppressWarnings("empty-statement")
+    public int size() {
+        try {
+            int i = 0;
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT NrRecibo FROM Donativo");
+            for (;rs.next();i++);
+            return i;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+
+    @Override
+    public Collection<IDonativo> values() {
+        try {
+            Set<IDonativo> set = new HashSet<>();
+            Set<Integer> keys = new HashSet<>(this.keySet());
+            for(Integer key : keys)
+                set.add(this.get(key));
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean equals(Object o){
+            if(this==o) return true;
+        
+            else if(this.getClass() != o.getClass()) return false;
+        
+            else{
+                DonativoDAO ddao = (DonativoDAO) o;
+            
+                for(IDonativo d : this.values()){
+                    if(!ddao.containsKey(d.getNRecibo())) return false;
+                    else{
+                        if (d instanceof IDonativoMaterial)
+                        {   
+                            IDonativoMaterial idm = (IDonativoMaterial) d;
+                            if(!idm.equals(ddao.get(idm.getNRecibo()))) return false;
+                        }
+                        if (d instanceof IDonativoMonetario)
+                        {   
+                            IDonativoMonetario idmo = (IDonativoMonetario) d;
+                            if(!idmo.equals(ddao.get(idmo.getNRecibo()))) return false;
+                        }
+                        if (d instanceof IDonativoServicos)
+                        {   
+                            IDonativoServicos ids = (IDonativoServicos) d;
+                            if(!ids.equals(ddao.get(ids.getNRecibo()))) return false;
+                        }
+                        
+                    }
+                }
+                return true;
+            }
+        }
+
+    @Override
+    public int hashCode() {
+        int hash = Arrays.hashCode(new Object[]{conn, parseTools});
+        for(IDonativo d : this.values())
+            hash+=d.hashCode();
+        return hash;
+    }
+    
+    /**
+     * Procura a maior chave dum evento existente na base de dados e retorna
+     * esse valor incrementado em uma unidade
+     * @return Chave que identificará univocamente no sistema um evento. 
+     */
+    public int generateDonativoKey(){
+       try {
+            if(!this.isEmpty()){
+                Statement stm = conn.createStatement();
+                ResultSet rs = stm.executeQuery("SELECT MAX(NrRecibo) FROM Donativo;");
+                if(rs.next()){
+                    return(rs.getInt(1) + 1);
+                }
+            } else return 1;
+        } catch (Exception e) {return 1;}
+        
+        return -1;
+    }
+    
+    /**
+     * Fechar a ligação à base de dados.
+     */
+    public void close(){
+        try {
+            this.conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DonativoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    /** Main utilizada para testes
+     * 
+     * @param args
+     * @throws ConnectionErrorException
+     * @throws Exception 
+     */
+    public static void main(String[] args) throws ConnectionErrorException, Exception {
+        DonativoDAO dDAO = new DonativoDAO();
+        dDAO.clear();
+       
+        //for (int i=0; i<5; i++)
+        //{
+        IDonativoMaterial dmt = (IDonativoMaterial) new DonativoFactory().createDonativo("DonativoMaterial");
+        dmt.setNRecibo(dDAO.generateDonativoKey());
+        dmt.setObs("Sem obsservações");
+        dmt.setData(new GregorianCalendar());
+        dmt.setNomeMaterial ("Tijolo");
+        dmt.setQuantidade (100);
+        dDAO.put(dmt.getNRecibo(), dmt);
+        //}
+        
+        
+        
+        
+        
+        }
+
+}

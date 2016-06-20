@@ -1,0 +1,52 @@
+package data_acess;
+
+/**Curta descrição:
+ * Facade do sistema de gestão da Habitat através do qual se acedem a todas as funcionalidades oferecidas pela camada de negócio
+ * do projeto, assim como a toda a base de dados que suporta a aplicação pelo que esta classe é também
+ * o DataAcessFacade do Sistema.
+ * 
+ * Detalhe do facade:
+ * Neste facade fazemos a gestão das 4 principais componentes da camada de negócio:
+ *  - Gestão de donativos e doadores e outros relacionados com doacoes;
+ *  - Gestão de famílias que se candidatam;
+ *  - Gestão de projetos, das obras e respetivas etapas;
+ *  - Gestão dos recusos humanos da Habitat;
+ * 
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.31
+ */
+
+public class SGHabitat {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    private DoadorDAO doadores;
+    private DonativoDAO donativos;
+    private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    private CandidaturaDAO candidaturas;
+    private MembroDAO membros;
+    private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    private MaterialDAO materiais;
+    private ProjetoDAO projetos;
+    private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    private EquipaDAO equipas;
+    private FuncionarioDAO funcionarios;
+    private VoluntarioDAO voluntarios;
+    
+    /**
+     * Construtor vazio para o facade da camada de negócio da aplicação.
+     * @throws ConnectionErrorException 
+     */
+    public SGHabitat() throws ConnectionErrorException {
+        this.doadores = new DoadorDAO(); this.donativos = new DonativoDAO(); this.eventos = new EventoDAO();
+        this.candidaturas = new CandidaturaDAO(); this.membros = new MembroDAO(); this.representante = new RepresentanteDAO();
+        this.materiais = new MaterialDAO(); this.projetos = new ProjetoDAO(); this.tarefas = new TarefaDAO();
+        this.equipas = new EquipaDAO(); this.funcionarios = new FuncionarioDAO(); this.voluntarios = new VoluntarioDAO();
+    }    
+}

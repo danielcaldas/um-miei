@@ -1,0 +1,321 @@
+package data_acess;
+
+import data_acess.MySQLParseTools;
+import data_acess.ConnectionErrorException;
+import data_acess.MySQLManager;
+import business.familias.Membro;
+import business.familias.Membro;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import business.familias.MembroFactory;
+import business.familias.IMembro;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+
+
+/**
+ * Implementação de um Data Acess Object para gerir instancias da classe Membro.
+ * @author 
+ * @version 
+ */
+public class MembroDAO implements Map<Integer,IMembro> {
+
+    public Connection conn;
+    public MySQLParseTools parseTools;
+
+    public MembroDAO() throws ConnectionErrorException{
+        try {
+            this.conn = (new MySQLManager()).getConnection();
+            this.parseTools = new MySQLParseTools();
+
+        } 
+        catch (SQLException ex) {System.out.println("error_Membros_bd");}
+    }
+
+    @Override
+    public int size() {
+     try {
+            int i = 0;
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Id FROM Membros");
+            for (;rs.next();i++);
+            return i;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    @Override
+    public boolean isEmpty() {
+      try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Id FROM Membros");
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}    
+    }
+
+    @Override
+    public boolean containsKey(Object o) {
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT Nome FROM Membros WHERE Id='"+(int)o+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public boolean containsValue(Object o) {
+    try {
+            if(o instanceof IMembro) {
+            
+                IMembro v = (IMembro)o;
+                Statement stm = conn.createStatement();
+                
+                // Percorrer tabela de voluntarios e verificar se existe voluntario
+                // exatamente igual
+                int N=this.size();
+                for(int key=1; key<N; key++){
+                    IMembro isv = this.get(key);
+                    if(v.equals(isv)) return true;
+                }
+                return false;
+            } else return false;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public IMembro get(Object o) {
+        
+        try {
+            IMembro m = null;
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM Membros WHERE Id='"+(int)o+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) 
+                m = new MembroFactory().createMembro();
+                m.setId(rs.getInt(1));
+                m.setNome(rs.getString(2));
+                m.setParentesco(rs.getString(3));
+                m.setDataNasc(parseTools.parseSQLDate(rs.getString(4)));
+                m.setEstadoCivil(rs.getString(5));
+                m.setOcupacao(rs.getString(6));
+                m.setEscolaridade(rs.getString(7));
+            return m;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    /*
+    public IMembro put(String k, Membro v) {
+       try {
+            IMembro c = null;
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Membro WHERE Id='"+k+"'");
+            String sql = "INSERT INTO Membro VALUES ('"+v.getId()+"','"+k+"',";
+            int i  = stm.executeUpdate(sql);
+            IMembro mt = new MembroFactory().createMembro();
+            mt.setId(v.getId());
+            mt.setNome(v.getNome());
+            mt.setParentesco(v.getParentesco());
+            mt.setDataNasc(v.getDataNasc());
+            mt.setEstadoCivil(v.getEstadoCivil());
+            mt.setOcupacao(v.getOcupacao());
+            mt.setEscolaridade(v.getEscolaridade());
+            return mt;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+*/
+    @Override
+    public IMembro remove(Object o) {
+        try {
+            IMembro m = this.get(o);
+            Statement stm = conn.createStatement();
+            String sql = "DELETE '"+o+"' FROM Membros";
+            int i  = stm.executeUpdate(sql);
+            return m;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+     public void clear () {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Membro WHERE Membros.Id>=0;");
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public int hashCode() {return Arrays.hashCode(new Object[]{conn, parseTools});}
+    
+    @Override
+     public boolean equals(Object o) {
+         if(this==o) return true;
+        
+        else if(this.getClass() != o.getClass()) return false;
+        
+        else{
+             MembroDAO edao = (MembroDAO) o;
+            
+            for(IMembro e : this.values()){
+                if(!edao.containsKey(e.getId())) return false;
+                else{
+                    if(!e.equals(edao.get(e.getId()))) return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    @Override
+    public Set<Integer> keySet() {
+        try {
+            Set<Integer> set = new HashSet<>();
+            int n = this.generateMembroKey();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    set.add(i);
+                }
+            }
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public Collection<IMembro> values() {
+        try {
+            Set<IMembro> set = new HashSet<>();
+            Set<Integer> keys = new HashSet<>(this.keySet());
+            for(Integer key : keys)
+                set.add(this.get(key));
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    @Override
+    public IMembro put(Integer k, IMembro v) {
+            try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Membros WHERE Id='"+k+"'");
+            int i  = stm.executeUpdate(insert(k,v));
+            IMembro mt = new MembroFactory().createMembro();
+            mt.setId(v.getId());
+            mt.setNome(v.getNome());
+            mt.setParentesco(v.getParentesco());
+            mt.setDataNasc(v.getDataNasc());
+            mt.setEstadoCivil(v.getEstadoCivil());
+            mt.setOcupacao(v.getOcupacao());
+            mt.setEscolaridade(v.getEscolaridade());
+            return mt;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    private String insert(Integer key, IMembro value) {
+        List<Object> obj = new ArrayList<>();
+        obj.add(value.getId());
+        obj.add(value.getNome());
+        obj.add(value.getParentesco());
+        obj.add(value.getEstadoCivil());
+        obj.add(value.getEscolaridade());
+        obj.add(parseTools.parseCalendar(value.getDataNasc()));
+        obj.add(value.getOcupacao());
+        obj.add("NULL"); 
+        
+        return parseTools.createInsert("Membros", obj);
+    }
+
+    @Override
+    public void putAll(Map<? extends Integer, ? extends IMembro> map) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+   public Set<Entry<Integer, IMembro>> entrySet() {
+        try {
+            Set<Entry<Integer,IMembro>> set;
+            Set<Integer> keys = new HashSet<>(this.keySet());            
+            
+            HashMap<Integer,IMembro> map = new HashMap<>();
+            for(Integer key : keys){
+                if(this.containsKey(key)){
+                    map.put(key,this.get(key));
+                }
+            }
+            return map.entrySet();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    
+    public int generateMembroKey(){
+       try {
+            if(!this.isEmpty()){
+                Statement stm = conn.createStatement();
+                ResultSet rs = stm.executeQuery("SELECT MAX(Id) FROM Membros;");
+                if(rs.next()){
+                    return(rs.getInt(1) + 1);
+                }
+            } else return 1;
+        } catch (Exception e) {return 1;}
+        
+        return -1;
+    }
+    
+    
+    /* MAIN*/
+    
+        public static void main(String[] args) throws ConnectionErrorException, Exception {
+        MembroDAO meDAO = new MembroDAO();
+        //meDAO.clear();
+        
+        //List<IMembro> p = new ArrayList<>();
+        
+        for(int i=0; i<6; i++){
+            IMembro m = new MembroFactory().createMembro();
+            m.setId(i);
+            m.setNome("Ricardo"+i);
+            m.setParentesco("Filho");
+            m.setEstadoCivil("Solteiro");
+            m.setEscolaridade("1"+i+"º ano");
+            m.setDataNasc(new GregorianCalendar(1994,05,i+1));
+            m.setOcupacao("Construção");
+
+            meDAO.put(m.getId(),m);
+        }
+        /*
+        System.out.println(meDAO.isEmpty());
+
+        for(IMembro v : p){
+            meDAO.put(v.getId(), (IMembro)v);
+            System.out.println("INSERT succeed.");
+        }
+        
+        System.out.println(meDAO.containsKey(4));
+        meDAO.remove(p.get(4).getId());
+        System.out.println(meDAO.containsKey(4));
+        System.out.println(meDAO.size());
+
+        for(int i=0; i<meDAO.size(); i++){
+            if(i!=4) System.out.println("- "+ i +": "+ meDAO.get(i).getId());
+        }   
+        meDAO.clear();
+        System.out.println(meDAO.size());*/
+    }
+    
+}

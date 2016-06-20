@@ -1,0 +1,19 @@
+﻿Build started 01/06/2015 14:27:00.
+     1>Project "D:\Dropbox\Dropbox\Computação Gráfica\CG_FASE-01_GRUPO19\Etapa-01\Etapa-01\Etapa-01.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(942,5): warning MSB8027: Two or more files with the name of tinyxmlparser.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are ..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinyxmlparser.cpp, tinyxmlparser.cpp.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinystr.cpp" "..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinyxml.cpp" "..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinyxmlerror.cpp" "..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinyxmlparser.cpp" tinyxmlparser.cpp
+         tinystr.cpp
+     1>c1xx : fatal error C1083: Cannot open source file: '..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinystr.cpp': No such file or directory
+         tinyxml.cpp
+     1>c1xx : fatal error C1083: Cannot open source file: '..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinyxml.cpp': No such file or directory
+         tinyxmlerror.cpp
+     1>c1xx : fatal error C1083: Cannot open source file: '..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinyxmlerror.cpp': No such file or directory
+         tinyxmlparser.cpp
+     1>c1xx : fatal error C1083: Cannot open source file: '..\..\..\..\..\Desktop\3º Ano 2º Semestre\Computação Gráfica\tinyxml\tinyxmlparser.cpp': No such file or directory
+         tinyxmlparser.cpp
+     1>Done Building Project "D:\Dropbox\Dropbox\Computação Gráfica\CG_FASE-01_GRUPO19\Etapa-01\Etapa-01\Etapa-01.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.39

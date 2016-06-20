@@ -1,0 +1,7 @@
+FJBEGIN
+FRUIT
+x=10;
+a[1]={2};
+JUICE
+x=x/a;
+FJEND

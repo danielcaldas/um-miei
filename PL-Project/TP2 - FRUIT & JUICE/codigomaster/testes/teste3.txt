@@ -1,0 +1,7 @@
+FJBEGIN
+FRUIT
+x=10;
+y=0;
+JUICE
+while(y<x) {y=y+1;}
+FJEND

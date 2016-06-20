@@ -1,0 +1,29 @@
+pegaAuc :: [NAuction] -> [Auction]
+pegaAuc [] = []
+pegaAuc ((NAuction a st):nh) = a:pegaAuc nh
+
+pegaAuc' :: NHouse -> [Auction]
+pegaAuc' (NHouse []) = []
+pegaAuc' (NHouse ((NAuction a st):nh)) = a:pegaAuc' (NHouse nh)
+
+pegaArun :: [NAuction] -> [Auction]
+pegaArun ((NAuction a st):nh) = if st==Running then a:pegaArun nh else pegaArun nh
+
+pegaArun' :: NHouse -> [Auction]
+pegaArun' (NHouse ((NAuction a st):nh)) = if st==Running then a:pegaArun' (NHouse nh) else pegaArun' (NHouse nh)	
+
+
+
+data Auction = Auction {
+                 actid     :: Int,
+                 actowner  :: String,
+                 actdesc   :: String,
+                 actvalue  :: Int,
+                 actbidder :: String
+               } deriving (Show,Eq,Ord)
+data House = House {
+               hrunning  :: Running,
+               hfinished :: Finished
+             } deriving (Show,Eq)
+type Running  = [Auction]
+type Finished = [Auction]

@@ -1,0 +1,264 @@
+###################LISTA DE AUTORES QUE PUBLICARAM ENTRE 1999 e 2002###################
+
+ - Aaron F. Bobick
+ - Agostinho C. Rosa
+ - Agostino G. Bruzzone
+ - Akira Nakamura
+ - Alberto Del Bimbo
+ - Alberto L. Sangiovanni-Vincentelli
+ - Alessandro Bogliolo
+ - Alexander Barg
+ - Alexander Vardy
+ - Alexandru Nicolau
+ - Alfred O. Hero III
+ - Alok N. Choudhary
+ - Amnon Shashua
+ - Anand Raghunathan
+ - Andrew F. Seila
+ - Andrew J. Siprelle
+ - Andrew Klapper
+ - Andris Ambainis
+ - André Mund
+ - Anil Sawhney
+ - Anil K. Jain
+ - Anthony Ephremides
+ - Anup Basu
+ - Arnold W. M. Smeulders
+ - Averill M. Law
+ - Azriel Rosenfeld
+ - Barry L. Nelson
+ - Bertrand M. Hochwald
+ - Beth C. Kulick
+ - Bin Luo
+ - Bir Bhanu
+ - Boon-Ping Gan
+ - Brajendra Panda
+ - Bruce W. Schmeiser
+ - Bryant A. Julstrom
+ - Chad D. DeJong
+ - Chang-Hyun Jo
+ - Chaoping Xing
+ - Charles R. Harrell
+ - Chin-Chen Chang
+ - Ching Y. Suen
+ - Chong-Wah Ngo
+ - Christos Alexopoulos
+ - Clark F. Olson
+ - Cunsheng Ding
+ - Daniel T. Brunner
+ - Daniel W. Halpin
+ - Dario Maio
+ - Darko Kirovski
+ - David Blaauw
+ - David Goldsman
+ - David J. Parsons
+ - David Krahl
+ - David M. Nicol
+ - David N. C. Tse
+ - Davide Maltoni
+ - Deborah Estrin
+ - Dit-Yan Yeung
+ - Donald F. Towsley
+ - E. Jack Chen
+ - Edward R. Dougherty
+ - Edwin K. P. Chong
+ - Edwin R. Hancock
+ - Ehud Rivlin
+ - Fady Alajaji
+ - Fang-Wei Fu
+ - Felipe F. Baesler
+ - Filiberto Pla
+ - Forrest Brewer
+ - Francesco Quaglia
+ - Francky Catthoor
+ - Fred Glover
+ - Frithjof Kruggel
+ - G. David Forney Jr.
+ - Gabriella Sanniti di Baja
+ - Gary B. Lamont
+ - Georges G. E. Gielen
+ - Gerald T. Mackulak
+ - Giuseppe Boccignone
+ - Giuseppe Caire
+ - Gregory W. Wornell
+ - Günther R. Raidl
+ - H. Jonathan Chao
+ - Hai Zhou
+ - Hang Joon Kim
+ - Hao Chen
+ - Hao Che
+ - Harish Viswanathan
+ - Harriet Black Nembhard
+ - Heinrich Meyr
+ - Heng-Da Cheng
+ - Hewijin Christine Jiau
+ - Hirotomo Aso
+ - Hong Yan
+ - Hongji Yang
+ - Horace Ho-Shing Ip
+ - Horst Bunke
+ - Igal Sason
+ - Igor Vajda
+ - Ioannis Kontoyiannis
+ - Irith Pomeranz
+ - Isabelle Bloch
+ - J. Barrie Thompson
+ - J. Ramanujam
+ - Jack P. C. Kleijnen
+ - Jacob White
+ - James O. Henriksen
+ - James P. Kelly
+ - James R. Wilson
+ - Jennifer L. Wong
+ - Jerry Banks
+ - Jia Li
+ - Joaquín Fernández-Valdivia
+ - John Oliensis
+ - John S. Baras
+ - John W. Fowler
+ - Jorma Rissanen
+ - Jose A. García
+ - Josep Rifà
+ - Ju Jia Zou
+ - Julio C. Martínez
+ - Jun Liu
+ - Junshan Zhang
+ - Jörg Henkel
+ - K. Preston White
+ - Karem A. Sakallah
+ - Kaushik Roy
+ - Kaustav Banerjee
+ - Keith W. Ross
+ - Kenneth Zeger
+ - Keshab K. Parhi
+ - Ki-Sang Hong
+ - Krishnendu Chakrabarty
+ - Kumar N. Sivarajan
+ - Kurt Keutzer
+ - Kwang-Ting Cheng
+ - Lawrence T. Pileggi
+ - Leandros Tassiulas
+ - Lee Schruben
+ - Leszek Gasieniec
+ - Leyuan Shi
+ - Liren Zhang
+ - Lisa Zhang
+ - Long Quan
+ - Luca Benini
+ - M. Anwarul Hasan
+ - M. Narasimha Murty
+ - M. Shiva Kumar
+ - Madhu Sudan
+ - Mahesh K. Varanasi
+ - Mahmut T. Kandemir
+ - Malgorzata Marek-Sadowska
+ - Mansooreh Mollaghasemi
+ - Marc P. C. Fossorier
+ - Marcello Pelillo
+ - Mario Ferraro
+ - Mark T. Traband
+ - Marwan Krunz
+ - Matti Pietikäinen
+ - Mehrdad Nourani
+ - Michael G. McComas
+ - Miodrag Potkonjak
+ - Mohamed Ould-Khaoua
+ - Mohammad Amin Shokrollahi
+ - Muriel Médard
+ - Neri Merhav
+ - Nick G. Duffield
+ - Nico M. van Dijk
+ - Nikil D. Dutt
+ - Osman Balci
+ - P. Sreenivasa Kumar
+ - Paul D. Gader
+ - Pedro Larrañaga
+ - Perakath C. Benjamin
+ - Philip L. Worthington
+ - Pierre L'Ecuyer
+ - Pietro Pala
+ - Po-Ning Chen
+ - Pong Chi Yuen
+ - Prithviraj Banerjee
+ - Rae-Hong Park
+ - Raffaele Cappelli
+ - Ram Zamir
+ - Ramakant Nevatia
+ - Ramzi A. Haraty
+ - Ray J. Paul
+ - Raymond W. Yeung
+ - Reuven Cohen
+ - Richard A. Phelps
+ - Richard E. Nance
+ - Richard G. Baraniuk
+ - Ricki G. Ingalls
+ - Robert G. Sargent
+ - Robert M. Haralick
+ - Robert M. Gray
+ - Roberto Cipolla
+ - Roberto Revetria
+ - Rolf Johannesson
+ - Ron M. Roth
+ - Rosa Rodriguez-Sánchez
+ - Rosalind W. Picard
+ - Rudolf Ahlswede
+ - Russell C. H. Cheng
+ - Sachin S. Sapatnekar
+ - Sameer Singh
+ - Sanjay Jain
+ - Sanjeev R. Kulkarni
+ - Saswati Sarkar
+ - Sergio Verdú
+ - Shane G. Henderson
+ - Shinichiro Omachi
+ - Shlomo Shamai
+ - Shu Lin
+ - Sigurdur Ólafsson
+ - Simaan M. AbouRizk
+ - Simon J. E. Taylor
+ - Simon Litsyn
+ - Songde Ma
+ - Stephen E. Chick
+ - Stephen S. Yau
+ - Stewart Robinson
+ - Sudhakar M. Reddy
+ - Sujit Dey
+ - Sung-Mo Kang
+ - Supamas Sirichotiyakul
+ - Susan M. Sanchez
+ - Takeo Kanade
+ - Tamás Linder
+ - Tapas Kanungo
+ - Terry Caelli
+ - Thierry Pun
+ - Thomas J. Schriber
+ - Thomas L. Marzetta
+ - Thomas Schulze
+ - Tillal Eldabi
+ - Timo Ojala
+ - Toby Berger
+ - Tor Helleseth
+ - Torleiv Kløve
+ - Tuvi Etzion
+ - Vahid Tarokh
+ - Venkat Anantharam
+ - Venkatesan Guruswami
+ - Venu Govindaraju
+ - Venugopal V. Veeravalli
+ - Victor V. Zyablov
+ - Viljem Zumer
+ - Wan-Chi Siu
+ - William C. Chu
+ - Witold Pedrycz
+ - Xiaoyi Jiang
+ - Xose R. Fernández-Vidal
+ - Yao-Wen Chang
+ - Yi-Ping Hung
+ - Yervant Zorian
+ - Yu-Chee Tseng
+ - Yuan Yan Tang
+ - Yuanyuan Yang
+ - Ze-Nian Li
+ - Zheru Chi
+
+TOTAL: 260

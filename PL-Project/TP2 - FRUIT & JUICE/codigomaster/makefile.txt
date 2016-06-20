@@ -1,0 +1,31 @@
+
+fj: y.tab.o lex.yy.o
+	gcc -o fj y.tab.o lex.yy.o hash.o -ll
+
+y.tab.o: y.tab.c
+	gcc -c y.tab.c
+
+y.tab.c: hash.o fruitjuice.y
+	yacc -d fruitjuice.y
+
+lex.yy.o: lex.yy.c
+	gcc -c lex.yy.c
+
+lex.yy.c: fruitjuice.l
+	flex fruitjuice.l
+
+hash.o: hash.h hash.c
+	gcc -c hash.c
+
+clean:
+	-rm *.tex
+	-rm *.aux
+	-rm *.log
+	-rm *.pdf
+	-rm *.o
+	-rm y.tab.c
+	-rm y.tab.h
+	-rm lex.yy.c
+	-rm fj
+
+

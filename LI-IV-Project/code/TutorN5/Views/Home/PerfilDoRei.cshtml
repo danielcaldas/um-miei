@@ -1,0 +1,50 @@
+﻿@model TutorN5.Models.reis.ReiViewModel
+
+@{
+    ViewBag.Title = "PerfilDoRei";
+}
+
+<div class="jumbotron">
+    <img id="foto" src=@Model.Imagem width="195" height="188" />
+    <h1>@Model.Nome</h1>
+    <p style="font-size: 16px">Data de Nascimento: @Model.DataNascimento.Date.ToString("dd/MM/yyyy"), Data de Morte: @Model.DataMorte.Date.ToString("dd/MM/yyyy")</p>
+    <div>
+        <center><b>Biografia</b></center>
+        @foreach (var s in @Model.ParagrafosBiografia)
+        {
+            <p style="font-size:18px">@s.Value</p>
+        }
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <p>@Html.ActionLink("Aulas", "ListAulas", "Home", new { @class = "btn btn-default"})</p>
+        <p>@Html.ActionLink("Exercícios", "ListExercicios", "Home", new { @class = "btn btn-default" })</p>
+        <img id="avatar" src="~/App_Themes/static.png" onclick="onClickAvatar()" width="195" height="188" />
+    </div>
+</div>
+
+<br>
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script type="text/javascript">
+
+    var talk = true;
+
+    window.onload = function () {        
+        if (sessionStorage.getItem("PERFIL_DO_REI") != null) talk = false;
+
+        if (talk) {
+            sessionStorage.setItem("PERFIL_DO_REI", "_visited");
+            falar();
+            mudarAvatar(2, 9000);
+        }
+    }
+
+    function onClickAvatar() {
+        mudarAvatar(2, 10000);
+        falar();
+    }
+</script>

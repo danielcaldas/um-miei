@@ -1,0 +1,291 @@
+package data_acess;
+
+import business.doacoes.IDoador;
+import business.doacoes.IDonativo;
+import business.doacoes.IDonativoMonetario;
+import business.doacoes.IDonativoMaterial;
+import business.doacoes.IDonativoServicos;
+import business.doacoes.IEvento;
+import data_acess.exceptions.DoadorNaoExisteException;
+import data_acess.exceptions.DonativoNaoExisteException;
+import data_acess.exceptions.EventoNaoExisteException;
+import java.util.Set;
+import java.util.HashSet;
+
+
+/**
+ * Não é preciso preencher
+ * @author Cortez
+ */
+
+public class FACADEDoacoes {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    private DoadorDAO doadores;
+    private DonativoDAO donativos;
+    private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    // private CandidaturaDAO candidaturas;
+    // private MembroDAO membros;
+    // private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    // private MaterialDAO materiais;
+    // private ProjetoDAO projetos;
+    // private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    // private EquipaDAO equipas;
+    // private FuncionarioDAO funcionarios;
+    // private VoluntarioDAO voluntarios;
+    
+    
+    
+    
+    /**************************************************************************************/
+    /********************************** DOACOES *******************************************/
+    /**************************************************************************************/
+    
+                                    /*Métodos de DoadorDAO*/
+    /**
+     * Calcula o número total de doadores no sistema.
+     * @return Número total de doadores.
+     */
+    public int do_totalDoadores () { return this.doadores.size();}
+    
+    /**
+     * Retorna um doador, dado um NIF.
+     * @param nif, NIF do doador.
+     * @return Doador correspondente ao NIF passado como parâmetro.
+     * @throws data_acess.exceptions.DoadorNaoExisteException 
+     */
+    public IDoador do_getDoador (String nif) throws DoadorNaoExisteException
+    {
+        if(this.doadores.containsKey(nif)){
+            return this.doadores.get(nif);
+        } else throw new DoadorNaoExisteException(nif);        
+    }
+    
+    /**
+     *  Averigua se exista um doador, através do seu NIF.
+     * @param nif, NIF do doador.
+     * @return Verdadeiro se existir, caso contrário falso.
+     */
+    public boolean do_doadorExiste(String nif){return this.doadores.containsKey(nif);}
+    
+    
+    /**
+     * Elimina um doador, dado um NIF.
+     * @param nif, NIF dum doador.
+     * @return Verdadeiro, caso seja removido com sucesso e falso, caso contrário.
+     */
+    public boolean do_remDoador(String nif) {
+        if(this.doadores.containsKey(nif))
+        {
+            this.doadores.remove(nif);
+            return true;
+        } 
+        else return false;
+    }
+    
+    /**
+     * Grava um doador na base de dados.
+     * @param d, Um doador.
+     * @return Verdadeiro, caso seja removido com sucesso ou falso, caso contrário.
+     */
+    public boolean do_saveDoador(IDoador d){
+         if(!this.doadores.containsKey(d.getNIF()))
+         {
+            this.doadores.put(d.getNIF(), d);
+            return true;
+         } 
+         else return false;
+    }
+    
+    /**
+     * Atualiza a informação sobre um dado doador.
+     * @param d Um doador.
+     * @return Verdadeiro, caso a edição seja efectuada com sucesso ou falso, caso contrário.
+     */
+    public boolean do_editDoador(IDoador d) {
+        if(this.doadores.containsKey(d.getNIF()))
+        {
+            this.doadores.put(d.getNIF(), d);
+            return true;
+        } 
+        return false;
+    }
+    
+    public float do_totalDoadoPorUmDoador(String nif) {
+        if (this.doadores.containsKey(nif))
+        {
+            float total = 0;
+            IDoador d = this.doadores.get(nif);
+            Set<Integer> don = d.getDonativos();
+            for (Integer i: don)
+            {
+                IDonativo id = this.donativos.get(i);
+                if (id instanceof IDonativoMonetario)
+                {
+                    IDonativoMonetario idm = (IDonativoMonetario) id;
+                    total += idm.getValor();
+                }
+                
+            }
+            return total;
+        }
+        
+        return 0;
+    }
+    
+    
+                                            /*Métodos de DonativoDAO*/
+    
+    /**
+     * Calcula o número total de donativos no sistema.
+     * @return  Número total de donativos.
+     */
+    public int do_totalDonativos () { return this.donativos.size();}
+    
+    public IDonativo do_getDonativo (int nr) throws DonativoNaoExisteException{
+        if (this.donativos.containsKey(nr))
+            return this.donativos.get(nr);
+        else throw new DonativoNaoExisteException(nr);
+        
+    }
+    
+    
+    /**
+     * Averigua se um donativo, pesquisado pelo seu número de recibo, existe.
+     * @param nr Número de recibo dum donativo.
+     * @return Verdadeiro, caso o donativo exista ou falso, caso contrário.
+     */
+    public boolean do_donativoExiste (int nr) {return this.donativos.containsKey(nr);}
+    
+    
+    /**
+     * Remove um donativo, dado o seu número de recibo.
+     * @param nr Número de recibo dum donativo.
+     * @return Verdadeiro, caso a remoção seja efectuada com sucesso ou falso, caso contrário.
+     */
+    public boolean do_remDonativo (int nr){
+        if (this.donativos.containsKey(nr))
+        {
+            this.donativos.remove(nr);
+            return true;
+        }
+        else return false;
+    }
+    
+    /**
+     * Guarda um donativo na base de dados.
+     * @param d Um donativo.
+     * @return Verdadeiro, caso a operação seja feita com sucesso ou falso, caso contrário.
+     */
+    public boolean do_saveDonativo (IDonativo d){
+        if(!this.donativos.containsKey(d.getNRecibo()))
+        {
+            this.donativos.put(d.getNRecibo(), d);
+            return true;
+        } 
+        else return false;
+    }
+    
+    
+    /**
+     * Atualiza um donativo, dado o seu número de recibo.
+     * @param d Número de recibo dum donativo.
+     * @return Verdadeiro, caso a operação seja efectuada com sucesso ou falso, caso contrário.
+     */
+    public boolean do_editDonativo (IDonativo d){
+        if (this.donativos.containsKey(d.getNRecibo()))
+        {
+            this.donativos.put(d.getNRecibo(),d);
+            return true;
+        }
+        return false;
+    }
+    
+                                                    /* Métodos de EventoDAO*/
+    
+    
+    
+    /**
+     * Calcula o número total de eventos.
+     * @return Número total de eventos registados no sistema.
+     */
+    public int do_totalEventos () { return this.eventos.size();}
+    
+   
+    /**
+     * Retorna um evento pelo seu número.
+     * @param nr Número dum evento.
+     * @return Evento correspondente ao número passado como argumento. Caso não exista lança excepção.
+     * @throws data_acess.exceptions.EventoNaoExisteException 
+     */
+    public IEvento do_getEvento (int nr) throws EventoNaoExisteException
+    {
+        if (this.eventos.containsKey(nr))
+            return this.eventos.get(nr);
+        else throw new EventoNaoExisteException(nr);
+    }
+    
+    /**
+     * Averigua se um dado evento existe, através do seu número.
+     * @param nr Número dum evento.
+     * @return Verdadeiro, caso o evento exista ou falso, caso contrário.
+     */
+    public boolean do_eventoExiste (int nr) { return this.eventos.containsKey(nr);}
+    
+    
+    /**
+     * Remove um evento, dado o seu número.
+     * @param nr Número do evento
+     * @return Verdadeiro, caso a remoção seja efectuada com sucesso ou  falso, caso contrário.
+     */
+    public boolean do_remEvento (int nr){
+        if (this.eventos.containsKey(nr))
+        {
+            this.eventos.remove(nr);
+            return true;
+        }
+        return false;
+    }
+    
+    
+     /**
+     * Guarda um evento na base de dados.
+     * @param e Um evento.
+     * @return Verdadeiro, caso a operação seja feita com sucesso ou falso, caso contrário.
+     */
+    public boolean do_saveEvento (IEvento e){
+        if(!this.eventos.containsKey(e.getNr()))
+        {
+            this.eventos.put(e.getNr(), e);
+            return true;
+        } 
+        else return false;
+    }
+    
+    
+    /**
+     * Atualiza um evento, dado o seu número.
+     * @param e Número de recibo dum donativo.
+     * @return Verdadeiro, caso a operação seja feita com sucesso ou falso, caso contrário.
+     */
+    public boolean do_editEvento (IEvento e){
+        if (this.eventos.containsKey(e.getNr()))
+        {
+            this.eventos.put(e.getNr(),e);
+            return true;
+        }
+        return false;
+    }
+    
+    
+    
+    
+    /*(...)*/
+}

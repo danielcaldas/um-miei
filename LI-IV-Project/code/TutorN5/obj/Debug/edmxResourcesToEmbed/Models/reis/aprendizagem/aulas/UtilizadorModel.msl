@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UtilizadorTutorDBStoreContainer" CdmEntityContainer="UtilizadorAulaDAO">
+    <EntitySetMapping Name="UtilizadorAula">
+      <EntityTypeMapping TypeName="UtilizadorTutorDB.UtilizadorAula">
+        <MappingFragment StoreEntitySet="UtilizadorAula">
+          <ScalarProperty Name="Utilizador" ColumnName="Utilizador" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Aula" ColumnName="Aula" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

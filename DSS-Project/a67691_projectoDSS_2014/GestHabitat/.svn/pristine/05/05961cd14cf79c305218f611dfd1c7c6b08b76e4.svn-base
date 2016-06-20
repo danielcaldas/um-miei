@@ -1,0 +1,255 @@
+package data_acess;
+
+import business.recursoshumanos.IEquipa;
+import business.recursoshumanos.IVoluntario;
+import data_acess.exceptions.EquipaNaoExisteException;
+import data_acess.exceptions.VoluntarioNaoExisteException;
+import java.util.HashSet;
+import java.util.Set;
+
+/**Curta descrição:
+ * Facade do sistema de gestão da Habitat através do qual se acedem a todas as funcionalidades oferecidas pela camada de negócio
+ * do projeto, assim como a toda a base de dados que suporta a aplicação pelo que esta classe é também
+ * o DataAcessFacade do Sistema.
+ * 
+ * Detalhe do facade:
+ * Neste facade fazemos a gestão das 4 principais componentes da camada de negócio:
+ *  - Gestão de donativos e doadores e outros relacionados com doacoes;
+ *  - Gestão de famílias que se candidatam;
+ *  - Gestão de projetos, das obras e respetivas etapas;
+ *  - Gestão dos recusos humanos da Habitat;
+ * 
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.31
+ */
+
+public class SGHabitat {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    private DoadorDAO doadores;
+    private DonativoDAO donativos;
+    private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    private CandidaturaDAO candidaturas;
+    private MembroDAO membros;
+    private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    private MaterialDAO materiais;
+    private ProjetoDAO projetos;
+    private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    private EquipaDAO equipas;
+    private FuncionarioDAO funcionarios;
+    private VoluntarioDAO voluntarios;
+    
+    /**
+     * Construtor vazio para o facade da camada de negócio da aplicação.
+     * @throws ConnectionErrorException 
+     */
+    public SGHabitat() throws ConnectionErrorException {
+        this.doadores = new DoadorDAO(); this.donativos = new DonativoDAO(); this.eventos = new EventoDAO();
+        this.candidaturas = new CandidaturaDAO(); this.membros = new MembroDAO(); this.representante = new RepresentanteDAO();
+        this.materiais = new MaterialDAO(); this.projetos = new ProjetoDAO(); this.tarefas = new TarefaDAO();
+        this.equipas = new EquipaDAO(); this.funcionarios = new FuncionarioDAO(); this.voluntarios = new VoluntarioDAO();
+    }
+    
+    
+    
+    
+    
+    
+    /**************************************************************************************/
+    /****************************** RECURSOS HUMANOS **************************************/
+    /**************************************************************************************/
+    
+    /*Seguintes métodos do DAO da classe voluntário: size(), put(), get(), remove(); (..., para já)*/
+    
+    /*Método de VoluntarioDAO*/    
+    /**
+     * Calcula nº total de voluntários registados no sistema.
+     * @return nº total de voluntários registados
+     */
+    public int rh_totalVoluntarios(){return this.voluntarios.size();}
+    
+    /**
+     * Retorna um voluntário pelo seu nº.
+     * @param nr, nº de voluntário.
+     * @return Voluntário correspondente ao nº passado como argumento, caso não exista lança excepção.
+     * @throws data_acess.exceptions.VoluntarioNaoExisteException
+     */
+    public IVoluntario rh_getVoluntario(int nr) throws VoluntarioNaoExisteException {
+        if(this.voluntarios.containsKey(nr)){
+            return this.voluntarios.get(nr);
+        } else throw new VoluntarioNaoExisteException(nr);
+    }
+    
+    /**
+     * Verifica se um voluntário com um dada chave existe.
+     * @param nr, chave de voluntário que queremos verificar se tem voluntário associado.
+     * @return true caso voluntário com a chave exista, false caso contrário.
+     */
+    public boolean rh_voluntarioExiste(int nr){return this.voluntarios.containsKey(nr);}
+
+    /**
+     * Retorna um set de voluntários criados com base num campo de pesquisa.
+     * @param searchinput, String um nome (próprio ou apelido) de um ou mais voluntário.
+     * @return set de voluntários que preenchem os requisitos de pesquisa (vazio, não encontramos voluntário(s)).
+     * @throws data_acess.exceptions.VoluntarioNaoExisteException
+     */
+    public Set<IVoluntario> rh_searchVoluntario(String searchinput) throws VoluntarioNaoExisteException {
+        Set<IVoluntario> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(IVoluntario v : this.voluntarios.values()){
+            if(v.getNome().toLowerCase().contains(lowersearch)){
+                 set.add(v);
+            }
+        }
+        return set;
+    }
+    
+    /**
+     * Elimina um dado voluntário.
+     * @param nr, nº do voluntário que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean rh_remVoluntario(int nr) {
+        if(this.voluntarios.containsKey(nr)){
+            this.voluntarios.remove(nr);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guarda um voluntário na base de dados.
+     * @param v, instância de voluntário que queremos guardar na base de dados.
+     * @return true caso o registo seja guardado, false caso contrário.
+     */
+    public boolean rh_saveVoluntario(IVoluntario v){
+        if(!this.voluntarios.containsKey(v.getNr())){
+            this.voluntarios.put(v.getNr(), v);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza um voluntário já registado no sistema.
+     * @param v, voluntário alterado que queremos atualizar na base de dados.
+     * @return true caso voluntário seja atualizado, false caso contrário. 
+     */
+    public boolean rh_editVoluntario(IVoluntario v) {
+        if(this.voluntarios.containsKey(v.getNr())){
+            this.voluntarios.put(v.getNr(), v);
+            return true;
+        } return false;
+    }
+
+    
+    /*Método de EquipaDAO*/    
+    /**
+     * Calcula nº total de equipas registadas no sistema.
+     * @return nº total de equipas registadas
+     */
+    public int rh_totalEquipas(){return this.equipas.size();}
+    
+    /**
+     * Retorna um equipa pelo seu id.
+     * @param id, id da equipa.
+     * @return Equipa correspondente ao id passado como argumento, caso não exista lança excepção.
+     * @throws data_acess.exceptions.EquipaNaoExisteException
+     */
+    public IEquipa rh_getEquipa(int id) throws EquipaNaoExisteException {
+        if(this.equipas.containsKey(id)){
+            return this.equipas.get(id);
+        } else throw new EquipaNaoExisteException(id);
+    }
+    
+    /**
+     * Verifica se um equipa com um dada chave existe.
+     * @param id, chave de equipa que queremos eerificar se tem equipa associado.
+     * @return true caso equipa com a chave exista, false caso contrário.
+     */
+    public boolean rh_equipaExiste(int id){return this.equipas.containsKey(id);}
+
+    /**
+     * Retorna um set de equipas criados com base num campo de pesquisa.
+     * @param searchinput, país de origem da equipa.
+     * @return set de equipas que preenchem os requisitos de pesquisa (vazio, não encontramos equipa(s)).
+     * @throws data_acess.exceptions.EquipaNaoExisteException
+     */
+    public Set<IEquipa> rh_searchEquipa(String searchinput) throws EquipaNaoExisteException {
+        Set<IEquipa> set = new HashSet<>();
+        String lowersearch = searchinput.trim().toLowerCase();
+        for(IEquipa e : this.equipas.values()){
+            if(e.getpOrigem().toLowerCase().contains(lowersearch)){
+                 set.add(e);
+            }
+        }
+        return set;
+    }
+    
+    /**
+     * Elimina uma dada equipa.
+     * @param id, nº do equipa que pretendemos remover.
+     * @return true caso remoção seja bem sucedida, false caso contrário.
+     */
+    public boolean rh_remEquipa(int id) {
+        if(this.equipas.containsKey(id)){
+            this.equipas.remove(id);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Guarda uma equipa na base de dados.
+     * @param e, instância de equipa que queremos guardar na base de dados.
+     * @return true caso o registo seja guardado, false caso contrário.
+     */
+    public boolean rh_saveEquipa(IEquipa e){
+        if(!this.equipas.containsKey(e.getId())){
+            this.equipas.put(e.getId(), e);
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Atualiza uma equipa já registado no sistema.
+     * @param e, equipa alterada que queremos atualizar na base de dados.
+     * @return true caso equipa seja atualizada, false caso contrário. 
+     */
+    public boolean rh_editEquipa(IEquipa e) {
+        if(this.equipas.containsKey(e.getId())){
+            this.equipas.put(e.getId(), e);
+            return true;
+        } return false;
+    }
+    
+    /**
+     * Calcula set de voluntários que não estão associados a nenhuma equipa.
+     * @return set de voluntários que não estão no presente associados a nenhuma equipa. 
+     */
+    public Set<IVoluntario> rh_getVoluntariosSemEquipa() {
+        return new HashSet<>(this.voluntarios.getVoluntariosDeEquipa(-1));
+    }
+    
+    /**
+     * Conjunto de voluntários de uma dada equipa.
+     * @param id, id da equipa do conjunto de voluntários.
+     * @return Set de voluntários que pertencem à equipa associada ao id.
+     */
+    public Set<IVoluntario> rh_getVoluntariosDaEquipa(int id) {
+        return new HashSet<>(this.voluntarios.getVoluntariosDeEquipa(id));
+    }
+    
+    /**
+     * Devolve o nome do chefe de um equipa.
+     * @param id equipa sobre a qual pretendemos obter o nome do seu chefe.
+     * @return String que é nome do chefe da equipa.
+     */
+    public String rh_getNomeChefeEq(int id){
+        return this.voluntarios.get(this.equipas.get(id).getChefe()).getFirstAndLastName();
+    }
+}

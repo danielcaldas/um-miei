@@ -1,0 +1,48 @@
+﻿@model TutorN5.Models.utilizador.PerfilUtilizadorViewModel
+
+@{
+    ViewBag.Title = "Perfil";
+}
+<br>
+<center><h1>Linha do Tempo</h1></center>
+<div class="row">
+    <div class="col-md-4">
+        <ol>            
+            @foreach (var king in @Model.reis)
+            {
+                <timele>
+                    @Html.ActionLink(@king.Nome, "PerfilDoRei", new { idRei = king.Id })
+                    <span class="details">
+                        @* Descrição do ponto (Neste caso imagem + data nascimento / data more)*@
+                        <img src=@king.Imagem height="250" width="250">
+                        @king.DataNascimento.Value.Year-@king.DataMorte.Value.Year
+                    </span>
+                </timele>
+            }
+        </ol>  
+        <img id="avatar" src="~/App_Themes/static.png" width="195" height="188" onclick="onClickAvatar()" />
+    </div>
+</div>
+<br>
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script type="text/javascript">
+
+    var talk=true;
+
+    window.onload = function () {
+
+        if (sessionStorage.getItem("PERFIL") != null) talk = false;
+
+        if (talk) {
+            sessionStorage.setItem("PERFIL", "_visited");
+            mudarAvatar(2, 10000);
+            falar();
+        }
+    };
+
+    function onClickAvatar() {
+        mudarAvatar(2, 10000);
+        falar();
+    }
+</script>

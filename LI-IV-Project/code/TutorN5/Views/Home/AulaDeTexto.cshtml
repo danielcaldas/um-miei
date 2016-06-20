@@ -1,0 +1,163 @@
+﻿@model TutorN5.Models.reis.aprendizagem.aulas.AulaTextoViewModel
+
+@{
+    ViewBag.Title = "AulaDeTexto";
+}
+
+<center><h2>@Model.Titulo</h2></center>
+<br>
+<br>
+<br>
+<!-- Div para parágrafos de texto -->
+<div class="textoAulaTexto" id="conteudo" style="float:left">
+    <h3 id="toRead">Para leres...</h3>
+</div>
+
+
+<div id="muralhas" style="float:left">
+    <!-- GIF/PNG do muralhas -->
+    <div class="buttonimg">
+        <img id="avatar" src="~/App_Themes/static.png" width="195" height="188" />
+        <center><button id="duvida" type="button" class="btn btn-default" style="margin-top:15px;" onclick="turnOnDuvida()">Dúvidas</button></center>
+    </div>
+</div>
+
+<!-- Div para curiosidades -->
+<div class="textoAulaTexto2" id="curiosidades" style="float:left;">
+    <h3 id="didYouKnow">Sabias que...</h3>
+</div>
+
+
+<div class="clearfix"></div>
+<br>
+<center><button id="start" class="btn btn-default" onclick="startAula()">Começar aula</button></center>
+<br>
+<button id="next" class="btn btn-default" onclick="paragrafoSeguinte()">Continuar</button>
+
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script>
+
+    var id;
+    var paragrafo;
+    var modoTirarDuvidas = 0;
+    var aulaComecou = false;
+
+    window.onload = function () {
+        $('#next').hide();
+        $('#duvida').hide();
+        $('#toRead').hide();
+        $('#didYouKnow').hide();
+    }
+
+    function startAula() {
+        paragrafo = 0;
+        $('#conteudo').append("<p id=\"0\" onclick=\"tirarDuvida(this.id)\">" + '@Model.Paragrafo' + "</p>");
+        $('#curiosidades').append("<p>" + '@Model.Curiosidade' + "</p>");
+
+        falar();
+        mudarAvatar(2, 9000);
+
+        $('#duvida').show("slow");
+        $('#next').show("slow");
+        $('#toRead').show("slow");
+        $('#didYouKnow').show("slow");
+        $('#start').remove();
+        aulaComecou = true;
+    }
+
+    function paragrafoSeguinte() {
+        if (aulaComecou == true) {
+            paragrafo++;
+            id = -1;
+            getProxParagrafo();
+        }
+    }
+
+    function getProxParagrafo() {
+        $.ajax({
+            url: "/Home/AulaTextoProxParagrafo",
+            type: "GET",
+            data: { parId: id },
+            datatype: "json",
+            success: getSucess,
+            error: getError
+        });
+    }
+
+
+    function getSucess(data) {
+        if (data.Titulo == "FIM_AULA") {
+            $.ajax({
+                url: "/Home/TerminarAulaTexto",
+                type: "POST",
+                data: { parId: id },
+                datatype: "json",
+                success: terminaOK,
+                error: terminaBAD
+            });
+        }
+        else {
+            if (modoTirarDuvidas == 0) {
+                $('#conteudo').append("<p id=\"" + paragrafo + "\" onclick=\"tirarDuvida(this.id)\">" + data.Paragrafo + "</p>");
+                $('#curiosidades').append("<p>" + data.Curiosidade + "</p>");
+            }
+
+            falar();
+            mudarAvatar(2, 9000);
+
+            if (data.FonteExtra != "NONE") {
+                setTimeout(
+                function () {
+                    window.open(data.FonteExtra, '_blank');
+                }, 8000);
+            }
+            modoTirarDuvidas = 0;
+        }
+    }
+
+    // Redirecionar para o perfil do Rei, recorendo ao routing do PerfilDoRei
+    // (Este redirecionamento estava a falhar no servidor por isso foi implementado aqui)
+    function terminaOK() {
+        window.location.replace("/Home/PerfilDoRei?idRei=" + '@Model.IdRei');
+        window.alert("Fim da aula");
+    }
+
+    function terminaBAD() {
+        window.alert("Hmm... Parece que tivemos problemas ao registar a tua aula.");
+    }
+
+    function getError() {
+        alert("Pedimos desculpa, mas é impossível continuar a aula tenta mais tarde");
+    }
+
+    function turnOnDuvida() {
+        modoTirarDuvidas = 1;
+        $.ajax({
+            url: "/Home/FalaDuvidaStandardAulaTexto",
+            type: "POST",
+            datatype: "json",
+            success: duvidasOK,
+            error: duvidasBAD
+        });        
+    }
+
+    function duvidasOK() {
+        falar();
+        mudarAvatar(3, 8000);
+    }
+
+    function duvidasBAD() {
+        window.alert("O muralhas está doente, não te importas de regressar mais tarde? Obrigado.");
+    }
+
+    function tirarDuvida(parId) {
+        var x = parseInt(parId);
+        if (modoTirarDuvidas == 1) {
+            paragrafo = x;
+            id = x;
+            getProxParagrafo();
+        }
+    }
+
+</script>

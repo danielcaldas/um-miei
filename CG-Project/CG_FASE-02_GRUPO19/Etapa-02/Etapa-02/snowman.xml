@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<imagem>
+	<grupo prof="1">
+		<translacao X="0" Y="0.75" Z="0" />
+		<modelos>
+			<modelo ficheiro="corpo.3d" colorX="1" colorY="1" colorZ="1" />
+		</modelos>
+		<grupo prof="2">
+			<translacao X="0" Y="1" Z="0" />
+			<modelos>
+				<modelo ficheiro="cabeca.3d" colorX="1" colorY="1" colorZ="1" />
+			</modelos>
+			<grupo prof="3">
+				<translacao X="0.1" Y="0.1" Z="0.2" />
+				<escala X="0.25" Y="0.25" Z="0.25" />
+				<modelos>
+					<modelo ficheiro="olho1.3d" colorX="0" colorY="0" colorZ="0" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="-0.1" Y="0.1" Z="0.2" />
+				<escala X="0.25" Y="0.25" Z="0.25" />
+				<modelos>
+					<modelo ficheiro="olho2.3d" colorX="0" colorY="0" colorZ="0" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<rotacao angulo="90" eixoX="1" eixoY="0" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="nariz.3d" colorX="1" colorY="0.6" colorZ="0" />
+				</modelos>
+			</grupo>
+			<grupo prof="-1">
+			</grupo>
+		</grupo>	
+	</grupo>
+</imagem>

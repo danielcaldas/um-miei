@@ -1,0 +1,33 @@
+*****Questão 3****
+
+Após definirmos as funções idsOK e idKey, analisando o efeito que defacto cada função
+tem numa house podemos claramente concluir que idsOK implica idKey, pois como podemos observar as duas funções nunca se vão verificar em simultâneo,
+isto é havendo numa house id's diferentes nunca vão poder haver auctions exatamente iguais partindo do princípio que idKey só considera uma auction
+exatamente igual a outra caso ambas possuam todos os seus parametros iguais (incluindo o id).
+idsOK implica idKey pois uma house tendo elementos repetidos para que idKey devolva True, as restante auctions da house que não têm elementos repetidos
+têm de verificar idsOK, ou seja basicamente podemos dizer que idsOK é a base de idKey.
+
+
+
+
+
+                                  ---idKey---
+
+
+idKey :: House -> Bool
+idKey ([],[]) = False
+idKey h | (idsOK h) == True = True
+        | length (repetidos' (pegaCab (junta_auc h))) == length (repetidos_auc (junta_auc h)) = True
+        | length (repetidos' (pegaCab (junta_auc h))) /= length (repetidos_auc (junta_auc h)) = False				
+        | otherwise = idKey h
+
+
+
+                                 ---idsOK---
+
+idsOK :: House -> Bool
+
+idsOK ([],[]) = True
+
+idsOK h = if (hrf_val (junta_auc h)) then True else False	   
+

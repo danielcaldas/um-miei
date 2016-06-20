@@ -1,0 +1,282 @@
+package business.recursoshumanos;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+/**Classe que agrega toda a informação relativa a um funcionário da instituição.
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 2014.12.21
+ */
+
+class Voluntario implements IVoluntario {
+    
+    // Variáveis de instância
+    private int nr;
+    private String nome;    
+    private GregorianCalendar datanasc;
+    private String localidade;
+    private String rua;
+    private String codPostal;
+    private String habilitacoes;
+    private String telem;
+    private String telef;    
+    private String profissao;
+    private String email;
+    private String obs; // e.g.: Complementos, experiência em obras, voluntariado, disponibilidade...
+    private GregorianCalendar dataInicioVol;   
+    private List<String> linguas;    
+    private Map<Integer,Integer> horasprojetos; //Key: nr do projeto, Value: horas de voluntariado nesse projeto
+    
+    /**
+     * Construtor vazio.
+     */
+    public Voluntario(){
+        this.nr=0; this.nome=""; this.datanasc=new GregorianCalendar();
+        this.habilitacoes=""; this.telef=""; this.telem="";
+        this.profissao=""; this.email="";
+        this.dataInicioVol=new GregorianCalendar(); this.localidade=""; this.rua="";
+        this.codPostal=""; this.linguas=new ArrayList<>(); this.obs=""; this.horasprojetos=new HashMap<>();
+    }
+    
+    /**
+     * Construtor parameterizado.
+     * @param nr, número.
+     * @param nome
+     * @param datanasc, data de nascimento.
+     * @param habl, habilitações.
+     * @param tf, número telefone.
+     * @param tl, número de telemóvel.
+     * @param prof, profissão.
+     * @param email
+     * @param dataInicio, data em que começou a fazer voluntariado.
+     * @param loc, localidade.
+     * @param rua
+     * @param codp, código postal.
+     * @param linguas
+     * @param horas, nº de horas de voluntariado.
+     * @param obs, observações acerca do Voluntário.
+     * @param hp, mapa que contém horas de voluntariado associadas a cada chave projeto
+     */
+    public Voluntario (int nr, String nome, GregorianCalendar datanasc, String habl, String tf, String tl, String prof,
+            String email, GregorianCalendar dataInicio, String loc, String rua, String codp,
+            List<String> linguas, int horas, String obs, Map<Integer,Integer> horasprojetos){
+        this.nr=nr; this.nome=nome; this.datanasc=datanasc;
+        this.habilitacoes=habl; this.telef=tf; this.telem=tl;
+        this.profissao=prof; this.email=email;
+        this.dataInicioVol=dataInicio; this.localidade=loc; this.rua=rua;
+        this.codPostal=codp; this.linguas=linguas; this.obs=obs; this.horasprojetos=horasprojetos;
+    }
+    
+    /**
+     * Construtor cópia.
+     * @param v, um voluntário.
+     */
+    public Voluntario (Voluntario v){
+        this.nr=v.getNr(); this.nome=v.getNome(); this.datanasc=v.getDatanasc();
+        this.habilitacoes=v.getHabilitacoes(); this.telef=v.getTelef(); this.telem=v.getTelem();
+        this.profissao=v.getProfissao(); this.email=v.getEmail();
+        this.dataInicioVol=v.getDataInicioVol(); this.localidade=v.getLocalidade(); this.rua=v.getRua();
+        this.codPostal=v.getCodPostal(); this.linguas=v.getLinguas(); this.obs=v.getObs();
+        this.horasprojetos=v.getHorasProjetos();
+    }
+    
+    /*gets & sets*/
+    @Override
+    public int getNr(){return nr;}
+    @Override
+    public void setNr(int nr) {this.nr = nr;}
+    @Override
+    public String getNome(){return this.nome;}
+    @Override
+    public void setNome(String nome){this.nome=nome;}
+    @Override
+    public GregorianCalendar getDatanasc(){return datanasc;}
+    @Override
+    public void setDatanasc(GregorianCalendar datanasc){this.datanasc = datanasc;}
+    @Override
+    public String getHabilitacoes(){return habilitacoes;}
+    @Override
+    public void setHabilitacoes(String habilitacoes){this.habilitacoes = habilitacoes;}
+    @Override
+    public String getTelef(){return telef;}
+    @Override
+    public void setTelef(String telef){this.telef = telef;}
+    @Override
+    public String getTelem(){return telem;}
+    @Override
+    public void setTelem(String telem){this.telem = telem;}
+    @Override
+    public String getProfissao(){return profissao;}
+    @Override
+    public void setProfissao(String profissao){this.profissao = profissao;}
+    @Override
+    public String getEmail(){return this.email;}
+    @Override
+    public void setEmail(String email){this.email=email;}
+    @Override
+    public GregorianCalendar getDataInicioVol(){return dataInicioVol;}
+    @Override
+    public void setDataInicioVol(GregorianCalendar dataInicioVol){this.dataInicioVol = dataInicioVol;}
+    @Override
+    public String getLocalidade(){return localidade;}
+    @Override
+    public void setLocalidade(String localidade){this.localidade = localidade;}
+    @Override
+    public String getRua(){return rua;}
+    @Override
+    public void setRua(String rua){this.rua = rua;}
+    @Override
+    public String getCodPostal(){return codPostal;}
+    @Override
+    public void setCodPostal(String codPostal){this.codPostal = codPostal;}
+    @Override
+    public List<String> getLinguas(){return linguas;}
+    @Override
+    public void setLinguas(List<String> linguas){this.linguas = linguas;}
+    @Override
+    public int getHorasVoluntariado(){
+        int horasvoluntariado=0;
+        for(int h : this.horasprojetos.values()) horasvoluntariado+=h;
+        return horasvoluntariado;
+    }
+    @Override
+    public String getObs(){return obs;}
+    @Override
+    public void setObs(String obs) {this.obs = obs;}
+    @Override
+    public Map<Integer,Integer> getHorasProjetos(){return this.horasprojetos;}
+    @Override
+    public void setHorasProjetos (Map<Integer,Integer> hp){this.horasprojetos=hp;}
+    
+    /*equals e clone*/
+    @Override
+    public boolean equals (Object o){
+        if(this==o) return true;
+        
+        else if(o==null || this.getClass()!=o.getClass()) return false;
+        
+        else{
+            Voluntario v = (Voluntario) o;
+            
+            for(String l : this.linguas){
+                if(!v.getLinguas().contains(l)) return false;
+            }
+            
+            for(int h : v.getHorasProjetos().values()){
+                if(!this.horasprojetos.containsValue(h)) return false;
+            }
+            
+            // Equals com excepção no número de voluntário! (Resolve: Carregar mesma ficha 2x ou +)
+            return(this.nr==v.getNr() && this.nome.equals(v.getNome()) && this.datanasc.equals(v.getDatanasc()) &&
+                    this.habilitacoes.equals(v.getHabilitacoes()) && this.telef.equals(v.getTelef())
+                    && this.telem.equals(v.getTelem()) && this.profissao.equals(v.getProfissao())
+                    && this.email.equals(v.getEmail()) &&
+                    this.dataInicioVol.equals(v.getDataInicioVol()) && this.localidade.equals(v.getLocalidade())
+                    && this.rua.equals(v.getRua()) && this.codPostal.equals(v.getCodPostal())
+                    && this.obs.equals(v.getObs()) );
+        }
+    }
+    
+    @Override
+    public IVoluntario clone() {
+        return new Voluntario(this);
+    }
+    
+    @Override
+    public int hashCode(){
+        return Arrays.hashCode(new Object[] {this.codPostal,this.dataInicioVol,this.datanasc,this.email,
+        this.habilitacoes,this.linguas,this.linguas,this.localidade,this.nome/*,
+        this.nr*/,this.obs,this.profissao,this.rua,this.telef,this.telem, this.horasprojetos} );
+    }
+    
+    /**
+     * Método que calcula data de nascimento de voluntário a partir da Data de Nascimento do mesmo
+     * @return int, inteiro correspondente à idade do voluntário
+     */
+    @Override
+    public int getIdadeVol(){
+        GregorianCalendar today = new GregorianCalendar();
+        int age = (today.get(Calendar.YEAR) - this.datanasc.get(Calendar.YEAR));
+        
+        // Verificar se data dia e mes atual são posteriores ao dia e mês de nascimento do Voluntário
+        if(today.get(Calendar.MONTH) > this.datanasc.get(Calendar.MONTH)) age++;
+        else if(today.get(Calendar.MONTH)==this.datanasc.get(Calendar.MONTH)
+                && today.get(Calendar.DAY_OF_MONTH)>=this.datanasc.get(Calendar.DAY_OF_MONTH)) age++;
+        
+        return age;
+    }
+    
+    /**
+     * Método que permite obter primeiro e último nome de um volunário, de forma a sintetizar nome para visualização
+     * @return String, com primeiro e último nome do voluntário
+     */
+    @Override
+    public String getFirstAndLastName(){
+        String[] names = this.nome.split(" ");
+        if(names.length==1) return this.nome; // Apenas tem um nome (nunca deveria ocorrer mas fica salvaguardado)
+        StringBuilder sb = new StringBuilder();
+        sb.append(names[0]).append(" ").append(names[names.length-1]);
+        return sb.toString();
+    }
+    
+    /**
+     * Adiciona horas de voluntariado ao voluntario.
+     * @param proj, id do projeto
+     * @param horas, nº de horas de voluntariado
+     */
+    @Override
+    public void addHorasProjeto(int proj, int horas) {
+        if(this.horasprojetos!=null){
+            if(this.horasprojetos.containsKey(proj)){
+                int h = this.horasprojetos.get(proj);
+                h+=horas;
+                this.horasprojetos.put(proj,h);
+            }
+            else this.horasprojetos.put(proj,horas);
+        }
+        else{
+            this.horasprojetos = new TreeMap<Integer,Integer>();
+            this.horasprojetos.put(proj,horas);
+        }
+    }
+    
+    /**
+     * Compara voluntários sem incluir o nº na comparação.
+     * @param o, um voluntário
+     * @return true caso sejam iguais, false caso contrário.
+     */
+    @Override
+    public boolean equalsParse (Object o){
+        if(this==o) return true;
+        
+        else if(o==null || this.getClass()!=o.getClass()) return false;
+        
+        else{
+            Voluntario v = (Voluntario) o;
+            
+            for(String l : this.linguas){
+                if(!v.getLinguas().contains(l)) return false;
+            }
+            
+            for(int h : v.getHorasProjetos().values()){
+                if(!this.horasprojetos.containsValue(h)) return false;
+            }
+            
+            // Equals com excepção no número de voluntário! (Resolve: Carregar mesma ficha 2x ou +)
+            return(this.nome.equals(v.getNome()) && this.datanasc.equals(v.getDatanasc()) &&
+                    this.habilitacoes.equals(v.getHabilitacoes()) && this.telef.equals(v.getTelef())
+                    && this.telem.equals(v.getTelem()) && this.profissao.equals(v.getProfissao())
+                    && this.email.equals(v.getEmail()) &&
+                    this.dataInicioVol.equals(v.getDataInicioVol()) && this.localidade.equals(v.getLocalidade())
+                    && this.rua.equals(v.getRua()) && this.codPostal.equals(v.getCodPostal())
+                    && this.obs.equals(v.getObs()) );
+        }
+    }
+}

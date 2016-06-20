@@ -1,0 +1,92 @@
+﻿@model TutorN5.Models.utilizador.EstatisticaViewModel
+
+@{
+    ViewBag.Title = "Estatisticas";
+}
+
+
+
+<h2>Estatistícas</h2>
+<div>
+    <div id="piechart_exercicios" class="chart" style="width: 570px; height: 420px;"></div>
+    <div id="piechart_alineas" class="chart" style="width: 570px; height: 420px;"></div>
+    <div class="clearfix"></div>
+</div>
+<img id="avatar" src="~/App_Themes/static.png" width="195" height="188" style="float: left" onclick="onClickAvatar()" />
+<div class="clearfix"></div>
+
+<br>
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+    var talk=true;
+
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChartExercicios);
+    google.setOnLoadCallback(drawChartAlineas);
+
+    function drawChartExercicios() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Positivos', (@Model.TotalExerciciosPositivos)],
+          ['Negativos', (@Model.TotalExerciciosNegativos)]
+        ]);
+
+        // Set chart options
+        var options = {
+            backgroundColor: 'transparent',
+            'title':'Exercícios',
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_exercicios'));
+        chart.draw(data, options);
+    }
+
+    function drawChartAlineas() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Corretas', (@Model.TotalAlineasCorretas)],
+          ['Erradas', (@Model.TotalAlineasErradas)]
+        ]);
+
+        // Set chart options
+        var options = {
+            backgroundColor: 'transparent',
+            'title':'Alíneas',
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_alineas'));
+        chart.draw(data, options);
+    }
+
+    window.onload = function () {
+        if (sessionStorage.getItem("ESTATISTICAS") != null) talk = false;
+
+        if (talk) {
+            sessionStorage.setItem("ESTATISTICAS", "_visited");
+            falar();
+            mudarAvatar(2, 8000);
+        }
+    };
+
+    function onClickAvatar() {
+        mudarAvatar(2, 10000);
+        falar();
+    }
+
+</script>
+
+
+
+
+
+
+

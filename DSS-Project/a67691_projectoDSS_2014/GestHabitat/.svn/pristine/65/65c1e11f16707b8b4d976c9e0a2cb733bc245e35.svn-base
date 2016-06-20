@@ -1,0 +1,17 @@
+Todos os facades têm de ter o seguinte formato na codificação:
+
+/*Métodos dos DAO's*/
+size()
+put()
+get()
+remove() ---> TRANSACOES , para cada um dos DAO's do facade
+
+exemplo:
+
+No facade famílias:
+public int nrCandidaturas(){return candidaturas.size();}, acedemos (do exterior do package)
+ao método size de CandidaturaDAO pelo método nrCandidaturas().
+
+De seguida devem constar organizados por DAO os métodos:
+save() ---> TRANSACOES
+update(), e outros ainda por definir.

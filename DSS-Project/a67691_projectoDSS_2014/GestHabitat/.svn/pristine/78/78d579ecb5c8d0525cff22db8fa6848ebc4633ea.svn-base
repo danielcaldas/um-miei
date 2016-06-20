@@ -1,0 +1,10 @@
+package business.familias;
+
+/**
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ */
+public class MembroFactory {
+    public MembroFactory(){}
+    public IMembro createMembro() {return new Membro(); }
+}

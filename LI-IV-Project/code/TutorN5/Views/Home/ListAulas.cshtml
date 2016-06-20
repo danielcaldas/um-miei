@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TutorN5.Models.reis.aprendizagem.aulas.Aula>
+
+@{
+    ViewBag.Title = "Aulas";
+}
+
+<h2>Aulas para @ViewBag.NomeRei</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.ActionLink("Aula de Texto", "AulaDeTexto", new { idAula = item.Id }, new { @class = "btn btn-default" })
+            <br>
+            @Html.ActionLink("Aula de Vídeo", "AulaDeVideo", new { idAula = item.Id }, new { @class = "btn btn-default" })         
+        </td>
+    </tr>
+}
+
+</table>
+
+<br />
+<br />
+<div class="clearfix"></div>
+<img id="avatar" src="~/App_Themes/static.png" width="195" height="188" style="float: left" onclick="avatarClick()" />
+<div class="clearfix"></div>
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script type="text/javascript">
+
+    window.onload = function () {
+        falar();
+        mudarAvatar(2, 5000);
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

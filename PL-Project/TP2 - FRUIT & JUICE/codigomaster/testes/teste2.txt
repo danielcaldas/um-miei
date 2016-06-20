@@ -1,0 +1,6 @@
+FJBEGIN
+FRUIT
+x[10]={1,2,3,4,5}, a=10;
+JUICE
+IF(x[5]>2) {a=20;} ELSE {a=11;}
+FJEND

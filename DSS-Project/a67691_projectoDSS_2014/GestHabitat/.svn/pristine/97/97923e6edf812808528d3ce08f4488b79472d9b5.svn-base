@@ -1,0 +1,49 @@
+package business.doacoes;
+
+import java.util.Set;
+
+/***Interface que torna classe Doador acessível fora do package doacoes
+ *
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 30.12.2014
+ */
+public interface IDoador {
+    /*gets*/
+    public String getPessoaContato();
+    public String getNIF();
+    public String getTipo();
+    public String getNotas();
+    public String getLocalidade();
+    public String getRua();
+    public String getCodPostal();
+    public String getTelemovel();
+    public String getNome();
+    public String getTelefone();
+    public String getSite();
+    public String getEmail();
+    public Set<Integer> getDonativos ();
+    /*sets*/
+    public void setPessoaContato (String pc);
+    public void setNIF (String nif);
+    public void setTipo (String tipo);
+    public void setNotas (String n);
+    public void setLocalidade (String local);
+    public void setRua (String rua);
+    public void setCodPostal (String codPostal);
+    public void setTelemovel (String tlm);
+    public void setNome (String nome);
+    public void setTelefone (String tlf);
+    public void setSite (String site);
+    public void setEmail (String em);
+    public void setDonativos (Set<Integer> d);
+    
+    /*equals, clone e hashcode*/
+    @Override
+    public boolean equals (Object o);
+    public IDoador clone ();
+    @Override
+    public int hashCode();
+    
+    public int totalDoacoes();
+    
+}

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExercicioDBModelStoreContainer" CdmEntityContainer="ExercicioDAO">
+    <EntitySetMapping Name="Exercicio">
+      <EntityTypeMapping TypeName="ExercicioDBModel.Exercicio">
+        <MappingFragment StoreEntitySet="Exercicio">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Dificuldade" ColumnName="Dificuldade" />
+          <ScalarProperty Name="Ficheiro" ColumnName="Ficheiro" />
+          <ScalarProperty Name="NumeroAlineas" ColumnName="NumeroAlineas" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Rei" ColumnName="Rei" />
+          <ScalarProperty Name="Aula" ColumnName="Aula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

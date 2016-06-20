@@ -1,0 +1,38 @@
+package data_acess;
+
+/**
+ * Não é preciso preencher
+ * @author Cortez
+ */
+
+public class FACADEDoacoes {
+    
+    // Variáveis de instância
+    /*Relativo a doacoes*/
+    private DoadorDAO doadores;
+    private DonativoDAO donativos;
+    private EventoDAO eventos;
+
+    /*Relativo a familias*/
+    // private CandidaturaDAO candidaturas;
+    // private MembroDAO membros;
+    // private RepresentanteDAO representante;
+    
+    /*Relativo a projetos*/
+    // private MaterialDAO materiais;
+    // private ProjetoDAO projetos;
+    // private TarefaDAO tarefas;
+    
+    /*Relativo a recursos humanos*/
+    // private EquipaDAO equipas;
+    // private FuncionarioDAO funcionarios;
+    // private VoluntarioDAO voluntarios;
+    
+    
+    
+    
+    /**************************************************************************************/
+    /********************************** DOACOES *******************************************/
+    /**************************************************************************************/
+    /*(...)*/
+}

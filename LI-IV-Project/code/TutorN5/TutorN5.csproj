@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2E99C75C-3128-4E8A-A63E-54185A838384}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TutorN5</RootNamespace>
+    <AssemblyName>TutorN5</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Speech, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Microsoft SDKs\Speech\v11.0\Assembly\Microsoft.Speech.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\Aula.cs">
+      <DependentUpon>AulaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\AulaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AulaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\AulaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AulaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\AulaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AulaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\AulaTexto.cs" />
+    <Compile Include="Models\reis\aprendizagem\aulas\AulaTextoOrganizer.cs" />
+    <Compile Include="Models\reis\aprendizagem\aulas\AulaTextoViewModel.cs" />
+    <Compile Include="Models\reis\aprendizagem\aulas\AulaVideoViewModel.cs" />
+    <Compile Include="Models\reis\aprendizagem\aulas\Fonte.cs">
+      <DependentUpon>FonteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\FonteModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FonteModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\FonteModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FonteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\FonteModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FonteModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\Pergunta.cs">
+      <DependentUpon>PerguntaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\PerguntaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PerguntaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\PerguntaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PerguntaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\PerguntaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PerguntaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\UtilizadorAula.cs">
+      <DependentUpon>UtilizadorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\UtilizadorModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\UtilizadorModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\aulas\UtilizadorModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\Exercicio.cs">
+      <DependentUpon>ExercicioModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\ExercicioModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExercicioModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\ExercicioModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExercicioModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\ExercicioModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExercicioModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\reis\aprendizagem\exercicios\ExerciciosViewModel.cs" />
+    <Compile Include="Models\reis\ReiViewModel.cs" />
+    <Compile Include="Models\tutor\Personalidade.cs" />
+    <Compile Include="Models\reis\aprendizagem\exercicios\PreencherEspacos.cs" />
+    <Compile Include="Models\reis\Rei.cs">
+      <DependentUpon>ReiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\ReiModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReiModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\ReiModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\ReiModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReiModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\RespExercicioViewModel.cs" />
+    <Compile Include="Models\tutor\Speaker.cs" />
+    <Compile Include="Models\utilizador\Const.cs" />
+    <Compile Include="Models\utilizador\EstatisticaViewModel.cs" />
+    <Compile Include="Models\utilizador\HistoricoViewModel.cs" />
+    <Compile Include="Models\utilizador\Metricas.cs" />
+    <Compile Include="Models\utilizador\PerfilUtilizadorViewModel.cs" />
+    <Compile Include="Models\utilizador\Utilizador.cs">
+      <DependentUpon>UtilizadorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicio.cs">
+      <DependentUpon>UtilizadorExercicioModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicioModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorExercicioModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicioModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorExercicioModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicioModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorExercicioModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\utilizador\UtilizadorModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\utilizador\UtilizadorModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\utilizador\UtilizadorModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\UtilizadorRei.cs">
+      <DependentUpon>UtilizadorReiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\UtilizadorReiModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorReiModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\UtilizadorReiModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorReiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reis\UtilizadorReiModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilizadorReiModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\TutorDB.mdf" />
+    <Content Include="App_Data\TutorDB_log.ldf">
+      <DependentUpon>TutorDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Themes\confundus.gif" />
+    <Content Include="App_Themes\erro.gif" />
+    <Content Include="App_Themes\logo.PNG" />
+    <Content Include="App_Themes\pencil.png" />
+    <Content Include="App_Themes\speak.gif" />
+    <Content Include="App_Themes\static.png" />
+    <Content Include="App_Themes\teacher.png" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Index.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\reis\aprendizagem\exercicios\ExercicioModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ExercicioModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\aprendizagem\exercicios\ExercicioModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExercicioModel.edmx</DependentUpon>
+      <LastGenOutput>ExercicioModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\exercicios\ExercicioModel.edmx.diagram">
+      <DependentUpon>ExercicioModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\exercicios\ExercicioModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExercicioModel.edmx</DependentUpon>
+      <LastGenOutput>ExercicioModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\utilizador\UtilizadorModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UtilizadorModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\utilizador\UtilizadorModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\utilizador\UtilizadorModel.edmx.diagram">
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\utilizador\UtilizadorModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicioModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UtilizadorExercicioModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicioModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorExercicioModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorExercicioModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicioModel.edmx.diagram">
+      <DependentUpon>UtilizadorExercicioModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\exercicios\UtilizadorExercicioModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorExercicioModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorExercicioModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\reis\aprendizagem\aulas\AulaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AulaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\aprendizagem\aulas\AulaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AulaModel.edmx</DependentUpon>
+      <LastGenOutput>AulaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\AulaModel.edmx.diagram">
+      <DependentUpon>AulaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\AulaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AulaModel.edmx</DependentUpon>
+      <LastGenOutput>AulaModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\reis\ReiModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ReiModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\ReiModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ReiModel.edmx</DependentUpon>
+      <LastGenOutput>ReiModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\ReiModel.edmx.diagram">
+      <DependentUpon>ReiModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\ReiModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ReiModel.edmx</DependentUpon>
+      <LastGenOutput>ReiModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\reis\UtilizadorReiModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UtilizadorReiModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\UtilizadorReiModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorReiModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorReiModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\UtilizadorReiModel.edmx.diagram">
+      <DependentUpon>UtilizadorReiModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\UtilizadorReiModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorReiModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorReiModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\reis\aprendizagem\aulas\PerguntaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PerguntaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\aprendizagem\aulas\PerguntaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PerguntaModel.edmx</DependentUpon>
+      <LastGenOutput>PerguntaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\PerguntaModel.edmx.diagram">
+      <DependentUpon>PerguntaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\PerguntaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PerguntaModel.edmx</DependentUpon>
+      <LastGenOutput>PerguntaModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\reis\aprendizagem\aulas\FonteModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FonteModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\aprendizagem\aulas\FonteModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FonteModel.edmx</DependentUpon>
+      <LastGenOutput>FonteModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\FonteModel.edmx.diagram">
+      <DependentUpon>FonteModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\FonteModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FonteModel.edmx</DependentUpon>
+      <LastGenOutput>FonteModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\reis\aprendizagem\aulas\UtilizadorModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UtilizadorModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\reis\aprendizagem\aulas\UtilizadorModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\UtilizadorModel.edmx.diagram">
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\reis\aprendizagem\aulas\UtilizadorModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UtilizadorModel.edmx</DependentUpon>
+      <LastGenOutput>UtilizadorModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\muralhas.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\ListExercicios.cshtml" />
+    <Content Include="Views\Home\PreencherEspacos.cshtml" />
+    <Content Include="Views\Home\ListAulas.cshtml" />
+    <Content Include="Views\Home\Perfil.cshtml" />
+    <Content Include="Views\Home\PerfilDoRei.cshtml" />
+    <Content Include="Views\Home\AulaDeTexto.cshtml" />
+    <Content Include="Views\Home\Estatisticas.cshtml" />
+    <Content Include="Views\Home\Historico.cshtml" />
+    <Content Include="Views\Home\AulaDeVideo.cshtml" />
+    <Content Include="Views\Home\Definicoes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\AulaTexto\" />
+    <Folder Include="Views\SpeechSynthesizer\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>16072</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2965/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

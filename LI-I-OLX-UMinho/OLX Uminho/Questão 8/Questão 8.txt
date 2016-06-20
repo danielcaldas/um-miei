@@ -1,0 +1,9 @@
+Teste para a função 8
+
+
+house8 = ([(1,"Peter","TV","fixe",60,0,"")],[(3,"Joana","TV","fixe",60,500,""),(4,"Filipe","TV","fixe",60,61,""),(4,"Filipe","TV","fixe",60,70,"")])
+
+função medVal
+
+
+

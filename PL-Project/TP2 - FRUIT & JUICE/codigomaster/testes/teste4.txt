@@ -1,0 +1,8 @@
+FJBEGIN
+FRUIT
+x[13]={12,14,16,18,20,2,3,1,4};
+b=0;
+JUICE
+IF(x[4] == 20) {WOUT(x);} ELSE{RINP(b);}
+IF(!(12==13)) {WOUT(x[2]);} ELSE {b=x[3];}
+FJEND

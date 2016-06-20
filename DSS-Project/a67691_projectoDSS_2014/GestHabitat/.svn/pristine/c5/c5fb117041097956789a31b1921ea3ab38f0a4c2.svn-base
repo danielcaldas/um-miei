@@ -1,0 +1,320 @@
+package data_acess;
+
+import business.projetos.IProjeto;
+import business.projetos.ProjetoFactory;
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * Implementação de um Data Acess Object para gerir instancias da classe Projeto.
+ * @author Jorge Caldas, José Cortez, Marcelo Gonçalves, Ricardo Silva
+ * @version 28.12.2014
+ */
+
+class ProjetoDAO implements Map<Integer,IProjeto>{
+
+    public Connection conn;
+    private MySQLParseTools parseTools;
+
+
+    public ProjetoDAO () throws ConnectionErrorException {
+        try {
+            this.parseTools = new MySQLParseTools();
+            this.conn = (new MySQLManager()).getConnection();
+        } catch (SQLException ex) {System.out.println("error_Projeto_bd");}
+    }
+    
+    @Override
+    public int size() {
+        try {
+            int i = 0;
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Nr FROM Projetos");
+            while(rs.next()){ i++; }
+            return i;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean isEmpty() {
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT Nr FROM Projetos");
+            return !rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean containsKey(Object key) throws NullPointerException {
+        try {
+            Statement stm = conn.createStatement();
+            String sql = "SELECT Nr FROM Projetos WHERE Nr='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            return rs.next();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean containsValue(Object value) {
+        try {
+            if(value instanceof IProjeto) {
+                IProjeto v = (IProjeto)value;
+                IProjeto isv = this.get(v.getNr());
+                if(isv!=null){
+                    if(v.equals(isv)) return true;
+                }
+                return false;
+            } else return false;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public IProjeto get(Object key) {
+        try {
+            IProjeto mt = null;
+            Statement stm = conn.createStatement();
+            String sql = "SELECT * FROM Projetos WHERE Nr='"+(int)key+"'";
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()){ 
+                mt = new ProjetoFactory().createProjeto();
+                mt.setNr(rs.getInt(1));
+                mt.setOrcamento(rs.getInt(2));
+                mt.setCustoFinal(rs.getInt(3));
+                mt.setPrestacao(rs.getInt(4));
+                mt.setDataInicial(parseTools.parseSQLDate(rs.getString(5)));
+                mt.setDataFinal(parseTools.parseSQLDate(rs.getString(6)));
+                mt.setObs(rs.getString(7));
+                mt.setEstado(rs.getString(8));
+                mt.setFuncionarioEnc(rs.getInt(9));
+                mt.setFuncionarioReg(rs.getInt(10));
+                int candidatura = rs.getInt(11);
+                mt.setCandidatura(new CandidaturaDAO().get(candidatura));
+                
+                Set<Integer> tarefa = new HashSet<>();
+                sql = "Select Tarefa From TarefasFuncionariosProjetos AS TFP Where TFP.Projeto=key'"+mt.getNr()+"'";
+                rs = stm.executeQuery(sql);
+                for(int i=1; rs.next(); i++)
+                    tarefa.add(rs.getInt(i));
+                mt.setTarefa(tarefa);
+                
+                Set<Integer> voluntarios = new HashSet<>();
+                sql = "Select Voluntario From ProjetosVoluntarios AS PV Where PV.Projeto='"+mt.getNr()+"'";
+                rs = stm.executeQuery(sql);
+                for(int i=1; rs.next(); i++)
+                    voluntarios.add(rs.getInt(i));
+                mt.setVoluntarios(voluntarios);
+                
+                List<Integer> nrecibos = new ArrayList<>();
+                sql = "Select Donativo From ProjetoDoadoresDonativos AS PDD Where PDD.Projeto='"+mt.getNr()+"'";
+                rs = stm.executeQuery(sql);
+                for(int i=1; rs.next(); i++)
+                    nrecibos.add(rs.getInt(i));
+                mt.setNRecibo(nrecibos);               
+            }
+            return mt;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public IProjeto put(Integer key, IProjeto value) {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Projetos WHERE Nr='"+key+"'");
+            int i  = stm.executeUpdate(insert(key,value));
+            IProjeto mt = new ProjetoFactory().createProjeto();
+            mt.setNr(value.getNr());
+            mt.setOrcamento(value.getOrcamento());
+            mt.setCustoFinal(value.getCustoFinal());
+            mt.setPrestacao(value.getPrestacao());
+            mt.setDataInicial(value.getDataInicial());
+            mt.setDataFinal(value.getDataFinal());
+            mt.setObs(value.getObs());
+            mt.setEstado(value.getEstado());
+            mt.setFuncionarioEnc(value.getFuncionarioEnc());
+            mt.setFuncionarioReg(value.getFuncionarioReg());
+            return mt;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+
+    private String insert(Integer key, IProjeto value){
+        String dataI = parseTools.parseCalendar(value.getDataInicial());
+        String dataF = parseTools.parseCalendar(value.getDataFinal());
+        
+        ArrayList<Object> valores = new ArrayList<>();
+        valores.add(key);
+        valores.add(value.getOrcamento());
+        valores.add(value.getCustoFinal());
+        valores.add(value.getPrestacao());
+        valores.add(dataI);
+        valores.add(dataF);
+        valores.add(value.getObs());
+        valores.add(value.getEstado());
+        //valores.add(value.getFuncionarioEnc());
+        //valores.add(value.getFuncionarioReg());
+        valores.add("NULL");
+        valores.add("NULL");
+        valores.add("NULL");
+        String sql = this.parseTools.createInsert("Projetos", valores);
+        return sql;
+    }
+    
+    @Override
+    public IProjeto remove(Object key) {
+        try {
+            IProjeto mt = this.get((int)key);
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Projetos WHERE Nr='"+key+"'");
+            return mt;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public Set<Integer> keySet() {
+        try {
+            Set<Integer> set = new HashSet<>();
+            int n = this.generateProjetoKey();
+            for(int i=0; i<n; i++){
+                if(this.containsKey(i)){
+                    set.add(i);
+                }
+            }
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public Collection<IProjeto> values() {
+        try {
+            Set<IProjeto> set = new HashSet<>();
+            Set<Integer> keys = new HashSet<>(this.keySet());
+            for(Integer key : keys)
+                set.add(this.get(key));
+            return set;
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    public void clear () {
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate("DELETE FROM Projetos WHERE Projetos.Nr >= 0;");
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public Set<Entry<Integer,IProjeto>> entrySet() {
+        try {
+            Set<Entry<Integer,IProjeto>> set;
+            Set<Integer> keys = new HashSet<>(this.keySet());            
+            
+            HashMap<Integer,IProjeto> map = new HashMap<>();
+            for(Integer key : keys){
+                if(this.containsKey(key)){
+                    map.put(key,this.get(key));
+                }
+            }
+            return map.entrySet();
+        }
+        catch (Exception e) {throw new NullPointerException(e.getMessage());}
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;
+        
+        else if(this.getClass() != o.getClass()) return false;
+        
+        else{
+            ProjetoDAO pdao = (ProjetoDAO) o;
+            
+            for(IProjeto p : this.values()){
+                if(!pdao.containsKey(p.getNr())) return false;
+                else{
+                    if(!p.equals(pdao.get(p.getNr()))) return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    @Override
+    public void putAll(Map<? extends Integer, ? extends IProjeto> m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = Arrays.hashCode(new Object[]{conn, parseTools});
+        for(IProjeto p : this.values())
+            hash+=p.hashCode();
+        return hash;
+    }
+    
+    /**
+     * Procura a maior chave de projeto existente na base de dados e retorna
+     * esse valor incrementado em uma unidade
+     * @return Chave que identificará univocamente no sistema um projeto. 
+     */
+    public int generateProjetoKey(){
+       try {
+            if(!this.isEmpty()){
+                Statement stm = conn.createStatement();
+                ResultSet rs = stm.executeQuery("SELECT MAX(Nr) FROM Projetos;");
+                int result = 0;
+                if (rs.next()) {      
+                    result = rs.getInt(1);  
+                } 
+                return result + 1;
+            } else return 1;
+        }
+        catch (Exception e) { throw new NullPointerException(e.getMessage()); } 
+    } 
+    
+    /**
+     * Fechar a ligação à base de dados.
+     */
+    public void close(){
+        try {
+            this.conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjetoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void main(String[] args) throws ConnectionErrorException, Exception {
+        ProjetoDAO prDAO = new ProjetoDAO();
+        prDAO.clear();
+                
+        for(int i=0; i<10; i++){
+            IProjeto mt = new ProjetoFactory().createProjeto();
+            mt.setNr(prDAO.generateProjetoKey());
+            mt.setOrcamento((float)i*100);
+            mt.setCustoFinal((float)i*10000);
+            mt.setPrestacao((float)i*5);
+            mt.setDataInicial(new GregorianCalendar(2012,05,i+2));
+            mt.setDataFinal(new GregorianCalendar(2014,05,i+2));
+            mt.setObs("Reconstrução da casa");
+            mt.setEstado("Concluido");
+            mt.setFuncionarioEnc(0);
+            mt.setFuncionarioReg(0);
+            prDAO.put(mt.getNr(), mt);
+        }
+        
+        System.out.println(prDAO.isEmpty());
+        System.out.println(prDAO.containsKey(4));
+        prDAO.remove(4);
+        System.out.println(prDAO.containsKey(4));
+        System.out.println(prDAO.size());
+    } 
+}

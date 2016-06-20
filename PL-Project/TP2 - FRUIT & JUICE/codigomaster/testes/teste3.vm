@@ -1,0 +1,17 @@
+PUSHI 10
+PUSHI 0
+START
+
+\\while
+ciclo1: NOP 
+PUSHG 1
+PUSHG 0
+INF
+JZ fciclo1 
+PUSHG 1
+PUSHI 1
+ADD
+STOREG 1
+JUMP ciclo1 
+fciclo1: NOP 
+STOP

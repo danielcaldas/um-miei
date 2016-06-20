@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<imagem>
+	<grupo prof="1">
+		<modelos> 
+			<modelo ficheiro="plano.3d" colorX="1" colorY="1" colorZ="1" />
+		</modelos>
+		<grupo prof="2">
+			<translacao X="0" Y="17" Z="0" />
+			<modelos>
+				<modelo ficheiro="sol.3d" colorX="1" colorY="0.5" colorZ="0" />
+			</modelos>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="23"	/>
+				<modelos>
+					<modelo ficheiro="mercurio.3d" colorX="0.75" colorY="0.75" colorZ="0.75" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="30" />
+				<modelos>
+					<modelo ficheiro="venus.3d" colorX="0.73" colorY="0.73" colorZ="0" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="38"	/>
+				<modelos>
+					<modelo ficheiro="terra.3d" colorX="0" colorY="0.5" colorZ="1" />
+				</modelos>
+				<grupo prof="4">
+					<translacao X="3" Y="0" Z="0" />
+					<modelos>
+						<modelo ficheiro="lua.3d" colorX="0.75" colorY="0.75" colorZ="0.75" />
+					</modelos>
+				</grupo>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="47"	/>
+				<modelos>
+					<modelo ficheiro="marte.3d" colorX="0.8" colorY="0.25" colorZ="0" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="72"	/>
+				<modelos>
+					<modelo ficheiro="jupiter.3d" colorX="0.7" colorY="0.6" colorZ="0.1" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="105"	/>
+				<modelos>
+					<modelo ficheiro="saturno.3d" colorX="0.92" colorY="0.87" colorZ="0.79" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="140"	/>
+				<modelos>
+					<modelo ficheiro="urano.3d" colorX="0.67" colorY="0.92" colorZ="0.92" />
+				</modelos>
+			</grupo>
+			<grupo prof="3">
+				<translacao X="0" Y="0" Z="180"	/>
+				<modelos>
+					<modelo ficheiro="neptuno.3d" colorX="0" colorY="0" colorZ="1" />
+				</modelos>
+			</grupo>
+			<grupo prof="-1">
+			</grupo>	
+		</grupo>
+	</grupo>
+</imagem>

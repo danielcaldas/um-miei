@@ -1,0 +1,13 @@
+*****Questão 7*****
+
+Nesta questão para além de alterarmos a data no início do documento temos de ir a todas as funções definidas e acrescentar individualmente (naquelas
+em que seja estritamente necessário) actclass. É também necessário efectuar alterações no srcipt de WebApp
+
+
+
+actclass :: String
+
+esta actclass vai representar a categoria do artigo
+
+idsOK ([(1,"Peter","TV","Tecnologia",60,""),(2,"Mary","laptop","Informática",120,"")],[(3,"John","phone","Telecomunicações",85,"Peter")]) VERDADEIRO
+(myhouse)

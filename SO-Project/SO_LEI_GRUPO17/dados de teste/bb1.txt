@@ -1,0 +1,3 @@
+Braga:Braga:S.Victor:10
+Braga:Braga:S.Lazaro:150
+Braga:Braga:Gualtar:10

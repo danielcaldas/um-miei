@@ -1,0 +1,68 @@
+*****Questão 4****
+
+Para verificar se todos os Id's são consecutivos numa house, vamos criar uma função allIds baseada no seguinte procedimento:
+
+1- Criar uma função ordenaId (igual à função quicksort definida no prelude) que dada uma lista de Id's os organiza numa nova lista por ordem crescente;
+2- Com a função pegaId (da Questão 1) e com a definida anteriormente ordenaId criar uma função que execute estas duas em simultâneo: pegaordena_Id;
+3- Criar uma função auxiliar idCons (id's consecutivos) que dada uma lista de actids por ordem crescente, a função verifica se os elemento que constituem essa
+lista são consecutivos, caso sejam devolve True, caso não sejam ou nessa lista existam elementos repetidos a função devolve false (segundo o mail do stor)
+4- Por fim e com auxília da função junta_auc (questão 1) definimos allIds.
+
+1.
+
+--função ordenaId
+ordenaId [] = []
+ordenaId (s:xs) = ordenaId [x|x <- xs,x < s] ++ [s] ++ ordenaId [x|x <- xs,x >= s]
+
+2.
+
+--pega actids
+pegaId :: [Auction] -> [Int]
+pegaId [] = []
+pegaId ((a,b,c,d,e):l) = a:pegaId l
+
+pegaordena_Id :: [Auction] -> [Int]
+pegaordena_Id [] = []
+pegaordena_Id auc = ordenaId (pegaId auc)
+
+3.
+
+--id's Consecutivos
+idCons :: [Int] -> Bool
+idCons [] = False
+idCons l | (repetidos l == True) = False
+         | ((((head l) + ((length l)-1) ) == (last l))) = True
+         | otherwise = False
+
+Vamos verificar o funcinamento da função idCons com 2 exemplos:
+
+I
+
+dada a lista [1,2,2,3,4,5] a função primeiro vai verificar se existem elementos repetidos, neste caso repete-se o elemento dois logo a função devolve FALSE;
+
+II
+
+dada a lista [5,6,7,8,9] a função verifica que não existem elementos repetidos, neste caso como podemos observar não existem, seguidamente vai executar
+a seguinte comparação: "se a cabeça da lista + o comprimento da lista - 1 elemento (esse elemento é a cabeça da lista) for igual ao último elemento da lista
+então a função devolve TRUE neste caso em específico:
+
+head [5,6,7,8,9] = 5
+(length [5,6,7,8,9] ) -1 = 5-1 = 4
+last [5,6,7,8,9] = 9
+
+5+4 = 9 então a função devolve TRUE
+
+4.
+
+Por fim temos condições para definir a função allIds
+
+allIds :: House -> Bool
+allIds ([],[]) = False
+allIds h = if (idCons (ordenaId (pegaId (junta_auc h))) == True) then True else False
+
+
+
+testes
+
+myhouse = ([(1,"Peter","TV",60,""),(2,"Mary","laptop",120,"")],[(3,"John","phone",85,"Peter")]) ----------------------------------- VERDADEIRO
+badhouse = ([(1,"Peter","TV",60,""),(4,"Mary","laptop",120,""),(3,"Anne","car",8500,"Peter")],[(3,"John","phone",85,"Peter")]) -----FALSO

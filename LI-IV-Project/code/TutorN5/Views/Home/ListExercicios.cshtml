@@ -1,0 +1,61 @@
+﻿@model TutorN5.Models.reis.aprendizagem.exercicios.ExerciciosViewModel
+
+@{
+    ViewBag.Title = "ListExercicios";
+}
+
+
+<h2>Exercícios para @ViewBag.NomeRei</h2>
+
+<table class="table">
+    <tr>
+        <th>
+           Dificuldade
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Aula
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.exercicios) {
+    <tr>
+        <td>
+            @item.Dificuldade
+        </td>
+        <td>
+            @item.Tipo
+        </td>
+        <td>
+            @item.Aula
+        </td>
+        <td>
+            @Html.ActionLink("Começar", "PreencherEspacos", new { id = item.Id }, new { @class = "btn btn-default" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<br />
+<br />
+<div class="clearfix"></div>
+<img id="avatar" src="~/App_Themes/static.png" width="195" height="188" style="float: left" onclick="avatarClick()" />
+<div class="clearfix"></div>
+
+<script type="text/javascript" src="@Url.Content("/Scripts/muralhas.js")"></script>
+<script type="text/javascript">
+
+    window.onload = function () {
+        falar();
+        mudarAvatar(2, 3500);
+    }
+
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
