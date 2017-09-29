@@ -1,0 +1,254 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//variáveis globais e structs
+typedef struct xsimbolo{
+   char byte;
+   int* codigo;
+   int bit;
+}xBloco;
+
+xBloco* xblocos;
+
+void int_to_bin_8bits (int l, int * rep_binaria);
+unsigned long int bin_to_int_32bits (int * byte);
+int procura_na_tabela (int * codificao, unsigned long int n, int tamanho_codificacao);
+unsigned long int extrair_tamanho_conteudo_ficheiro();
+int colocar_tabela_em_struct (int * codigo_comprimento_minimo, unsigned long int tamanho_conteudo_ficheiro_bytes, unsigned long int tamanho);
+void descodificar_ficheiro_para_buffer (unsigned long int n_bytes_diferentes, int codigo_comprimento_minimo, unsigned long int tamanho_conteudo_ficheiro_bytes, unsigned long int tamanho_conteudo_ficheiro_bits, char * nome_ficheiro_destino);
+
+char *buffer_ficheiro;
+int *buffer_codificado;
+char *buffer_ficheiro_original;
+
+int main (){
+   FILE * ficheiro_comprimido;
+   FILE * ficheiro_original;
+   char nome_ficheiro[20];
+   unsigned long int resultado;
+   unsigned long int tamanho;
+   unsigned long int i;
+   unsigned long int tamanho_conteudo_ficheiro_bits;
+   unsigned long int tamanho_conteudo_ficheiro_bytes;
+   unsigned long int n_bytes_diferentes;
+   unsigned long int ind_binario;
+   int codigo_comprimento_minimo=100;//valor atribuído por excesso
+   char nome_ficheiro_destino[20];
+
+
+   printf("Nome do ficheiro que deseja descomprimir: ");
+   resultado=scanf("%s", nome_ficheiro);
+   printf("Nome do ficheiro após descompressão (atenção à extenção do ficheiro): ");
+   resultado=scanf("%s", nome_ficheiro_destino);
+   ficheiro_comprimido=fopen (nome_ficheiro , "rb");
+   if(ficheiro_comprimido==NULL){
+      printf("Erro Ficheiro\n");
+      return 0;
+   }
+   fseek(ficheiro_comprimido, 0, SEEK_END);
+   tamanho = ftell(ficheiro_comprimido);
+   rewind(ficheiro_comprimido);//voltar ao início do ficheiro após termos feito fseek
+   buffer_ficheiro = (char*) malloc(tamanho*sizeof(char));
+   resultado = fread (buffer_ficheiro, sizeof(char), tamanho, ficheiro_comprimido); // ler ficheiro para buffer
+   if(resultado!=tamanho){
+      printf("Erro de Leitura\n");
+      return 0;
+   }
+   fclose(ficheiro_comprimido);
+
+   tamanho_conteudo_ficheiro_bits=extrair_tamanho_conteudo_ficheiro();
+ 
+   tamanho_conteudo_ficheiro_bytes=(tamanho_conteudo_ficheiro_bits/8);
+
+   n_bytes_diferentes=colocar_tabela_em_struct(&codigo_comprimento_minimo, tamanho_conteudo_ficheiro_bytes, tamanho);
+
+   //alocar memória para buffer que contem conteudo codificado do ficheiro em que cada bit é um inteiro
+   buffer_codificado = (int*) malloc(tamanho_conteudo_ficheiro_bits*sizeof(int));
+
+   i=tamanho_conteudo_ficheiro_bytes*2;
+   buffer_ficheiro_original=(char*) malloc(i*sizeof(char));
+
+   //eliminar tabela do buffer
+   buffer_ficheiro=(char*) realloc (buffer_ficheiro, tamanho_conteudo_ficheiro_bytes*sizeof(char));
+
+   descodificar_ficheiro_para_buffer(n_bytes_diferentes,codigo_comprimento_minimo,tamanho_conteudo_ficheiro_bytes,tamanho_conteudo_ficheiro_bits, nome_ficheiro_destino);
+
+   free(xblocos);
+   free(buffer_ficheiro);
+
+   return 0;
+}
+
+
+void descodificar_ficheiro_para_buffer (unsigned long int n_bytes_diferentes, int codigo_comprimento_minimo, unsigned long int tamanho_conteudo_ficheiro_bytes, unsigned long int tamanho_conteudo_ficheiro_bits, char * nome_ficheiro_destino){
+
+   FILE * ficheiro_original;
+   int *byte;
+   int k;
+   unsigned long int i, j;
+   int *codificacao;
+   int flag_encontrado=-1;
+   int jj;  
+
+
+   //construir buffer de inteiros com conteudo (codificado) do ficheiro binario em bits (cada bit é um inteiro)
+   for(i=4, j=0; i<tamanho_conteudo_ficheiro_bytes+4; i++){
+       k=buffer_ficheiro[i];
+       byte = (int*) malloc(8*sizeof(int));
+       int_to_bin_8bits(k, byte);
+       for(k=0; k<8; k++, j++){
+           buffer_codificado[j]=byte[k];
+       }
+       free(byte);
+   }
+
+   printf("A descodificar ficheiro... \n");
+   //j --> indice para percorrer buffer_codificado   
+
+   for(i=0, j=0; j<tamanho_conteudo_ficheiro_bits; i++){
+       codificacao = (int*) malloc(20*sizeof(int));//20 bits para codificação Shannon-Fano por excesso
+       for(k=0; k<codigo_comprimento_minimo && j<tamanho_conteudo_ficheiro_bits; k++, j++){
+           codificacao[k]=buffer_codificado[j];
+       }
+       //verificar se existe este código na tabela
+       while(flag_encontrado==-1){//ira conter o indice na tabela do codigo que procuravamos
+             flag_encontrado=procura_na_tabela(codificacao, n_bytes_diferentes, k);
+             if(flag_encontrado==-1){//caso nao encontremos a codificacao acrescentamos-lhe mais um bit
+                if(j<tamanho_conteudo_ficheiro_bits){
+                   codificacao[k]=buffer_codificado[j];
+                   k++; j++;
+                }
+             }
+       }
+
+       buffer_ficheiro_original[i]=xblocos[flag_encontrado].byte; //->escrever o byte a que corresponde a codificação no buffer
+       flag_encontrado=-1;
+       free(codificacao);
+   }
+
+   printf("A escrever no ficheiro de destino ... \n");          
+   ficheiro_original = fopen (nome_ficheiro_destino , "wb");
+   fwrite(buffer_ficheiro_original, sizeof(char), i, ficheiro_original);
+   fclose(ficheiro_original);   
+
+   free(buffer_ficheiro_original);
+   free(buffer_codificado);
+}
+
+
+unsigned long int extrair_tamanho_conteudo_ficheiro()
+{
+   unsigned long int i;
+   int j, k;
+   int byte_aux[8];
+   char conteudo_ficheiro[4];
+   int conteudo_ficheiro_bin[32];
+
+   //extrair tamanho do conteudo do ficheiro expresso em bits armazenado em 4 bytes (32 bits unsigned long int)
+   for(i=0; i<4; i++, j++){
+       conteudo_ficheiro[j]=buffer_ficheiro[i];
+   }
+
+   //passar de uma string para um unsigned long int o tamanho do conteudo do ficheiro
+   for(j=0, i=0; i<4; i++){
+       k=conteudo_ficheiro[i];
+       int_to_bin_8bits(k, byte_aux);
+       for(k=0;k<8;k++, j++)
+           conteudo_ficheiro_bin[j]=byte_aux[k];
+   }   
+   i=bin_to_int_32bits(conteudo_ficheiro_bin); //transformar a string de 4 carateres no unsigned long int
+
+   return i;
+}
+
+int colocar_tabela_em_struct (int * codigo_comprimento_minimo, unsigned long int tamanho_conteudo_ficheiro_bytes, unsigned long int tamanho)
+{
+   unsigned long int i;
+   int j, k;
+   int n_bytes_diferentes;
+   
+
+   //contar o número de bytes da tabela para alocar memória
+   for(j=0, i=tamanho_conteudo_ficheiro_bytes+4 ; i<tamanho; i++)
+       if(buffer_ficheiro[i]=='\0') j++;
+   n_bytes_diferentes=j-1;
+
+   xblocos=(xBloco*) malloc(n_bytes_diferentes*(sizeof(struct xsimbolo)));
+
+   //ler para xblocos bytes e respetivas codificações
+   for(i=tamanho_conteudo_ficheiro_bytes+4, j=0; i<tamanho; j++){
+       xblocos[j].byte=buffer_ficheiro[i]; i++;
+       xblocos[j].codigo = (int*) malloc(20*sizeof(int));
+       for(k=0; buffer_ficheiro[i]!='\0'; i++, k++){
+           if(buffer_ficheiro[i]=='0')
+              xblocos[j].codigo[k]=0;
+            else xblocos[j].codigo[k]=1;
+       }
+       xblocos[j].bit=k; //para consultar codigo <xblocos.bit e não <=xblocos.bit
+       if(k<*codigo_comprimento_minimo)
+          *codigo_comprimento_minimo=k;
+       i++;
+   }
+   return n_bytes_diferentes;
+}
+
+int procura_na_tabela (int * codificacao, unsigned long int n, int tamanho_codificacao){
+   int i, k;
+   int flag=0;
+
+   for(i=0; i<n; i++, flag=0){
+       for(k=0; k<xblocos[i].bit; k++){
+           if(codificacao[k]==xblocos[i].codigo[k]){
+              flag++;
+           }
+           if(flag==tamanho_codificacao&&flag==xblocos[i].bit){
+              return i;
+           }
+       }
+   }
+   return -1;
+}
+   
+unsigned long int bin_to_int_32bits (int * byte){
+   int i, j, k, b;
+   unsigned long int valor_decimal=0;
+
+   for(i=31, j=0;i>=0; i--, j++){
+       if(byte[i]==1)
+          if(j==0) valor_decimal=1;
+           else{
+                for(k=0, b=1;k<j;k++) b=b*2;
+                valor_decimal+=b;
+           }
+   } 
+
+   return valor_decimal;
+}
+
+void int_to_bin_8bits (int l, int * rep_binaria){
+   int i, x;
+
+   x=l;
+   if(x<0) x=-x;
+   for(i=7;x>=1;x=(x/2), i--){
+       if((x%2)!=0) rep_binaria[i]=1;
+        else rep_binaria[i]=0;
+   }
+   if(i>=0)
+      for(;i>=0;i--)
+          rep_binaria[i]=0;
+   if(l<0){    
+      for(i=7;i>=0;i--){
+          if(rep_binaria[i]==0) rep_binaria[i]=1;
+           else rep_binaria[i]=0;
+      }
+      for(i=7;i>=0;i--){
+          if(rep_binaria[i]==0){
+             rep_binaria[i]=1;
+             break;
+           }
+           else rep_binaria[i]=0;
+      }
+   }
+}
