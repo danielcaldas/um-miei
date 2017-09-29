@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DCUniverseOntoMap">
+<head>
+  <title>DC Universe</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The DC Universe ontoloy">
+  <meta name="author" content="danielcaldas">
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css"/>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+</head>
+
+<body ng-controller="CharactersCtrl">
+
+  <ng-map ng-if="loaded" class="ngmap" map-type-control-options="{style:'DROPDOWN_MENU'}" zoom="3" zoom-to-include-markers="true" default-style="false">
+    <!-- characters -->
+    <div id="markers" ng-repeat="char in characters | filter: filterCharacters track by char.id">
+      <custom-marker position="{{char.position}}">
+        <h5 class="charname" style="width:50px;">{{char.name}}</h5>
+        <div class="hvr-buzz">
+          <img ng-src="{{char.thumbnail}}" width="50" height="50" ng-click="consultCharacter(char.id)"/>
+          <div style="width:50;height:8px;background:{{char.color}}"></div>
+        </div>
+      </custom-marker>
+      <!-- char-connections -->
+      <div id="connections" ng-if="char.connections" ng-repeat="conn in char.connections | filter: filterCharacters track by conn.id">
+        <shape name="polyline"
+        path="[[{{conn.from}}],[{{conn.to}}]]"
+        stroke-color="{{char.color}}"
+        stroke-opacity="1.0"
+        stroke-weight="{{conn.weight}}"></shape>
+      </div>
+      <!-- ./char-connections -->
+    </div>
+    <!-- ./characters -->
+  </ng-map>
+  <div class="overmap-left-bottom">
+    <div class="form-group">
+      <label>
+        Age filtering
+        <input type="checkbox" class="minimal" ng-click="isAgeFilterActive=!isAgeFilterActive">
+      </label>
+      <!-- slider -->
+      <div class="animate-show-slider" ng-show="isAgeFilterActive" style="margin-top:4%;width:320%;">
+        <rzslider rz-slider-model="ageSlider.min"
+        rz-slider-high="ageSlider.max"
+        rz-slider-options="ageSlider.options"></rzslider>
+      </div>
+      <!-- ./slider -->
+      <div class="input-group">
+        <input type="text" ng-model="nameFilter" name="nameFilter" maxlength="30" class="form-control" placeholder="Search by character name or powerz..." style="width:220%;margin-top:4%;">
+      </div>
+    </div>
+  </div>
+  <div class="overmap-right-bottom">
+    <h5><b>on GitHub</b></h5>
+    <a href="https://github.com/danielcaldas/dc-universe" class="hvr-grow-rotate" target="_blank"><i class="fa fa-2x fa-github" aria-hidden="true"></i></a>
+  </div>
+
+  <!-- 3rd party -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb9P0WuwMk8MZt4niFpWGvMoyClBVLuBw&callback=initMap"></script>
+  <script src="assets/libs/ng-map.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.0.2/css/hover-min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.13.0/rzslider.min.css"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.13.0/rzslider.min.js"></script>
+  <!-- app -->
+  <script src="js/app.js"></script>
+  <script src="js/CharactersCtrl.js"></script>
+  <script src="js/charactersService.js"></script>
+</body>
+</html>

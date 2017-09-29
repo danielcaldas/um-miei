@@ -1,0 +1,16 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://www.semanticweb.org/daniel/ontologies/2016/3/dcontology#>
+
+select ?c1ID ?c2ID
+where {
+	?c1 rdf:type dc:Character.
+	BIND(REPLACE(str(?c1), "[^/#]*$", "") AS ?c1uristripped).
+	BIND(SUBSTR(str(?c1),STRLEN(?c1uristripped)+1) AS ?c1ID).
+	?c2 rdf:type dc:Character.
+	BIND(REPLACE(str(?c2), "[^/#]*$", "") AS ?c2uristripped).
+	BIND(SUBSTR(str(?c2),STRLEN(?c2uristripped)+1) AS ?c2ID).
+	?c1 dc:isRelatedWith ?c2
+} order by ?c1

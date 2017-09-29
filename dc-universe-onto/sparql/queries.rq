@@ -1,0 +1,127 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://www.semanticweb.org/daniel/ontologies/2016/3/dcontology#>
+
+# These are concrete examples of the knowledge that one may extract from the ontoly, and be infered by the same ontoly as well.
+
+# 1. List of all DC characters in the database (name and real name if existent)
+select ?name ?realname
+where {
+	?char rdf:type dc:Character.
+	?char dc:name ?name.
+	optional{ ?char dc:realName ?realname }
+} order by ?name
+
+
+# 2. What characters appeared in the year of 1980?
+select ?name ?comic
+where {
+	?char rdf:type dc:Character.
+	?char dc:name ?name.
+	?fa rdf:type dc:Comic.
+	?fa dc:description ?comic.
+	?char dc:hasFirstAppearance ?fa.
+	?fa dc:year 1980
+}
+
+# 3. The list of characters ordered by its age.
+select ?name ?comic ?year ?age
+where {
+	?char rdf:type dc:Character.
+	?char dc:name ?name.
+	?fa rdf:type dc:Comic.
+	?fa dc:description ?comic.
+	?fa  dc:year ?year.
+	bind( 2016-?year as ?age ).
+	?char dc:hasFirstAppearance ?fa.
+} order by desc(?age)
+
+# 4. What are the 10 DC oldest characters?
+select ?name ?comic ?year ?age
+where {
+	?char rdf:type dc:Character.
+	?char dc:name ?name.
+	?fa rdf:type dc:Comic.
+	?fa dc:description ?comic.
+	?fa  dc:year ?year.
+	bind( 2016-?year as ?age ).
+	?char dc:hasFirstAppearance ?fa.
+}
+order by desc(?age)
+limit 10
+
+# 5. List all relations existing between all characters in the ontology.
+select ?c1 ?c2
+where {
+	?c1 rdf:type dc:Character.
+	?c2 rdf:type dc:Character.
+	?c3 rdf:type dc:Character.
+	?c1 dc:isRelatedWith ?c2.
+}
+
+
+# 6. List all third degree relations existing between all characters in the ontology.
+select ?c1 ?c2 ?c3
+where {
+	?c1 rdf:type dc:Character.
+	?c2 rdf:type dc:Character.
+	?c3 rdf:type dc:Character.
+	?c1 dc:isRelatedWith ?c2.
+	?c1 dc:isRelatedWith ?c3.
+	?c2 dc:isRelatedWith ?c3.
+}
+
+# 7. How many common relations exist between all direct related characters?
+select ?c1 ?c2 (count(?c3) as ?common)
+where {
+	?c1 rdf:type dc:Character.
+	?c2 rdf:type dc:Character.
+	?c3 rdf:type dc:Character.
+	?c1 dc:isRelatedWith ?c2.
+	?c1 dc:isRelatedWith ?c3.
+	?c2 dc:isRelatedWith ?c3.
+} group by (?c1) (?c2)
+
+# 8. How to guess the most probabel base of operations for a given character without one by default?
+select ?c1 ?c2 ?city (count(?c3) as ?common)
+where {
+	?c1 rdf:type dc:Character.
+	?c2 rdf:type dc:Character.
+	?c3 rdf:type dc:Character.
+	?c1 dc:isRelatedWith ?c2.
+	?c1 dc:isRelatedWith ?c3.
+	?c2 dc:isRelatedWith ?c3.
+	optional{ ?c1 dc:hasBaseOfOperations ?city }.
+	optional{ ?c2 dc:hasBaseOfOperations ?city }
+} group by (?c1) (?c2)(?city)
+
+
+# 9. What are the names of the characters who possess the ability to fly?
+select ?name
+where {
+	?c rdf:type dc:Character.
+	?c dc:name ?name.
+	?c dc:hasPower dc:flight.
+} order by ?name
+
+#10. What is the distribution of characters in the Cities?
+select ?city (count(?ch) as ?total_characters)
+where {
+	?ch rdf:type dc:Character.
+	?ci rdf:type dc:City.
+	?ch dc:hasBaseOfOperations ?ci.
+	?ci dc:name ?city
+} group by (?city)
+
+# 11. List of all characters (alphabetically ordered) plus the name of the first Comic where he/she appeared
+# and the respective year.
+select ?name ?comic ?creationYear
+where {
+	?char rdf:type dc:Character.
+  ?char dc:name ?name.
+	?char dc:hasFirstAppearance ?fa.
+  ?fa dc:description ?comic.
+  ?fa dc:year ?creationYear
+} order by (?name)

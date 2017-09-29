@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <center><h3>{{character.name}}</h3></center>
+  <center><h4>{{character.creationYear}}  <small>({{getAge(character.creationYear)}} years)</small></h4></center>
+</div>
+<div class="modal-body" style="text-align:left;">
+  <div class="row">
+    <div class="col col-md-3">
+      <!-- thumbnail-->
+      <img ng-src="{{character.thumbnail}}" width="120" height="120"/>
+      <!-- ./thumbnail -->
+      <!-- metainfo -->
+      <div id="metainfo">
+        <div id="links" class="row" style="margin-top:4%;">
+          <div class="col col-sm-3">
+            <a ng-if="character.id!==undefined" class="hvr-grow-shadow" target="_blank" href="http://www.dccomics.com/characters/{{character.id}}"><img src="/favicon.ico" width="28" height="28"/></a>
+          </div>
+          <div class="col col-sm-3">
+            <a ng-if="character.facebook!==undefined" class="hvr-grow-shadow" target="_blank" href="{{character.facebook}}"><i class="fa fa-2x fa-facebook-official" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div id="personal" style="margin-top:4%;">
+          <div ng-if="character.realName!==undefined">
+            <b>Real name</b><br/>
+            {{character.realName}}
+          </div>
+          <div ng-if="character.city!==undefined">
+            <b>City</b><br/>
+            {{character.city}}  <small><i>({{character.realLocation}})</i></small>
+          </div>
+          <div ng-if="character.occupation!==undefined">
+            <b>Occupation</b><br/>
+            {{character.occupation}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./metainfo -->
+    <div class="col col-md-9">
+      <!-- short-description -->
+      <p>{{character.shortDescription}}</p>
+      <!-- ./short-description -->
+      <hr/>
+      <!-- powers -->
+      <div id="powers" ng-if="character.powers">
+        <b>Powers</b>: {{character.powers}}
+      </div>
+      <!-- ./powers -->
+    </div>
+  </div>
+</div>
+<div class="modal-footer" style="text-align:center">
+  <button class="btn btn-primary" type="button" ng-click="closeModal()"><i class="fa fa-map-o" aria-hidden="true" style="margin-right:4%;"></i> Back to map</button>
+</div>

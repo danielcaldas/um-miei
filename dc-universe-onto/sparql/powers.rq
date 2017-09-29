@@ -1,0 +1,17 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://www.semanticweb.org/daniel/ontologies/2016/3/dcontology#>
+
+select ?charID ?powerID ?powerDesc
+where {
+	?c rdf:type dc:Character.
+	BIND(REPLACE(str(?c), "[^/#]*$", "") AS ?uristripped).
+	BIND(SUBSTR(str(?c),STRLEN(?uristripped)+1) AS ?charID).
+	?power rdf:type dc:Power.
+	?c dc:hasPower ?power.
+	BIND(REPLACE(str(?power), "[^/#]*$", "") AS ?puristripped).
+	BIND(SUBSTR(str(?power),STRLEN(?puristripped)+1) AS ?powerID).
+	?power dc:description ?powerDesc
+}

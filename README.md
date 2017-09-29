@@ -31,8 +31,15 @@ coding challenges that I did along the way.
 - **CC-Project** - Music Quiz build in Java, did some low level network work with UDP packages.
 - **CG-Project** - Built some basic stuff with OpenGL.
 - **LI-IV-Project** - An interactive Portuguese history tutor built in Microsoft .NET stack.
-- **PL-Project** - Laguages Processing projects.
+- **PL-Project** - Languages Processing projects.
 - **SRCR-Project** - Some logic programming challenges with the PROLOG programming language, also had opportunity to
 play around with neural networks, using R language and [nnet](https://cran.r-project.org/web/packages/nnet/index.html).
 
 ### Master's Degree in Applications Engineering and Knowledge and Language Processing
+
+#### 1st year
+
+- **[ProxyPrint](https://github.com/ProxyPrint)** - ProxyPrint is a platform where both printshops and regular consumer can use. In other words, one has access (within ProxyPrint) to all printshops registered there, which means one's not only able to make requests online (having to collect them physically afterwards) but can also compare the cost of his printing request across all printshops.
+
+
+#### 2nd year
