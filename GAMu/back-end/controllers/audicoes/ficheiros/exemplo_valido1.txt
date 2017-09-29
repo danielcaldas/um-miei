@@ -1,0 +1,12 @@
+BD "localhost/gamudb" "root" "root" 
+AUDICAO
+    CODIGO AUDNATAL2015, TITULO "Audição de Natal da UM", SUBTITULO "Sinos na noite de Natal", TEMA "O Natal nas Universidades",
+    DATA 21/12/2014, HORAINICIO 21:30, DURACAO 01:00, LOCAL "CP3, UM"
+ATUACOES
+    ATUACAO AT2.
+    ATUACAO
+        CODIGO AT60;
+        INSTRUMENTOS INST1, INST2;
+        OBRAS O123, O2;
+        PROFESSORES P25, P33;
+        ALUNOS A123,A44 ACOMPANHADO A13, P22.

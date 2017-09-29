@@ -1,0 +1,310 @@
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <style type="text/css">
+      * {
+       margin: 0px;
+       padding: 0px;
+      }
+
+     body {
+       padding: 10px 0px;
+       background-color: #656565;
+       color: #c2bebe;
+       font-family: verdana, arial, sans-serif;
+       font-size: 10px;
+       text-align: left;
+     }
+
+     a {
+       color: #c2bebe;
+
+       background-color: inherit;
+       text-decoration: underline;
+     }
+
+     a:hover {
+       color: #d26a36;
+       background-color: inherit;
+     }
+
+     span {
+       display: none;
+     }
+
+     img {
+       border: none;
+     }
+
+     ul {
+       list-style-type: none;
+     }
+
+     li {
+       list-style-type: none;
+     }
+
+     .clearthis {
+       margin : 0px;
+       height : 1px;
+       clear : both;
+       float : none;
+       font-size : 1px;
+       line-height : 0px;
+       overflow : hidden;
+       visibility: hidden;
+     }
+
+
+     #container {
+       margin: 0px auto;
+       width: 878px;
+       /*background: url('images/container_background.gif') #0c070d repeat-y 0px 0px;*/
+       color: inherit;
+     }
+
+     .thumbnail {
+       padding: 10px 0px;
+     }
+
+     .thumbnail img {
+       border: #5c5b5c 1px solid;
+     }
+
+
+     /* Page Title */
+
+     #page_title {
+       width: 512px;
+       height: 40px;
+       vertical-align: middle;
+       /*background-image: url('images/background.gif');*/
+       background-repeat: repeat-x;
+       background-position: 0% 100%;
+       overflow: hidden;
+       float: right;
+       text-align: center;
+     }
+
+     #page_title h1 {
+       width: 512px;
+       height: 40px;
+       vertical-align: middle;
+       background-color: black;
+       /*background: url('images/company_name.gif') #292829 no-repeat 50% 50%;*/
+       color: #cf7235;
+
+     }
+
+
+     /* Page Image */
+
+     #page_image {
+       width: 364px;
+       height: 534px;
+       /*background: url('images/main_image.gif') #09070a no-repeat 0px 100%;*/
+       background-image: url('https://lh3.googleusercontent.com/Gk2i-XhzoiR410oZew06n8hOJJaUZ0iYm3tafMsKbG_jubjUBs0C63q3Awuc5lfRJIBLzyH6T-ffWvg6KoWdSG_lO7Q88yKOWU71bhfsh13I9QZ85AIcedMzwlk4mb6QpeGeW-Dz-6Yb1UZbsNGxen3-rCj7O0L5G55Sxpd86hEj3UpINm11IR_z9hQ3gfyCPSeyJ9iz5SYFAfldI_LZcjMv-GPbj9l3rWxay7igKkNZwCDY6bQxm-wKC54h0xsYCjvYwNvHYQZZlJbRMERl07LAH-XZjIoKd1Oe3effGXnFgpS90psY9vGtCNZO9it-KDPYwWp5mo9ZB2ctaQC_L5OBMtge9cj1DGNX3OQ7G8S2qYlWurNZ3DG9vIthyBqBGORYulbMsx1QnlPXYTFzlsTvfDhcKgpqMKLwG8g23Ulj5OMgqaY8UC6Mvj90XcseFMRQbvRw_D2B11CldrEB-5ESxud2ajDQ_KzadAjsZgPP-M_c_KXLLRvbOOSdvbMVjNHpj1YBvbTO0doop8e311Vdjw7-B0uvDLadu3Z8iFzqX16g_1ImVHzTt4nu_hu-X5ZM=w414-h512-no');
+       color: inherit;
+       overflow: hidden;
+
+     }
+
+
+     /* Left Column */
+
+     #left_column {
+       width: 364px;
+
+       font-size: 12px;
+       float: left;
+     }
+
+     #left_column h2 {
+       background-repeat: no-repeat;
+       background-position: 50% 50%;
+       background-color: inherit;
+       color: #d26a36;
+     }
+
+
+     /* Right Column */
+
+     #right_column {
+       padding-bottom: 20px;
+       width: 512px;
+       height: 474px;
+       background-color: black;
+       color: inherit;
+       float: right;
+       clear: right;
+     }
+
+     #right_column h2 {
+       background-repeat: no-repeat;
+       background-position: 50% 50%;
+       background-color: black;
+       color: #c7c7c7;
+     }
+
+     #right_column p {
+       padding-top: 20px;
+     }
+
+
+     /* Page Menu */
+
+     #page_menu {
+       padding: 15px 0px;
+       width: 414px;
+       background-image: url('https://lh3.googleusercontent.com/bN09jR44Fmp-ebr0295xIj6RCn4VZAKbucwRqdAeXFTNNSPLDVStZVQX2dfd9-X8rp5GYJBenrzQJezprPoleRdVsKKyuwC7KUJUJUVghCTykmFTzBdu3mE2GIBW11_-t-tdwsSRBltylGpr-y6M2fX10522Q1r8-1FFSVL4SVndgLw1pmUxxxNGW7L0F9tNb5aB2rwbpZREUS4tMvzxj_clS6iyi_l9cDlaFWd47kJgd9zu95JWYS293S5F8coENCl-SCRkXdm2PiLEwW5VivVt6hK4ccIlxXOIdKkkGjs3YXKsUxTM2S5s993nMaP9cnFEQCFLlIMxf5SbqfT-_D-JRpazdEipqbQX46IfigIlbQezOzwD3ISqsAEkzDXHnk3FGyu6itFBbNhEg_z4MtMA-RQzMg2vuDBLgvrI8MqawurHCeZ-qPKvWGi02rxkOtoP2qcVzVWy882QjNdUpz9-1QmqunttqPIQ6zkr8FZe-jrm8EPAFkYIiy1nyUpwPH0b4u3cqyf6Pccc0TRGeZqvN6YrtZiKQEw7-FXid0StuInO-GrifuMus7n1xKOEOjfu=s2-no') #0c070d repeat-x 0% 0%;
+       color: #c2bebe;
+     }
+
+     #page_menu a {
+       background-color: inherit;
+       color: #c2bebe;
+       text-decoration: none;
+     }
+
+     #page_menu a:hover {
+       background-color: inherit;
+       color: #fff;
+     }
+
+     #page_menu li {
+       padding: 0px 2px 2px;
+       float: left;
+     }
+
+     #page_menu li a {
+       display: block;
+       width: 81px;
+       background-position: 50% 0%;
+       background-repeat: no-repeat;
+       text-align: center;
+       font-size: 16px;
+       font-weight: bold;
+       text-transform: uppercase;
+     }
+
+     #page_menu li#menu1 a {
+       margin-right: 7px;
+       width: 69px;
+     }
+
+     #page_menu li#menu5 a {
+       margin-left: 7px;
+       width: 66px;
+     }
+
+     #page_menu li a span {
+       padding-top: 70px;
+       display: block;
+     }
+
+
+     /* Audição */
+
+     #audicao {
+       /*padding: 20px 25px;*/
+       background-color: black;
+     }
+
+     #audicao h2 {
+       height: 6px;
+       background-color: black;
+       /*background-image: url('images/latestvideo_header.gif');*/
+     }
+
+     /* Atuação */
+
+     #atuacao {
+       /*padding: 20px 25px;*/
+       background-color: black;
+     }
+
+     #atuacao h2 {
+       height: 20px;
+       background-color: black;
+       /*background-image: url('images/latestvideo_header.gif');*/
+     }
+
+     /* Page Footer */
+
+     #page_footer {
+      margin-left: auto;
+      margin-right: auto;
+
+      width: 878px;
+      padding: 9px 0px;
+      background-image: url('https://lh3.googleusercontent.com/DbVyoqic5qWXqXGRw8KDUfWsgqOzvhi0Ci4Vr9FWcmMw-fKJQDYzD61s2qJglhP_ZqeIaBPP_FFxDZYhDACDTXUq6rnWVYCIjnW3Wd15S41YEPKROTBY_NwzsIO9qHVPkZb1oVu69v7mWTluj4aWJtVXEsDt4q15zAEBtR5v0mnhzMMOWBzWC-kJqXl2a4FAYY-BaD7cNc3G7UA1JeLttrVzMmaPp7vaKHCNIt8pzEfCSghZjZ9AFFD4zpithBbv_Y2wk4Ol8uMeCT_1gUKXKYeF5QbnFGkfFRmklEjcgvSZ2t0Uo_3fN6xk5qII08EVNLbHc1Lq2m6LF6uNgI9TYijhdgeyEoJXNkF1vs1WOVnEUcLP5k13KYHEsG4QQOZgud-S7_q_Zk1RM70giKql5wegKdUQlK6jrFu3KdJfxIK0FB9X033xcBkDgUollSXPaNyqyYywUYBPXTtZuQ1uKqwuEfENzUsh1cQtLMg4zAJjN2DGBFINQaPYvt9KNoCmUYvWe0E5wrG0LBF5-wFxBwxJUnIQBj4fTFcG1ZOdGKTSY7WtTnMFN-7U3x9zSK904RL8=w416-h2-no') #343231 repeat-x 0px 0px;
+      color: inherit;
+      clear: both;
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+
+    }
+    </style>
+
+<!--..................... FIM DO FICHEIRO inicio.txt ........................-->
+		<title>Audi????o de Final de Ano</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+	</head>
+	<body>
+		<div id="container">
+			<div id="page_title">
+				<h1>Audi????o de Final de Ano</h1>
+			</div>
+			<div id="left_column">
+				<div id="page_image">&nbsp;</div>
+			</div>
+			<div id="right_column" style="overflow-y: auto;">
+				<div id="audicao" style="text-align: center;">
+					<h2>Um Final de Ano diferente</h2>
+					<br/>
+					<h2>Ano novo vida nova</h2>
+					<br/>
+					<h2>22/12/2015</h2>
+					<br/>
+					<h2>00:30</h2>
+					<br/>
+					<h2>Avenida dos Aliados</h2>
+					<br/>
+					<br/>
+					<h2>Programa</h2>
+					<br/>
+				</div>
+				<div id="atuacao" style="margin-left: 2em;">
+					<ul>
+					<li>
+						<p> Alexandre Coelho Carvalho, Daniel Barbosa Alves, Joao Nuno Marques Dos Santos,						</p>
+						<p><b>Interpreta(m):</b>  Serenata Notturna (Johann Joachim Quantz),						</p>
+						<p><b>A dirigir:</b>  Fernanda Barroso,						</p>
+						<p><b>A acompanhar:</b>  Alexandre Coelho Carvalho, Daniel Barbosa Alves, Joao Nuno Marques Dos Santos,						</p>
+						<p>( Piano, Obo??, Guitarra,						)</p>
+					<li>
+					<br/><hr/>
+					<li>
+						<p> Antonio Manuel Rodrigues Fernandes, Lidia Nogueira Laranjeira,						</p>
+						<p><b>Interpreta(m):</b>  Polonaise-Fantasie (Benda, Franz),						</p>
+						<p><b>A dirigir:</b> 						</p>
+						<p><b>A acompanhar:</b>  Antonio Manuel Rodrigues Fernandes, Lidia Nogueira Laranjeira,						</p>
+						<p>( Flauta, Percuss??o,						)</p>
+					<li>
+					<br/><hr/>
+					<li>
+						<p> Daniela Cristina Garcia Teixeira, Michel Ferreira Pinto, Nuno Miguel Oliveira Silva,						</p>
+						<p><b>Interpreta(m):</b>  In the Steppes of Central Asia (Emanuele d'Astorga),						</p>
+						<p><b>A dirigir:</b> 						</p>
+						<p><b>A acompanhar:</b>  Professor Maria Da Concei????o Mota, Daniela Cristina Garcia Teixeira, Michel Ferreira Pinto, Nuno Miguel Oliveira Silva,						</p>
+						<p>( Fagote, Flauta, Violino,						)</p>
+					<li>
+					<br/><hr/>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="page_footer">Web Design by GAMu</div>
+	</body>
+</html>

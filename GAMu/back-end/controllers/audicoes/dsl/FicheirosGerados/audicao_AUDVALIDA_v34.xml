@@ -1,0 +1,11 @@
+<audicao id=AUDVALIDA>
+	<titulo>Audi????o de Inverno</titulo>
+	<subtitulo>Inverno nas Escolas</subtitulo>
+	<tema>Frozen</tema>
+	<data>1/12/2015</data>
+	<horaini>20:00</horaini>
+	<local>Pra??a do Ribeirinho</local>
+	<atuacoes>
+		<atuacao>AT21</atuacao>
+	</atuacoes>
+</audicao>

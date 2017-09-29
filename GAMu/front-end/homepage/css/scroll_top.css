@@ -1,0 +1,27 @@
+/*Estilo para butao de voltar ao topo da pagina*/
+#scrollUp {
+    bottom: 10px;
+    right: 10px;
+    background-color: #1F4788;
+    color: #fff;
+    font-size: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    text-decoration: none;
+    opacity: 1;
+    padding: 11px 0 9px 0;
+    width: 120px;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+    border-radius: 18px;
+    -webkit-transition: background 250ms ease;
+    -moz-transition: background 250ms ease;
+    -ms-transition: background 250ms ease;
+    -o-transition: background 250ms ease;
+    transition: background 250ms ease;
+}

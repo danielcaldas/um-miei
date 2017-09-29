@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'/>
+    <title>SNMP IP Monitor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <!-- Chrono API externa http://www.proglogic.com/code/javascript/time/chronometer.php -->
+    <script language="JavaScript">
+        <!--
+        var startTime = 0
+        var start = 0
+        var end = 0
+        var diff = 0
+        var timerID = 0
+        function chrono(){
+            end = new Date()
+            diff = end - start
+            diff = new Date(diff)
+            var msec = diff.getMilliseconds()
+            var sec = diff.getSeconds()
+            var min = diff.getMinutes()
+            var hr = diff.getHours()
+            if (min < 10){
+                min = "0" + min
+            }
+            if (sec < 10){
+                sec = "0" + sec
+            }
+            if(msec < 10){
+                msec = "00" +msec
+            }
+            else if(msec < 100){
+                msec = "0" +msec
+            }
+            document.getElementById("chronotime").innerHTML = min + ":" + sec + ":" + msec
+            timerID = setTimeout("chrono()", 10)
+        }
+        function chronoStart(){
+            document.chronoForm.startstop.value = "stop!"
+            document.chronoForm.startstop.onclick = chronoStop
+            document.chronoForm.reset.onclick = chronoReset
+            start = new Date()
+            chrono()
+        }
+        function chronoContinue(){
+            document.chronoForm.startstop.value = "stop!"
+            document.chronoForm.startstop.onclick = chronoStop
+            document.chronoForm.reset.onclick = chronoReset
+            start = new Date()-diff
+            start = new Date(start)
+            chrono()
+        }
+        function chronoReset(){
+            document.getElementById("chronotime").innerHTML = "0:00:00:000"
+            start = new Date()
+        }
+        function chronoStopReset(){
+            document.getElementById("chronotime").innerHTML = "0:00:00:000"
+            document.chronoForm.startstop.onclick = chronoStart
+        }
+        function chronoStop(){
+            document.chronoForm.startstop.value = "start!"
+            document.chronoForm.startstop.onclick = chronoContinue
+            document.chronoForm.reset.onclick = chronoStopReset
+            clearTimeout(timerID)
+        }
+    //-->
+    </script>
+    <script type="text/javascript">
+        // SNMP objects used to monitor network
+        var ipInDelivers=1;
+        var maxIpInD = 1;
+        var minIpInD = 1;
+
+        var ipInReceives=1;
+        var maxIpInR=1;
+        var minIpInR=1;
+
+        var ipInHdrErrors=0;
+        var ipInAddrErrors=0;
+        var ipInReceivesNoErr=0;
+
+        // Will allow some synchronism between front-end and server poolling time
+        var pollingTime=0;
+
+        // Session settings
+        var ip;
+        var port;
+
+        // Google Chart options (dynamic)
+        var options1, options2, options3;
+
+        var socketio = io.connect("127.0.0.1:8080");
+
+        function readFromSocket() {
+            socketio.on("message_to_client", function(data) {
+                ipInDelivers = parseInt(data['ipInDelivers']);
+                if(ipInDelivers > maxIpInD) {
+                    maxIpInD = ipInDelivers;
+                }
+                if(minIpInD==1) {
+                    minIpInD = ipInDelivers;
+                }
+                else if(ipInDelivers < minIpInD) {
+                    minIpInD = ipInDelivers;
+                }
+
+                ipInReceives = parseInt(data['ipInReceives']);
+                if(ipInReceives > maxIpInR) {
+                    maxIpInR = ipInReceives;
+                }
+                if(minIpInR==1) {
+                    minIpInR = ipInReceives;
+                }
+                else if(ipInReceives < minIpInR) {
+                    minIpInR = ipInReceives;
+                }
+
+                ipInHdrErrors = parseInt(data['ipInHdrErrors']);
+                ipInAddrErrors = parseInt(data['ipInAddrErrors']);
+                pollingTime = parseInt(data['pollingTime']);
+            });
+        }
+
+        function startMonitor() {
+        	// Set session info
+        	$("#portnumber").empty().append("<b>Port</b>: " + localStorage.getItem("port"));
+        	$("#ipaddress").empty().append("<b>Ip address</b>: " + localStorage.getItem("ip"));
+
+            chronoStart();
+
+            fetchInfo();
+
+            setTimeout(makeMonitorVisible, 5000);
+        }
+
+        function makeMonitorVisible() {
+        	$('#load').css("display", "none");
+        	$('#monitor_wrapper').css("display", "block");
+        }
+
+        function fetchInfo() {
+            socketio.emit("message_to_server", {fetch: "fetch"});
+            readFromSocket();
+
+            var chartOffSet = 10;
+
+            /*------------------------------------------------------------------
+                Google Charts configurations
+            ------------------------------------------------------------------*/
+			options1 = {
+                title: 'Received packets per minute (ipInReceives/min)',
+                height: 220,
+                vAxis: {
+                    minValue:0, maxValue:20,
+                    gridlines: {count: 12},
+                    viewWindowMode:'explicit',
+                    viewWindow: { max: maxIpInR+chartOffSet, min: minIpInR-chartOffSet }
+                },
+                hAxis: { gridlines: { count: 10 } },
+                animation: {
+                    duration: 1000,
+                    easing: 'in'
+                },
+                series: {
+                    0: { color: '#3366cc' }
+                },
+                axes: {
+                  // Adds labels to each axis; they don't have to match the axis names.
+                  y: {
+                    ipInReceives: {label: 'Number of packets'},
+                  }
+                }
+            };
+
+            options2 = {
+                title: 'Sended packets per minute (ipInDelivers/min)',
+                height: 220,
+                vAxis: {
+                    minValue:0, maxValue:20,
+                    gridlines: {count: 12},
+                    viewWindowMode:'explicit',
+                    viewWindow: { max: maxIpInD+chartOffSet, min: minIpInD-chartOffSet }
+                },
+                hAxis: { gridlines: { count: 10 } },
+                animation: {
+                    duration: 1000,
+                    easing: 'in'
+                },
+                series: {
+                    0: { color: '#dc3912' }
+                }
+            };
+
+            options3 = {
+                title: 'Refresh time (polling time)',
+                height: 220,
+                vAxis: {
+                    minValue:0, maxValue:20,
+                    gridlines: {count: 12}
+                },
+                hAxis: { gridlines: { count: 10 } },
+                animation: {
+                    duration: 1000,
+                    easing: 'in'
+                },
+                series: {
+                    0: { color: '#f1ca3a' }
+                }
+            };
+
+            $( "#b1" ).trigger( "click" );
+            $( "#b2" ).trigger( "click" );
+            $( "#b3" ).trigger( "click" );
+            $( "#b4" ).trigger( "click" );
+
+            $("#ipInAddrErrors").empty().append("<b>ipInAddrErrors (absolute counter value)</b>: " + ipInAddrErrors);
+            $("#ipInHdrErrors").empty().append("<b>ipInHdrErrors (absolute counter value)</b>: " + ipInHdrErrors);
+
+            setTimeout(fetchInfo, pollingTime);
+        }
+
+        function stopMonitoring() {
+        	socketio.emit("message_to_server", {stop: "stop"});
+        	window.location.reload();
+        }
+
+        function getTime() {
+            var d = new Date();
+            var x = document.getElementById("demo");
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            return (h + ":" + m + ":" + s);            
+        }
+
+        /*---------------------------------------------------------------------------*/
+        /*-------------------------- Google Charts API ------------------------------*/
+        /*---------------------------------------------------------------------------*/
+        var flagChart1 = true;
+        var flagChart2 = true;
+        var flagChart3 = true;
+
+        $(document).ready( function () {
+            begin = Date.now();
+
+            
+            /*------------------------------------------------------------------
+                1 - ipInReceives Chart
+            ------------------------------------------------------------------*/
+            var chart1 = new google.visualization.LineChart(document.getElementById('ipInReceives'));
+            var data1 = new google.visualization.DataTable();
+            data1.addColumn('string', 'time');
+            data1.addColumn('number', 'ipInReceives');
+            data1.addRow(['0', 0]);
+            var button1 = document.getElementById('b1');
+            function drawChart1() {
+                if (flagChart1 && data1.getNumberOfRows() == 2) {
+                    data1.removeRow(0);
+                    flagChart1=false;
+                }
+                // Disabling the button1 while the chart1 is drawing.
+                button1.disabled = true;
+                google.visualization.events.addListener(chart1, 'ready',
+                function() {
+                    button1.disabled = false;
+                });
+                chart1.draw(data1, options1);
+            }
+
+            button1.onclick = function() {
+                var elapsedTime = (Date.now() - begin);
+                elapsedTime = parseFloat( elapsedTime * 0.001 ).toFixed(2);
+                var where = 0;
+
+                while (where < data1.getNumberOfRows() && parseInt(data1.getValue(where, 0)) < elapsedTime) {
+                    where++;
+                }
+
+                elapsedTime = Date.now();
+                data1.insertRows(where, [[getTime(), ipInReceives]]);
+                drawChart1();
+            }
+            drawChart1();
+
+
+            /*------------------------------------------------------------------
+                2 - ipInDelivers Chart
+            ------------------------------------------------------------------*/
+            var chart2 = new google.visualization.LineChart(document.getElementById('ipInDelivers'));
+            var data2 = new google.visualization.DataTable();
+            data2.addColumn('string', 'time');
+            data2.addColumn('number', 'ipInDelivers');
+            data2.addRow(['0', 0]);
+            var button2 = document.getElementById('b2');
+            function drawChart2() {
+                if (flagChart2 && data2.getNumberOfRows() == 2) {
+                    data2.removeRow(0);
+                    flagChart2=false;
+                }
+                // Disabling the button2 while the chart2 is drawing.
+                button2.disabled = true;
+                google.visualization.events.addListener(chart2, 'ready',
+                function() {
+                    button2.disabled = false;
+                });
+                chart2.draw(data2, options2);
+            }
+
+            button2.onclick = function() {
+                var elapsedTime = (Date.now() - begin);
+                elapsedTime = parseFloat( elapsedTime * 0.001 ).toFixed(2);
+                var where = 0;
+
+                while (where < data2.getNumberOfRows() && parseInt(data2.getValue(where, 0)) < elapsedTime) {
+                    where++;
+                }
+
+                data2.insertRows(where, [[getTime(), ipInDelivers]]);
+                drawChart2();
+            }
+            drawChart2();
+
+
+            /*------------------------------------------------------------------
+            3 - pollingTime Chart
+            ------------------------------------------------------------------*/
+            var chart3 = new google.visualization.LineChart(document.getElementById('pollingTime'));
+            var data3 = new google.visualization.DataTable();
+            data3.addColumn('string', 'time');
+            data3.addColumn('number', 'pollingTime');
+            data3.addRow(['0', 0]);
+            var button3 = document.getElementById('b3');
+            function drawChart3() {
+                if (flagChart3 && data3.getNumberOfRows() == 2) {
+                    data3.removeRow(1);
+                    flagChart3=false;
+                }
+                // Disabling the button3 while the chart3 is drawing.
+                button3.disabled = true;
+                google.visualization.events.addListener(chart3, 'ready',
+                function() {
+                    button3.disabled = false;
+                });
+                chart3.draw(data3, options3);
+            }
+
+            button3.onclick = function() {
+                var elapsedTime = (Date.now() - begin);
+                elapsedTime = parseFloat( elapsedTime * 0.001 ).toFixed(2);
+
+                var where = 0;
+                while (where < data3.getNumberOfRows() && parseInt(data3.getValue(where, 0)) < elapsedTime) {
+                    where++;
+                }
+
+                var value = pollingTime * 0.001;
+                var label = parseFloat( value ).toFixed(2);
+
+                data3.insertRows(where, [[getTime(), value]]);
+                drawChart3();
+            }
+            drawChart3();
+
+
+            /*------------------------------------------------------------------
+                4 - Error vs Good Chart
+            ------------------------------------------------------------------*/
+            var button4 = document.getElementById('b4');
+            google.setOnLoadCallback(drawChart4);
+            function drawChart4() {
+
+                var data4 = google.visualization.arrayToDataTable([
+                    ['MIB Object Name', 'Value'],
+                    ['ipInReceives',      ipInReceives],
+                    ['ipInDelivers',      ipInDelivers]
+                ]);
+
+                var options4 = {
+                    title: 'ipInReceives vs ipInDelivers',
+                    pieHole: 0.4
+                };
+
+                var chart4 = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart4.draw(data4, options4);
+            }
+
+            button4.onclick = function() {
+                drawChart4();
+            }
+
+			// Start monitoring session
+            startMonitor();
+        });
+		google.load('visualization', '1.1', {packages: ['line','corechart', 'controls']});
+    </script>
+</head>
+<body>
+    <div id="monitor_wrapper" style="overflow-x:hidden; display: none;">
+    	<center><h1>SNMP IP Monitor</h1></center>
+        <div style="width: 100%; height: 100%; clear: left;">
+            <div style="width: 55%; float: left;">
+                <div id="ipInReceives"></div>
+                <div id="ipInDelivers"></div>
+                <div id="pollingTime"></div>
+                <button id="b1" style="visibility: hidden;"></button>
+                <button id="b2" style="visibility: hidden;"></button>
+                <button id="b3" style="visibility: hidden;"></button>
+            </div>
+            <div style="width: 45%; float: right;">
+                <div>
+                    <h3 style="margin-left: 4em;">Input datagrams discarded due to errors</h3>
+                    <p id="ipInHdrErrors" style="margin-left: 8em;"></p>
+                    <p id="ipInAddrErrors" style="margin-left: 8em;"></p>
+                    <div id="piechart" style="width: 850px; height: 400px;"></div>
+                    <button id="b4" style="visibility: hidden;"></button>
+                </div>
+                <div class="panel panel-primary" style="margin-left: 10em; width: 380px;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Monitoring Session Information</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p id="ipaddress"></p>
+                        <p id="portnumber"></p>
+                        <p><b>Management Protocol</b>: SNMP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; clear: right;">
+            <div id="spinner" style="text-align: center;">
+            	<h4>A monitorizar</h4>
+                <i id="spinner" class="fa fa-circle-o-notch fa-spin" style="font-size:34px;"></i><br/>
+                <span id="chronotime" style="font-size: 18px;">0:00:00:00</span>
+                <form name="chronoForm" style="visibility: hidden;">
+                    <input type="button" name="startstop" value="start!" onClick="chronoStart()"/>
+                    <input type="button" name="reset" value="reset!" onClick="chronoReset()"/>
+                </form>
+            </div>
+            <center><a href="index.html" id="stop_button" class="btn btn-danger" onclick="stopMonitoring()" style="padding-left: 6em; padding-right: 6em; margin-top: 0.5em;">Stop Monitoring</a></center>
+        </div>
+    </div>
+    <div id="load" style="position: relative; top: 50%; transform: translateY(50%); margin-top: 20%;">
+    	<center><h2>Loading SNMP IP Monitor Session</h2></center>
+    	<center><i class="fa fa-circle-o-notch fa-spin" style="font-size:44px"></i></center>
+    </div>
+</body>
+</html>

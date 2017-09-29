@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<audicao id="AUD1">
+  <titulo>Audi&#xE7;&#xE3;o de Natal da UM</titulo>
+  <subtitulo>Sinas na noite de Natal</subtitulo>
+  <tema>O Natal nas Universidades</tema>
+  <data>24/12/2015</data>
+  <horainicio>21:30</horainicio>
+  <horafim>24:00</horafim>
+  <duracao>150</duracao>
+  <local>CP3, UM</local>
+  <atuacoes>
+    <atuacao>
+      <alunos>
+        <aluno>Candido Barros</aluno>
+        <aluno>Daniel Alves</aluno>
+        <aluno>Davi Pereira</aluno>
+        <aluno>Fernando Lopes</aluno>
+        <aluno>Fernando Lima</aluno>
+        <aluno>Helder Magalhaes</aluno>
+        <aluno>Joao Silva</aluno>
+        <aluno>Joao Sanches</aluno>
+        <aluno>Jose Teixeira</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Haym, Nicola Francesco">Mazurkas, Op. 50</obra>
+        <obra compositor="Cavalli, Francesco">Psalm 42 , Op. 42</obra>
+      </obras>
+      <professores>
+        <professor>Pedro Resende</professor>
+      </professores>
+      <acompanhates>
+        <acompanhate>Sergio Cardoso</acompanhate>
+        <acompanhate>Professor Almeno</acompanhate>
+        <acompanhate>Professor Daniel Soares</acompanhate>
+      </acompanhates>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Joao Marques</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Neander, Joachim">Hungarian Rhapsody No. 16</obra>
+        <obra compositor="Bach, Wilhelm Friedemann">Preludes Opus 51</obra>
+        <obra compositor="Boyvin, Jacques">Symphonic Poem No.1, Ce qu'on entend sur la montagne</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Orlando Pinto</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Johann Joachim Quantz">Sigurd Jorsalfar</obra>
+        <obra compositor="Krebs, Johann Ludwig">Sonnerie de Ste-Genevi&#xE8;ve du Mont-de-Paris</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Bruno Rodrigues</aluno>
+        <aluno>Bruno Diamantino</aluno>
+        <aluno>Bruno Magalhaes</aluno>
+        <aluno>Carlos Ribeiro</aluno>
+        <aluno>Francisco Leite</aluno>
+        <aluno>Joao Pereira</aluno>
+        <aluno>Luis Couto</aluno>
+        <aluno>Mario Julio</aluno>
+        <aluno>Miguel Alves</aluno>
+        <aluno>Paulo Rodrigues</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Rousseau, Jean-Jacques">Hungarian Rhapsody No. 18</obra>
+      </obras>
+      <professores>
+        <professor>Professor Pedro Ferreira</professor>
+        <professor>Professor Jose Castro</professor>
+      </professores>
+      <acompanhates>
+        <acompanhate>Pedro Coelho</acompanhate>
+        <acompanhate>Professor Edison Oliveira</acompanhate>
+      </acompanhates>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Ademar Goncalves</aluno>
+        <aluno>Aderito Oliveira</aluno>
+        <aluno>Alexandre Carvalho</aluno>
+        <aluno>Daniel Alves</aluno>
+        <aluno>Joao Santos</aluno>
+        <aluno>Jorge Melo</aluno>
+        <aluno>Jose Correia</aluno>
+        <aluno>Luis Goncalves</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Johann Joachim Quantz">Serenata Notturna</obra>
+      </obras>
+      <professores>
+        <professor>Fernanda Barroso</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Ademar Goncalves</aluno>
+        <aluno>Aderito Oliveira</aluno>
+        <aluno>Alexandre Carvalho</aluno>
+        <aluno>Antonio Covas</aluno>
+        <aluno>Davi Pereira</aluno>
+        <aluno>Francisco Leite</aluno>
+        <aluno>Jose Machado</aluno>
+        <aluno>Jose Gandarela</aluno>
+        <aluno>Leandro Barbosa</aluno>
+        <aluno>Miguel Matos</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Handel, George Frideric">Suite for Orchestra in B minor</obra>
+      </obras>
+      <professores>
+        <professor>Filipe Froufe</professor>
+        <professor>Jo&#xE3;o Brites</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Daniela Teixeira</aluno>
+        <aluno>Hugo Pereira</aluno>
+        <aluno>Michel Pinto</aluno>
+        <aluno>Nuno Silva</aluno>
+        <aluno>Paulo Sa</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Emanuele d'Astorga">In the Steppes of Central Asia</obra>
+      </obras>
+      <acompanhates>
+        <acompanhate>Professor Maria Mota</acompanhate>
+      </acompanhates>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Antonio Fernandes</aluno>
+        <aluno>Lidia Laranjeira</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Benda, Franz">Polonaise-Fantasie</obra>
+      </obras>
+      <professores>
+        <professor>Professor Mario Azevedo</professor>
+        <professor>Miguel Pinto</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Bruno Azevedo</aluno>
+        <aluno>Carlos Crisostomo</aluno>
+        <aluno>Joao Barros</aluno>
+        <aluno>Jose Fraga</aluno>
+        <aluno>Miguel Alves</aluno>
+        <aluno>Nancy Lavandeira</aluno>
+        <aluno>Nuno Silva</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Gregor Aichinger">Bagatelles, Opus 119</obra>
+        <obra compositor="Marais, Marin">Fantasia in D minor</obra>
+        <obra compositor="Balbastre, Claude">Preludes Op. 11 No. 4</obra>
+      </obras>
+      <professores>
+        <professor>Leandro Morgado</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Ali Mota</aluno>
+        <aluno>Antonio Pinto</aluno>
+        <aluno>Antonio Lemos</aluno>
+        <aluno>Eurico Morais</aluno>
+        <aluno>Hugo Silva</aluno>
+        <aluno>Jorge Melo</aluno>
+        <aluno>Luis Couto</aluno>
+        <aluno>Nuno Correia</aluno>
+        <aluno>Paulo Campos</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Marais, Marin">Fantasia in D minor</obra>
+        <obra compositor="Cavalli, Francesco">Psalm 42 , Op. 42</obra>
+        <obra compositor="Viadana, Lodovico Grossi da">The Creatures of Prometheus</obra>
+      </obras>
+      <professores>
+        <professor>Professor Andre Sousa</professor>
+      </professores>
+      <acompanhates>
+        <acompanhate>Professor Renato Neves</acompanhate>
+      </acompanhates>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Jose Soares</aluno>
+        <aluno>Jose Esteves</aluno>
+        <aluno>Jose Gandarela</aluno>
+        <aluno>Luis Goncalves</aluno>
+        <aluno>Miguel Matos</aluno>
+        <aluno>Miguel Silva</aluno>
+        <aluno>Nuno Gomes</aluno>
+        <aluno>Paulo Sousa</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Barbara of Portugal">Jeux d'enfants</obra>
+        <obra compositor="John Blow">Romance in F major</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Hugo Rigor</aluno>
+        <aluno>Joao Almeida</aluno>
+        <aluno>Joel Rocha</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Emanuele d'Astorga">Military Band No. 1</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Alexandre Pinto</aluno>
+        <aluno>Joaquim Sampaio</aluno>
+        <aluno>Jose Araujo</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Robert Cambert">Othello</obra>
+        <obra compositor="Cristofaro Caresana">Polonaises, Op.26</obra>
+      </obras>
+      <professores>
+        <professor>Professor Pedro Ferreira</professor>
+        <professor>Professor Marlene Silva</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Joao Guimaraes</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Monsieur de Sainte-Colombe">Book II</obra>
+        <obra compositor="Caldara, Antonio">Preludes Op. 11</obra>
+      </obras>
+      <acompanhates>
+        <acompanhate>Pedro Faria</acompanhate>
+        <acompanhate>Professor V&#xE2;nia Carvalho</acompanhate>
+      </acompanhates>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Bruno Santos</aluno>
+        <aluno>Francisco Gomes</aluno>
+        <aluno>Jose Gandarela</aluno>
+        <aluno>Miguel Rodrigues</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Titelouze, Jean">Rondo for Piano No. 3</obra>
+      </obras>
+      <professores>
+        <professor>Miguel Pinto</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Alexandrina Lemos</aluno>
+        <aluno>Goncalo Calheiros</aluno>
+        <aluno>Jose Dias</aluno>
+        <aluno>Jose Silva</aluno>
+        <aluno>Jose Carvalho</aluno>
+        <aluno>Julio Araujo</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Leopold I">Gigue in G major, K. 574</obra>
+        <obra compositor="Estevao de Brito">Impromptu, Op. 36</obra>
+        <obra compositor="Robert Cambert">Transcendental &#xC9;tudes</obra>
+      </obras>
+      <professores>
+        <professor>Professor Pedro Ferreira</professor>
+      </professores>
+      <acompanhates>
+        <acompanhate>Sergio Cardoso</acompanhate>
+        <acompanhate>Professor Cristiano Cunha</acompanhate>
+        <acompanhate>Professor Maria Mota</acompanhate>
+      </acompanhates>
+    </atuacao>
+  </atuacoes>
+</audicao>

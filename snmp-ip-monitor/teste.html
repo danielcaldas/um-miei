@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'/>
+    <title>SNMP IP Monitor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <!-- Chrono API externa http://www.proglogic.com/code/javascript/time/chronometer.php -->
+    <script>
+    	function getCurrentTime() {
+    		window.alert("cenas");
+    		var remote = new Date();
+    		remote.setHours(local.getHours() - 5);
+    		var remotedatetime = remote.getHours() + ":" + remote.getMinutes() + ":" + remote.getSeconds();
+
+    		$("#p").append(remotedatetime);
+    	}
+    </script>
+</head>
+<body>
+	<p id="p">O tempo vem aqui</p>
+	<button type="button" onclick="getCurrentTime()">Cenas tempo</button>
+</body>
+</html>

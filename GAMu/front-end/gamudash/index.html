@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lan='pt'>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GAMu | Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <meta property="og:url"           content="http://localhost/pri/GAMu/front-end/gamudash/index.html" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="GAMu" />
+  <meta property="og:description"   content="GAMu sharing" />
+  <meta property="og:image"         content="https://worldsmusics.files.wordpress.com/2014/10/violin.jpg" />
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>GAM</b>u</span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../homepage/img/fred_round.png" class="user-image" alt="User Image">
+              <span class="hidden-xs">Grupo2</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="../homepage/img/fred_round.png" class="img-circle" alt="User Image">
+                <p>
+                  Grupo02
+                  <small>Utilizador desde Nov. 2015</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-center">
+                  <center><a href="../../index.html" class="btn btn-default btn-flat">Sign out</a></center>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+  <!--...........................................-->
+  <!-- ...............SIDE BAR.................. -->
+  <!--...........................................-->
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../homepage/img/fred_round.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Grupo02</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="header">Menu de Navegação</li>
+        <li class="active treeview">
+          <a href="index.html">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Alunos</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/alunos/list_alunos.html"><i class="fa fa-circle-o"></i> Listagem de Alunos</a></li>
+            <li><a href="pages/alunos/add_aluno.html"><i class="fa fa-circle-o"></i> Registar Aluno</a></li>
+            <li><a href="pages/grupos/list_grupos.html"><i class="fa fa-circle-o"></i> Listagem de Grupos</a></li>
+            <li><a href="pages/grupos/add_grupo.html"><i class="fa fa-circle-o"></i> Registar Grupo</a></li>
+          </ul>    
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Professores</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/professores/list_professores.html"><i class="fa fa-circle-o"></i> Listagem de Professores</a></li>
+            <li><a href="pages/professores/add_professor.html"><i class="fa fa-circle-o"></i> Registar Professor</a></li>
+          </ul>          
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-music"></i> <span>Compositores &amp; Obras</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/compositores/list_compositores.html"><i class="fa fa-circle-o"></i> Catálogo de Compositores</a></li>
+            <li><a href="pages/obras/list_obras.html"><i class="fa fa-circle-o"></i> Catálogo de Obras</a></li>
+            <li><a href="pages/compositores/add_compositor.html"><i class="fa fa-circle-o"></i> Adicionar Compositor</a></li>
+            <li><a href="pages/obras/add_obra.html"><i class="fa fa-circle-o"></i> Adicionar Obra</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-graduation-cap"></i> <span>Cursos</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/cursos/list_cursos.html"><i class="fa fa-circle-o"></i> Listagem de Cursos</a></li>
+            <li><a href="pages/cursos/add_curso.html"><i class="fa fa-circle-o"></i> Criar Curso</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-university"></i> <span>Audições</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/audicoes/list_audicoes.html"><i class="fa fa-circle-o"></i> Gestor de Audições</a></li>
+            <li><a href="pages/audicoes/add_audicao.html"><i class="fa fa-circle-o"></i> Criar Audição</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </aside>
+  <!--...........................................-->
+  <!-- ...............SIDE BAR.................. -->
+  <!--...........................................-->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        GAMu Dashboard
+        <small>Versão 1.0</small>
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Recursos Humanos -->
+      <h3>Recursos Humanos</h3>
+      <div class="row">
+        <!-- col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Alunos</span>
+              <span id="n_alunos" class="info-box-number">342</span>
+            </div>
+          </div>
+        </div>
+        <!-- /.col -->
+        <!-- col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-suitcase"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Professores</span>
+              <span id="n_professores" class="info-box-number">342</span>
+            </div>
+          </div>
+        </div>
+        <!-- /.col -->
+        <!-- col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-graduation-cap"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Cursos</span>
+              <span id="n_cursos" class="info-box-number">342</span>
+            </div>
+          </div>
+        </div>
+        <!-- /.col -->
+        <!-- col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Grupos</span>
+              <span id="n_grupos" class="info-box-number">342</span>
+            </div>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.Recursos Humanos -->
+      <!-- Repositorio Digital -->
+      <h3>Repositório Digital</h3>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green-gradient"><i class="fa fa-paint-brush"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Compositores</span>
+              <span id="n_compositores" class="info-box-number">342</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+         <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green-gradient"><i class="fa fa-music"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Obras</span>
+              <span id="n_obras" class="info-box-number">342</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+         <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green-gradient"><i class="fa fa-file-pdf-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Partituras</span>
+              <span id="n_partituras" class="info-box-number">342</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.Repositorio Digital -->
+      <!-- Redes Sociais -->
+      <h3>Redes Sociais</h3>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-blue"><i class="fa fa-facebook"></i></span>
+            <div class="info-box-content">
+              <fb:login-button scope="public_profile,email,publish_actions" onlogin="checkLoginState();" autologoutlink="true" style="margin-top: 2em;"></fb:login-button>
+              </div>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+      </div>
+      <!-- /.Redes Sociais -->
+    </section>
+  </div>
+
+  <footer class="main-footer">
+    <strong>GAMu v1.0</strong>
+  </footer>
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.1.4 -->
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="plugins/chartjs/Chart.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+
+<script>
+
+  // Buscar informacao geral acerca de estado da base de dados
+  // da instituicao
+  $(document).ready( function () {
+
+    $.ajax({
+        url: '../../back-end/controllers/dashboardIndex.php',
+        type: 'post',
+        success: function(response) {
+            // Carregar valores dos contadores
+            contadores = JSON.parse(response);
+
+            $("#n_alunos").text(contadores["nAlunos"]);
+            $("#n_professores").text(contadores["nProfessores"]);
+            $("#n_cursos").text(contadores["nCursos"]);
+            $("#n_grupos").text(contadores["nGrupos"]);
+            $("#n_compositores").text(contadores["nCompositores"]);
+            $("#n_obras").text(contadores["nObras"]);
+            $("#n_partituras").text(contadores["nPartituras"]);
+        },
+        error: function(err) {
+          window.alert(JSON.stringify(err));
+        }
+    });
+  });
+
+</script>
+
+
+<!--................................................................................................-->
+<!--...................................... Facebook ................................................-->
+<!--................................................................................................-->
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1711321609112228',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/pt_PT/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  /*
+  // Meta info do objecto criado no OpenGraph
+
+  https://graph.facebook.com/me/news.reads?
+  access_token=ACCESS_TOKEN&
+  method=POST&
+  article=http%3A%2F%2Fsamples.ogp.me%2F434264856596891
+  */
+</script>
+
+</body>
+</html>

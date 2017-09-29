@@ -1,0 +1,2 @@
+Ficheiro audicao_AUDVALIDA_v46.xml criado (ver pasta "FicheirosGerados")!
+Ficheiro audicao_AUDVALIDA_v46.html criado (ver pasta "FicheirosGerados")!

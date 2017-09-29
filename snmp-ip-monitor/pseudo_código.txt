@@ -1,0 +1,35 @@
+(...)
+
+tempo_comeco = Date.now(); // Obter timestamp mesmo antes de executar calcula_pooling_e_atualiza_dados
+
+calcula_pooling_e_atualiza_dados() {
+
+    while(sessao_monitorizacao_aberta) {
+        if(!erro){
+     		for(i=0; i < total_de_objetos_mib; i++) {
+     			contadores[oid[i]] = snmp.get(oid[i]); // Armazenar valor no mapa
+
+     			tempoPassado = Date.now() - timestamp[oid[i]];
+
+     			if(tempoPassado > maxPollTime) {
+     				maxPollTime = tempoPassado;
+     			}
+     			if(tempoPassado < minPollTime) {
+     				minPollTime = tempoPassado;
+     			}
+
+     			timestamp[oid[i]] = Date.now();
+
+     			if(maxPollTime > MAX_LIMIT_POLLTIME) {
+     				maxPollTime = minPollTime = 2000;
+     			}
+     		}
+     		pollingTime = Math.floor(Math.random() * (maxPollTime - minPollTime + 1)) + minPollTime;
+        }
+    } do {
+            sleep(poolingTime); // O sistema espera o pollingTime segundos antes de fazer get dos objetos
+            calcula_pooling_e_atualiza_dados();
+    }
+}
+
+(...)

@@ -1,0 +1,18 @@
+<atuacao id="AT60">
+	<instrumentos>
+		<instrumento>INST1</instrumento>
+		<instrumento>INST2</instrumento>
+	</instrumentos>
+	<obras>
+		<obra>O2</obra>
+		<obra>O123</obra>
+	</obras>
+	<alunos>
+		<aluno acompanhante="0">A44</aluno>
+		<aluno acompanhante="0">A123</aluno>
+	</alunos>
+	<acompanhantes>
+		<acompanhante acompanhante="1">P22</acompanhante>
+		<acompanhante acompanhante="1">A13</acompanhante>
+	</acompanhantes>
+</atuacao>

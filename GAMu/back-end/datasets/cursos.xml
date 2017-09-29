@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cursos>
+  <curso id="CB1">
+      <designacao>Curso Básico de Clarinete</designacao>
+      <duracao>5</duracao>
+      <instrumento>Clarinete</instrumento>
+   </curso>
+   <curso id="CS1">
+      <designacao>Curso Supletivo de Clarinete</designacao>
+      <duracao>3</duracao>
+      <instrumento>Clarinete</instrumento>
+   </curso>
+  <curso id="CB2">
+      <designacao>Curso Básico de Contrabaixo</designacao>
+      <duracao>5</duracao>
+      <instrumento>Contrabaixo</instrumento>
+   </curso>
+   <curso id="CS2">
+      <designacao>Curso Supletivo de Contrabaixo</designacao>
+      <duracao>3</duracao>
+      <instrumento>Contrabaixo</instrumento>
+   </curso>
+  <curso id="CB3">
+      <designacao>Curso Básico de Corne Inglês</designacao>
+      <duracao>5</duracao>
+      <instrumento>Corne Inglês</instrumento>
+   </curso>
+   <curso id="CS3">
+      <designacao>Curso Supletivo de Corne Inglês</designacao>
+      <duracao>3</duracao>
+      <instrumento>Corne Inglês</instrumento>
+   </curso>
+  <curso id="CB4">
+      <designacao>Curso Básico de Eufónio</designacao>
+      <duracao>5</duracao>
+      <instrumento>Eufónio</instrumento>
+   </curso>
+   <curso id="CS4">
+      <designacao>Curso Supletivo de Eufónio</designacao>
+      <duracao>3</duracao>
+      <instrumento>Eufónio</instrumento>
+   </curso>
+  <curso id="CB5">
+      <designacao>Curso Básico de Fagote</designacao>
+      <duracao>5</duracao>
+      <instrumento>Fagote</instrumento>
+   </curso>
+   <curso id="CS5">
+      <designacao>Curso Supletivo de Fagote</designacao>
+      <duracao>3</duracao>
+      <instrumento>Fagote</instrumento>
+   </curso>
+  <curso id="CB6">
+      <designacao>Curso Básico de Flauta</designacao>
+      <duracao>5</duracao>
+      <instrumento>Flauta</instrumento>
+   </curso>
+   <curso id="CS6">
+      <designacao>Curso Supletivo de Flauta</designacao>
+      <duracao>3</duracao>
+      <instrumento>Flauta</instrumento>
+   </curso>
+  <curso id="CB7">
+      <designacao>Curso Básico de Fliscorne</designacao>
+      <duracao>5</duracao>
+      <instrumento>Fliscorne</instrumento>
+   </curso>
+   <curso id="CS7">
+      <designacao>Curso Supletivo de Fliscorne</designacao>
+      <duracao>3</duracao>
+      <instrumento>Fliscorne</instrumento>
+   </curso>
+  <curso id="CB8">
+      <designacao>Curso Básico de Guitarra</designacao>
+      <duracao>5</duracao>
+      <instrumento>Guitarra</instrumento>
+   </curso>
+   <curso id="CS8">
+      <designacao>Curso Supletivo de Guitarra</designacao>
+      <duracao>3</duracao>
+      <instrumento>Guitarra</instrumento>
+   </curso>
+  <curso id="CB9">
+      <designacao>Curso Básico de Harpa</designacao>
+      <duracao>5</duracao>
+      <instrumento>Harpa</instrumento>
+   </curso>
+   <curso id="CS9">
+      <designacao>Curso Supletivo de Harpa</designacao>
+      <duracao>3</duracao>
+      <instrumento>Harpa</instrumento>
+   </curso>
+  <curso id="CB10">
+      <designacao>Curso Básico de Oboé</designacao>
+      <duracao>5</duracao>
+      <instrumento>Oboé</instrumento>
+   </curso>
+   <curso id="CS10">
+      <designacao>Curso Supletivo de Oboé</designacao>
+      <duracao>3</duracao>
+      <instrumento>Oboé</instrumento>
+   </curso>
+  <curso id="CB11">
+      <designacao>Curso Básico de Orgão</designacao>
+      <duracao>5</duracao>
+      <instrumento>Orgão</instrumento>
+   </curso>
+   <curso id="CS11">
+      <designacao>Curso Supletivo de Orgão</designacao>
+      <duracao>3</duracao>
+      <instrumento>Orgão</instrumento>
+   </curso>
+  <curso id="CB12">
+      <designacao>Curso Básico de Percussão</designacao>
+      <duracao>5</duracao>
+      <instrumento>Percussão</instrumento>
+   </curso>
+   <curso id="CS12">
+      <designacao>Curso Supletivo de Percussão</designacao>
+      <duracao>3</duracao>
+      <instrumento>Percussão</instrumento>
+   </curso>
+  <curso id="CB13">
+      <designacao>Curso Básico de Piano</designacao>
+      <duracao>5</duracao>
+      <instrumento>Piano</instrumento>
+   </curso>
+   <curso id="CS13">
+      <designacao>Curso Supletivo de Piano</designacao>
+      <duracao>3</duracao>
+      <instrumento>Piano</instrumento>
+   </curso>
+  <curso id="CB14">
+      <designacao>Curso Básico de Saxofone</designacao>
+      <duracao>5</duracao>
+      <instrumento>Saxofone</instrumento>
+   </curso>
+   <curso id="CS14">
+      <designacao>Curso Supletivo de Saxofone</designacao>
+      <duracao>3</duracao>
+      <instrumento>Saxofone</instrumento>
+   </curso>
+  <curso id="CB15">
+      <designacao>Curso Básico de Trombone</designacao>
+      <duracao>5</duracao>
+      <instrumento>Trombone</instrumento>
+   </curso>
+   <curso id="CS15">
+      <designacao>Curso Supletivo de Trombone</designacao>
+      <duracao>3</duracao>
+      <instrumento>Trombone</instrumento>
+   </curso>
+  <curso id="CB16">
+      <designacao>Curso Básico de Trompa</designacao>
+      <duracao>5</duracao>
+      <instrumento>Trompa</instrumento>
+   </curso>
+   <curso id="CS16">
+      <designacao>Curso Supletivo de Trompa</designacao>
+      <duracao>3</duracao>
+      <instrumento>Trompa</instrumento>
+   </curso>
+  <curso id="CB17">
+      <designacao>Curso Básico de Trompete</designacao>
+      <duracao>5</duracao>
+      <instrumento>Trompete</instrumento>
+   </curso>
+   <curso id="CS17">
+      <designacao>Curso Supletivo de Trompete</designacao>
+      <duracao>3</duracao>
+      <instrumento>Trompete</instrumento>
+   </curso>
+  <curso id="CB18">
+      <designacao>Curso Básico de Tuba</designacao>
+      <duracao>5</duracao>
+      <instrumento>Tuba</instrumento>
+   </curso>
+   <curso id="CS18">
+      <designacao>Curso Supletivo de Tuba</designacao>
+      <duracao>3</duracao>
+      <instrumento>Tuba</instrumento>
+   </curso>
+  <curso id="CB19">
+      <designacao>Curso Básico de Violoncelo</designacao>
+      <duracao>5</duracao>
+      <instrumento>Violoncelo</instrumento>
+   </curso>
+   <curso id="CS19">
+      <designacao>Curso Supletivo de Violoncelo</designacao>
+      <duracao>3</duracao>
+      <instrumento>Violoncelo</instrumento>
+   </curso>
+  <curso id="CB20">
+      <designacao>Curso Básico de Violino</designacao>
+      <duracao>5</duracao>
+      <instrumento>Violino</instrumento>
+   </curso>
+   <curso id="CS20">
+      <designacao>Curso Supletivo de Violino</designacao>
+      <duracao>3</duracao>
+      <instrumento>Violino</instrumento>
+   </curso>
+  <curso id="CB21">
+      <designacao>Curso Básico de Viola de Arco</designacao>
+      <duracao>5</duracao>
+      <instrumento>Viola de Arco</instrumento>
+   </curso>
+   <curso id="CS21">
+      <designacao>Curso Supletivo de Viola de Arco</designacao>
+      <duracao>3</duracao>
+      <instrumento>Viola de Arco</instrumento>
+   </curso>
+  <curso id="CB22">
+      <designacao>Curso Básico de Bandolim</designacao>
+      <duracao>5</duracao>
+      <instrumento>Bandolim</instrumento>
+   </curso>
+   <curso id="CS22">
+      <designacao>Curso Supletivo de Bandolim</designacao>
+      <duracao>3</duracao>
+      <instrumento>Bandolim</instrumento>
+   </curso>
+</cursos>

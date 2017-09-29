@@ -1,0 +1,9 @@
+<!--..................... INICIO DO FICHEIRO fim.txt ........................-->
+
+  <!-- End of Right Column -->
+  <!-- Start of Page Footer -->
+  <div id="page_footer">Web Design by GAMu</div>
+  <!-- End of Page Footer -->
+
+</body>
+</html>

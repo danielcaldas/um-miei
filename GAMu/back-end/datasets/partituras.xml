@@ -1,0 +1,2091 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<partituras>
+  <partitura id="PART1">
+    <obra>O1</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART2">
+    <obra>O1</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART3">
+    <obra>O2</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART4">
+    <obra>O2</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART5">
+    <obra>O3</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART6">
+    <obra>O3</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART7">
+    <obra>O4</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART8">
+    <obra>O4</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART9">
+    <obra>O5</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART10">
+    <obra>O5</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART11">
+    <obra>O6</obra>
+    <instrumento>INST5</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART12">
+    <obra>O6</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART13">
+    <obra>O7</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART14">
+    <obra>O7</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART15">
+    <obra>O8</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART16">
+    <obra>O8</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART17">
+    <obra>O9</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART18">
+    <obra>O9</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART19">
+    <obra>O10</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART20">
+    <obra>O10</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART21">
+    <obra>O11</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART22">
+    <obra>O11</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART23">
+    <obra>O12</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART24">
+    <obra>O12</obra>
+    <instrumento>INST11</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART25">
+    <obra>O13</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART26">
+    <obra>O13</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART27">
+    <obra>O14</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART28">
+    <obra>O14</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART29">
+    <obra>O15</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART30">
+    <obra>O15</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART31">
+    <obra>O16</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART32">
+    <obra>O16</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART33">
+    <obra>O17</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART34">
+    <obra>O17</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART35">
+    <obra>O18</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART36">
+    <obra>O18</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART37">
+    <obra>O19</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART38">
+    <obra>O19</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART39">
+    <obra>O20</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART40">
+    <obra>O20</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART41">
+    <obra>O21</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART42">
+    <obra>O21</obra>
+    <instrumento>INST11</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART43">
+    <obra>O22</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART44">
+    <obra>O22</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART45">
+    <obra>O23</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART46">
+    <obra>O23</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART47">
+    <obra>O24</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART48">
+    <obra>O24</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART49">
+    <obra>O25</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART50">
+    <obra>O25</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART51">
+    <obra>O26</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART52">
+    <obra>O26</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART53">
+    <obra>O27</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART54">
+    <obra>O27</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART55">
+    <obra>O28</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART56">
+    <obra>O28</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART57">
+    <obra>O29</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART58">
+    <obra>O29</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART59">
+    <obra>O30</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART60">
+    <obra>O30</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART61">
+    <obra>O31</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART62">
+    <obra>O31</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART63">
+    <obra>O32</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART64">
+    <obra>O32</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART65">
+    <obra>O33</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART66">
+    <obra>O33</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART67">
+    <obra>O34</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART68">
+    <obra>O34</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART69">
+    <obra>O35</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART70">
+    <obra>O35</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART71">
+    <obra>O36</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART72">
+    <obra>O36</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART73">
+    <obra>O37</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART74">
+    <obra>O37</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART75">
+    <obra>O38</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART76">
+    <obra>O38</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART77">
+    <obra>O39</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART78">
+    <obra>O39</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART79">
+    <obra>O40</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART80">
+    <obra>O40</obra>
+    <instrumento>INST11</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART81">
+    <obra>O41</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART82">
+    <obra>O41</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART83">
+    <obra>O42</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART84">
+    <obra>O42</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART85">
+    <obra>O43</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART86">
+    <obra>O43</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART87">
+    <obra>O44</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART88">
+    <obra>O44</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART89">
+    <obra>O45</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART90">
+    <obra>O45</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART91">
+    <obra>O46</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART92">
+    <obra>O46</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART93">
+    <obra>O47</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART94">
+    <obra>O47</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART95">
+    <obra>O48</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART96">
+    <obra>O48</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART97">
+    <obra>O49</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART98">
+    <obra>O49</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART99">
+    <obra>O50</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART100">
+    <obra>O50</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART101">
+    <obra>O51</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART102">
+    <obra>O51</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART103">
+    <obra>O52</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART104">
+    <obra>O52</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART105">
+    <obra>O53</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART106">
+    <obra>O53</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART107">
+    <obra>O54</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART108">
+    <obra>O54</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART109">
+    <obra>O55</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART110">
+    <obra>O55</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART111">
+    <obra>O56</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART112">
+    <obra>O56</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART113">
+    <obra>O57</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART114">
+    <obra>O57</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART115">
+    <obra>O58</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART116">
+    <obra>O58</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART117">
+    <obra>O59</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART118">
+    <obra>O59</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART119">
+    <obra>O60</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART120">
+    <obra>O60</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART121">
+    <obra>O61</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART122">
+    <obra>O61</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART123">
+    <obra>O62</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART124">
+    <obra>O62</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART125">
+    <obra>O63</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART126">
+    <obra>O63</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART127">
+    <obra>O64</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART128">
+    <obra>O64</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART129">
+    <obra>O65</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART130">
+    <obra>O65</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART131">
+    <obra>O66</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART132">
+    <obra>O66</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART133">
+    <obra>O67</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART134">
+    <obra>O67</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART135">
+    <obra>O68</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART136">
+    <obra>O68</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART137">
+    <obra>O69</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART138">
+    <obra>O69</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART139">
+    <obra>O70</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART140">
+    <obra>O70</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART141">
+    <obra>O71</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART142">
+    <obra>O71</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART143">
+    <obra>O72</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART144">
+    <obra>O72</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART145">
+    <obra>O73</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART146">
+    <obra>O73</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART147">
+    <obra>O74</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART148">
+    <obra>O74</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART149">
+    <obra>O75</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART150">
+    <obra>O75</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART151">
+    <obra>O76</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART152">
+    <obra>O76</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART153">
+    <obra>O77</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART154">
+    <obra>O77</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART155">
+    <obra>O78</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART156">
+    <obra>O78</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART157">
+    <obra>O79</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART158">
+    <obra>O79</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART159">
+    <obra>O80</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART160">
+    <obra>O80</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART161">
+    <obra>O81</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART162">
+    <obra>O81</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART163">
+    <obra>O82</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART164">
+    <obra>O82</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART165">
+    <obra>O83</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART166">
+    <obra>O83</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART167">
+    <obra>O84</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART168">
+    <obra>O84</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART169">
+    <obra>O85</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART170">
+    <obra>O85</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART171">
+    <obra>O86</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART172">
+    <obra>O86</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART173">
+    <obra>O87</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART174">
+    <obra>O87</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART175">
+    <obra>O88</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART176">
+    <obra>O88</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART177">
+    <obra>O89</obra>
+    <instrumento>INST5</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART178">
+    <obra>O89</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART179">
+    <obra>O90</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART180">
+    <obra>O90</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART181">
+    <obra>O91</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART182">
+    <obra>O91</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART183">
+    <obra>O92</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART184">
+    <obra>O92</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART185">
+    <obra>O93</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART186">
+    <obra>O93</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART187">
+    <obra>O94</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART188">
+    <obra>O94</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART189">
+    <obra>O95</obra>
+    <instrumento>INST5</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART190">
+    <obra>O95</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART191">
+    <obra>O96</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART192">
+    <obra>O96</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART193">
+    <obra>O97</obra>
+    <instrumento>INST5</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART194">
+    <obra>O97</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART195">
+    <obra>O98</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART196">
+    <obra>O98</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART197">
+    <obra>O99</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART198">
+    <obra>O99</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART199">
+    <obra>O100</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART200">
+    <obra>O100</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART201">
+    <obra>O101</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART202">
+    <obra>O101</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART203">
+    <obra>O102</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART204">
+    <obra>O102</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART205">
+    <obra>O103</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART206">
+    <obra>O103</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART207">
+    <obra>O104</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART208">
+    <obra>O104</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART209">
+    <obra>O105</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART210">
+    <obra>O105</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART211">
+    <obra>O106</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART212">
+    <obra>O106</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART213">
+    <obra>O107</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART214">
+    <obra>O107</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART215">
+    <obra>O108</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART216">
+    <obra>O108</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART217">
+    <obra>O109</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART218">
+    <obra>O109</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART219">
+    <obra>O110</obra>
+    <instrumento>INST5</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART220">
+    <obra>O110</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART221">
+    <obra>O111</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART222">
+    <obra>O111</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART223">
+    <obra>O112</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART224">
+    <obra>O112</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART225">
+    <obra>O113</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART226">
+    <obra>O113</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART227">
+    <obra>O114</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART228">
+    <obra>O114</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART229">
+    <obra>O115</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART230">
+    <obra>O115</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART231">
+    <obra>O116</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART232">
+    <obra>O116</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART233">
+    <obra>O117</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART234">
+    <obra>O117</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART235">
+    <obra>O118</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART236">
+    <obra>O118</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART237">
+    <obra>O119</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART238">
+    <obra>O119</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART239">
+    <obra>O120</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART240">
+    <obra>O120</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART241">
+    <obra>O121</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART242">
+    <obra>O121</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART243">
+    <obra>O122</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART244">
+    <obra>O122</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART245">
+    <obra>O123</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART246">
+    <obra>O123</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART247">
+    <obra>O124</obra>
+    <instrumento>INST5</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART248">
+    <obra>O124</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART249">
+    <obra>O125</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART250">
+    <obra>O125</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART251">
+    <obra>O126</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART252">
+    <obra>O126</obra>
+    <instrumento>INST21</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART253">
+    <obra>O127</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART254">
+    <obra>O127</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART255">
+    <obra>O128</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART256">
+    <obra>O128</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART257">
+    <obra>O129</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART258">
+    <obra>O129</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART259">
+    <obra>O130</obra>
+    <instrumento>INST5</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART260">
+    <obra>O130</obra>
+    <instrumento>INST11</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART261">
+    <obra>O131</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART262">
+    <obra>O131</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART263">
+    <obra>O132</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART264">
+    <obra>O132</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART265">
+    <obra>O133</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART266">
+    <obra>O133</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART267">
+    <obra>O134</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART268">
+    <obra>O134</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART269">
+    <obra>O135</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART270">
+    <obra>O135</obra>
+    <instrumento>INST13</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART271">
+    <obra>O136</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART272">
+    <obra>O136</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART273">
+    <obra>O137</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART274">
+    <obra>O137</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART275">
+    <obra>O138</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART276">
+    <obra>O138</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART277">
+    <obra>O139</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART278">
+    <obra>O139</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART279">
+    <obra>O140</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART280">
+    <obra>O140</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART281">
+    <obra>O141</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART282">
+    <obra>O141</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART283">
+    <obra>O142</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART284">
+    <obra>O142</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART285">
+    <obra>O143</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART286">
+    <obra>O143</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART287">
+    <obra>O144</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART288">
+    <obra>O144</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART289">
+    <obra>O145</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART290">
+    <obra>O145</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART291">
+    <obra>O146</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART292">
+    <obra>O146</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART293">
+    <obra>O147</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART294">
+    <obra>O147</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART295">
+    <obra>O148</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART296">
+    <obra>O148</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART297">
+    <obra>O149</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART298">
+    <obra>O149</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART299">
+    <obra>O150</obra>
+    <instrumento>INST10</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART300">
+    <obra>O150</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART301">
+    <obra>O151</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART302">
+    <obra>O151</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART303">
+    <obra>O152</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART304">
+    <obra>O152</obra>
+    <instrumento>INST11</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART305">
+    <obra>O153</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Brian Wilson</arranjo>
+  </partitura>
+  <partitura id="PART306">
+    <obra>O153</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART307">
+    <obra>O154</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART308">
+    <obra>O154</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART309">
+    <obra>O155</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART310">
+    <obra>O155</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART311">
+    <obra>O156</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART312">
+    <obra>O156</obra>
+    <instrumento>INST22</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART313">
+    <obra>O157</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART314">
+    <obra>O157</obra>
+    <instrumento>INST18</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART315">
+    <obra>O158</obra>
+    <instrumento>INST3</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART316">
+    <obra>O158</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART317">
+    <obra>O159</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART318">
+    <obra>O159</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART319">
+    <obra>O160</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p5.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART320">
+    <obra>O160</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART321">
+    <obra>O161</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART322">
+    <obra>O161</obra>
+    <instrumento>INST20</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART323">
+    <obra>O162</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART324">
+    <obra>O162</obra>
+    <instrumento>INST16</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART325">
+    <obra>O163</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p4.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART326">
+    <obra>O163</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART327">
+    <obra>O164</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART328">
+    <obra>O164</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Aubrey Drake Graham</arranjo>
+  </partitura>
+  <partitura id="PART329">
+    <obra>O165</obra>
+    <instrumento>INST1</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART330">
+    <obra>O165</obra>
+    <instrumento>INST14</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART331">
+    <obra>O166</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART332">
+    <obra>O166</obra>
+    <instrumento>INST11</instrumento>
+    <pauta>p7.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART333">
+    <obra>O167</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART334">
+    <obra>O167</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Adam Messinger</arranjo>
+  </partitura>
+  <partitura id="PART335">
+    <obra>O168</obra>
+    <instrumento>INST7</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART336">
+    <obra>O168</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Duca Tambasco</arranjo>
+  </partitura>
+  <partitura id="PART337">
+    <obra>O169</obra>
+    <instrumento>INST2</instrumento>
+    <pauta>p2.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART338">
+    <obra>O169</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p9.pdf</pauta>
+    <arranjo>Alfredo Moura</arranjo>
+  </partitura>
+  <partitura id="PART339">
+    <obra>O170</obra>
+    <instrumento>INST8</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Emerson Pinheiro</arranjo>
+  </partitura>
+  <partitura id="PART340">
+    <obra>O170</obra>
+    <instrumento>INST12</instrumento>
+    <pauta>p10.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART341">
+    <obra>O171</obra>
+    <instrumento>INST4</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>Carlinhos Patriolino</arranjo>
+  </partitura>
+  <partitura id="PART342">
+    <obra>O171</obra>
+    <instrumento>INST17</instrumento>
+    <pauta>p8.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART343">
+    <obra>O172</obra>
+    <instrumento>INST6</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Glenn Miller</arranjo>
+  </partitura>
+  <partitura id="PART344">
+    <obra>O172</obra>
+    <instrumento>INST19</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+  <partitura id="PART345">
+    <obra>O173</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p1.pdf</pauta>
+    <arranjo>George Martin</arranjo>
+  </partitura>
+  <partitura id="PART346">
+    <obra>O173</obra>
+    <instrumento>INST15</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Bob Ezrin</arranjo>
+  </partitura>
+  <partitura id="PART347">
+    <obra>O174</obra>
+    <instrumento>INST9</instrumento>
+    <pauta>p3.pdf</pauta>
+    <arranjo>Bruno Bizarro</arranjo>
+  </partitura>
+  <partitura id="PART348">
+    <obra>O174</obra>
+    <instrumento>INST11</instrumento>
+    <pauta>p6.pdf</pauta>
+    <arranjo>Duke Ellington</arranjo>
+  </partitura>
+</partituras>

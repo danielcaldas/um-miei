@@ -1,0 +1,24 @@
+<audicao id=AUDVALIDA>
+	<titulo>Audi????o de Natal da UM</titulo>
+	<subtitulo>Sinas na noite de Natal</subtitulo>
+	<tema>O Natal nas Universidades</tema>
+	<data>24/12/2015</data>
+	<horaini>21:30</horaini>
+	<local>CP3, UM</local>
+	<atuacoes>
+		<atuacao>AT4</atuacao>
+		<atuacao>AT5</atuacao>
+		<atuacao>AT7</atuacao>
+		<atuacao>AT14</atuacao>
+		<atuacao>AT15</atuacao>
+		<atuacao>AT26</atuacao>
+		<atuacao>AT12</atuacao>
+		<atuacao>AT23</atuacao>
+		<atuacao>AT24</atuacao>
+		<atuacao>AT10</atuacao>
+		<atuacao>AT21</atuacao>
+		<atuacao>AT11</atuacao>
+		<atuacao>AT22</atuacao>
+		<atuacao>AT1</atuacao>
+	</atuacoes>
+</audicao>

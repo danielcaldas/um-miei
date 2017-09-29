@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grupos>
+  <grupo id="GR1">
+    <nome>Grupo de guitarra do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR2">
+    <nome>Grupo de coral do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR3">
+    <nome>Grupo de guitarra do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR4">
+    <nome>Grupo de sopro do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR5">
+    <nome>Grupo de violino do(a) Conservatório do Porto</nome>
+  </grupo>
+  <grupo id="GR6">
+    <nome>Grupo de guitarra do(a) Universidade do Minho</nome>
+  </grupo>
+  <grupo id="GR7">
+    <nome>Grupo de guitarra do(a) Escola de Música de Gualtar</nome>
+  </grupo>
+  <grupo id="GR8">
+    <nome>Grupo de sopro do(a) Conservatório do Porto</nome>
+  </grupo>
+  <grupo id="GR9">
+    <nome>Grupo de sopro do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR10">
+    <nome>Grupo de cordas do(a) Escola de Música de Gualtar</nome>
+  </grupo>
+  <grupo id="GR11">
+    <nome>Grupo de coral do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR12">
+    <nome>Grupo de guitarra do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR13">
+    <nome>Grupo de coral do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR14">
+    <nome>Grupo de cordas do(a) Universidade do Minho</nome>
+  </grupo>
+  <grupo id="GR15">
+    <nome>Grupo de coral do(a) Conservatório do Porto</nome>
+  </grupo>
+  <grupo id="GR16">
+    <nome>Grupo de cordas do(a) Conservatório de Braga</nome>
+  </grupo>
+  <grupo id="GR17">
+    <nome>Grupo de cordas do(a) Escola de Música de Gualtar</nome>
+  </grupo>
+  <grupo id="GR18">
+    <nome>Grupo de sopro do(a) Conservatório do Porto</nome>
+  </grupo>
+  <grupo id="GR19">
+    <nome>Grupo de violino do(a) Conservatório do Porto</nome>
+  </grupo>
+</grupos>

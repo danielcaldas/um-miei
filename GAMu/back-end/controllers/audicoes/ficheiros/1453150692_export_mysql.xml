@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<audicao id="AUD1">
+  <titulo>Audicao de Natal da UM</titulo>
+  <subtitulo>Sinas na noite de Natal</subtitulo>
+  <tema>O Natal nas Universidades</tema>
+  <data>24/12/2015</data>
+  <horainicio>21:30</horainicio>
+  <horafim>24:00</horafim>
+  <duracao>02:30</duracao>
+  <local>CP3, UM</local>
+  <atuacoes>
+    <atuacao>
+      <alunos>
+        <aluno>Joao Marques</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Neander, Joachim">Hungarian Rhapsody No. 16</obra>
+        <obra compositor="Bach, Wilhelm Friedemann">Preludes Opus 51</obra>
+        <obra compositor="Boyvin, Jacques">Symphonic Poem No.1, Ce qu'on entend sur la montagne</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Orlando Pinto</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="John IV">Preludes Op. 59</obra>
+        <obra compositor="Johann Joachim Quantz">Sigurd Jorsalfar</obra>
+        <obra compositor="Krebs, Johann Ludwig">Sonnerie de Ste-Genevi&#xE8;ve du Mont-de-Paris</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Carlos Ribeiro</aluno>
+        <aluno>Francisco Leite</aluno>
+        <aluno>Joao Pereira</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Rousseau, Jean-Jacques">Hungarian Rhapsody No. 18</obra>
+        <obra compositor="Estevao de Brito">Impromptu, Op. 36</obra>
+      </obras>
+      <professores>
+        <professor>Professor Pedro Ferreira</professor>
+        <professor>Professor Carla Castro</professor>
+        <professor>Professor Jose Castro</professor>
+      </professores>
+      <acompanhantes>
+        <acompanhante>Pedro Coelho</acompanhante>
+        <acompanhante>Professor Edison Oliveira</acompanhante>
+      </acompanhantes>
+    </atuacao>
+  </atuacoes>
+</audicao>

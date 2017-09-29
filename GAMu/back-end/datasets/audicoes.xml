@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audicoes>
+<audicao id="AUD1">
+	<titulo>Audição de Natal da UM</titulo>
+	<subtitulo>Sinas na noite de Natal</subtitulo>
+	<tema>O Natal nas Universidades</tema>
+	<data>24/12/2015</data>
+	<horaini>21:30</horaini>
+	<horafim>24:00</horafim>
+	<local>CP3, UM</local>
+</audicao>
+<audicao id="AUD2">
+	<titulo>Audição de Final de Ano</titulo>
+	<subtitulo>Um Final de Ano diferente</subtitulo>
+	<tema>Ano novo vida nova</tema>
+	<data>31/12/2015</data>
+	<horaini>00:30</horaini>
+	<horafim>01:00</horafim>
+	<local>Avenida dos Aliados</local>
+</audicao>
+<audicao id="AUD3">
+	<titulo>Audição de Inverno</titulo>
+	<subtitulo>Inverno nas Escolas</subtitulo>
+	<tema>Frozen</tema>
+	<data>1/12/2015</data>
+	<horaini>20:00</horaini>
+	<horafim>22:00</horafim>
+	<local>Praça do Ribeirinho</local>
+</audicao>
+</audicoes>

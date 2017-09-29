@@ -1,0 +1,14 @@
+<audicao id=AUDVALIDA>
+	<titulo>Audicao de Final de Ano</titulo>
+	<subtitulo>Um Final de Ano diferente</subtitulo>
+	<tema>Ano novo vida nova</tema>
+	<data>31/12/2015</data>
+	<horaini>00:30</horaini>
+	<local>Avenida dos Aliados</local>
+	<atuacoes>
+		<atuacao>AT6</atuacao>
+		<atuacao>AT7</atuacao>
+		<atuacao>AT45</atuacao>
+		<atuacao>AT11</atuacao>
+	</atuacoes>
+</audicao>

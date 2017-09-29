@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<audicao id="AUD2">
+  <titulo>Audi&#xE7;&#xE3;o de Final de Ano</titulo>
+  <subtitulo>Um Final de Ano diferente</subtitulo>
+  <tema>Ano novo vida nova</tema>
+  <data>22/12/2015</data>
+  <horainicio>00:30</horainicio>
+  <horafim>01:00</horafim>
+  <duracao>00:10</duracao>
+  <local>Avenida dos Aliados</local>
+  <atuacoes>
+    <atuacao>
+      <alunos>
+        <aluno>Alexandre Carvalho</aluno>
+        <aluno>Daniel Alves</aluno>
+        <aluno>Joao Santos</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Johann Joachim Quantz">Serenata Notturna</obra>
+      </obras>
+      <professores>
+        <professor>Fernanda Barroso</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Daniela Teixeira</aluno>
+        <aluno>Michel Pinto</aluno>
+        <aluno>Nuno Silva</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Emanuele d'Astorga">In the Steppes of Central Asia</obra>
+      </obras>
+      <acompanhantes>
+        <acompanhante>Professor Maria Mota</acompanhante>
+      </acompanhantes>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Antonio Fernandes</aluno>
+        <aluno>Lidia Laranjeira</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Benda, Franz">Polonaise-Fantasie</obra>
+      </obras>
+    </atuacao>
+  </atuacoes>
+</audicao>

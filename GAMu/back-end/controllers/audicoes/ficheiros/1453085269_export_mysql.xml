@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<audicao id="AUD2">
+  <titulo>Audi&#xE7;&#xE3;o de Final de Ano</titulo>
+  <subtitulo>Um Final de Ano diferente</subtitulo>
+  <tema>Ano novo vida nova</tema>
+  <data>32/12/2015</data>
+  <horainicio>00:30</horainicio>
+  <horafim>01:00</horafim>
+  <duracao>00:10</duracao>
+  <local>Avenida dos Aliados</local>
+  <atuacoes>
+    <atuacao>
+      <alunos>
+        <aluno>Liliana Macedo</aluno>
+        <aluno>Luis Capelo</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Jean-Joseph Mouret">Hungarian Rhapsody No. 17</obra>
+        <obra compositor="Nicolas Siret">Nocturne in C minor</obra>
+      </obras>
+      <professores>
+        <professor>Professor Andre Sousa</professor>
+      </professores>
+      <acompanhantes>
+        <acompanhante>Goncalo Machado</acompanhante>
+      </acompanhantes>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Mario Julio</aluno>
+        <aluno>Miguel Alves</aluno>
+        <aluno>Paulo Rodrigues</aluno>
+      </alunos>
+      <professores>
+        <professor>Professor Pedro Ferreira</professor>
+      </professores>
+      <acompanhantes>
+        <acompanhante>Professor Edison Oliveira</acompanhante>
+      </acompanhantes>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Alexandre Carvalho</aluno>
+        <aluno>Daniel Alves</aluno>
+        <aluno>Joao Santos</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Johann Joachim Quantz">Serenata Notturna</obra>
+      </obras>
+      <professores>
+        <professor>Fernanda Barroso</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Daniela Teixeira</aluno>
+        <aluno>Michel Pinto</aluno>
+        <aluno>Nuno Silva</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Emanuele d'Astorga">In the Steppes of Central Asia</obra>
+      </obras>
+      <acompanhantes>
+        <acompanhante>Professor Maria Mota</acompanhante>
+      </acompanhantes>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Antonio Fernandes</aluno>
+        <aluno>Lidia Laranjeira</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Benda, Franz">Polonaise-Fantasie</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Jose Soares</aluno>
+        <aluno>Jose Esteves</aluno>
+        <aluno>Jose Gandarela</aluno>
+        <aluno>Luis Goncalves</aluno>
+        <aluno>Miguel Matos</aluno>
+        <aluno>Miguel Silva</aluno>
+        <aluno>Nuno Gomes</aluno>
+        <aluno>Paulo Sousa</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Barbara of Portugal">Jeux d'enfants</obra>
+        <obra compositor="John Blow">Romance in F major</obra>
+      </obras>
+      <professores>
+        <professor>Professor Marlene Silva</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Alexandre Pinto</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Gregor Aichinger">Bagatelles, Opus 119</obra>
+      </obras>
+    </atuacao>
+  </atuacoes>
+</audicao>

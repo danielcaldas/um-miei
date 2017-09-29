@@ -1,0 +1,7 @@
+BD "localhost/gamudb" "root" "root"
+AUDICAO
+
+CODIGO AUD1, TITULO "Audição de Natal da UM", SUBTITULO "Sinas na noite de Natal", TEMA "O Natal nas Universidades",
+            DATA 24/12/2015, HORAINICIO 21:30, DURACAO 00:02, LOCAL CP3, UM
+ATUACOES
+.

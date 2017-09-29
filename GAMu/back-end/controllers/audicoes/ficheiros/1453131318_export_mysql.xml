@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<audicao id="AUD2">
+  <titulo>Audicao de Final de Ano</titulo>
+  <subtitulo>Um Final de Ano diferente</subtitulo>
+  <tema>Ano novo vida nova</tema>
+  <data>31/12/2015</data>
+  <horainicio>00:30</horainicio>
+  <horafim>01:30</horafim>
+  <duracao>00:30</duracao>
+  <local>Avenida dos Aliados</local>
+  <atuacoes>
+    <atuacao>
+      <alunos>
+        <aluno>Carlos Ribeiro</aluno>
+        <aluno>Francisco Leite</aluno>
+        <aluno>Joao Pereira</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Rousseau, Jean-Jacques">Hungarian Rhapsody No. 18</obra>
+        <obra compositor="Estevao de Brito">Impromptu, Op. 36</obra>
+      </obras>
+      <professores>
+        <professor>Professor Pedro Ferreira</professor>
+        <professor>Professor Carla Castro</professor>
+        <professor>Professor Jose Castro</professor>
+      </professores>
+      <acompanhantes>
+        <acompanhante>Pedro Coelho</acompanhante>
+        <acompanhante>Professor Edison Oliveira</acompanhante>
+      </acompanhantes>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Ademar Goncalves</aluno>
+        <aluno>Aderito Oliveira</aluno>
+        <aluno>Alexandre Carvalho</aluno>
+        <aluno>Daniel Alves</aluno>
+        <aluno>Joao Santos</aluno>
+        <aluno>Jorge Melo</aluno>
+        <aluno>Jose Correia</aluno>
+        <aluno>Luis Goncalves</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Johann Joachim Quantz">Serenata Notturna</obra>
+      </obras>
+      <professores>
+        <professor>Fernanda Barroso</professor>
+      </professores>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Daniela Teixeira</aluno>
+        <aluno>Hugo Pereira</aluno>
+        <aluno>Michel Pinto</aluno>
+        <aluno>Nuno Silva</aluno>
+        <aluno>Paulo Sa</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Emanuele d'Astorga">In the Steppes of Central Asia</obra>
+      </obras>
+      <professores>
+        <professor>Renato Neves</professor>
+      </professores>
+      <acompanhantes>
+        <acompanhante>Professor Maria Mota</acompanhante>
+      </acompanhantes>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Alexandre Pinto</aluno>
+      </alunos>
+    </atuacao>
+  </atuacoes>
+</audicao>

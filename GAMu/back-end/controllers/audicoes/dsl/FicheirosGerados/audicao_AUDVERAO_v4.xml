@@ -1,0 +1,13 @@
+<audicao id=AUDVERAO>
+	<titulo>Audi????o de Ver??o</titulo>
+	<subtitulo>Sol, Praia e M??sica</subtitulo>
+	<tema>O Sol</tema>
+	<data>21/12/2014</data>
+	<horaini>21:30</horaini>
+	<horafim>23:00</horafim>
+	<local>Praia</local>
+	<atuacoes>
+		<atuacao>AT1</atuacao>
+		<atuacao>AT2</atuacao>
+	</atuacoes>
+</audicao>

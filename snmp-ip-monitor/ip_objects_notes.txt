@@ -1,0 +1,36 @@
+Fórmula para pacotes ip recebidos em erro:
+
+ipSystemStatsHCInReceives - (ipSystemStatsInHdrErrors + ipSystemStatsInAddrErrors)
+
+
+Objectos envolvidos:
+ipSystemStatsHCInReceives, 1.3.6.1.2.1.4.31.1.1.4
+ipSystemStatsInHdrErrors, 1.3.6.1.2.1.4.31.1.1.7
+ipSystemStatsInAddrErrors, 1.3.6.1.2.1.4.31.1.1.9
+
+Contagem de pacotes enviados:
+ipSystemStatsHCInDelivers, 1.3.6.1.2.1.4.31.1.1.19
+
+var oids = ["1.3.6.1.2.1.4.9", "1.3.6.1.2.1.4.1", "1.3.6.1.2.1.4.3", "1.3.6.1.2.1.4.4", "1.3.6.1.2.1.4.5", "1.3.6.1.2.1.4.31.1.1.3", "1.3.6.1.2.1.4.31.1.1.4"];
+var oidsNames = ["ipInDelivers", "ipForwarding", "ipInReceives", "ipInHdrErrors", "ipInAddrErrors", "ipSystemStatsInReceives", "ipSystemStatsHCInReceives"];
+
+The large part of previously used objects are now deprecated according to CISCO MIB Object Navigator
+
+
+
+Algorithm
+
+This algorithm sets the polling time with random values such as:
+
+	pollingTime = random( minPollingTime, maxPollingTime )
+
+where minPollingTime is the minimum time that the snmp agent takes to update an object (one in oids), maxPollingTime is the maximum time the agent takes
+to update an object.
+
+The pollingTime is managed in order of the information we want to extract from the snmp agent, this information are the values of the instances of mib objects that are listed in the array oids (oidsNames contains the corresponding mib object name)
+
+
+
+
+// var oids = ["1.3.6.1.2.1.4.31.1.1.4", "1.3.6.1.2.1.4.31.1.1.7", "1.3.6.1.2.1.4.31.1.1.9", "1.3.6.1.2.1.4.31.1.1.19"];
+// var oidsNames = ["ipSystemStatsHCInReceives", "ipSystemStatsInHdrErrors", "ipSystemStatsInAddrErrors", "ipSystemStatsHCInDelivers"];

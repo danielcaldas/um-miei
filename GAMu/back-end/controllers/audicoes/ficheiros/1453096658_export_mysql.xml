@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<audicao id="AUD3">
+  <titulo>Audi&#xE7;&#xE3;o de Inverno</titulo>
+  <subtitulo>Inverno nas Escolas</subtitulo>
+  <tema>Frozen</tema>
+  <data>1/12/2015</data>
+  <horainicio>20:00</horainicio>
+  <horafim>22:00</horafim>
+  <duracao>02:00</duracao>
+  <local>Pra&#xE7;a do Ribeirinho</local>
+  <atuacoes>
+    <atuacao>
+      <alunos>
+        <aluno>Hugo Rigor</aluno>
+        <aluno>Joao Almeida</aluno>
+        <aluno>Joel Rocha</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Emanuele d'Astorga">Military Band No. 1</obra>
+      </obras>
+    </atuacao>
+  </atuacoes>
+</audicao>

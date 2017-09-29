@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<audicao id="AUD2">
+  <titulo>Audi&#xE7;&#xE3;o de Final de Ano</titulo>
+  <subtitulo>Um Final de Ano diferente</subtitulo>
+  <tema>Ano novo vida nova</tema>
+  <data>31/12/2015</data>
+  <horainicio>13:30</horainicio>
+  <horafim/>
+  <duracao>03:20</duracao>
+  <local>Avenida dos Aliados</local>
+  <atuacoes>
+    <atuacao>
+      <alunos>
+        <aluno>Nelson Silva</aluno>
+        <aluno>Nelson Carneiro</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Nicolaus Bruhns">Three Pieces for Orchestra</obra>
+        <obra compositor="Balbastre, Claude">Sonatina in F major</obra>
+      </obras>
+    </atuacao>
+    <atuacao>
+      <alunos>
+        <aluno>Antonio Pinto</aluno>
+        <aluno>Antonio Fernandes</aluno>
+        <aluno>Catarina Mateus</aluno>
+        <aluno>Goncalo Pinto</aluno>
+        <aluno>Joao Oliveira</aluno>
+        <aluno>Miguel Matos</aluno>
+      </alunos>
+      <obras>
+        <obra compositor="Johann David Heinichen">Ab Irato</obra>
+        <obra compositor="Boyvin, Jacques">Symphonic Poem No.1, Ce qu'on entend sur la montagne</obra>
+      </obras>
+    </atuacao>
+  </atuacoes>
+</audicao>

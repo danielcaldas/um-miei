@@ -1,0 +1,825 @@
+<?xml version="1.0"?>
+<atuacoes>
+  <atuacao id="AT1">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O77</obra>
+      <obra>O111</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P40</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A174</aluno>
+      <aluno acompanhante="0">A63</aluno>
+      <aluno acompanhante="0">A47</aluno>
+      <aluno acompanhante="0">A79</aluno>
+      <aluno acompanhante="0">A121</aluno>
+      <aluno acompanhante="0">A98</aluno>
+      <aluno acompanhante="0">A123</aluno>
+      <aluno acompanhante="0">A80</aluno>
+      <aluno acompanhante="0">A58</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P84</acompanhante>
+      <acompanhante acompanhante="1">A335</acompanhante>
+      <acompanhante acompanhante="1">P46</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT2">
+    <obras>
+      <obra>O50</obra>
+      <obra>O86</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A3</aluno>
+      <aluno acompanhante="0">A195</aluno>
+      <aluno acompanhante="0">A111</aluno>
+      <aluno acompanhante="0">A170</aluno>
+      <aluno acompanhante="0">A116</aluno>
+      <aluno acompanhante="0">A120</aluno>
+      <aluno acompanhante="0">A138</aluno>
+      <aluno acompanhante="0">A89</aluno>
+      <aluno acompanhante="0">A31</aluno>
+      <aluno acompanhante="0">A200</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P90</acompanhante>
+      <acompanhante acompanhante="1">A315</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT3">
+    <obras>
+      <obra>O67</obra>
+      <obra>O86</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A56</aluno>
+      <aluno acompanhante="0">A104</aluno>
+      <aluno acompanhante="0">A89</aluno>
+      <aluno acompanhante="0">A88</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT4">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O49</obra>
+      <obra>O105</obra>
+      <obra>O146</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A126</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT5">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O138</obra>
+      <obra>O103</obra>
+      <obra>O132</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A257</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT6">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O51</obra>
+      <obra>O51</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P21</professor>
+      <professor acompanhante="0">P9</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A226</aluno>
+      <aluno acompanhante="0">A140</aluno>
+      <aluno acompanhante="0">A88</aluno>
+      <aluno acompanhante="0">A235</aluno>
+      <aluno acompanhante="0">A41</aluno>
+      <aluno acompanhante="0">A42</aluno>
+      <aluno acompanhante="0">A45</aluno>
+      <aluno acompanhante="0">A198</aluno>
+      <aluno acompanhante="0">A261</aluno>
+      <aluno acompanhante="0">A49</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">A289</acompanhante>
+      <acompanhante acompanhante="1">P67</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT7">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O129</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P42</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A183</aluno>
+      <aluno acompanhante="0">A58</aluno>
+      <aluno acompanhante="0">A6</aluno>
+      <aluno acompanhante="0">A150</aluno>
+      <aluno acompanhante="0">A2</aluno>
+      <aluno acompanhante="0">A128</aluno>
+      <aluno acompanhante="0">A202</aluno>
+      <aluno acompanhante="0">A1</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT8">
+    <obras>
+      <obra>O41</obra>
+      <obra>O79</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A53</aluno>
+      <aluno acompanhante="0">A128</aluno>
+      <aluno acompanhante="0">A155</aluno>
+      <aluno acompanhante="0">A257</aluno>
+      <aluno acompanhante="0">A251</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT9">
+    <obras>
+      <obra>O115</obra>
+      <obra>O13</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P42</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A86</aluno>
+      <aluno acompanhante="0">A171</aluno>
+      <aluno acompanhante="0">A141</aluno>
+      <aluno acompanhante="0">A144</aluno>
+      <aluno acompanhante="0">A176</aluno>
+      <aluno acompanhante="0">A28</aluno>
+      <aluno acompanhante="0">A146</aluno>
+      <aluno acompanhante="0">A40</aluno>
+      <aluno acompanhante="0">A229</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P90</acompanhante>
+      <acompanhante acompanhante="1">A325</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT10">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O143</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P36</professor>
+      <professor acompanhante="0">P37</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A6</aluno>
+      <aluno acompanhante="0">A63</aluno>
+      <aluno acompanhante="0">A159</aluno>
+      <aluno acompanhante="0">A24</aluno>
+      <aluno acompanhante="0">A232</aluno>
+      <aluno acompanhante="0">A1</aluno>
+      <aluno acompanhante="0">A2</aluno>
+      <aluno acompanhante="0">A191</aluno>
+      <aluno acompanhante="0">A87</aluno>
+      <aluno acompanhante="0">A173</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT11">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O64</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A62</aluno>
+      <aluno acompanhante="0">A259</aluno>
+      <aluno acompanhante="0">A254</aluno>
+      <aluno acompanhante="0">A106</aluno>
+      <aluno acompanhante="0">A230</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P87</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT12">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O94</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P22</professor>
+      <professor acompanhante="0">P30</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A23</aluno>
+      <aluno acompanhante="0">A194</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT13">
+    <obras>
+      <obra>O137</obra>
+      <obra>O73</obra>
+      <obra>O69</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A189</aluno>
+      <aluno acompanhante="0">A108</aluno>
+      <aluno acompanhante="0">A190</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT14">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O28</obra>
+      <obra>O8</obra>
+      <obra>O101</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P38</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A235</aluno>
+      <aluno acompanhante="0">A254</aluno>
+      <aluno acompanhante="0">A54</aluno>
+      <aluno acompanhante="0">A136</aluno>
+      <aluno acompanhante="0">A240</aluno>
+      <aluno acompanhante="0">A180</aluno>
+      <aluno acompanhante="0">A43</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT15">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O28</obra>
+      <obra>O150</obra>
+      <obra>O111</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P2</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A150</aluno>
+      <aluno acompanhante="0">A198</aluno>
+      <aluno acompanhante="0">A105</aluno>
+      <aluno acompanhante="0">A76</aluno>
+      <aluno acompanhante="0">A248</aluno>
+      <aluno acompanhante="0">A11</aluno>
+      <aluno acompanhante="0">A262</aluno>
+      <aluno acompanhante="0">A26</aluno>
+      <aluno acompanhante="0">A22</aluno>
+      <aluno acompanhante="0">A150</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P76</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT16">
+    <obras>
+      <obra>O142</obra>
+      <obra>O95</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A186</aluno>
+      <aluno acompanhante="0">A98</aluno>
+      <aluno acompanhante="0">A70</aluno>
+      <aluno acompanhante="0">A158</aluno>
+      <aluno acompanhante="0">A139</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT17">
+    <obras>
+      <obra>O70</obra>
+      <obra>O47</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A5</aluno>
+      <aluno acompanhante="0">A226</aluno>
+      <aluno acompanhante="0">A67</aluno>
+      <aluno acompanhante="0">A252</aluno>
+      <aluno acompanhante="0">A236</aluno>
+      <aluno acompanhante="0">A65</aluno>
+      <aluno acompanhante="0">A15</aluno>
+      <aluno acompanhante="0">A257</aluno>
+      <aluno acompanhante="0">A215</aluno>
+      <aluno acompanhante="0">A263</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT18">
+    <obras>
+      <obra>O26</obra>
+      <obra>O103</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A228</aluno>
+      <aluno acompanhante="0">A241</aluno>
+      <aluno acompanhante="0">A105</aluno>
+      <aluno acompanhante="0">A62</aluno>
+      <aluno acompanhante="0">A48</aluno>
+      <aluno acompanhante="0">A263</aluno>
+      <aluno acompanhante="0">A201</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT19">
+    <obras>
+      <obra>O122</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P30</professor>
+      <professor acompanhante="0">P24</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A242</aluno>
+      <aluno acompanhante="0">A126</aluno>
+      <aluno acompanhante="0">A116</aluno>
+      <aluno acompanhante="0">A44</aluno>
+      <aluno acompanhante="0">A140</aluno>
+      <aluno acompanhante="0">A110</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">A284</acompanhante>
+      <acompanhante acompanhante="1">P79</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT20">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O65</obra>
+      <obra>O114</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A234</aluno>
+      <aluno acompanhante="0">A172</aluno>
+      <aluno acompanhante="0">A202</aluno>
+      <aluno acompanhante="0">A171</aluno>
+      <aluno acompanhante="0">A252</aluno>
+      <aluno acompanhante="0">A263</aluno>
+      <aluno acompanhante="0">A232</aluno>
+      <aluno acompanhante="0">A173</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT21">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O3</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A130</aluno>
+      <aluno acompanhante="0">A146</aluno>
+      <aluno acompanhante="0">A107</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT22">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O96</obra>
+      <obra>O88</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P9</professor>
+      <professor acompanhante="0">P17</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A145</aluno>
+      <aluno acompanhante="0">A8</aluno>
+      <aluno acompanhante="0">A185</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT23">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O15</obra>
+      <obra>O99</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A118</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P60</acompanhante>
+      <acompanhante acompanhante="1">A276</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT24">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O118</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P30</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A173</aluno>
+      <aluno acompanhante="0">A39</aluno>
+      <aluno acompanhante="0">A236</aluno>
+      <aluno acompanhante="0">A89</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT25">
+    <obras>
+      <obra>O153</obra>
+      <obra>O52</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A56</aluno>
+      <aluno acompanhante="0">A166</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT26">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O62</obra>
+      <obra>O39</obra>
+      <obra>O157</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P9</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A95</aluno>
+      <aluno acompanhante="0">A187</aluno>
+      <aluno acompanhante="0">A161</aluno>
+      <aluno acompanhante="0">A10</aluno>
+      <aluno acompanhante="0">A168</aluno>
+      <aluno acompanhante="0">A189</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P87</acompanhante>
+      <acompanhante acompanhante="1">A335</acompanhante>
+      <acompanhante acompanhante="1">P51</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT27">
+    <obras>
+      <obra>O70</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P28</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A131</aluno>
+      <aluno acompanhante="0">A102</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT28">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O5</obra>
+      <obra>O136</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P14</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A243</aluno>
+      <aluno acompanhante="0">A241</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT29">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O160</obra>
+      <obra>O89</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A92</aluno>
+      <aluno acompanhante="0">A189</aluno>
+      <aluno acompanhante="0">A235</aluno>
+      <aluno acompanhante="0">A120</aluno>
+      <aluno acompanhante="0">A1</aluno>
+      <aluno acompanhante="0">A243</aluno>
+      <aluno acompanhante="0">A226</aluno>
+      <aluno acompanhante="0">A148</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT30">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O111</obra>
+      <obra>O149</obra>
+      <obra>O153</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A238</aluno>
+      <aluno acompanhante="0">A70</aluno>
+      <aluno acompanhante="0">A78</aluno>
+      <aluno acompanhante="0">A31</aluno>
+      <aluno acompanhante="0">A150</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT31">
+    <obras>
+      <obra>O127</obra>
+      <obra>O105</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A28</aluno>
+      <aluno acompanhante="0">A33</aluno>
+      <aluno acompanhante="0">A101</aluno>
+      <aluno acompanhante="0">A120</aluno>
+      <aluno acompanhante="0">A222</aluno>
+      <aluno acompanhante="0">A73</aluno>
+      <aluno acompanhante="0">A239</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">A304</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT32">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O28</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P2</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A142</aluno>
+      <aluno acompanhante="0">A247</aluno>
+      <aluno acompanhante="0">A189</aluno>
+      <aluno acompanhante="0">A220</aluno>
+      <aluno acompanhante="0">A15</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT33">
+    <obras>
+      <obra>O135</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A235</aluno>
+      <aluno acompanhante="0">A183</aluno>
+      <aluno acompanhante="0">A211</aluno>
+      <aluno acompanhante="0">A5</aluno>
+      <aluno acompanhante="0">A21</aluno>
+      <aluno acompanhante="0">A67</aluno>
+      <aluno acompanhante="0">A227</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT34">
+    <obras>
+      <obra>O96</obra>
+      <obra>O161</obra>
+      <obra>O20</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P13</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A62</aluno>
+      <aluno acompanhante="0">A80</aluno>
+      <aluno acompanhante="0">A82</aluno>
+      <aluno acompanhante="0">A204</aluno>
+      <aluno acompanhante="0">A63</aluno>
+      <aluno acompanhante="0">A8</aluno>
+      <aluno acompanhante="0">A160</aluno>
+      <aluno acompanhante="0">A78</aluno>
+      <aluno acompanhante="0">A84</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">P95</acompanhante>
+      <acompanhante acompanhante="1">P95</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT35">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O174</obra>
+      <obra>O133</obra>
+      <obra>O24</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P14</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A176</aluno>
+      <aluno acompanhante="0">A58</aluno>
+      <aluno acompanhante="0">A178</aluno>
+      <aluno acompanhante="0">A147</aluno>
+      <aluno acompanhante="0">A98</aluno>
+      <aluno acompanhante="0">A248</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT36">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O127</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A199</aluno>
+      <aluno acompanhante="0">A259</aluno>
+      <aluno acompanhante="0">A204</aluno>
+      <aluno acompanhante="0">A19</aluno>
+      <aluno acompanhante="0">A242</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT37">
+    <obras>
+      <obra>O43</obra>
+      <obra>O25</obra>
+      <obra>O103</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A94</aluno>
+      <aluno acompanhante="0">A70</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">A319</acompanhante>
+      <acompanhante acompanhante="1">P84</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT38">
+    <obras>
+      <obra>O26</obra>
+      <obra>O31</obra>
+      <obra>O19</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P38</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A237</aluno>
+      <aluno acompanhante="0">A155</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT39">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O6</obra>
+      <obra>O146</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P4</professor>
+      <professor acompanhante="0">P43</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A55</aluno>
+      <aluno acompanhante="0">A23</aluno>
+      <aluno acompanhante="0">A232</aluno>
+      <aluno acompanhante="0">A125</aluno>
+      <aluno acompanhante="0">A22</aluno>
+      <aluno acompanhante="0">A93</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT40">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O141</obra>
+      <obra>O153</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A14</aluno>
+      <aluno acompanhante="0">A78</aluno>
+      <aluno acompanhante="0">A187</aluno>
+      <aluno acompanhante="0">A124</aluno>
+      <aluno acompanhante="0">A35</aluno>
+      <aluno acompanhante="0">A221</aluno>
+      <aluno acompanhante="0">A97</aluno>
+      <aluno acompanhante="0">A189</aluno>
+      <aluno acompanhante="0">A251</aluno>
+      <aluno acompanhante="0">A11</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT41">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O32</obra>
+      <obra>O161</obra>
+      <obra>O166</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A43</aluno>
+      <aluno acompanhante="0">A59</aluno>
+      <aluno acompanhante="0">A88</aluno>
+      <aluno acompanhante="0">A167</aluno>
+      <aluno acompanhante="0">A80</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">A281</acompanhante>
+      <acompanhante acompanhante="1">P87</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT42">
+    <audicoes>
+      <audicao>AUD1</audicao>
+    </audicoes>
+    <obras>
+      <obra>O152</obra>
+      <obra>O116</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A209</aluno>
+      <aluno acompanhante="0">A258</aluno>
+      <aluno acompanhante="0">A186</aluno>
+      <aluno acompanhante="0">A134</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">A355</acompanhante>
+      <acompanhante acompanhante="1">A270</acompanhante>
+      <acompanhante acompanhante="1">A320</acompanhante>
+    </acompanhantes>
+  </atuacao>
+  <atuacao id="AT43">
+    <obras>
+      <obra>O127</obra>
+    </obras>
+    <alunos>
+      <aluno acompanhante="0">A95</aluno>
+      <aluno acompanhante="0">A190</aluno>
+      <aluno acompanhante="0">A80</aluno>
+      <aluno acompanhante="0">A6</aluno>
+      <aluno acompanhante="0">A176</aluno>
+      <aluno acompanhante="0">A126</aluno>
+      <aluno acompanhante="0">A130</aluno>
+    </alunos>
+  </atuacao>
+  <atuacao id="AT44">
+    <audicoes>
+      <audicao>AUD1</audicao>
+      <audicao>AUD2</audicao>
+    </audicoes>
+    <obras>
+      <obra>O63</obra>
+      <obra>O88</obra>
+      <obra>O10</obra>
+    </obras>
+    <professores>
+      <professor acompanhante="0">P2</professor>
+    </professores>
+    <alunos>
+      <aluno acompanhante="0">A212</aluno>
+      <aluno acompanhante="0">A254</aluno>
+      <aluno acompanhante="0">A40</aluno>
+      <aluno acompanhante="0">A180</aluno>
+      <aluno acompanhante="0">A232</aluno>
+    </alunos>
+    <acompanhantes>
+      <acompanhante acompanhante="1">A297</acompanhante>
+      <acompanhante acompanhante="1">A264</acompanhante>
+      <acompanhante acompanhante="1">P63</acompanhante>
+    </acompanhantes>
+  </atuacao>
+</atuacoes>
+  

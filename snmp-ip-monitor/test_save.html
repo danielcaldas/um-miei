@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		// SNMP objects used to monitor network
+		var ipInDelivers=0;
+		var ipInReceives=0;
+		var ipInHdrErrors=0;
+		var ipInAddrErrors=0;
+
+		// Will allow some synchronism between front-end and server poolling time
+		var pollingTime=0;
+
+		var socketio = io.connect("127.0.0.1:8080");
+		
+		function fetchInfo() {
+			socketio.emit("message_to_server", "");
+
+			results();
+
+			setTimeout(fetchInfo, pollingTime);
+		}
+
+		function results() {
+			socketio.on("message_to_client", function(data) {
+				ipInDelivers = parseInt(data['ipInDelivers']);
+				ipInReceives = parseInt(data['ipInReceives']);
+				ipInHdrErrors = parseInt(data['ipInHdrErrors']);
+				ipInAddrErrors = parseInt(data['ipInAddrErrors']);
+				pollingTime = parseInt(data['pollingTime']);
+
+				$("#log").html("<br/>pollingTime: " + pollingTime + "<hr/>" + "ipInDelivers: " + ipInDelivers +
+								"<br/>ipInReceives: " + ipInReceives + "<br/>ipInHdrErrors: " + ipInHdrErrors + "<br/>ipInAddrErrors: " + ipInAddrErrors);
+			});
+		}
+	</script>
+</head>
+<body>
+	<center><h1>SNMP test</h1></center>
+	<div class="form-group" style="margin: 1em;">
+		<button class="btn btn-primary" onclick="fetchInfo()">send</button>
+		<div id="log" style="font-size:22px;"><p>Cenas aqui</p></div>
+	</div>
+</body>
+</html>

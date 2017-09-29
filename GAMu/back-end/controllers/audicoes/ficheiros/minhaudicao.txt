@@ -1,0 +1,10 @@
+BD "localhost/gamudb" "root" "root" 
+AUDICAO
+    CODIGO "minhaaudicao", TITULO "Audicao da Orquestra Fixe do Sul de Franca", SUBTITULO "50 anos", TEMA "Dia da Musica",
+    DATA 21/03/2015, HORAINICIO 20:30, HORAFIM 23:00, LOCAL "Coliseu do Porto"
+ATUACOES
+	ATUACAO AT20.
+	ATUACAO AT13.
+	ATUACAO AT24.
+    ATUACAO AT2.
+    ATUACAO AT1.
