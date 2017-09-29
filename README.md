@@ -1,6 +1,6 @@
 # um-miei
 
-## *They say you learn from your errors, well.. here they are*
+## *They say you learn from your mistakes, well.. here they are*
 
 In this repository I have stored all my projects of 3+2 years in software engineering at University of Minho. I also some some aside
 coding challenges that I did along the way.
@@ -41,5 +41,12 @@ play around with neural networks, using R language and [nnet](https://cran.r-pro
 
 - **[ProxyPrint](https://github.com/ProxyPrint)** - ProxyPrint is a platform where both printshops and regular consumer can use. In other words, one has access (within ProxyPrint) to all printshops registered there, which means one's not only able to make requests online (having to collect them physically afterwards) but can also compare the cost of his printing request across all printshops.
 
+- **[snmp-ip-monitor](https://www.youtube.com/watch?v=AYjA4TGCic8)** - NodeJS server for reading MIB values and send it via WS to a simple html page. [See for yourself](https://www.youtube.com/watch?v=AYjA4TGCic8).
+
+- **GAMu** - A web app built in LAMP stack to manage music schools and generate music auditions detailed flyers.
+
+- **DC Universe** - DC Universe is a web app where you can navigate in the DC Comics Universe in an interactive way. I used a MEAN stack, OWL ontology for data representation, SPARQL for querying the ontology and Perl language to code a small web crawling module
+to extract data from http://www.dccomics.com/ DC comics web site.
 
 #### 2nd year
+- MSc Thesis - @TODO
