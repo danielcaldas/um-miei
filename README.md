@@ -1,6 +1,6 @@
 # um-miei
 
-## *They say you learn from your mistakes, well.. here they are*
+## They say you learn from your mistakes, well.. here they are
 
 In this repository I have stored all my projects of 3+2 years in software engineering at University of Minho. I also some some aside
 coding challenges that I did along the way.
@@ -49,4 +49,5 @@ play around with neural networks, using R language and [nnet](https://cran.r-pro
 to extract data from http://www.dccomics.com/ DC comics web site.
 
 #### 2nd year
-- MSc Thesis - @TODO
+- Informatics Engenieering Project (UCE15) - [eaze](http://eazeapp.co/) Your personal health assistant. Anywhere, anytime.
+- MSc Thesis - Analysis and Visualisation of Dynamic Social Networks [danielcaldas/msc-dissertation](https://github.com/danielcaldas/msc-dissertation)
